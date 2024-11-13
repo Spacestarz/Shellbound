@@ -11,7 +11,7 @@ public class Fire : MonoBehaviour
     public float fireRate = 2;
     public float speedReturn = 1;
 
-    public float maxDistanceHarpoon = 2f; //test this to see whats besst
+    public float maxDistanceHarpoon = 2f; //test this to see whats best
 
     //bools
     bool fired = false;
@@ -20,16 +20,19 @@ public class Fire : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //distance of the harpoon and rope
         float dist = Vector3.Distance(Harpoon.transform.position, transform.position);
 
         if (Input.GetButtonDown("Fire1"))
         {
+            velocityZero = false;
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             GetComponent<Rigidbody>().velocity = transform.up * fireRate * Time.deltaTime;
 
             fired = true;
@@ -45,9 +48,17 @@ public class Fire : MonoBehaviour
             fired = false;
         }
 
-        if (velocityZero) 
+        if (velocityZero == true) 
         {
-            rope.transform.position = Vector3.MoveTowards(rope.transform.position, Harpoon.transform.position, speedReturn * Time.deltaTime);
+            rope.transform.position = Vector3.MoveTowards(rope.transform.position, Harpoon.transform.position, speedReturn * Time.deltaTime);          
+
+            //if the distance of the rope and harpoon is below 10 it snaps to position and freezez
+          if ( dist <10)
+            {
+                rope.transform.position = Harpoon.transform.position;
+                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                velocityZero = false;
+            }
         }
 
     }    

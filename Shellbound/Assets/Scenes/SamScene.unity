@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 757249864}
   - component: {fileID: 757249863}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -520,7 +520,8 @@ Transform:
   m_LocalPosition: {x: -2.891, y: 0.71, z: -14.674}
   m_LocalScale: {x: 0.42377645, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1422077699}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 67.654, y: -7.282, z: 0}
 --- !u!54 &1084604998
@@ -719,7 +720,7 @@ MonoBehaviour:
   Harpoon: {fileID: 1084604992}
   rope: {fileID: 1422077693}
   fireRate: 500
-  speed: 1
+  speedReturn: 1
   maxDistanceHarpoon: 2
 --- !u!136 &1422077696
 CapsuleCollider:
@@ -802,12 +803,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1422077693}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.6111153, y: -0.048434444, z: 0.015416929, w: 0.789908}
-  m_LocalPosition: {x: -2.914, y: 0.9330001, z: -14.876}
-  m_LocalScale: {x: 0.09059484, y: 1, z: 0.124051206}
+  m_LocalRotation: {x: 0.066900246, y: -0.01152088, z: -0.020478362, w: 0.99748296}
+  m_LocalPosition: {x: -0.11425899, y: -0.09784277, z: -0.28132647}
+  m_LocalScale: {x: 0.21314013, y: 1.0008914, z: 0.124098524}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1084604997}
   m_LocalEulerAnglesHint: {x: 75.227, y: -13.072, z: -7.853}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -818,4 +819,3 @@ SceneRoots:
   - {fileID: 1247286723}
   - {fileID: 757249866}
   - {fileID: 1084604997}
-  - {fileID: 1422077699}
