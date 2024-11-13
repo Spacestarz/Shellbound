@@ -31,11 +31,14 @@ public class PlayerController : MonoBehaviour
     Vector3 moveDirection;
 
     Rigidbody rb;
+    SliceScript sliceScript;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+
+        sliceScript = GetComponent<SliceScript>();
 
         dashing = false;
 
@@ -65,25 +68,35 @@ public class PlayerController : MonoBehaviour
     {
         if (!dashing)
         {
-            horizontalInput = Input.GetAxisRaw("Horizontal");
-            verticalInput = Input.GetAxisRaw("Vertical");
-        
-            //Space to jump
-            if (Input.GetButton("Jump") && readyToJump && grounded)
+            if (!SliceScript.sliceMode)
             {
-                readyToJump = false;
-                Jump();
-                Invoke(nameof(ResetJumpCooldown), jumpCooldown);
-            }
+                horizontalInput = Input.GetAxisRaw("Horizontal");
+                verticalInput = Input.GetAxisRaw("Vertical");
 
-            //Shift to dash
-            if (Input.GetButton("Fire3") && readyToDash && grounded && moveDirection != Vector3.zero)
-            {
-                readyToDash = false;
-                Dash();
-                Invoke(nameof(EndDash), dashDuration);
-                Invoke(nameof(ResetDashCooldown), dashCooldown);
+                //Space to jump
+                if (Input.GetButton("Jump") && readyToJump && grounded)
+                {
+                    readyToJump = false;
+                    Jump();
+                    Invoke(nameof(ResetJumpCooldown), jumpCooldown);
+                }
+                //Shift to dash
+                if (Input.GetButton("Fire3") && readyToDash && grounded && moveDirection != Vector3.zero)
+                {
+                    readyToDash = false;
+                    Dash();
+                    Invoke(nameof(EndDash), dashDuration);
+                    Invoke(nameof(ResetDashCooldown), dashCooldown);
+                }
             }
+        }
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            sliceScript.ToggleSliceMode();
+            
+            horizontalInput = 0;
+            verticalInput = 0;
         }
     }
 
