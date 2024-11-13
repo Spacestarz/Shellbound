@@ -12,6 +12,12 @@ public class PlayerController : MonoBehaviour
     public float airMultiplier;
     bool readyToJump;
 
+    public float dashForce;
+    public float dashDuration;
+    public float dashCooldown;
+    bool dashing;
+    bool readyToDash;
+
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
@@ -31,7 +37,10 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
+        dashing = false;
+
         readyToJump = true;
+        readyToDash = true;
     }
 
     private void Update()
@@ -54,14 +63,27 @@ public class PlayerController : MonoBehaviour
 
     private void GetInputs()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
-
-        if (Input.GetButton("Jump") && readyToJump && grounded)
+        if (!dashing)
         {
-            readyToJump = false;
-            Jump();
-            Invoke(nameof(ResetJump), jumpCooldown);
+            horizontalInput = Input.GetAxisRaw("Horizontal");
+            verticalInput = Input.GetAxisRaw("Vertical");
+        
+            //Space to jump
+            if (Input.GetButton("Jump") && readyToJump && grounded)
+            {
+                readyToJump = false;
+                Jump();
+                Invoke(nameof(ResetJumpCooldown), jumpCooldown);
+            }
+
+            //Shift to dash
+            if (Input.GetButton("Fire3") && readyToDash && grounded && moveDirection != Vector3.zero)
+            {
+                readyToDash = false;
+                Dash();
+                Invoke(nameof(EndDash), dashDuration);
+                Invoke(nameof(ResetDashCooldown), dashCooldown);
+            }
         }
     }
 
@@ -76,16 +98,23 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer()
     {
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        if (!dashing)
+        {
+            moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        }
 
-        if (grounded)
+        if (grounded && !dashing)
         {
             rb.AddForce(moveDirection.normalized * maxSpeed * 10f, ForceMode.Force);
         }
 
-        else if (!grounded)
+        else if (!grounded && !dashing)
         {
             rb.AddForce(moveDirection.normalized * maxSpeed * 10f * airMultiplier, ForceMode.Force);
+        }
+        else if (dashing)
+        {
+            rb.velocity = moveDirection.normalized * dashForce;
         }
     }
 
@@ -93,7 +122,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 flatVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        if (flatVelocity.magnitude > maxSpeed)
+        if (!dashing && flatVelocity.magnitude > maxSpeed)
         {
             Vector3 limitedVelocity = flatVelocity.normalized * maxSpeed;
             rb.velocity = new Vector3(limitedVelocity.x, rb.velocity.y, limitedVelocity.z);
@@ -107,8 +136,30 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
 
-    private void ResetJump()
+    private void ResetJumpCooldown()
     {
         readyToJump = true;
+    }
+
+    private void Dash()
+    {
+        Debug.Log("Dash");
+        dashing = true;
+
+        rb.drag = 0;
+    }
+
+    private void EndDash()
+    {
+        Debug.Log("Not dashing");
+        dashing = false;
+
+        rb.drag = groundDrag;
+    }
+
+    private void ResetDashCooldown()
+    {
+        Debug.Log("Can dash");
+        readyToDash = true;
     }
 }
