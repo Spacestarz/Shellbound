@@ -19,6 +19,9 @@ public class Billboarding : MonoBehaviour
         cameradir.y = 0; 
 
         //rotates the sprite to face it
-        transform.rotation = Quaternion.LookRotation(cameradir);
+        if (cameradir != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(cameradir);
+        }
     }
 }
