@@ -18,6 +18,7 @@ public class Fire : MonoBehaviour
     //bools
     bool fired = false;
     bool velocityZero = false;
+    bool rayHits = false;
 
     // Start is called before the first frame update
     void Start()
@@ -39,10 +40,17 @@ public class Fire : MonoBehaviour
 
             //it gets the same rotation as the main camera will probarly need to be changed when the real sprites gets implemented.  
             transform.rotation = Quaternion.LookRotation(mainCam.transform.up, mainCam.transform.forward);
-           //It move the direction of the main cameras z axis
-            GetComponent<Rigidbody>().velocity =  mainCam.transform.forward * fireRate * Time.deltaTime;
-
             fired = true;
+
+            Raycasting();    //TESTING raycast I REPEAT IN TESTING PHASE
+
+            if (rayHits == false)
+            {
+                //It move the direction of the main cameras z axis
+                GetComponent<Rigidbody>().velocity = mainCam.transform.forward * fireRate;
+               
+            }
+          
         }
 
         //TODO AFTER X seconds it returns to the player //invoke
@@ -70,6 +78,28 @@ public class Fire : MonoBehaviour
             }
         }
 
-    }    
-    
+    }
+
+    private void Raycasting()
+    {
+
+        //TODO make raycast check 1 meter ahead and if it hits bam
+        //TODO MAKE THE RAYCAST WAIT UNTIL THE ROPE HAS ACTUALLY HIT A COLLISION THEN STOP
+        Ray ray = new Ray(mainCam.transform.position, mainCam.transform.forward);
+        Debug.DrawRay(ray.origin, ray.direction * 1);
+
+        if (Physics.Raycast(ray, out RaycastHit hit) )
+        {
+            Debug.Log (hit.collider.gameObject.name + "was hit"); //it works omg :) im learning FUCK YEE
+            Vector3 hitpoint = hit.point;
+
+            Debug.Log(hit.point);
+
+            //TODO fix rayhits on the other stuff
+          
+            rayHits = true;
+            rope.transform.position = hitpoint;
+        }
+     
+    }
 }
