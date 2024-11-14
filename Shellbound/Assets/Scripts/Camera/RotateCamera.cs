@@ -23,7 +23,7 @@ public class RotateCamera : MonoBehaviour
 
     void GetMouseInput()
     {
-        if (!SliceScript.sliceMode)
+        if (!SliceScript.SliceMode())
         {
             float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensitivityX;
             float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensitivityY;
