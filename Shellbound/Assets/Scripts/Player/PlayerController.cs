@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!dashing)
         {
-            if (!SliceScript.sliceMode)
+            if (!SliceScript.SliceMode())
             {
                 horizontalInput = Input.GetAxisRaw("Horizontal");
                 verticalInput = Input.GetAxisRaw("Vertical");
@@ -97,6 +97,24 @@ public class PlayerController : MonoBehaviour
             
             horizontalInput = 0;
             verticalInput = 0;
+        }
+
+        if (SliceScript.SliceMode() && Input.GetButtonDown("Fire1"))
+        {
+            Debug.Log("Slice begun!");
+            sliceScript.ToggleIsMidSlice();
+        }
+
+        if (SliceScript.SliceMode() && Input.GetButton("Fire1"))
+        {
+            Debug.Log("Slicing");
+            sliceScript.SliceRayCast();
+        }
+
+        if (SliceScript.SliceMode() && Input.GetButtonUp("Fire1"))
+        {
+            Debug.Log("Slice Over");
+            sliceScript.SliceRayCast();
         }
     }
 
