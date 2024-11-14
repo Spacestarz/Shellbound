@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
         if (SliceScript.SliceMode() && Input.GetButtonDown("Fire1"))
         {
             Debug.Log("Slice begun!");
-            sliceScript.ToggleIsMidSlice();
+            sliceScript.ToggleIsSlicing();
         }
 
         if (SliceScript.SliceMode() && Input.GetButton("Fire1"))
@@ -114,7 +114,7 @@ public class PlayerController : MonoBehaviour
         if (SliceScript.SliceMode() && Input.GetButtonUp("Fire1"))
         {
             Debug.Log("Slice Over");
-            sliceScript.SliceRayCast();
+            sliceScript.ToggleIsSlicing();
         }
     }
 

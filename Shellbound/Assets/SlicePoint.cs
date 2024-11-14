@@ -5,20 +5,29 @@ public class SlicePoint : MonoBehaviour
     bool hasBeenHit;
     SliceTarget parent;
 
-    public void GetHit()
+    private void Awake()
     {
-        GetComponent<SpriteRenderer>().enabled = true;
+        parent = GetComponentInParent<SliceTarget>();
+    }
+
+    public void CheckIfHittable()
+    {
         if (!hasBeenHit)
         {
-            Debug.Log("Hit!");
-            parent = GetComponentInParent<SliceTarget>();
-            hasBeenHit = true;
+            parent.ControlSlicePoint(this);
         }
+    }
+
+    public void GetHit()
+    {
+        Debug.Log("Hit!");
+        GetComponent<SpriteRenderer>().enabled = true;
+        hasBeenHit = true;
     }
 
     public void ResetHit()
     {
-        GetComponent<SpriteRenderer>().enabled = true;
+        GetComponent<SpriteRenderer>().enabled = false;
         Debug.Log("Unhit!");
         hasBeenHit = false;
     }

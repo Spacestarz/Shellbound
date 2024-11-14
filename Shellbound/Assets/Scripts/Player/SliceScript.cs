@@ -3,7 +3,9 @@ using UnityEngine;
 public class SliceScript : MonoBehaviour
 {
     static bool sliceMode;
-    static bool isMidSlice;
+    static bool isSlicing;
+
+    static SliceTarget currentSliceTarget;
 
     private void Start()
     {
@@ -17,8 +19,7 @@ public class SliceScript : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, Mathf.Infinity) && hit.collider.CompareTag("SliceTarget"))
         {
-            Debug.Log("Whammy!");
-            hit.collider.gameObject.GetComponent<SlicePoint>().GetHit();
+            hit.collider.gameObject.GetComponent<SlicePoint>().CheckIfHittable();
         }
 
         Debug.DrawRay(ray.origin, ray.direction * 10, Color.yellow);
@@ -27,9 +28,9 @@ public class SliceScript : MonoBehaviour
     public void ToggleSliceMode()
     {
         sliceMode = !sliceMode;
-        isMidSlice = false;
+        isSlicing = false;
 
-        CursorToggle();
+        ToggleCursor();
     }
 
     public static bool SliceMode()
@@ -37,12 +38,18 @@ public class SliceScript : MonoBehaviour
         return sliceMode;
     }
 
-    public void ToggleIsMidSlice()
+    public void ToggleIsSlicing()
     {
-        isMidSlice = !isMidSlice;
+        isSlicing = !isSlicing;
+        
+        if (!isSlicing && currentSliceTarget)
+        {
+            currentSliceTarget.ResetSlice();
+            currentSliceTarget = null;
+        }
     }
 
-    void CursorToggle()
+    void ToggleCursor()
     {
         if (sliceMode)
         {
@@ -56,5 +63,8 @@ public class SliceScript : MonoBehaviour
         }
     }
 
-
+    public static void SetCurrentSliceTarget(SliceTarget sliceTarget)
+    {
+        currentSliceTarget = sliceTarget;
+    }
 }
