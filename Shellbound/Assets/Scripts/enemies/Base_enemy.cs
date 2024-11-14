@@ -5,8 +5,6 @@ using UnityEngine.AI;
 
 public class Base_enemy : MonoBehaviour
 {
-    public LayerMask player;
-
     Transform target;
     NavMeshAgent agent;
     bool inattackrange;
@@ -16,14 +14,14 @@ public class Base_enemy : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.Find("Player").transform;
-        Debug.Log(player);
+        //Debug.Log(player);
     }
 
     // Update is called once per frame
     void Update()
     {
         //kollar om ett objekt som har en layer definerad i player är inom en svere av diametern som defineras av attackrange.
-        inattackrange = Physics.CheckSphere(transform.position, attackrange, player);
+        inattackrange = Physics.CheckSphere(transform.position, attackrange, LayerMask.GetMask("Player"));
         if (!inattackrange)
         {
             //seger åt agent componenten att gå mot punkten definerad i target.position

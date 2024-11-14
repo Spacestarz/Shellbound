@@ -383,9 +383,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd2c6223a70199449af063f722675e62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player:
-    serializedVersion: 2
-    m_Bits: 2048
   attackrange: 5
 --- !u!54 &496887682
 Rigidbody:
