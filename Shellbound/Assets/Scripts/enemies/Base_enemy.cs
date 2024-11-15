@@ -25,8 +25,7 @@ public class Base_enemy : MonoBehaviour
     void Update()
     {
         //kollar om ett objekt som har en layer definerad i player är inom en svere av diametern som defineras av attackrange.
-        inattackrange = Physics.CheckSphere(transform.position, attackrange, LayerMask.GetMask("Player"));
-        if (!inattackrange)
+        if (!range())
         {
             //seger åt agent componenten att gå mot punkten definerad i target.position
             agent.SetDestination(target.position);
@@ -38,14 +37,21 @@ public class Base_enemy : MonoBehaviour
             if (!cooling)
             {
                 StartCoroutine(cool());
-                attack.male();
             }
         }
+    }
+    bool range()
+    {
+        return inattackrange = Physics.CheckSphere(transform.position, attackrange, LayerMask.GetMask("Player"));
     }
     IEnumerator cool()
     {
         cooling = true;
         yield return new WaitForSeconds(attackcoling);
+        if (range())
+        {
+            attack.male();
+        }
         cooling = false;
     }
 }

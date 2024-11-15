@@ -7,6 +7,8 @@ public class base_enemi_attack : MonoBehaviour
     RaycastHit ray;
     int damage = 1;
     bool ready = false;
+    public float range = 5;
+    public float push_force = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,8 +25,7 @@ public class base_enemi_attack : MonoBehaviour
     }
     public void male()
     {
-        StartCoroutine(windup());
-        if(Physics.CapsuleCast(gameObject.transform.position, gameObject.transform.forward * 5, 1, transform.position , out ray))
+        if(Physics.SphereCast(gameObject.transform.position, 1, transform.forward, out ray, range))
         {
             
             Debug.DrawRay(gameObject.transform.position, gameObject.transform.forward * 5, Color.red, 5);
@@ -32,14 +33,9 @@ public class base_enemi_attack : MonoBehaviour
             {
                 Debug.Log("hit");
                 ray.collider.GetComponent<HealthSystem>().TakeDamage(damage);
+                ray.collider.GetComponent<Rigidbody>().velocity = transform.forward * push_force;
             }
-            ready = false;
+
         }
-    }
-    public IEnumerator windup()
-    {
-        
-        yield return new WaitForSeconds(3);
-        ready = true;
     }
 }
