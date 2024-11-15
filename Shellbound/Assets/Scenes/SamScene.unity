@@ -1065,7 +1065,7 @@ Transform:
   m_GameObject: {fileID: 707097008}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.12, y: 1.16, z: -6.91}
+  m_LocalPosition: {x: -3.6, y: 1.16, z: -10.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1470,8 +1470,7 @@ Transform:
   m_LocalPosition: {x: 0.579, y: -0.030000031, z: -0.17399979}
   m_LocalScale: {x: 0.42377645, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1422077699}
+  m_Children: []
   m_Father: {fileID: 412233423}
   m_LocalEulerAnglesHint: {x: 67.654, y: -7.282, z: 0}
 --- !u!54 &1084604998
@@ -1741,7 +1740,7 @@ GameObject:
   - component: {fileID: 1422077695}
   - component: {fileID: 1422077694}
   m_Layer: 0
-  m_Name: Rope (1)
+  m_Name: 'Rope '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1790,8 +1789,8 @@ MonoBehaviour:
   rope: {fileID: 1422077693}
   mainCam: {fileID: 1823167355}
   fireRate: 5
-  speedReturn: 5
-  maxDistancefromAnchor: 20
+  speedReturn: 2
+  maxDistancefromAnchor: 10
 --- !u!136 &1422077696
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1873,12 +1872,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1422077693}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.066900246, y: -0.01152088, z: -0.020478362, w: 0.99748296}
-  m_LocalPosition: {x: -0.11425899, y: -0.09784277, z: -0.28132647}
-  m_LocalScale: {x: 0.21314013, y: 1.0008914, z: 0.124098524}
+  m_LocalRotation: {x: 0.6111153, y: -0.048434447, z: 0.015416926, w: 0.789908}
+  m_LocalPosition: {x: -2.914, y: 0.93300015, z: -14.876}
+  m_LocalScale: {x: 0.09059484, y: 1, z: 0.12405123}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1084604997}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 75.227, y: -13.072, z: -7.853}
 --- !u!1 &1823167355
 GameObject:
@@ -2014,3 +2013,4 @@ SceneRoots:
   - {fileID: 757249866}
   - {fileID: 707097013}
   - {fileID: 412233423}
+  - {fileID: 1422077699}

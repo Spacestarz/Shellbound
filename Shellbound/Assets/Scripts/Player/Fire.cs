@@ -18,23 +18,41 @@ public class Fire : MonoBehaviour
     //bools
     bool fired = false;
     bool velocityZero = false;
-    bool rayHits = false;
+    bool collisionHIT = false;
 
     // Start is called before the first frame update
     void Start()
     {
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+
+        BeInvisable();
+   
     }
+
+ 
 
     // Update is called once per frame
     void Update()
     {
+
+        if (velocityZero)
+        {
+            BeInvisable();
+          
+        }
+        
         //distance of the Anchor and rope
         float dist = Vector3.Distance(Anchor.transform.position, transform.position);
-        
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && !fired && !velocityZero)
         {
+           
+
+            //TODO MAKE PLAYER NOT BE ABLE TO SHOOT WHEN IT GOES BACK!
+
+            BeVisable();
+            rope.transform.position = Anchor.transform.position;
+
             velocityZero = false;
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
 
@@ -42,9 +60,7 @@ public class Fire : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(mainCam.transform.up, mainCam.transform.forward);
             fired = true;
 
-            Raycasting();    //TESTING raycast I REPEAT IN TESTING PHASE
-
-            if (rayHits == false)
+            if (collisionHIT == false)
             {
                 //It move the direction of the main cameras z axis
                 GetComponent<Rigidbody>().velocity = mainCam.transform.forward * fireRate;
@@ -70,36 +86,60 @@ public class Fire : MonoBehaviour
             rope.transform.position = Vector3.MoveTowards(rope.transform.position, Anchor.transform.position, speedReturn * Time.deltaTime);          
 
             //if the distance of the rope and Anchor is below 5 it snaps to position and freezez
-          if ( dist <5)
+          if ( dist <1)
             {
                 rope.transform.position = Anchor.transform.position;
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+
+                BeInvisable();
+                fired = false;
                 velocityZero = false;
+                collisionHIT = false;
+
             }
         }
 
     }
 
-    private void Raycasting()
+    private void BeVisable()
     {
-
-        //TODO make raycast check 1 meter ahead and if it hits bam
-        //TODO MAKE THE RAYCAST WAIT UNTIL THE ROPE HAS ACTUALLY HIT A COLLISION THEN STOP
-        Ray ray = new Ray(mainCam.transform.position, mainCam.transform.forward);
-        Debug.DrawRay(ray.origin, ray.direction * 1);
-
-        if (Physics.Raycast(ray, out RaycastHit hit) )
+        var renderer = GetComponent<Renderer>();
+        if (renderer != null)
         {
-            Debug.Log (hit.collider.gameObject.name + "was hit"); //it works omg :) im learning FUCK YEE
-            Vector3 hitpoint = hit.point;
-
-            Debug.Log(hit.point);
-
-            //TODO fix rayhits on the other stuff
-          
-            rayHits = true;
-            rope.transform.position = hitpoint;
+            renderer.enabled = true;
         }
-     
     }
+
+    private void BeInvisable()
+    {
+       
+        var renderer = GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            renderer.enabled = false; 
+        }
+    }
+
+    public void OnTriggerEnter(Collider collisioncheck)
+    {
+        if (collisioncheck.CompareTag("Enemy"))
+        {
+            collisionHIT = true;
+
+            // Find the closest point on the collided object's surface to the rope
+            Vector3 closestPoint = collisioncheck.ClosestPoint(rope.transform.position);
+
+            // Log the closest point for debugging
+            Debug.Log("Closest point on collision surface: " + closestPoint);
+
+            // Move the rope to this closest point
+            //make a lerp to make it more smooth?
+            rope.transform.position = closestPoint;
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+
+            // Optionally, stop further rope movement or implement other logic
+            Debug.Log("Rope stuck at: " + closestPoint);
+        }
+    }
+
 }
