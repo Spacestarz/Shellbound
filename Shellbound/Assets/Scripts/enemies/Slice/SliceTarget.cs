@@ -29,7 +29,6 @@ public class SliceTarget : MonoBehaviour
 
     public void ControlSlicePoint(SlicePoint currentPoint)
     {
-        Debug.Log("Aiming at: " + Array.IndexOf(points, currentPoint));
         for (int i = 0; i < points.Length; i++)
         {
             if (points[i] != currentPoint)
