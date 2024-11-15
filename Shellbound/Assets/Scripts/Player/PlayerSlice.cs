@@ -17,10 +17,10 @@ public class PlayerSlice : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity) && hit.collider.CompareTag("SliceTarget"))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Sliceable")) && hit.collider.CompareTag("SliceTarget"))
         {
             hit.collider.gameObject.GetComponent<SlicePoint>().CheckIfHittable();
-            
+
             if (!inSliceArea)
             {
                 inSliceArea = true;
@@ -32,11 +32,10 @@ public class PlayerSlice : MonoBehaviour
             if (inSliceArea)
             {
                 inSliceArea = false;
-                Debug.Log("Left slice area");
-                
+
                 if (currentSliceTarget != null)
                 {
-                    ClearCurrentSliceTarget();
+                    currentSliceTarget.ResetSlice();
                 }
             }
         }
@@ -50,7 +49,7 @@ public class PlayerSlice : MonoBehaviour
 
         if (currentSliceTarget != null)
         {
-            ClearCurrentSliceTarget();
+            currentSliceTarget.ResetSlice();
         }
 
         ToggleCursor();
@@ -64,10 +63,10 @@ public class PlayerSlice : MonoBehaviour
     public void ToggleIsSlicing()
     {
         isSlicing = !isSlicing;
-        
+
         if (!isSlicing && currentSliceTarget)
         {
-            ClearCurrentSliceTarget();
+            currentSliceTarget.ResetSlice();
         }
     }
 
@@ -87,14 +86,11 @@ public class PlayerSlice : MonoBehaviour
 
     public static void SetCurrentSliceTarget(SliceTarget sliceTarget)
     {
-        Debug.Log("target assigned");
         currentSliceTarget = sliceTarget;
     }
 
     public static void ClearCurrentSliceTarget()
     {
-        Debug.Log("Target cleared");
-        currentSliceTarget.ResetSlice();
         currentSliceTarget = null;
     }
 }

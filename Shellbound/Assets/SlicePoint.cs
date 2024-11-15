@@ -9,18 +9,13 @@ public class SlicePoint : MonoBehaviour
     {
         parent = GetComponentInParent<SliceTarget>();
     }
-
     public void CheckIfHittable()
     {
-        if (!hasBeenHit)
-        {
-            parent.ControlSlicePoint(this);
-        }
+        parent.ControlSlicePoint(this);
     }
 
     public void GetHit()
     {
-        Debug.Log("Hit!");
         GetComponent<SpriteRenderer>().enabled = true;
         hasBeenHit = true;
     }
