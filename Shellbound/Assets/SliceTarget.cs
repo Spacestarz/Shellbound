@@ -9,6 +9,7 @@ public class SliceTarget : MonoBehaviour
 
     private void Awake()
     {
+        points = GetComponentsInChildren<SlicePoint>();
         parentHealth = GetComponentInParent<HealthSystem>();
     }
 
@@ -34,21 +35,26 @@ public class SliceTarget : MonoBehaviour
             if (i > 0 && points[i - 1].HasBeenHit())
             {
                 currentPoint.GetHit();
+
                 if (i == points.Length - 1)
                 {
                     Debug.Log("Slice Completed!");
                     sliceCompleted = true;
                     parentHealth.TakeDamage(5);
+                    
+                    Invoke(nameof(ResetSlice), 0.1f);
                 }
             }
+            else if (i + 1 < points.Length && points[i + 1].HasBeenHit())
+            {
+                Debug.Log(currentPoint);
+                ResetSlice();
+            }
+
             else if (i == 0)
             {
-                SliceScript.SetCurrentSliceTarget(this);
+                PlayerSlice.SetCurrentSliceTarget(this);
                 currentPoint.GetHit();
-            }
-            else
-            {
-                Debug.Log("Can't slice");
             }
         }
     }

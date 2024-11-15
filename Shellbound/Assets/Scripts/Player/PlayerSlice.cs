@@ -1,9 +1,10 @@
 using UnityEngine;
 
-public class SliceScript : MonoBehaviour
+public class PlayerSlice : MonoBehaviour
 {
     static bool sliceMode;
     static bool isSlicing;
+    static bool inSliceArea;
 
     static SliceTarget currentSliceTarget;
 
@@ -15,20 +16,42 @@ public class SliceScript : MonoBehaviour
     public void SliceRayCast()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, Mathf.Infinity) && hit.collider.CompareTag("SliceTarget"))
         {
             hit.collider.gameObject.GetComponent<SlicePoint>().CheckIfHittable();
+            
+            if (!inSliceArea)
+            {
+                inSliceArea = true;
+            }
         }
-
-        Debug.DrawRay(ray.origin, ray.direction * 10, Color.yellow);
+        else
+        {
+            //If the player leaves the slice area mid-slice...
+            if (inSliceArea)
+            {
+                inSliceArea = false;
+                Debug.Log("Left slice area");
+                
+                if (currentSliceTarget != null)
+                {
+                    ClearCurrentSliceTarget();
+                }
+            }
+        }
     }
 
     public void ToggleSliceMode()
     {
         sliceMode = !sliceMode;
         isSlicing = false;
+        inSliceArea = false;
+
+        if (currentSliceTarget != null)
+        {
+            ClearCurrentSliceTarget();
+        }
 
         ToggleCursor();
     }
@@ -44,8 +67,7 @@ public class SliceScript : MonoBehaviour
         
         if (!isSlicing && currentSliceTarget)
         {
-            currentSliceTarget.ResetSlice();
-            currentSliceTarget = null;
+            ClearCurrentSliceTarget();
         }
     }
 
@@ -65,6 +87,14 @@ public class SliceScript : MonoBehaviour
 
     public static void SetCurrentSliceTarget(SliceTarget sliceTarget)
     {
+        Debug.Log("target assigned");
         currentSliceTarget = sliceTarget;
+    }
+
+    public static void ClearCurrentSliceTarget()
+    {
+        Debug.Log("Target cleared");
+        currentSliceTarget.ResetSlice();
+        currentSliceTarget = null;
     }
 }

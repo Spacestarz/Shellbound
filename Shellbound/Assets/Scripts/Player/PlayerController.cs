@@ -31,14 +31,14 @@ public class PlayerController : MonoBehaviour
     Vector3 moveDirection;
 
     Rigidbody rb;
-    SliceScript sliceScript;
+    PlayerSlice sliceScript;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
-        sliceScript = GetComponent<SliceScript>();
+        sliceScript = GetComponent<PlayerSlice>();
 
         dashing = false;
 
@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!dashing)
         {
-            if (!SliceScript.SliceMode())
+            if (!PlayerSlice.SliceMode())
             {
                 horizontalInput = Input.GetAxisRaw("Horizontal");
                 verticalInput = Input.GetAxisRaw("Vertical");
@@ -99,19 +99,18 @@ public class PlayerController : MonoBehaviour
             verticalInput = 0;
         }
 
-        if (SliceScript.SliceMode() && Input.GetButtonDown("Fire1"))
+        if (PlayerSlice.SliceMode() && Input.GetButtonDown("Fire1"))
         {
             Debug.Log("Slice begun!");
             sliceScript.ToggleIsSlicing();
         }
 
-        if (SliceScript.SliceMode() && Input.GetButton("Fire1"))
+        if (PlayerSlice.SliceMode() && Input.GetButton("Fire1"))
         {
-            Debug.Log("Slicing");
             sliceScript.SliceRayCast();
         }
 
-        if (SliceScript.SliceMode() && Input.GetButtonUp("Fire1"))
+        if (PlayerSlice.SliceMode() && Input.GetButtonUp("Fire1"))
         {
             Debug.Log("Slice Over");
             sliceScript.ToggleIsSlicing();

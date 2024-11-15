@@ -28,7 +28,6 @@ public class SlicePoint : MonoBehaviour
     public void ResetHit()
     {
         GetComponent<SpriteRenderer>().enabled = false;
-        Debug.Log("Unhit!");
         hasBeenHit = false;
     }
 
