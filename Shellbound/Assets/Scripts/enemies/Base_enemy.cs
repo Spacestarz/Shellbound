@@ -9,11 +9,15 @@ public class Base_enemy : MonoBehaviour
     NavMeshAgent agent;
     bool inattackrange;
     public float attackrange = 5;
+    base_enemi_attack attack;
+    public float attackcoling = 5;
+    bool cooling = false;
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.Find("Player").transform;
+        attack = GetComponentInChildren<base_enemi_attack>();
         //Debug.Log(player);
     }
 
@@ -30,6 +34,18 @@ public class Base_enemy : MonoBehaviour
         else
         {
             agent.SetDestination(transform.position);
+            transform.LookAt(target);
+            if (!cooling)
+            {
+                StartCoroutine(cool());
+                attack.male();
+            }
         }
+    }
+    IEnumerator cool()
+    {
+        cooling = true;
+        yield return new WaitForSeconds(attackcoling);
+        cooling = false;
     }
 }

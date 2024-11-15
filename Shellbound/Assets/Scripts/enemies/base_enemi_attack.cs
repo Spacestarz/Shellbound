@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class base_enemi_attack : MonoBehaviour
 {
-    Rigidbody rig;
-    public float shotspeed = 2;
+    RaycastHit ray;
+    int damage = 1;
+    bool ready = false;
     // Start is called before the first frame update
     void Start()
     {
-        rig = GetComponent<Rigidbody>();
-        rig.constraints = RigidbodyConstraints.FreezeAll;
+
     }
 
     // Update is called once per frame
@@ -18,8 +18,28 @@ public class base_enemi_attack : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Q))
         {
-            rig.constraints = RigidbodyConstraints.None;
-            rig.velocity = transform.forward * shotspeed * Time.deltaTime;
+            male();
         }
+    }
+    public void male()
+    {
+        StartCoroutine(windup());
+        if(Physics.CapsuleCast(gameObject.transform.position, gameObject.transform.forward * 5, 1, transform.position , out ray))
+        {
+            
+            Debug.DrawRay(gameObject.transform.position, gameObject.transform.forward * 5, Color.red, 5);
+            if (ray.collider.gameObject.tag == "Player")
+            {
+                Debug.Log("hit");
+                ray.collider.GetComponent<HealthSystem>().TakeDamage(damage);
+            }
+            ready = false;
+        }
+    }
+    public IEnumerator windup()
+    {
+        
+        yield return new WaitForSeconds(3);
+        ready = true;
     }
 }
