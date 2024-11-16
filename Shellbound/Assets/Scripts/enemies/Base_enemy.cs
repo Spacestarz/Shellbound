@@ -7,10 +7,10 @@ public class Base_enemy : MonoBehaviour
 {
     Transform target;
     NavMeshAgent agent;
-    bool inattackrange;
-    public float attackrange = 5;
+    bool inAttackRange;
+    public float attackRange = 5;
     base_enemi_attack attack;
-    public float attackcoling = 5;
+    public float attackCooling = 5;
     bool cooling = false;
     // Start is called before the first frame update
     void Start()
@@ -25,7 +25,7 @@ public class Base_enemy : MonoBehaviour
     void Update()
     {
         //kollar om ett objekt som har en layer definerad i player är inom en svere av diametern som defineras av attackrange.
-        if (!range())
+        if (!Range())
         {
             //seger åt agent componenten att gå mot punkten definerad i target.position
             agent.SetDestination(target.position);
@@ -36,21 +36,22 @@ public class Base_enemy : MonoBehaviour
             transform.LookAt(target);
             if (!cooling)
             {
-                StartCoroutine(cool());
+                StartCoroutine(Cool());
             }
         }
     }
-    bool range()
+    bool Range()
     {
-        return inattackrange = Physics.CheckSphere(transform.position, attackrange, LayerMask.GetMask("Player"));
+        return inAttackRange = Physics.CheckSphere(transform.position, attackRange, LayerMask.GetMask("Player"));
     }
-    IEnumerator cool()
+
+    IEnumerator Cool()
     {
         cooling = true;
-        yield return new WaitForSeconds(attackcoling);
-        if (range())
+        yield return new WaitForSeconds(attackCooling);
+        if (Range())
         {
-            attack.male();
+            attack.Melee();
         }
         cooling = false;
     }

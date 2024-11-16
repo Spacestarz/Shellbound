@@ -660,6 +660,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   orientation: {fileID: 646720946}
+  fire: {fileID: 0}
 --- !u!114 &757249870
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -31,14 +31,16 @@ public class PlayerController : MonoBehaviour
     Vector3 moveDirection;
 
     Rigidbody rb;
-    PlayerSlice sliceScript;
+    PlayerSlice slice;
+    public Fire fire;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
-        sliceScript = GetComponent<PlayerSlice>();
+        slice = GetComponent<PlayerSlice>();
+        fire = GetComponent<Fire>();
 
         dashing = false;
 
@@ -91,9 +93,14 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        //if (!PlayerSlice.SliceMode() && Input.GetButtonDown("Fire1"))// && !fire.fired)
+        //{
+        //    //fire.Fire();
+        //}
+
         if (Input.GetButtonDown("Fire2"))
         {
-            sliceScript.ToggleSliceMode();
+            slice.ToggleSliceMode();
             
             horizontalInput = 0;
             verticalInput = 0;
@@ -102,18 +109,18 @@ public class PlayerController : MonoBehaviour
         if (PlayerSlice.SliceMode() && Input.GetButtonDown("Fire1"))
         {
             Debug.Log("Slice begun!");
-            sliceScript.ToggleIsSlicing();
+            slice.ToggleIsSlicing();
         }
 
         if (PlayerSlice.SliceMode() && Input.GetButton("Fire1"))
         {
-            sliceScript.SliceRayCast();
+            slice.SliceRayCast();
         }
 
         if (PlayerSlice.SliceMode() && Input.GetButtonUp("Fire1"))
         {
             Debug.Log("Slice Over");
-            sliceScript.ToggleIsSlicing();
+            slice.ToggleIsSlicing();
         }
     }
 

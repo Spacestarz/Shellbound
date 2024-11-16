@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class base_enemi_attack : MonoBehaviour
@@ -8,7 +6,7 @@ public class base_enemi_attack : MonoBehaviour
     int damage = 1;
     bool ready = false;
     public float range = 5;
-    public float push_force = 10;
+    public float pushForce = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,10 +18,10 @@ public class base_enemi_attack : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Q))
         {
-            male();
+            Melee();
         }
     }
-    public void male()
+    public void Melee()
     {
         if(Physics.SphereCast(gameObject.transform.position, 1, transform.forward, out ray, range))
         {
@@ -33,7 +31,7 @@ public class base_enemi_attack : MonoBehaviour
             {
                 Debug.Log("hit");
                 ray.collider.GetComponent<HealthSystem>().TakeDamage(damage);
-                ray.collider.GetComponent<Rigidbody>().velocity = transform.forward * push_force;
+                ray.collider.GetComponent<Rigidbody>().velocity = transform.forward * pushForce;
             }
 
         }

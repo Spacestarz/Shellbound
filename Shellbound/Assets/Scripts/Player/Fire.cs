@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Fire : MonoBehaviour
@@ -25,7 +21,7 @@ public class Fire : MonoBehaviour
     {
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
 
-        BeInvisable();
+        BeInvisible();
    
     }
 
@@ -37,7 +33,7 @@ public class Fire : MonoBehaviour
 
         if (velocityZero)
         {
-            BeInvisable();
+            BeInvisible();
           
         }
         
@@ -50,7 +46,7 @@ public class Fire : MonoBehaviour
 
             //TODO MAKE PLAYER NOT BE ABLE TO SHOOT WHEN IT GOES BACK!
 
-            BeVisable();
+            BeVisible();
             rope.transform.position = Anchor.transform.position;
 
             velocityZero = false;
@@ -91,7 +87,7 @@ public class Fire : MonoBehaviour
                 rope.transform.position = Anchor.transform.position;
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
 
-                BeInvisable();
+                BeInvisible();
                 fired = false;
                 velocityZero = false;
                 collisionHIT = false;
@@ -101,7 +97,7 @@ public class Fire : MonoBehaviour
 
     }
 
-    private void BeVisable()
+    private void BeVisible()
     {
         var renderer = GetComponent<Renderer>();
         if (renderer != null)
@@ -110,7 +106,7 @@ public class Fire : MonoBehaviour
         }
     }
 
-    private void BeInvisable()
+    private void BeInvisible()
     {
        
         var renderer = GetComponent<Renderer>();
