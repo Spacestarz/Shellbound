@@ -41,7 +41,7 @@ public class Fire : MonoBehaviour
 
         //distance of the Anchor and rope
         float dist = Vector3.Distance(Anchor.transform.position, harpoon.transform.position);
-        Debug.Log(dist);
+        //Debug.Log(dist);
 
         //TODO make it check the pos and move 10% towards it and then check where is the pos etc
         //Add methods to make the code cleaner

@@ -16,10 +16,10 @@ public class Harpoon : MonoBehaviour
 
     public void OnTriggerEnter(Collider collisioncheck)
     {
-        Debug.Log("Wi");
+        //Debug.Log("Wi");
         if (collisioncheck.CompareTag("Enemy") || fire.goingAway)
         {
-            Debug.Log("Wa");
+            //Debug.Log("Wa");
             collisionHIT = true;
 
             // Find the closest point on the collided object's surface to the rope

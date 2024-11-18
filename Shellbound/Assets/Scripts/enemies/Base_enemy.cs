@@ -27,6 +27,7 @@ public class Base_enemy : MonoBehaviour
         //kollar om ett objekt som har en layer definerad i player är inom en svere av diametern som defineras av attackrange.
         if (!Range())
         {
+            Debug.Log("test");
             //seger åt agent componenten att gå mot punkten definerad i target.position
             agent.SetDestination(target.position);
         }
