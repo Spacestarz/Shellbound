@@ -41,4 +41,5 @@ public class base_enemi_attack : MonoBehaviour
 
         }
     }
+
 }
