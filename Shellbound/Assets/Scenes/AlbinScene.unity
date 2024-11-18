@@ -426,7 +426,7 @@ GameObject:
   - component: {fileID: 496887679}
   - component: {fileID: 496887678}
   - component: {fileID: 496887680}
-  - component: {fileID: 496887681}
+  - component: {fileID: 496887686}
   - component: {fileID: 496887682}
   - component: {fileID: 496887683}
   - component: {fileID: 496887685}
@@ -485,20 +485,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &496887681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 496887675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd2c6223a70199449af063f722675e62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackRange: 5
-  attackCooling: 5
 --- !u!54 &496887682
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -574,6 +560,23 @@ MonoBehaviour:
   MaxHP: 3
   currentHP: 0
   dragspeed: 5
+--- !u!114 &496887686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 496887675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302fb17a818570149a786a40836a22a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  agent: {fileID: 0}
+  attackRange: 5
+  attackCooling: 5
+  cooling: 0
 --- !u!1 &636083497
 GameObject:
   m_ObjectHideFlags: 0
@@ -1146,8 +1149,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd2c6223a70199449af063f722675e62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  agent: {fileID: 0}
   attackRange: 5
   attackCooling: 5
+  cooling: 0
 --- !u!195 &1120183607
 NavMeshAgent:
   m_ObjectHideFlags: 0

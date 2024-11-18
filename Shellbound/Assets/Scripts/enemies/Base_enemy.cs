@@ -5,13 +5,13 @@ using UnityEngine.AI;
 
 public class Base_enemy : MonoBehaviour
 {
-    Transform target;
-    NavMeshAgent agent;
+    public Transform target;
+    public NavMeshAgent agent;
     bool inAttackRange;
     public float attackRange = 5;
     base_enemi_attack attack;
     public float attackCooling = 5;
-    bool cooling = false;
+    public bool cooling = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,35 +22,17 @@ public class Base_enemy : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    
+    public bool Range(float AttackRange)
     {
-        //kollar om ett objekt som har en layer definerad i player är inom en svere av diametern som defineras av attackrange.
-        if (!Range())
-        {
-            Debug.Log("test");
-            //seger åt agent componenten att gå mot punkten definerad i target.position
-            agent.SetDestination(target.position);
-        }
-        else
-        {
-            agent.SetDestination(transform.position);
-            //transform.LookAt(target);
-            if (!cooling)
-            {
-                StartCoroutine(Cool());
-            }
-        }
-    }
-    bool Range()
-    {
-        return inAttackRange = Physics.CheckSphere(transform.position, attackRange, LayerMask.GetMask("Player"));
+        return inAttackRange = Physics.CheckSphere(transform.position, AttackRange, LayerMask.GetMask("Player"));
     }
 
-    IEnumerator Cool()
+    public IEnumerator Cool()
     {
         cooling = true;
         yield return new WaitForSeconds(attackCooling);
-        if (Range())
+        if (Range(attackRange))
         {
             attack.Melee();
         }
