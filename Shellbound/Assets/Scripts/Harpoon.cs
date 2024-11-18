@@ -23,7 +23,7 @@ public class Harpoon : MonoBehaviour
             collisionHIT = true;
 
             caughtObject = collisioncheck.gameObject;
-            caughtObject.GetComponent<Enemi_Health>().EnableAI();
+            caughtObject.GetComponent<Enemi_Health>().DisableAI();
 
             // Find the closest point on the collided object's surface to the rope
             Vector3 closestPoint = collisioncheck.ClosestPoint(transform.position);

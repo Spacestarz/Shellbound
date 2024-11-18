@@ -52,7 +52,7 @@ public class Fire : MonoBehaviour
             velocityZero = true;
             harpoon.GetComponent<Harpoon>().collisionHIT = false;
             harpoon.GetComponent<Harpoon>().caughtObject = null;
-            harpoon.GetComponent<Harpoon>().caughtObject.GetComponent<Enemi_Health>().DisableAI();
+            harpoon.GetComponent<Harpoon>().caughtObject.GetComponent<Enemi_Health>().EnableAI();
 
         }
 
