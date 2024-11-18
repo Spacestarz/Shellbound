@@ -56,4 +56,12 @@ public class Base_enemy : MonoBehaviour
         }
         cooling = false;
     }
+    public void stop()
+    {
+        GetComponent<NavMeshAgent>().isStopped = true;
+    }
+    public void start()
+    {
+        GetComponent<NavMeshAgent>().isStopped = false;
+    }
 }
