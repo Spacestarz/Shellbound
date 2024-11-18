@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class SliceTarget : MonoBehaviour
@@ -38,7 +37,6 @@ public class SliceTarget : MonoBehaviour
             //Make sure nothing after this point has been hit (One way)
             if (i + 1 < points.Length && points[i + 1].HasBeenHit())
             {
-                Debug.Log("No return");
                 ResetSlice();
             }
 
@@ -59,6 +57,7 @@ public class SliceTarget : MonoBehaviour
             //If it's the first point...
             else if (i == 0)
             {
+
                 PlayerSlice.SetCurrentSliceTarget(this);
                 currentPoint.GetHit();
             }

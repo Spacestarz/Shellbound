@@ -2,7 +2,12 @@ using UnityEngine;
 
 public class SlicePattern : MonoBehaviour
 {
-    public int arrowAmount = 1;
+    public int sliceAmount = 1;
 
-    SliceTarget possibleSlices;
+    public SliceTarget[] possibleSlices;
+
+    void NextSliceArrow()
+    {
+
+    }
 }
