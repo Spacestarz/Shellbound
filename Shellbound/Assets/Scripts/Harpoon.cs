@@ -17,19 +17,13 @@ public class Harpoon : MonoBehaviour
 
     public void OnTriggerEnter(Collider collisioncheck)
     {
-<<<<<<< Updated upstream
-        //Debug.Log("Wi");
-        if (collisioncheck.CompareTag("Enemy") || fire.goingAway)
-=======
-        Debug.Log("Wi");
+
         if (collisioncheck.CompareTag("Enemy") && fire.goingAway)
->>>>>>> Stashed changes
         {
-            //Debug.Log("Wa");
             collisionHIT = true;
 
             caughtObject = collisioncheck.gameObject;
-            caughtObject.GetComponent<Enemi_Health>().Disable();
+            caughtObject.GetComponent<Enemi_Health>().EnableAI();
 
             // Find the closest point on the collided object's surface to the rope
             Vector3 closestPoint = collisioncheck.ClosestPoint(transform.position);

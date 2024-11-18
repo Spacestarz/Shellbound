@@ -41,10 +41,6 @@ public class Fire : MonoBehaviour
 
         //distance of the Anchor and rope
         float dist = Vector3.Distance(Anchor.transform.position, harpoon.transform.position);
-<<<<<<< Updated upstream
-        //Debug.Log(dist);
-=======
->>>>>>> Stashed changes
 
         //TODO make it check the pos and move 10% towards it and then check where is the pos etc
         //Add methods to make the code cleaner
@@ -56,7 +52,7 @@ public class Fire : MonoBehaviour
             velocityZero = true;
             harpoon.GetComponent<Harpoon>().collisionHIT = false;
             harpoon.GetComponent<Harpoon>().caughtObject = null;
-            harpoon.GetComponent<Harpoon>().caughtObject.GetComponent<Enemi_Health>().EnableAI();
+            harpoon.GetComponent<Harpoon>().caughtObject.GetComponent<Enemi_Health>().DisableAI();
 
         }
 
