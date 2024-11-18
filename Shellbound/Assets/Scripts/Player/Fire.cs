@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Fire : MonoBehaviour
@@ -21,8 +22,7 @@ public class Fire : MonoBehaviour
     {
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
 
-        BeInvisible();
-   
+        BeInvisible(); 
     }
 
  
@@ -33,8 +33,7 @@ public class Fire : MonoBehaviour
 
         if (velocityZero)
         {
-            BeInvisible();
-          
+            BeInvisible();        
         }
         
         //distance of the Anchor and rope
@@ -42,27 +41,8 @@ public class Fire : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") && !fired && !velocityZero)
         {
-           
-
-            //TODO MAKE PLAYER NOT BE ABLE TO SHOOT WHEN IT GOES BACK!
-
-            BeVisible();
-            rope.transform.position = Anchor.transform.position;
-
-            velocityZero = false;
-            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-
-            //it gets the same rotation as the main camera will probarly need to be changed when the real sprites gets implemented.  
-            transform.rotation = Quaternion.LookRotation(mainCam.transform.up, mainCam.transform.forward);
-            fired = true;
-
-            if (collisionHIT == false)
-            {
-                //It move the direction of the main cameras z axis
-                GetComponent<Rigidbody>().velocity = mainCam.transform.forward * fireRate;
-               
-            }
-          
+            FireHarpoon();
+  
         }
 
         //TODO AFTER X seconds it returns to the player //invoke
@@ -95,6 +75,28 @@ public class Fire : MonoBehaviour
             }
         }
 
+    }
+
+    public void FireHarpoon()
+    {
+        //TODO MAKE PLAYER NOT BE ABLE TO SHOOT WHEN IT GOES BACK!
+
+        BeVisible();
+        rope.transform.position = Anchor.transform.position;
+
+        velocityZero = false;
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+
+        //it gets the same rotation as the main camera will probarly need to be changed when the real sprites gets implemented.  
+        transform.rotation = Quaternion.LookRotation(mainCam.transform.up, mainCam.transform.forward);
+        fired = true;
+
+        if (collisionHIT == false)
+        {
+            //It move the direction of the main cameras z axis
+            GetComponent<Rigidbody>().velocity = mainCam.transform.forward * fireRate;
+
+        }
     }
 
     private void BeVisible()
