@@ -10,7 +10,7 @@ public class Fire : MonoBehaviour
     public float fireRate = 2;
     public float speedReturn = 1;
 
-    public float maxDistancefromAnchor = 2f; //test this to see whats best
+    public float maxDistancefromAnchor = 15f; //test this to see whats best
 
 
     //bools
