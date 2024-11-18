@@ -3,6 +3,7 @@ using UnityEngine;
 public class Fire : MonoBehaviour
 {
     Rigidbody harpoonRigid;
+
     public GameObject Anchor;
     public GameObject harpoon;
     public GameObject mainCam;
@@ -60,7 +61,7 @@ public class Fire : MonoBehaviour
             if (dist < 1)
             {
                 harpoon.transform.position = Anchor.transform.position;
-                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                harpoonRigid.constraints = RigidbodyConstraints.FreezeAll;
 
                 BeInvisible();
                 fired = false;
@@ -80,7 +81,7 @@ public class Fire : MonoBehaviour
         harpoon.transform.position = Anchor.transform.position;
 
         velocityZero = false;
-        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        harpoonRigid.constraints = RigidbodyConstraints.None;
 
         //it gets the same rotation as the main camera will probarly need to be changed when the real sprites gets implemented.  
         transform.rotation = Quaternion.LookRotation(mainCam.transform.up, mainCam.transform.forward);
@@ -89,7 +90,7 @@ public class Fire : MonoBehaviour
         if (collisionHIT == false)
         {
             //It move the direction of the main cameras z axis
-            GetComponent<Rigidbody>().velocity = mainCam.transform.forward * fireRate;
+            harpoonRigid.velocity = mainCam.transform.forward * fireRate;
 
         }
     }
@@ -128,7 +129,7 @@ public class Fire : MonoBehaviour
             // Move the rope to this closest point
             //make a lerp to make it more smooth?
             harpoon.transform.position = closestPoint;
-            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            harpoonRigid.constraints = RigidbodyConstraints.FreezeAll;
 
             // Optionally, stop further rope movement or implement other logic
             Debug.Log("Rope stuck at: " + closestPoint);
