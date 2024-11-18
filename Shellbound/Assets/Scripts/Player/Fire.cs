@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Fire : MonoBehaviour
 {
+    Rigidbody harpoonRigid;
     public GameObject Anchor;
     public GameObject harpoon;
     public GameObject mainCam;
@@ -19,12 +20,13 @@ public class Fire : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        harpoonRigid = harpoon.GetComponent<Rigidbody>();
+        harpoonRigid.constraints = RigidbodyConstraints.FreezeAll;
 
-        BeInvisible(); 
+        BeInvisible();
     }
 
- 
+
 
     // Update is called once per frame
     void Update()
@@ -32,9 +34,9 @@ public class Fire : MonoBehaviour
 
         if (velocityZero)
         {
-            BeInvisible();        
+            BeInvisible();
         }
-        
+
         //distance of the Anchor and rope
         float dist = Vector3.Distance(Anchor.transform.position, transform.position);
 
@@ -43,19 +45,19 @@ public class Fire : MonoBehaviour
         //Add methods to make the code cleaner
         if (Input.GetButtonDown("Jump") || dist >= maxDistancefromAnchor)
         {
-            GetComponent<Rigidbody>().velocity = Vector3.zero;
+            harpoonRigid.velocity = Vector3.zero;
             velocityZero = true;
             fired = false;
         }
 
-        if (velocityZero == true) 
+        if (velocityZero == true)
         {
             //TODO LATER
             //to make this look nicer change it to a lerp.
-            harpoon.transform.position = Vector3.MoveTowards(harpoon.transform.position, Anchor.transform.position, speedReturn * Time.deltaTime);          
+            harpoon.transform.position = Vector3.MoveTowards(harpoon.transform.position, Anchor.transform.position, speedReturn * Time.deltaTime);
 
             //if the distance of the rope and Anchor is below 5 it snaps to position and freezez
-          if ( dist <1)
+            if (dist < 1)
             {
                 harpoon.transform.position = Anchor.transform.position;
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
@@ -103,11 +105,11 @@ public class Fire : MonoBehaviour
 
     private void BeInvisible()
     {
-       
+
         var renderer = GetComponent<Renderer>();
         if (renderer != null)
         {
-            renderer.enabled = false; 
+            renderer.enabled = false;
         }
     }
 

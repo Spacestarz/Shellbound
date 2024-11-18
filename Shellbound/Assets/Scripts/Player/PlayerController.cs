@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody rb;
     PlayerSlice slice;
-    public Fire fire;
+    Fire fire;
 
     private void Start()
     {
@@ -92,8 +92,8 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-
-        if (!PlayerSlice.SliceMode() && Input.GetButtonDown("Fire1") && !fire.fired)
+        
+        if (!PlayerSlice.SliceMode() && Input.GetButtonDown("Fire1") && !fire.fired);
         {
             fire.FireHarpoon();
         }
