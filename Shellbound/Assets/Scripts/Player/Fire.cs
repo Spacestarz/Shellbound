@@ -15,14 +15,15 @@ public class Fire : MonoBehaviour
 
     //bools
     public bool fired = false;
+    public bool goingAway = false;
     bool velocityZero = false;
-    bool collisionHIT = false;
 
     // Start is called before the first frame update
     void Start()
     {
         harpoonRigid = harpoon.GetComponent<Rigidbody>();
         harpoonRigid.constraints = RigidbodyConstraints.FreezeAll;
+        harpoonRigid.useGravity = false;
 
         BeInvisible();
     }
@@ -32,23 +33,24 @@ public class Fire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (velocityZero)
-        {
-            BeInvisible();
-        }
+        
+        //if (velocityZero)
+        //{
+        //    BeInvisible();
+        //}
 
         //distance of the Anchor and rope
-        float dist = Vector3.Distance(Anchor.transform.position, transform.position);
+        float dist = Vector3.Distance(Anchor.transform.position, harpoon.transform.position);
+        Debug.Log(dist);
 
-        //TODO AFTER X seconds it returns to the player //invoke
-        //make it check the pos and move 10% towards it and then check where is the pos etc
+        //TODO make it check the pos and move 10% towards it and then check where is the pos etc
         //Add methods to make the code cleaner
-        if (Input.GetButtonDown("Jump") || dist >= maxDistancefromAnchor)
+        if (Input.GetKeyDown(KeyCode.K) || dist >= maxDistancefromAnchor)
         {
             harpoonRigid.velocity = Vector3.zero;
             velocityZero = true;
             fired = false;
+            harpoon.GetComponent<Harpoon>().collisionHIT = false;
         }
 
         if (velocityZero == true)
@@ -66,8 +68,10 @@ public class Fire : MonoBehaviour
                 BeInvisible();
                 fired = false;
                 velocityZero = false;
-                collisionHIT = false;
-
+            }
+            else
+            {
+                Debug.Log("dist more than 1");
             }
         }
 
@@ -84,10 +88,10 @@ public class Fire : MonoBehaviour
         harpoonRigid.constraints = RigidbodyConstraints.None;
 
         //it gets the same rotation as the main camera will probarly need to be changed when the real sprites gets implemented.  
-        transform.rotation = Quaternion.LookRotation(mainCam.transform.up, mainCam.transform.forward);
+        harpoon.transform.rotation = Quaternion.LookRotation(mainCam.transform.up, mainCam.transform.forward);
         fired = true;
 
-        if (collisionHIT == false)
+        if (harpoon.GetComponent<Harpoon>().collisionHIT == false)
         {
             //It move the direction of the main cameras z axis
             harpoonRigid.velocity = mainCam.transform.forward * fireRate;
@@ -97,7 +101,7 @@ public class Fire : MonoBehaviour
 
     private void BeVisible()
     {
-        var renderer = GetComponent<Renderer>();
+        var renderer = harpoon.GetComponent<Renderer>();
         if (renderer != null)
         {
             renderer.enabled = true;
@@ -107,33 +111,33 @@ public class Fire : MonoBehaviour
     private void BeInvisible()
     {
 
-        var renderer = GetComponent<Renderer>();
+        var renderer = harpoon.GetComponent<Renderer>();
         if (renderer != null)
         {
             renderer.enabled = false;
         }
     }
 
-    public void OnTriggerEnter(Collider collisioncheck)
-    {
-        if (collisioncheck.CompareTag("Enemy"))
-        {
-            collisionHIT = true;
+    //public void OnTriggerEnter(Collider collisioncheck)
+    //{
+    //    if (collisioncheck.CompareTag("Enemy"))
+    //    {
+    //        collisionHIT = true;
 
-            // Find the closest point on the collided object's surface to the rope
-            Vector3 closestPoint = collisioncheck.ClosestPoint(harpoon.transform.position);
+    //        // Find the closest point on the collided object's surface to the rope
+    //        Vector3 closestPoint = collisioncheck.ClosestPoint(harpoon.transform.position);
 
-            // Log the closest point for debugging
-            Debug.Log("Closest point on collision surface: " + closestPoint);
+    //        // Log the closest point for debugging
+    //        Debug.Log("Closest point on collision surface: " + closestPoint);
 
-            // Move the rope to this closest point
-            //make a lerp to make it more smooth?
-            harpoon.transform.position = closestPoint;
-            harpoonRigid.constraints = RigidbodyConstraints.FreezeAll;
+    //        // Move the rope to this closest point
+    //        //make a lerp to make it more smooth?
+    //        harpoon.transform.position = closestPoint;
+    //        harpoonRigid.constraints = RigidbodyConstraints.FreezeAll;
 
-            // Optionally, stop further rope movement or implement other logic
-            Debug.Log("Rope stuck at: " + closestPoint);
-        }
-    }
+    //        // Optionally, stop further rope movement or implement other logic
+    //        Debug.Log("Rope stuck at: " + closestPoint);
+    //    }
+    //}
 
 }

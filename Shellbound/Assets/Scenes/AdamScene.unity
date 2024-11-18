@@ -265,8 +265,9 @@ GameObject:
   - component: {fileID: 516405743}
   - component: {fileID: 516405742}
   - component: {fileID: 516405745}
+  - component: {fileID: 516405746}
   m_Layer: 0
-  m_Name: Harpoon
+  m_Name: PlayerHarpoon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -280,12 +281,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 516405740}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.17, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -8.64, y: 1.37, z: -9.55}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 757249866}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &516405742
 SphereCollider:
@@ -300,9 +301,9 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -377,14 +378,28 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &516405746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516405740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a539b738a25a09e45a98f0ade3deab62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fire: {fileID: 757249871}
+  collisionHIT: 0
 --- !u!1 &546264234
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,7 +691,7 @@ GameObject:
   - component: {fileID: 757249869}
   - component: {fileID: 757249870}
   - component: {fileID: 757249871}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -772,7 +787,6 @@ Transform:
   - {fileID: 646720946}
   - {fileID: 899707475}
   - {fileID: 663095611}
-  - {fileID: 516405741}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &757249867
@@ -858,6 +872,7 @@ MonoBehaviour:
   speedReturn: 20
   maxDistancefromAnchor: 2
   fired: 0
+  goingAway: 0
 --- !u!1 &798559336
 GameObject:
   m_ObjectHideFlags: 0
@@ -1761,7 +1776,7 @@ GameObject:
   - component: {fileID: 2085570882}
   m_Layer: 12
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1875,4 +1890,5 @@ SceneRoots:
   - {fileID: 1247286723}
   - {fileID: 1082903221}
   - {fileID: 757249866}
+  - {fileID: 516405741}
   - {fileID: 2085570880}
