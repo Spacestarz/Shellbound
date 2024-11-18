@@ -4,7 +4,7 @@ using UnityEngine;
 public class Fire : MonoBehaviour
 {
     public GameObject Anchor;
-    public GameObject rope;
+    public GameObject harpoon;
     public GameObject mainCam;
     public float fireRate = 2;
     public float speedReturn = 1;
@@ -13,7 +13,7 @@ public class Fire : MonoBehaviour
 
 
     //bools
-    public bool harpoon = false;
+    public bool fired = false;
     bool velocityZero = false;
     bool collisionHIT = false;
 
@@ -38,12 +38,6 @@ public class Fire : MonoBehaviour
         
         //distance of the Anchor and rope
         float dist = Vector3.Distance(Anchor.transform.position, transform.position);
-
-        if (Input.GetButtonDown("Fire1") && !fired && !velocityZero)
-        {
-            FireHarpoon();
-  
-        }
 
         //TODO AFTER X seconds it returns to the player //invoke
         //make it check the pos and move 10% towards it and then check where is the pos etc
