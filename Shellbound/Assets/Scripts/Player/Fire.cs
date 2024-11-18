@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Fire : MonoBehaviour
@@ -53,12 +52,12 @@ public class Fire : MonoBehaviour
         {
             //TODO LATER
             //to make this look nicer change it to a lerp.
-            rope.transform.position = Vector3.MoveTowards(rope.transform.position, Anchor.transform.position, speedReturn * Time.deltaTime);          
+            harpoon.transform.position = Vector3.MoveTowards(harpoon.transform.position, Anchor.transform.position, speedReturn * Time.deltaTime);          
 
             //if the distance of the rope and Anchor is below 5 it snaps to position and freezez
           if ( dist <1)
             {
-                rope.transform.position = Anchor.transform.position;
+                harpoon.transform.position = Anchor.transform.position;
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
 
                 BeInvisible();
@@ -76,7 +75,7 @@ public class Fire : MonoBehaviour
         //TODO MAKE PLAYER NOT BE ABLE TO SHOOT WHEN IT GOES BACK!
 
         BeVisible();
-        rope.transform.position = Anchor.transform.position;
+        harpoon.transform.position = Anchor.transform.position;
 
         velocityZero = false;
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
@@ -119,14 +118,14 @@ public class Fire : MonoBehaviour
             collisionHIT = true;
 
             // Find the closest point on the collided object's surface to the rope
-            Vector3 closestPoint = collisioncheck.ClosestPoint(rope.transform.position);
+            Vector3 closestPoint = collisioncheck.ClosestPoint(harpoon.transform.position);
 
             // Log the closest point for debugging
             Debug.Log("Closest point on collision surface: " + closestPoint);
 
             // Move the rope to this closest point
             //make a lerp to make it more smooth?
-            rope.transform.position = closestPoint;
+            harpoon.transform.position = closestPoint;
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
 
             // Optionally, stop further rope movement or implement other logic
