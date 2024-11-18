@@ -429,10 +429,11 @@ GameObject:
   - component: {fileID: 496887681}
   - component: {fileID: 496887682}
   - component: {fileID: 496887683}
+  - component: {fileID: 496887685}
   - component: {fileID: 496887684}
   m_Layer: 12
   m_Name: enemy_test
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -521,7 +522,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -558,6 +559,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5, y: 4.0664725, z: 1.3013048}
   m_Center: {x: 0.10386753, y: 0.9811313, z: 0.023675442}
+--- !u!114 &496887685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 496887675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 044710b50ac9b5d41be608ae9ca1e960, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHP: 3
+  currentHP: 0
+  dragspeed: 5
 --- !u!1 &636083497
 GameObject:
   m_ObjectHideFlags: 0
@@ -920,7 +936,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a539b738a25a09e45a98f0ade3deab62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fire: {fileID: 0}
+  caughtObject: {fileID: 0}
+  fire: {fileID: 2130668037}
   collisionHIT: 0
 --- !u!54 &1046061392
 Rigidbody:
@@ -1909,7 +1926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ab76d79daa65fa4e9eaeb4af27f2aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraPosition: {fileID: 1191410533}
+  cameraPosition: {fileID: 222350741}
 --- !u!114 &1402323379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1924,7 +1941,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensitivityX: 400
   sensitivityY: 400
-  orientation: {fileID: 1469937288}
+  orientation: {fileID: 636083498}
   xRotation: 0
   yRotation: 0
 --- !u!81 &1402323380
@@ -2712,6 +2729,7 @@ GameObject:
   - component: {fileID: 2130668039}
   - component: {fileID: 2130668038}
   - component: {fileID: 2130668037}
+  - component: {fileID: 2130668045}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -2736,7 +2754,7 @@ MonoBehaviour:
   mainCam: {fileID: 1402323376}
   fireRate: 20
   speedReturn: 20
-  maxDistancefromAnchor: 2
+  maxDistancefromAnchor: 15
   fired: 0
   goingAway: 0
 --- !u!114 &2130668038
@@ -2894,6 +2912,20 @@ Transform:
   - {fileID: 1715975422}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2130668045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130668036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b2f8dc9852bda74aaa91398c240e7cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHP: 3
+  currentHP: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
