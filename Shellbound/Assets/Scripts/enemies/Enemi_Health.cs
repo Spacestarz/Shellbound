@@ -18,4 +18,10 @@ public class Enemi_Health : HealthSystem
         enemi.enabled = false;
 
     }
+    public void EnableAI()
+    {
+        Harponed = false;
+        enemi = GetComponent<Base_enemy>();
+        enemi.enabled = true;
+    }
 }
