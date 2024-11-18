@@ -180,7 +180,6 @@ public class PlayerController : MonoBehaviour
 
     private void Dash()
     {
-        Debug.Log("Dash");
         dashing = true;
 
         rb.drag = 0;
@@ -188,7 +187,6 @@ public class PlayerController : MonoBehaviour
 
     private void EndDash()
     {
-        Debug.Log("Not dashing");
         dashing = false;
 
         rb.drag = groundDrag;
@@ -196,7 +194,6 @@ public class PlayerController : MonoBehaviour
 
     private void ResetDashCooldown()
     {
-        Debug.Log("Can dash");
         readyToDash = true;
     }
 }

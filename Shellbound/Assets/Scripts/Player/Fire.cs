@@ -41,20 +41,28 @@ public class Fire : MonoBehaviour
 
         //distance of the Anchor and rope
         float dist = Vector3.Distance(Anchor.transform.position, harpoon.transform.position);
+<<<<<<< Updated upstream
         //Debug.Log(dist);
+=======
+>>>>>>> Stashed changes
 
         //TODO make it check the pos and move 10% towards it and then check where is the pos etc
         //Add methods to make the code cleaner
         if (Input.GetKeyDown(KeyCode.K) || dist >= maxDistancefromAnchor)
         {
+
+            goingAway = false;
             harpoonRigid.velocity = Vector3.zero;
             velocityZero = true;
-            fired = false;
             harpoon.GetComponent<Harpoon>().collisionHIT = false;
+            harpoon.GetComponent<Harpoon>().caughtObject = null;
+            harpoon.GetComponent<Harpoon>().caughtObject.GetComponent<Enemi_Health>().EnableAI();
+
         }
 
         if (velocityZero == true)
         {
+            
             //TODO LATER
             //to make this look nicer change it to a lerp.
             harpoon.transform.position = Vector3.MoveTowards(harpoon.transform.position, Anchor.transform.position, speedReturn * Time.deltaTime);
@@ -69,10 +77,6 @@ public class Fire : MonoBehaviour
                 fired = false;
                 velocityZero = false;
             }
-            else
-            {
-                Debug.Log("dist more than 1");
-            }
         }
 
     }
@@ -80,6 +84,8 @@ public class Fire : MonoBehaviour
     public void FireHarpoon()
     {
         //TODO MAKE PLAYER NOT BE ABLE TO SHOOT WHEN IT GOES BACK!
+
+        goingAway = true;
 
         BeVisible();
         harpoon.transform.position = Anchor.transform.position;
