@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class base_enemi_attack : MonoBehaviour
 {
@@ -7,10 +8,13 @@ public class base_enemi_attack : MonoBehaviour
     bool ready = false;
     public float range = 5;
     public float pushForce = 10;
+    Transform target;
+    NavMeshAgent agent;
     // Start is called before the first frame update
     void Start()
     {
-
+        target = GameObject.Find("Player").transform;
+        agent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
@@ -20,6 +24,7 @@ public class base_enemi_attack : MonoBehaviour
         {
             Melee();
         }
+        transform.LookAt(target);
     }
     public void Melee()
     {

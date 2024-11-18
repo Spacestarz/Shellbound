@@ -34,7 +34,7 @@ public class Base_enemy : MonoBehaviour
         else
         {
             agent.SetDestination(transform.position);
-            transform.LookAt(target);
+            //transform.LookAt(target);
             if (!cooling)
             {
                 StartCoroutine(Cool());
