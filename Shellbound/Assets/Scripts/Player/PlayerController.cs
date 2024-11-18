@@ -93,10 +93,10 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        //if (!PlayerSlice.SliceMode() && Input.GetButtonDown("Fire1"))// && !fire.fired)
-        //{
-        //    //fire.Fire();
-        //}
+        if (!PlayerSlice.SliceMode() && Input.GetButtonDown("Fire1") && !fire.fired)
+        {
+            fire.FireHarpoon();
+        }
 
         if (Input.GetButtonDown("Fire2"))
         {

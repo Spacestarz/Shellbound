@@ -13,7 +13,7 @@ public class Fire : MonoBehaviour
 
 
     //bools
-    bool fired = false;
+    public bool fired = false;
     bool velocityZero = false;
     bool collisionHIT = false;
 
