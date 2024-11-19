@@ -3,6 +3,7 @@ using UnityEngine;
 public class SliceTarget : MonoBehaviour
 {
     HealthSystem parentHealth;
+    SlicePattern pattern;
 
     bool sliceCompleted;
     public SlicePoint[] points;
@@ -11,6 +12,7 @@ public class SliceTarget : MonoBehaviour
     {
         points = GetComponentsInChildren<SlicePoint>();
         parentHealth = GetComponentInParent<HealthSystem>();
+        pattern = GetComponentInParent<SlicePattern>();
     }
 
     public void ResetSlice()
@@ -24,6 +26,11 @@ public class SliceTarget : MonoBehaviour
                 point.ResetHit();
             }
         }
+    }
+
+    void DestroyPattern()
+    {
+        pattern.DestroyArrow();
     }
 
     public void ControlSlicePoint(SlicePoint currentPoint)
@@ -52,6 +59,7 @@ public class SliceTarget : MonoBehaviour
                     parentHealth.TakeDamage(5);
 
                     Invoke(nameof(ResetSlice), 0.05f);
+                    Invoke(nameof(DestroyPattern), 0.05f);
                 }
             }
             //If it's the first point...

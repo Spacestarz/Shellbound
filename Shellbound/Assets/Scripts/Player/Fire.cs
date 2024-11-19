@@ -1,15 +1,19 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Fire : MonoBehaviour
 {
-    Rigidbody harpoonRigid;
+    Rigidbody harpoonRigidBody;
+    Harpoon harpoon;
 
     public GameObject Anchor;
-    public GameObject harpoon;
+    public GameObject harpoonObject;
     public GameObject mainCam;
     public float fireRate = 2;
     public float speedReturn = 1;
 
+    float dist;
     public float maxDistancefromAnchor = 15f; //test this to see whats best
 
 
@@ -21,11 +25,12 @@ public class Fire : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        harpoonRigid = harpoon.GetComponent<Rigidbody>();
-        harpoonRigid.constraints = RigidbodyConstraints.FreezeAll;
-        harpoonRigid.useGravity = false;
 
-        BeInvisible();
+        harpoonRigidBody = harpoonObject.GetComponent<Rigidbody>();
+        harpoon = harpoonObject.GetComponent<Harpoon>();
+
+        harpoonRigidBody.constraints = RigidbodyConstraints.FreezeAll;
+        harpoonRigidBody.useGravity = false;
     }
 
 
@@ -33,117 +38,106 @@ public class Fire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        //if (velocityZero)
+        //distance of the Anchor and rope
+        dist = Vector3.Distance(Anchor.transform.position, harpoonObject.transform.position);
+        if (dist > maxDistancefromAnchor)
+        {
+            ReturnHarpoon();
+        }
+
+        ////TODO make it check the pos and move 10% towards it and then check where is the pos etc
+        ////Add methods to make the code cleaner
+        //if (Input.GetKeyDown(KeyCode.K) || dist >= maxDistancefromAnchor)
         //{
-        //    BeInvisible();
+        //    harpoon.SetVisibility(true);
+        //    goingAway = false;
+        //    harpoonRigidBody.velocity = Vector3.zero;
+        //    velocityZero = true;
+        //    harpoonObject.GetComponent<Harpoon>().collisionHIT = false;
+
+        //    if (harpoonObject.GetComponent<Harpoon>().caughtObject != null)
+        //    {
+        //        harpoonObject.GetComponent<Harpoon>().caughtObject.GetComponent<Enemi_Health>().EnableAI();
+        //        harpoonObject.GetComponent<Harpoon>().caughtObject = null;
+        //    }
         //}
 
-        //distance of the Anchor and rope
-        float dist = Vector3.Distance(Anchor.transform.position, harpoon.transform.position);
-
-        //TODO make it check the pos and move 10% towards it and then check where is the pos etc
-        //Add methods to make the code cleaner
-        if (Input.GetKeyDown(KeyCode.K) || dist >= maxDistancefromAnchor)
-        {
-
-            goingAway = false;
-            harpoonRigid.velocity = Vector3.zero;
-            velocityZero = true;
-            harpoon.GetComponent<Harpoon>().collisionHIT = false;
-
-            if (harpoon.GetComponent<Harpoon>().caughtObject != null)
-            {
-                harpoon.GetComponent<Harpoon>().caughtObject.GetComponent<Enemi_Health>().EnableAI();
-                harpoon.GetComponent<Harpoon>().caughtObject = null;
-            }
-
-        }
-
-        if (velocityZero == true)
-        {
+        //if (velocityZero == true)
+        //{
             
-            //TODO LATER
-            //to make this look nicer change it to a lerp.
-            harpoon.transform.position = Vector3.MoveTowards(harpoon.transform.position, Anchor.transform.position, speedReturn * Time.deltaTime);
+        //    //TODO LATER
+        //    //to make this look nicer change it to a lerp.
+        //    harpoonObject.transform.position = Vector3.MoveTowards(harpoonObject.transform.position, Anchor.transform.position, speedReturn * Time.deltaTime);
 
-            //if the distance of the rope and Anchor is below 5 it snaps to position and freezez
-            if (dist < 1)
-            {
-                harpoon.transform.position = Anchor.transform.position;
-                harpoonRigid.constraints = RigidbodyConstraints.FreezeAll;
+        //    //if the distance of the rope and Anchor is below 5 it snaps to position and freezez
+        //    if (dist < 1)
+        //    {
+        //        harpoonObject.transform.position = Anchor.transform.position;
+        //        harpoonRigidBody.constraints = RigidbodyConstraints.FreezeAll;
 
-                BeInvisible();
-                fired = false;
-                velocityZero = false;
-            }
-        }
-
+        //        harpoon.SetVisibility(false);
+        //        fired = false;
+        //        velocityZero = false;
+        //    }
+        //}
     }
 
     public void FireHarpoon()
     {
         //TODO MAKE PLAYER NOT BE ABLE TO SHOOT WHEN IT GOES BACK!
-
+        harpoon.SetVisibility(true);
         goingAway = true;
 
-        BeVisible();
-        harpoon.transform.position = Anchor.transform.position;
+        harpoonObject.transform.position = Anchor.transform.position;
 
         velocityZero = false;
-        harpoonRigid.constraints = RigidbodyConstraints.None;
+        harpoonRigidBody.constraints = RigidbodyConstraints.None;
 
         //it gets the same rotation as the main camera will probarly need to be changed when the real sprites gets implemented.  
-        harpoon.transform.rotation = Quaternion.LookRotation(mainCam.transform.up, mainCam.transform.forward);
+        harpoonObject.transform.rotation = Quaternion.LookRotation(mainCam.transform.up, mainCam.transform.forward);
         fired = true;
 
-        if (harpoon.GetComponent<Harpoon>().collisionHIT == false)
+        if (harpoonObject.GetComponent<Harpoon>().collisionHIT == false)
         {
             //It move the direction of the main cameras z axis
-            harpoonRigid.velocity = mainCam.transform.forward * fireRate;
+            harpoonRigidBody.velocity = mainCam.transform.forward * fireRate;
 
         }
     }
 
-    private void BeVisible()
+    public void ReturnHarpoon()
     {
-        var renderer = harpoon.GetComponent<Renderer>();
-        if (renderer != null)
+        harpoon.SetVisibility(true);
+        goingAway = false;
+        harpoonRigidBody.velocity = Vector3.zero;
+        velocityZero = true;
+        harpoonObject.GetComponent<Harpoon>().collisionHIT = false;
+
+        if (harpoonObject.GetComponent<Harpoon>().caughtObject != null)
         {
-            renderer.enabled = true;
+            harpoonObject.GetComponent<Harpoon>().caughtObject.GetComponent<Enemi_Health>().EnableAI();
+            harpoonObject.GetComponent<Harpoon>().caughtObject = null;
         }
+
+        StartCoroutine(nameof(MoveHarpoonBack));
+        //harpoonObject.transform.position = Vector3.MoveTowards(harpoonObject.transform.position, Anchor.transform.position, speedReturn * Time.deltaTime);
     }
 
-    private void BeInvisible()
+    IEnumerator MoveHarpoonBack()
     {
-
-        var renderer = harpoon.GetComponent<Renderer>();
-        if (renderer != null)
+        while (dist >= 1)
         {
-            renderer.enabled = false;
+            harpoonObject.transform.position = Vector3.Lerp(harpoonObject.transform.position, Anchor.transform.position, speedReturn * Time.deltaTime);
+            yield return null;
         }
+
+        harpoonObject.transform.position = Anchor.transform.position;
+        harpoonRigidBody.constraints = RigidbodyConstraints.FreezeAll;
+
+        harpoon.SetVisibility(false);
+        fired = false;
+        velocityZero = false;
+
+        yield break;
     }
-
-    //public void OnTriggerEnter(Collider collisioncheck)
-    //{
-    //    if (collisioncheck.CompareTag("Enemy"))
-    //    {
-    //        collisionHIT = true;
-
-    //        // Find the closest point on the collided object's surface to the rope
-    //        Vector3 closestPoint = collisioncheck.ClosestPoint(harpoon.transform.position);
-
-    //        // Log the closest point for debugging
-    //        Debug.Log("Closest point on collision surface: " + closestPoint);
-
-    //        // Move the rope to this closest point
-    //        //make a lerp to make it more smooth?
-    //        harpoon.transform.position = closestPoint;
-    //        harpoonRigid.constraints = RigidbodyConstraints.FreezeAll;
-
-    //        // Optionally, stop further rope movement or implement other logic
-    //        Debug.Log("Rope stuck at: " + closestPoint);
-    //    }
-    //}
-
 }
