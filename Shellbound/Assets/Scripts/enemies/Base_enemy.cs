@@ -9,15 +9,15 @@ public class Base_enemy : MonoBehaviour
     public NavMeshAgent agent;
     bool inAttackRange;
     public float attackRange = 5;
-    base_enemi_attack attack;
+    public Boss1_attacks attack;
     public float attackCooling = 5;
     public bool cooling = false;
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.Find("Player").transform;
-        attack = GetComponentInChildren<base_enemi_attack>();
+        attack = GetComponentInChildren<Boss1_attacks>();
         //Debug.Log(player);
     }
 

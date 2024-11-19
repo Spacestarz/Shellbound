@@ -8,24 +8,17 @@ public class base_enemi_attack : MonoBehaviour
     bool ready = false;
     public float range = 5;
     public float pushForce = 10;
-    Transform target;
+    public Transform target;
     NavMeshAgent agent;
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         target = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.Q))
-        {
-            Melee();
-        }
-        transform.LookAt(target);
-    }
+    
     public void Melee()
     {
         if(Physics.SphereCast(gameObject.transform.position, 1, transform.forward, out ray, range))
