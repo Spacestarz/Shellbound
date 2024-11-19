@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Harpoon : MonoBehaviour
 {
+    SpriteRenderer sr;
     Rigidbody rb;
     public GameObject caughtObject;
 
@@ -12,6 +13,8 @@ public class Harpoon : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        sr = GetComponentInChildren<SpriteRenderer>();
+        sr.enabled = false;
     }
 
 
@@ -23,6 +26,8 @@ public class Harpoon : MonoBehaviour
             collisionHIT = true;
 
             caughtObject = collisioncheck.gameObject;
+
+            SetVisibility(false);
             caughtObject.GetComponent<Enemi_Health>().DisableAI();
 
             // Find the closest point on the collided object's surface to the rope
@@ -38,5 +43,10 @@ public class Harpoon : MonoBehaviour
             // Optionally, stop further rope movement or implement other logic
             Debug.Log("Rope stuck at: " + closestPoint);
         }
+    }
+
+    public void SetVisibility(bool visibility)
+    {
+        sr.enabled = visibility;
     }
 }

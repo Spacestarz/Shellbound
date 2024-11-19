@@ -87,6 +87,10 @@ public class PlayerSlice : MonoBehaviour
 
     public static void SetCurrentSliceTarget(SliceTarget sliceTarget)
     {
+        if (currentSliceTarget != null)
+        {
+            ClearCurrentSliceTarget();
+        }
         currentSliceTarget = sliceTarget;
     }
 

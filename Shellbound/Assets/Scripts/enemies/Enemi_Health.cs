@@ -38,7 +38,6 @@ public class Enemi_Health : HealthSystem
         test = Vector3.Distance(monster.position, player.position);
         if (Harponed && test > 3)
         {
-            Debug.Log(test);
             transform.position = Vector3.MoveTowards(monster.position, player.position, dragspeed * Time.deltaTime);
             harpon.position = Vector3.MoveTowards(harpon.position, player.position, dragspeed * Time.deltaTime);
         }
