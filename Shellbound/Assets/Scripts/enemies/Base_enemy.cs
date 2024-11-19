@@ -12,6 +12,7 @@ public class Base_enemy : MonoBehaviour
     public Boss1_attacks attack;
     public float attackCooling = 5;
     public bool cooling = false;
+
     // Start is called before the first frame update
     public void Start()
     {

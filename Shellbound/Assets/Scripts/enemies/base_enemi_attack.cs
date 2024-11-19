@@ -10,6 +10,7 @@ public class base_enemi_attack : MonoBehaviour
     public float pushForce = 10;
     public Transform target;
     NavMeshAgent agent;
+
     // Start is called before the first frame update
     public void Start()
     {
