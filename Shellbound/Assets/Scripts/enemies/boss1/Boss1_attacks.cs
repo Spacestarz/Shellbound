@@ -12,7 +12,7 @@ public class Boss1_attacks : base_enemi_attack
     public float returnspeed = 10;
     private void Awake()
     {
-       // claw = transform.GetChild(0).gameObject;
+        claw = transform.GetChild(0).gameObject;
         clawrig = claw.GetComponent<Rigidbody>();
         clawrig.constraints = RigidbodyConstraints.FreezeAll;
         clawrig.useGravity = false;
