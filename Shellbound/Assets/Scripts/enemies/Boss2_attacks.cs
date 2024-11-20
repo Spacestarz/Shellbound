@@ -67,10 +67,9 @@ public class Boss2_attacks : MonoBehaviour
           //  HealthSystem = Player.GetComponent<HealthSystem>();
 
             Debug.Log("PLAYER take dmg AUCH");
-            //healthSystem.TakeDamage(damage);
+            healthSystem.TakeDamage(damage);
 
         }
-
 
          void OnDrawGizmos()
         {
@@ -80,8 +79,6 @@ public class Boss2_attacks : MonoBehaviour
             Gizmos.DrawWireSphere(transform.position, radius);
 
         }
-
-
 
     }
 }
