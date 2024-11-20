@@ -117,6 +117,7 @@ public class Fire : MonoBehaviour
         {
             harpoonObject.GetComponent<Harpoon>().caughtObject.GetComponent<Enemi_Health>().EnableAI();
             harpoonObject.GetComponent<Harpoon>().caughtObject = null;
+            Harpoon.hasCaught = false;
         }
 
         StartCoroutine(nameof(MoveHarpoonBack));

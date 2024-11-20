@@ -105,29 +105,27 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Fire2") || Input.GetButtonUp("Fire2"))
         {
-            slice.ToggleSliceMode();
+            Debug.Log("Foo");
+            if (Harpoon.hasCaught)
+            {
+                Debug.Log("Bar");
+                PlayerSlice.ToggleSliceMode();
+            }
             
             horizontalInput = 0;
             verticalInput = 0;
         }
 
-        if (PlayerSlice.SliceMode() && Input.GetButtonDown("Fire1"))
+        if (PlayerSlice.SliceMode() && Input.GetButtonDown("Fire1") || Input.GetButtonUp("Fire1"))
         {
-            Debug.Log("Slice begun!");
-            slice.ToggleIsSlicing();
+            PlayerSlice.ToggleIsSlicing();
         }
 
-        if (PlayerSlice.SliceMode() && Input.GetButton("Fire1"))
+        if (PlayerSlice.SliceMode() && Input.GetButton("Fire2"))
         {
-            slice.SliceRayCast();
-        }
-
-        if (PlayerSlice.SliceMode() && Input.GetButtonUp("Fire1"))
-        {
-            Debug.Log("Slice Over");
-            slice.ToggleIsSlicing();
+            PlayerSlice.SliceRayCast();
         }
     }
 
@@ -144,17 +142,17 @@ public class PlayerController : MonoBehaviour
     {
         if (!dashing)
         {
-            moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+            moveDirection = (orientation.forward * verticalInput) + orientation.right * horizontalInput;
         }
 
         if (grounded && !dashing)
         {
-            rb.AddForce(moveDirection.normalized * maxSpeed * 10f, ForceMode.Force);
+            rb.AddForce(10f * maxSpeed * moveDirection.normalized, ForceMode.Force);
         }
 
         else if (!grounded && !dashing)
         {
-            rb.AddForce(moveDirection.normalized * maxSpeed * 10f * airMultiplier, ForceMode.Force);
+            rb.AddForce(10f * airMultiplier * maxSpeed * moveDirection.normalized, ForceMode.Force);
         }
         else if (dashing)
         {

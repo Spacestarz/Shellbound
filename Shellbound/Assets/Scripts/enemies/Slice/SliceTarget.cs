@@ -30,7 +30,8 @@ public class SliceTarget : MonoBehaviour
 
     void DestroyPattern()
     {
-        pattern.DestroyArrow();
+        pattern.totalSliced++;
+        pattern.NextSliceArrow();
     }
 
     public void ControlSlicePoint(SlicePoint currentPoint)

@@ -6,6 +6,9 @@ public class PlayerSlice : MonoBehaviour
     static bool isSlicing;
     static bool inSliceArea;
 
+    public static bool activatedThisFrame;
+    public static bool deactivatedThisFrame;
+
     static SliceTarget currentSliceTarget;
 
     private void Start()
@@ -13,7 +16,21 @@ public class PlayerSlice : MonoBehaviour
         sliceMode = false;
     }
 
-    public void SliceRayCast()
+    private void LateUpdate()
+    {
+        if (activatedThisFrame)
+        {
+            Debug.Log("activated");
+            activatedThisFrame = false;
+        }
+        else if (deactivatedThisFrame)
+        {
+            Debug.Log("deactivated");
+            deactivatedThisFrame = false;
+        }
+    }
+
+    public static void SliceRayCast()
     {
         
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -27,22 +44,19 @@ public class PlayerSlice : MonoBehaviour
                 inSliceArea = true;
             }
         }
-        else
+        else if(inSliceArea)
         {
             //If the player leaves the slice area mid-slice...
-            if (inSliceArea)
-            {
-                inSliceArea = false;
+            inSliceArea = false;
 
-                if (currentSliceTarget != null)
-                {
-                    currentSliceTarget.ResetSlice();
-                }
+            if (currentSliceTarget != null)
+            {
+                currentSliceTarget.ResetSlice();
             }
         }
     }
 
-    public void ToggleSliceMode()
+    public static void ToggleSliceMode()
     {
         sliceMode = !sliceMode;
         isSlicing = false;
@@ -54,6 +68,15 @@ public class PlayerSlice : MonoBehaviour
         }
 
         ToggleCursor();
+
+        if (sliceMode)
+        {
+            activatedThisFrame = true;
+        }
+        else
+        {
+            deactivatedThisFrame = true;
+        }
     }
 
     public static bool SliceMode()
@@ -61,7 +84,7 @@ public class PlayerSlice : MonoBehaviour
         return sliceMode;
     }
 
-    public void ToggleIsSlicing()
+    public static void ToggleIsSlicing()
     {
         isSlicing = !isSlicing;
 
@@ -71,7 +94,7 @@ public class PlayerSlice : MonoBehaviour
         }
     }
 
-    void ToggleCursor()
+    static void ToggleCursor()
     {
         if (sliceMode)
         {
