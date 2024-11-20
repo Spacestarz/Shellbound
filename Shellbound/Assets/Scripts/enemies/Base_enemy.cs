@@ -12,7 +12,7 @@ public class Base_enemy : MonoBehaviour
     public Boss1_attacks attack;
     public float attackCooling = 5;
     public bool cooling = false;
-
+    public bool atta = true;
     // Start is called before the first frame update
     public void Start()
     {
@@ -31,9 +31,10 @@ public class Base_enemy : MonoBehaviour
 
     public IEnumerator Cool()
     {
+        Debug.Log("run");
         cooling = true;
         yield return new WaitForSeconds(attackCooling);
-        if (Range(attackRange))
+        if (Range(attackRange) && this.enabled == true)
         {
             attack.Melee();
         }
@@ -46,5 +47,9 @@ public class Base_enemy : MonoBehaviour
     public void start()
     {
         GetComponent<NavMeshAgent>().isStopped = false;
+    }
+    public void attacking()
+    {
+        atta = true;
     }
 }
