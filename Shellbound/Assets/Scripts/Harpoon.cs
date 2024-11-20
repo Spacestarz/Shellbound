@@ -4,11 +4,12 @@ public class Harpoon : MonoBehaviour
 {
     SpriteRenderer sr;
     Rigidbody rb;
+    
     public GameObject caughtObject;
-
     public Fire fire;
 
     public bool collisionHIT = false;
+    public static bool hasCaught;
 
     private void Awake()
     {
@@ -26,6 +27,7 @@ public class Harpoon : MonoBehaviour
             collisionHIT = true;
 
             caughtObject = collisioncheck.gameObject;
+            hasCaught = true;
 
             SetVisibility(false);
             caughtObject.GetComponent<Enemi_Health>().DisableAI();
