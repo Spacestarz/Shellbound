@@ -8,6 +8,9 @@ public class projektile : MonoBehaviour
     int damage = 1;
     private void OnTriggerEnter(Collider other)
     {
-        other.GetComponent<HealthSystem>().TakeDamage(damage);
+        if (other.CompareTag("Player"))
+        {
+            other.GetComponent<HealthSystem>().TakeDamage(damage);
+        }
     }
 }
