@@ -42,7 +42,7 @@ public class Fire : MonoBehaviour
     {
         //distance of the Anchor and rope
         dist = Vector3.Distance(Anchor.transform.position, harpoonObject.transform.position);
-        if (dist > maxDistancefromAnchor)
+        if (dist > maxDistancefromAnchor && goingAway)
         {
             ReturnHarpoon();
         }
@@ -73,7 +73,6 @@ public class Fire : MonoBehaviour
 
     public void ReturnHarpoon()
     {
-        Debug.Log("Returning");
         harpoon.SetVisibility(true);
         goingAway = false;
         harpoonRigidBody.velocity = Vector3.zero;

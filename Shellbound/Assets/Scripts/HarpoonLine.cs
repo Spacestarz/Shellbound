@@ -18,17 +18,14 @@ public class HarpoonLine : MonoBehaviour
     {
         if (lineRenderer.enabled)
         {
-            Debug.Log("Wakka");
             lineRenderer.SetPosition(0, anchor.transform.position);
 
             if (!harpoon.caughtObject)
             {
-                Debug.Log("Dog");
                 lineRenderer.SetPosition(1, transform.position);
             }
             else
             {
-                Debug.Log("Kek");
                 lineRenderer.SetPosition(1, harpoon.caughtObject.transform.position);
             }
         }
