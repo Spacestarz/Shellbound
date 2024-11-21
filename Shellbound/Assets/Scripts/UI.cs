@@ -6,30 +6,52 @@ using UnityEngine.UI;
 
 public class UI : MonoBehaviour
 {
-    public Slider Slider;
+    public Slider Sliderobject;
     public HealthSystem HealthSystem;
-    
+    public GameObject player;
+    private GameObject gameOverScreen;
+    private GameObject gameoverBLACK;
+
+    public bool gameoverBOOL = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        Slider.maxValue = HealthSystem.MaxHP;
-        
+        Sliderobject.maxValue = HealthSystem.MaxHP;
+        gameOverScreen = GameObject.Find("Game_Over ");
+        gameoverBLACK = GameObject.Find("Background panel");
+        gameoverBLACK.SetActive(false);
+        gameOverScreen.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Slider.value = HealthSystem.currentHP;
+        Sliderobject.value = HealthSystem.currentHP;
 
-        if (Slider.value == 0)
+        if (Sliderobject.value == 0)
         {
-            Slider.gameObject.SetActive(false);
-        }     
+            Sliderobject.gameObject.SetActive(false);
+        }
+
+        if (gameoverBOOL == true)
+        {
+            Debug.Log ("Game over bool is " + gameoverBOOL);
+        }
+      
+        if (Input.GetKeyDown(KeyCode.V) )
+        {
+            Debug.Log("Restart the fight");
+        }
     }
 
     public void GameOver()
     {
-        Debug.Log("game over screen here");
+        player.SetActive(false);
+        gameoverBLACK.SetActive(true);
+        gameOverScreen.SetActive(true);
+        gameoverBOOL = true;
+
+        Debug.Log ("game over is" + gameoverBOOL);      
     }
 }

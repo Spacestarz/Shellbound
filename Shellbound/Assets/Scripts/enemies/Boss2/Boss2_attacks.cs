@@ -23,6 +23,7 @@ public class Boss2_attacks : MonoBehaviour
     public bool aoeattackGO = false;
     private bool timerIsRunning = false;
     
+    
     //TODO
     // Make the boss spin? or att least make an aoe attack that knock back the player
 
@@ -32,6 +33,7 @@ public class Boss2_attacks : MonoBehaviour
     {
         rbplayer = player.GetComponent<Rigidbody>();
         playerCollider = player.GetComponent<Collider>();
+        rbGoblinShark.isKinematic = true;
     }
 
     // Update is called once per frame
