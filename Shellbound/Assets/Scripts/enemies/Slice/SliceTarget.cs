@@ -42,6 +42,7 @@ public class SliceTarget : MonoBehaviour
             {
                 continue;
             }
+
             //Make sure nothing after this point has been hit (One way)
             if (i + 1 < points.Length && points[i + 1].HasBeenHit())
             {
@@ -57,19 +58,27 @@ public class SliceTarget : MonoBehaviour
                 if (i == points.Length - 1 && !sliceCompleted)
                 {
                     sliceCompleted = true;
-                    parentHealth.TakeDamage(5);
+                    parentHealth.TakeDamage(1);
+
+                    pattern.PlayAudio("finish");
 
                     Invoke(nameof(ResetSlice), 0.05f);
                     Invoke(nameof(DestroyPattern), 0.05f);
                 }
             }
             //If it's the first point...
-            else if (i == 0)
+            else if (i == 0 && !currentPoint.HasBeenHit())
             {
-
                 PlayerSlice.SetCurrentSliceTarget(this);
                 currentPoint.GetHit();
+
+                pattern.PlayAudio("start");
             }
         }
+    }
+
+    public void PlaySound()
+    {
+
     }
 }

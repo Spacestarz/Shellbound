@@ -3,33 +3,84 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour
 {
-    public Slider Slider;
+    public Slider Sliderobject;
     public HealthSystem HealthSystem;
-    
+    public GameObject player;
+    private GameObject gameOverScreen;
+    private GameObject gameoverBLACK;
+
+    private GameObject youwinScreen;
+
+    public bool gameoverBOOL = false;
+    public bool defeatedbossBOOL = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        Slider.maxValue = HealthSystem.MaxHP;
-        
+        youwinScreen = GameObject.Find("You win");
+        Sliderobject.maxValue = HealthSystem.MaxHP;
+        gameOverScreen = GameObject.Find("Game_Over ");
+        gameoverBLACK = GameObject.Find("Background panel");
+        youwinScreen.SetActive(false);
+        gameoverBLACK.SetActive(false);
+        gameOverScreen.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Slider.value = HealthSystem.currentHP;
+        Sliderobject.value = HealthSystem.currentHP;
 
-        if (Slider.value == 0)
+        if (Sliderobject.value == 0)
         {
-            Slider.gameObject.SetActive(false);
-        }     
+            Sliderobject.gameObject.SetActive(false);
+        }
+
+        if (gameoverBOOL == true)
+        {
+            Debug.Log ("Game over bool is " + gameoverBOOL);       
+        }
+   
+        if (Input.GetKeyDown(KeyCode.Space) && gameoverBOOL == true)
+        {
+            Debug.Log("Restart the fight");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        /* //added to be able to defeat boss if you want to debug
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            DefeatedBOSS();
+        }
+        */
+        if ((Input.GetKeyDown(KeyCode.Space) && defeatedbossBOOL == true))
+        {
+            Debug.Log("Restart the fight");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     public void GameOver()
     {
-        Debug.Log("game over screen here");
+        player.SetActive(false);
+        gameoverBLACK.SetActive(true);
+        gameOverScreen.SetActive(true);
+        gameoverBOOL = true;
+
+        Debug.Log ("game over is" + gameoverBOOL);      
+    }
+
+    public void DefeatedBOSS()
+    {
+        player.SetActive(false);
+        gameoverBLACK.SetActive(true);
+        player.SetActive (false);
+        youwinScreen.SetActive(true);
+
+        defeatedbossBOOL = true;
+        Debug.Log("You killed boss grats");
     }
 }

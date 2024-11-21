@@ -71,6 +71,7 @@ public class Fire : MonoBehaviour
 
     public void ReturnHarpoon()
     {
+        Debug.Log("Returning");
         harpoon.SetVisibility(true);
         goingAway = false;
         harpoonRigidBody.velocity = Vector3.zero;
