@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour
 {
@@ -37,11 +38,13 @@ public class UI : MonoBehaviour
         if (gameoverBOOL == true)
         {
             Debug.Log ("Game over bool is " + gameoverBOOL);
+           
         }
       
-        if (Input.GetKeyDown(KeyCode.V) )
+        if (Input.GetKeyDown(KeyCode.Space) && gameoverBOOL == true)
         {
             Debug.Log("Restart the fight");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 
