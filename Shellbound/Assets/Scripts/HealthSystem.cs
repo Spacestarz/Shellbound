@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,6 +6,10 @@ public class HealthSystem : MonoBehaviour
 {
     public float MaxHP;
     public float currentHP;
+    public GameObject Player;
+
+    public UI uiScript;
+
 
     // Start is called before the first frame update
     void Start()
@@ -18,10 +23,16 @@ public class HealthSystem : MonoBehaviour
        
         Debug.Log(currentHP + "/" + MaxHP);
 
-        if (currentHP <= 0)
+        if (gameObject.CompareTag("Player") && currentHP <= 0)
         {
-            
-            Debug.Log("Boy's dead");  
+            PlayerDead();   
         }
+    }
+
+    public void PlayerDead()
+    {
+        //Game over screen for player
+        Debug.Log("INSERT DEAD SCREEN");
+        uiScript.GameOver();
     }
 }

@@ -54,11 +54,23 @@ public class Boss2_attacks : MonoBehaviour
     public void Dashattack()
     {
         //TODO
+        //TODO CHANGE IN NAVMESH add casual more speed
+
         // add so the boss dashes forward
         // (only need to get a temporary boost probarly because its already facing the player and following them
         rbGoblinShark.isKinematic = false;
-        rbGoblinShark.AddForce (transform.forward * 20 * 2);
-        Debug.Log("Dash attack ");           
+        rbGoblinShark.AddForce (transform.forward * 20 * 5);
+        Debug.Log("Dash attack ");
+        Invoke(nameof(KinematicOFF), 1f); 
+
+        //red 
+        //kolla linerenderer
+        //look at event 
+    }
+
+    public void KinematicOFF()
+    {
+        rbGoblinShark.isKinematic = true;
     }
 
     public void Mouthattack()
@@ -91,7 +103,7 @@ public class Boss2_attacks : MonoBehaviour
 
         }
 
-         void OnDrawGizmos()
+        void OnDrawGizmos()
         {
            //DRAWS AREA OF AOE ATTACK
             Gizmos.color = Color.red;

@@ -15,7 +15,7 @@ public class Harpoon : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         sr = GetComponentInChildren<SpriteRenderer>();
-        sr.enabled = false;
+       // sr.enabled = false;
     }
 
 
@@ -49,6 +49,6 @@ public class Harpoon : MonoBehaviour
 
     public void SetVisibility(bool visibility)
     {
-        sr.enabled = visibility;
+        //sr.enabled = visibility;
     }
 }
