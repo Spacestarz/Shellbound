@@ -20,8 +20,8 @@ public class SlicePattern : MonoBehaviour
     private void Awake()
     {
         parentHealth = GetComponentInParent<Enemi_Health>();
+        audioSource = GetComponentInParent<AudioSource>();
         fire = FindObjectOfType<Fire>();
-        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
