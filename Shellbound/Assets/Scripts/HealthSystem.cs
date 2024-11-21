@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,9 +11,9 @@ public class HealthSystem : MonoBehaviour
     public AudioSource sorce;
     public AudioClip audio;
 
-
     public GameObject BOSSTESTING;
     public UI uiScript;
+    public SpriteRenderer enemySprite;
 
 
     // Start is called before the first frame update
@@ -38,7 +39,12 @@ public class HealthSystem : MonoBehaviour
         {
             Bossdead();
         }
-     
+
+        if (gameObject.CompareTag("Enemy"))
+        {
+            StartCoroutine(FlashRed());
+        }
+
     }
 
     public void Bossdead()
@@ -51,5 +57,12 @@ public class HealthSystem : MonoBehaviour
         //Game over screen for player
         Debug.Log("INSERT DEAD SCREEN");
         uiScript.GameOver();
+    }
+
+    IEnumerator FlashRed()
+    {
+        enemySprite.color = Color.red;
+        yield return new WaitForSecondsRealtime(0.2f);
+        enemySprite.color = Color.white;
     }
 }

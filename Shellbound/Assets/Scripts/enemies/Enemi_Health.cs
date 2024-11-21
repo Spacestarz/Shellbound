@@ -42,5 +42,4 @@ public class Enemi_Health : HealthSystem
             harpon.position = Vector3.MoveTowards(harpon.position, player.position, dragspeed * Time.deltaTime);
         }
     }
-
 }
