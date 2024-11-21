@@ -3490,7 +3490,7 @@ MonoBehaviour:
   shockwavezise: 3
   startelastickrange: 12
   elastickrange: 12
-  elastickspeed: 10
+  elastickspeed: 4
   elastickreturnspeed: 10
 --- !u!195 &1057958391
 NavMeshAgent:
