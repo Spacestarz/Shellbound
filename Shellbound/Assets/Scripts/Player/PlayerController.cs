@@ -105,26 +105,26 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Fire2") || Input.GetButtonUp("Fire2"))
+        if (Input.GetButtonDown("Fire2") && Harpoon.hasCaught)
         {
-            Debug.Log("Foo");
-            if (Harpoon.hasCaught)
-            {
-                Debug.Log("Bar");
-                PlayerSlice.ToggleSliceMode();
-            }
+            PlayerSlice.SetSliceMode(true);
             
             horizontalInput = 0;
             verticalInput = 0;
         }
+        else if(Input.GetButtonUp("Fire2") && Harpoon.hasCaught)
+        {
+            PlayerSlice.SetSliceMode(false);
+            fire.ReturnHarpoon();
+        }
 
         if (PlayerSlice.SliceMode() && Input.GetButtonDown("Fire1"))
         {
-            PlayerSlice.SetIsSlicing(true);
+            PlayerSlice.SetSliceMode(true);
         }
-        else if(PlayerSlice.SliceMode() && Input.GetButtonUp("Fire1"))
+        else if (PlayerSlice.SliceMode() && Input.GetButtonUp("Fire1"))
         {
-            PlayerSlice.SetIsSlicing(false);
+            PlayerSlice.SetSliceMode(false);
         }
 
         if (PlayerSlice.SliceMode() && Input.GetButton("Fire2"))

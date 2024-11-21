@@ -75,7 +75,7 @@ public class SlicePattern : MonoBehaviour
         {
             parentHealth.TakeDamage(5);
             fire.ReturnHarpoon();
-            PlayerSlice.ToggleSliceMode();
+            PlayerSlice.SetSliceMode(false);
 
             ResetPattern();
         }

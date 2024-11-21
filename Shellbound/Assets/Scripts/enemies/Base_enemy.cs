@@ -13,6 +13,8 @@ public class Base_enemy : MonoBehaviour
     public float attackCooling = 5;
     public bool cooling = false;
     public bool atta = true;
+    public SpriteRenderer indicator;
+
     // Start is called before the first frame update
     public void Start()
     {
@@ -22,8 +24,18 @@ public class Base_enemy : MonoBehaviour
         //Debug.Log(player);
     }
 
-    // Update is called once per frame
-    
+    private void Update()
+    {
+        if (atta && !indicator.enabled)
+        {
+            indicator.enabled = true;
+        }
+        else if(!atta && indicator.enabled)
+        {
+            indicator.enabled=false;
+        }
+    }
+
     public bool Range(float AttackRange)
     {
         return inAttackRange = Physics.CheckSphere(transform.position, AttackRange, LayerMask.GetMask("Player"));

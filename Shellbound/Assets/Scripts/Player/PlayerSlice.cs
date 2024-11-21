@@ -56,9 +56,9 @@ public class PlayerSlice : MonoBehaviour
         }
     }
 
-    public static void ToggleSliceMode()
+    public static void SetSliceMode(bool status)
     {
-        sliceMode = !sliceMode;
+        sliceMode = status;//!sliceMode;
         isSlicing = false;
         inSliceArea = false;
 
