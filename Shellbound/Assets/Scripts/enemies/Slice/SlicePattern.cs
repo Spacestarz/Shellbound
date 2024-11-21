@@ -23,7 +23,6 @@ public class SlicePattern : MonoBehaviour
     {
         if (PlayerSlice.activatedThisFrame && !spawnedArrow)
         {
-            Debug.Log("Bog");
             NextSliceArrow();
         }
         else if (PlayerSlice.deactivatedThisFrame)
@@ -39,8 +38,6 @@ public class SlicePattern : MonoBehaviour
 
     public void DestroyArrow()
     {
-        Debug.Log("DestroyArrow");
-
         Destroy(spawnedArrow.gameObject);
     }
 

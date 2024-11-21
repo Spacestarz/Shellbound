@@ -49,6 +49,6 @@ public class Harpoon : MonoBehaviour
 
     public void SetVisibility(bool visibility)
     {
-        //sr.enabled = visibility;
+        sr.enabled = visibility;
     }
 }
