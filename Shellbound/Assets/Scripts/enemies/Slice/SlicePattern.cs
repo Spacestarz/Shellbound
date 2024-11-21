@@ -13,10 +13,15 @@ public class SlicePattern : MonoBehaviour
 
     Enemi_Health parentHealth;
 
+    AudioSource audioSource;
+    public AudioClip sliceStart;
+    public AudioClip sliceFinish;
+
     private void Awake()
     {
         parentHealth = GetComponentInParent<Enemi_Health>();
         fire = FindObjectOfType<Fire>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -65,6 +70,7 @@ public class SlicePattern : MonoBehaviour
             MoveToEnd(i);
             spawnedArrow = Instantiate(currentArrow, transform);
         }
+
         else
         {
             parentHealth.TakeDamage(10);
@@ -85,5 +91,19 @@ public class SlicePattern : MonoBehaviour
     void ResetPattern()
     {
         totalSliced = 0;
+    }
+
+    public void PlayAudio(string audio)
+    {
+        Debug.Log("Audio");
+
+        if (audio == "start")
+        {
+            audioSource.PlayOneShot(sliceStart);
+        }
+        else if (audio == "finish")
+        {
+            audioSource.PlayOneShot(sliceFinish);
+        }
     }
 }

@@ -84,9 +84,9 @@ public class PlayerSlice : MonoBehaviour
         return sliceMode;
     }
 
-    public static void ToggleIsSlicing()
+    public static void SetIsSlicing(bool status)
     {
-        isSlicing = !isSlicing;
+        isSlicing = status;
 
         if (!isSlicing && currentSliceTarget)
         {

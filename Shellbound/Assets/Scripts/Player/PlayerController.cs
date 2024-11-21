@@ -118,9 +118,13 @@ public class PlayerController : MonoBehaviour
             verticalInput = 0;
         }
 
-        if (PlayerSlice.SliceMode() && Input.GetButtonDown("Fire1") || Input.GetButtonUp("Fire1"))
+        if (PlayerSlice.SliceMode() && Input.GetButtonDown("Fire1"))
         {
-            PlayerSlice.ToggleIsSlicing();
+            PlayerSlice.SetIsSlicing(true);
+        }
+        else if(PlayerSlice.SliceMode() && Input.GetButtonUp("Fire1"))
+        {
+            PlayerSlice.SetIsSlicing(false);
         }
 
         if (PlayerSlice.SliceMode() && Input.GetButton("Fire2"))
