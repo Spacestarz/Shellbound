@@ -58,7 +58,7 @@ public class SliceTarget : MonoBehaviour
                 if (i == points.Length - 1 && !sliceCompleted)
                 {
                     sliceCompleted = true;
-                    parentHealth.TakeDamage(1);
+                    parentHealth.TakeDamage(5);
 
                     pattern.PlayAudio("finish");
 
