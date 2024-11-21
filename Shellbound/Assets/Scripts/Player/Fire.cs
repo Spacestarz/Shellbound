@@ -44,42 +44,6 @@ public class Fire : MonoBehaviour
         {
             ReturnHarpoon();
         }
-
-        ////TODO make it check the pos and move 10% towards it and then check where is the pos etc
-        ////Add methods to make the code cleaner
-        //if (Input.GetKeyDown(KeyCode.K) || dist >= maxDistancefromAnchor)
-        //{
-        //    harpoon.SetVisibility(true);
-        //    goingAway = false;
-        //    harpoonRigidBody.velocity = Vector3.zero;
-        //    velocityZero = true;
-        //    harpoonObject.GetComponent<Harpoon>().collisionHIT = false;
-
-        //    if (harpoonObject.GetComponent<Harpoon>().caughtObject != null)
-        //    {
-        //        harpoonObject.GetComponent<Harpoon>().caughtObject.GetComponent<Enemi_Health>().EnableAI();
-        //        harpoonObject.GetComponent<Harpoon>().caughtObject = null;
-        //    }
-        //}
-
-        //if (velocityZero == true)
-        //{
-            
-        //    //TODO LATER
-        //    //to make this look nicer change it to a lerp.
-        //    harpoonObject.transform.position = Vector3.MoveTowards(harpoonObject.transform.position, Anchor.transform.position, speedReturn * Time.deltaTime);
-
-        //    //if the distance of the rope and Anchor is below 5 it snaps to position and freezez
-        //    if (dist < 1)
-        //    {
-        //        harpoonObject.transform.position = Anchor.transform.position;
-        //        harpoonRigidBody.constraints = RigidbodyConstraints.FreezeAll;
-
-        //        harpoon.SetVisibility(false);
-        //        fired = false;
-        //        velocityZero = false;
-        //    }
-        //}
     }
 
     public void FireHarpoon()
@@ -121,7 +85,6 @@ public class Fire : MonoBehaviour
         }
 
         StartCoroutine(nameof(MoveHarpoonBack));
-        //harpoonObject.transform.position = Vector3.MoveTowards(harpoonObject.transform.position, Anchor.transform.position, speedReturn * Time.deltaTime);
     }
 
     IEnumerator MoveHarpoonBack()

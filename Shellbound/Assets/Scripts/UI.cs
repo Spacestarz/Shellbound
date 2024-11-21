@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class UI : MonoBehaviour
 {
     public Slider Slider;
     public HealthSystem HealthSystem;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +24,12 @@ public class UI : MonoBehaviour
 
         if (Slider.value == 0)
         {
-            this.gameObject.SetActive(false);
-        }
+            Slider.gameObject.SetActive(false);
+        }     
+    }
+
+    public void GameOver()
+    {
+        Debug.Log("game over screen here");
     }
 }

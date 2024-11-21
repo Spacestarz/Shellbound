@@ -23,7 +23,6 @@ public class SlicePattern : MonoBehaviour
     {
         if (PlayerSlice.activatedThisFrame && !spawnedArrow)
         {
-            Debug.Log("Bog");
             NextSliceArrow();
         }
         else if (PlayerSlice.deactivatedThisFrame)
@@ -32,15 +31,12 @@ public class SlicePattern : MonoBehaviour
             {
                 DestroyArrow();
             }
-
             ResetPattern();
         }
     }
 
     public void DestroyArrow()
     {
-        Debug.Log("DestroyArrow");
-
         Destroy(spawnedArrow.gameObject);
     }
 
@@ -74,6 +70,8 @@ public class SlicePattern : MonoBehaviour
             parentHealth.TakeDamage(10);
             fire.ReturnHarpoon();
             PlayerSlice.ToggleSliceMode();
+
+            ResetPattern();
         }
     }
 
