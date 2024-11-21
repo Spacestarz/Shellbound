@@ -2610,6 +2610,8 @@ MonoBehaviour:
   - {fileID: 2257760662191509782, guid: 8abd623f614d7cb4a920cfd4aefacb46, type: 3}
   - {fileID: 6031990953434119768, guid: c0f5bc33b43a64546a5c3e574907612e, type: 3}
   - {fileID: 3216151100378877335, guid: 367f25e7fb2d44743a41889c9247307d, type: 3}
+  sliceStart: {fileID: 0}
+  sliceFinish: {fileID: 0}
 --- !u!114 &762033350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3187,8 +3189,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d29364eb4e614342985e4d34cf33e43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slider: {fileID: 909492347}
+  Sliderobject: {fileID: 0}
   HealthSystem: {fileID: 295450714}
+  player: {fileID: 0}
+  gameoverBOOL: 0
 --- !u!114 &909492347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3594,7 +3598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 044710b50ac9b5d41be608ae9ca1e960, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 3
+  MaxHP: 40
   currentHP: 0
   Player: {fileID: 0}
   sorce: {fileID: 0}
