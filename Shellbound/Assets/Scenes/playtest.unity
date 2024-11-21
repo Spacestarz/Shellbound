@@ -3424,7 +3424,7 @@ MonoBehaviour:
   BOSSTESTING: {fileID: 0}
   uiScript: {fileID: 1987324686}
   enemySprite: {fileID: 2002692040}
-  dragspeed: 5
+  dragspeed: 25
 --- !u!114 &1057958388
 MonoBehaviour:
   m_ObjectHideFlags: 0
