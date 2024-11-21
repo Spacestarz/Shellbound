@@ -6,7 +6,7 @@ public class base_enemi_attack : MonoBehaviour
     RaycastHit ray;
     int damage = 1;
     bool ready = false;
-    public float range = 5;
+    //public float range = 5;
     public float pushForce = 10;
     public Transform target;
     NavMeshAgent agent;
@@ -20,7 +20,7 @@ public class base_enemi_attack : MonoBehaviour
 
     // Update is called once per frame
     
-    public void Melee()
+    public void Melee(float range)
     {
         if(Physics.SphereCast(gameObject.transform.position, 1, transform.forward, out ray, range))
         {

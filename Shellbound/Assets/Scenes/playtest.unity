@@ -2284,14 +2284,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fd826a4314c1284f92206053a96c6a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 5
   pushForce: 10
   target: {fileID: 0}
   claw: {fileID: 0}
   wave: {fileID: 0}
   velo: 0
-  firespeed: 4
-  returnspeed: 10
 --- !u!135 &653001506
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3480,12 +3477,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   agent: {fileID: 0}
-  attackRange: 7
   attack: {fileID: 0}
-  attackCooling: 5
   cooling: 0
   atta: 1
   indicator: {fileID: 128280159}
+  startpunchrange: 7
+  punchrange: 5
+  punchspeed: 4
+  startshockwaverange: 8
+  shockwaverange: 15
+  shockwavespeed: 3
+  shockwavezise: 3
+  startelastickrange: 12
+  elastickrange: 12
+  elastickspeed: 10
+  elastickreturnspeed: 10
 --- !u!195 &1057958391
 NavMeshAgent:
   m_ObjectHideFlags: 0

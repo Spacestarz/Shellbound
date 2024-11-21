@@ -8,9 +8,9 @@ public class Base_enemy : MonoBehaviour
     public Transform target;
     public NavMeshAgent agent;
     bool inAttackRange;
-    public float attackRange = 5;
+    //public float attackRange = 5;
     public Boss1_attacks attack;
-    public float attackCooling = 5;
+    //public float attackCooling = 5;
     public bool cooling = false;
     public bool atta = true;
     public SpriteRenderer indicator;
@@ -41,14 +41,14 @@ public class Base_enemy : MonoBehaviour
         return inAttackRange = Physics.CheckSphere(transform.position, AttackRange, LayerMask.GetMask("Player"));
     }
 
-    public IEnumerator Cool()
+    public IEnumerator Cool(float attackCooling, float attackRange)
     {
         Debug.Log("run");
         cooling = true;
         yield return new WaitForSeconds(attackCooling);
         if (Range(attackRange) && this.enabled == true)
         {
-            attack.Melee();
+            attack.Melee(attackRange);
         }
         cooling = false;
     }

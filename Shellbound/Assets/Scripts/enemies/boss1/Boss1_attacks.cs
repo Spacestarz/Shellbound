@@ -9,10 +9,11 @@ public class Boss1_attacks : base_enemi_attack
     public GameObject wave;
     float dis;
     public bool velo = false;
-    public float firespeed = 4;
-    public float returnspeed = 10;
+    //public float firespeed = 4;
+    float returnspeed = 10;
     bool still = false;
     Boss1_AI parent;
+    float elastickrange = 12;
     private void Awake()
     {
         claw = transform.GetChild(0).gameObject;
@@ -34,8 +35,9 @@ public class Boss1_attacks : base_enemi_attack
             transform.LookAt(target);
         }
         dis = Vector3.Distance(transform.position, claw.transform.position);
-        if (dis >= 12)
+        if (dis >= elastickrange)
         {
+            Debug.Log(dis);
             velo = true;
         }
         if (velo == true)
@@ -57,9 +59,11 @@ public class Boss1_attacks : base_enemi_attack
             }
         }
     }
-    public void Elastick()
+    public void Elastick(float range, float firespeed, float returns)
     {
         Debug.Log("testc");
+        elastickrange = range;
+        returnspeed = returns;
         BeVisible(claw);
         parent.stop();
         still = true;
