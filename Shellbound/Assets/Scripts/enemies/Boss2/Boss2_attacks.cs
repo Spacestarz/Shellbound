@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class Boss2_attacks : MonoBehaviour
 {
@@ -50,6 +51,8 @@ public class Boss2_attacks : MonoBehaviour
         {
             Dashattack();
         }
+
+     
 
     }
 

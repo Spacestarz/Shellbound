@@ -13,14 +13,19 @@ public class UI : MonoBehaviour
     private GameObject gameOverScreen;
     private GameObject gameoverBLACK;
 
+    private GameObject youwinScreen;
+
     public bool gameoverBOOL = false;
+    public bool defeatedbossBOOL = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        youwinScreen = GameObject.Find("You win");
         Sliderobject.maxValue = HealthSystem.MaxHP;
         gameOverScreen = GameObject.Find("Game_Over ");
         gameoverBLACK = GameObject.Find("Background panel");
+        youwinScreen.SetActive(false);
         gameoverBLACK.SetActive(false);
         gameOverScreen.SetActive(false);
     }
@@ -37,11 +42,21 @@ public class UI : MonoBehaviour
 
         if (gameoverBOOL == true)
         {
-            Debug.Log ("Game over bool is " + gameoverBOOL);
-           
+            Debug.Log ("Game over bool is " + gameoverBOOL);       
         }
-      
+   
         if (Input.GetKeyDown(KeyCode.Space) && gameoverBOOL == true)
+        {
+            Debug.Log("Restart the fight");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        /* //added to be able to defeat boss if you want to debug
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            DefeatedBOSS();
+        }
+        */
+        if ((Input.GetKeyDown(KeyCode.Space) && defeatedbossBOOL == true))
         {
             Debug.Log("Restart the fight");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -56,5 +71,16 @@ public class UI : MonoBehaviour
         gameoverBOOL = true;
 
         Debug.Log ("game over is" + gameoverBOOL);      
+    }
+
+    public void DefeatedBOSS()
+    {
+        player.SetActive(false);
+        gameoverBLACK.SetActive(true);
+        player.SetActive (false);
+        youwinScreen.SetActive(true);
+
+        defeatedbossBOOL = true;
+        Debug.Log("You killed boss grats");
     }
 }

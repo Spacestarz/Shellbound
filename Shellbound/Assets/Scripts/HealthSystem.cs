@@ -10,6 +10,8 @@ public class HealthSystem : MonoBehaviour
     public AudioSource sorce;
     public AudioClip audio;
 
+
+    public GameObject BOSSTESTING;
     public UI uiScript;
 
 
@@ -26,10 +28,22 @@ public class HealthSystem : MonoBehaviour
        
         Debug.Log(currentHP + "/" + MaxHP);
         sorce.PlayOneShot(audio);
+
         if (gameObject.CompareTag("Player") && currentHP <= 0)
         {
             PlayerDead();   
         }
+
+        if (gameObject.CompareTag("Enemy") && currentHP <= 0)
+        {
+            Bossdead();
+        }
+     
+    }
+
+    public void Bossdead()
+    {
+       uiScript.DefeatedBOSS();
     }
 
     public void PlayerDead()
