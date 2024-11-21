@@ -22,7 +22,7 @@ public class Harpoon : MonoBehaviour
     public void OnTriggerEnter(Collider collisioncheck)
     {
 
-        if (collisioncheck.CompareTag("Enemy") && fire.goingAway)
+        if (collisioncheck.CompareTag("Enemy") && fire.goingAway && !collisioncheck.GetComponent<Base_enemy>().atta)
         {
             collisionHIT = true;
 
