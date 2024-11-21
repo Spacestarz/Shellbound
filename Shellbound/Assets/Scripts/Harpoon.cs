@@ -5,6 +5,7 @@ public class Harpoon : MonoBehaviour
 {
     SpriteRenderer sr;
     Rigidbody rb;
+    HarpoonLine line;
     
     public GameObject caughtObject;
     public Fire fire;
@@ -16,7 +17,8 @@ public class Harpoon : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         sr = GetComponentInChildren<SpriteRenderer>();
-       // sr.enabled = false;
+        line = GetComponentInChildren<HarpoonLine>();
+        sr.enabled = false;
     }
 
 
@@ -46,7 +48,7 @@ public class Harpoon : MonoBehaviour
             // Optionally, stop further rope movement or implement other logic
             Debug.Log("Rope stuck at: " + closestPoint);
         }
-        else if (!collisioncheck.CompareTag("Enemy") && fire.goingAway)
+        else if (fire.goingAway)
         {
             fire.ReturnHarpoon();
         }
@@ -55,5 +57,9 @@ public class Harpoon : MonoBehaviour
     public void SetVisibility(bool visibility)
     {
         sr.enabled = visibility;
+        if (!hasCaught)
+        {
+            line.SetEnabled(visibility);
+        }
     }
 }

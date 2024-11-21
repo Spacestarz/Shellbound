@@ -112,6 +112,13 @@ public class PlayerController : MonoBehaviour
             horizontalInput = 0;
             verticalInput = 0;
         }
+        else if(Input.GetButton("Fire2") && Harpoon.hasCaught && !PlayerSlice.SliceMode())
+        {
+            PlayerSlice.SetSliceMode(true);
+
+            horizontalInput = 0;
+            verticalInput = 0;
+        }
         else if(Input.GetButtonUp("Fire2") && Harpoon.hasCaught)
         {
             PlayerSlice.SetSliceMode(false);

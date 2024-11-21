@@ -8,6 +8,7 @@ public class SlicePoint : MonoBehaviour
     private void Awake()
     {
         parent = GetComponentInParent<SliceTarget>();
+        GetComponent<SpriteRenderer>().sortingLayerID = GetComponentInParent<SpriteRenderer>().sortingLayerID;
     }
     public void CheckIfHittable()
     {
