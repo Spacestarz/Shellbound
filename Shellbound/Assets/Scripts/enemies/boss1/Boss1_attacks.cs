@@ -50,13 +50,19 @@ public class Boss1_attacks : base_enemi_attack
 
                 BeInvisible(claw);
                 velo = false;
+                parent.start();
+                transform.LookAt(target);
+                still = false;
                 parent.attacking();
             }
         }
     }
     public void Elastick()
     {
+        Debug.Log("testc");
         BeVisible(claw);
+        parent.stop();
+        still = true;
         //claw.transform.position = transform.position;
 
         clawrig.constraints = RigidbodyConstraints.None;
@@ -108,7 +114,6 @@ public class Boss1_attacks : base_enemi_attack
     }
     void shockwavereturn()
     {
-        Debug.Log("testc");
         parent.start();
         still = false;
         BeInvisible(wave);
