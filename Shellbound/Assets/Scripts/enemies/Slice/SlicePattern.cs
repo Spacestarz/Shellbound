@@ -31,7 +31,6 @@ public class SlicePattern : MonoBehaviour
             {
                 DestroyArrow();
             }
-
             ResetPattern();
         }
     }
@@ -71,6 +70,8 @@ public class SlicePattern : MonoBehaviour
             parentHealth.TakeDamage(10);
             fire.ReturnHarpoon();
             PlayerSlice.ToggleSliceMode();
+
+            ResetPattern();
         }
     }
 
