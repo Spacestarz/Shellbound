@@ -7,6 +7,8 @@ public class HealthSystem : MonoBehaviour
     public float MaxHP;
     public float currentHP;
     public GameObject Player;
+    public AudioSource sorce;
+    public AudioClip audio;
 
     public UI uiScript;
 
@@ -15,6 +17,7 @@ public class HealthSystem : MonoBehaviour
     void Start()
     {      
         currentHP = MaxHP;
+        sorce = GetComponent<AudioSource>();
     }
 
     public void TakeDamage(int damageTaken)
@@ -22,7 +25,7 @@ public class HealthSystem : MonoBehaviour
         currentHP -= damageTaken;
        
         Debug.Log(currentHP + "/" + MaxHP);
-
+        sorce.PlayOneShot(audio);
         if (gameObject.CompareTag("Player") && currentHP <= 0)
         {
             PlayerDead();   
