@@ -61,6 +61,10 @@ public class UI : MonoBehaviour
             Debug.Log("Restart the fight");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     public void GameOver()
