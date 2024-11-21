@@ -98,8 +98,8 @@ public class Boss1_attacks : base_enemi_attack
         Vector3 endscale = Vector3.one;
         endscale.y = endscale.y * scale;
         Vector3 startlocation = wave.transform.localPosition;
-        Vector3 endlocation = Vector3.one;
-        endlocation.z = endlocation.z * range;
+        Vector3 endlocation = new Vector3(0,-1,0);
+        endlocation.z = endlocation.z + range;
         float elapsed = 0;
 
         while (elapsed < duration)
@@ -117,7 +117,7 @@ public class Boss1_attacks : base_enemi_attack
         parent.start();
         still = false;
         BeInvisible(wave);
-        wave.transform.position = transform.position;
+        wave.transform.localPosition = new Vector3(0,-1,0);
         wave.transform.localScale = new Vector3(1, 0.5f, 1);
         parent.attacking();
     }

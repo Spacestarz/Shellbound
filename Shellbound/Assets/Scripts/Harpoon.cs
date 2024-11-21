@@ -1,3 +1,4 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Harpoon : MonoBehaviour
@@ -44,6 +45,10 @@ public class Harpoon : MonoBehaviour
 
             // Optionally, stop further rope movement or implement other logic
             Debug.Log("Rope stuck at: " + closestPoint);
+        }
+        else if (!collisioncheck.CompareTag("Enemy") && fire.goingAway)
+        {
+            fire.ReturnHarpoon();
         }
     }
 

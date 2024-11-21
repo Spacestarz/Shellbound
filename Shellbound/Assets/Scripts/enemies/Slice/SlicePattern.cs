@@ -20,8 +20,8 @@ public class SlicePattern : MonoBehaviour
     private void Awake()
     {
         parentHealth = GetComponentInParent<Enemi_Health>();
+        audioSource = GetComponentInParent<AudioSource>();
         fire = FindObjectOfType<Fire>();
-        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -73,7 +73,7 @@ public class SlicePattern : MonoBehaviour
 
         else
         {
-            parentHealth.TakeDamage(10);
+            parentHealth.TakeDamage(5);
             fire.ReturnHarpoon();
             PlayerSlice.ToggleSliceMode();
 
