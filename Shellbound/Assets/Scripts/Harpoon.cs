@@ -18,6 +18,7 @@ public class Harpoon : MonoBehaviour
         sr = GetComponentInChildren<SpriteRenderer>();
         line = GetComponentInChildren<HarpoonLine>();
         sr.enabled = false;
+        hasCaught = false;
     }
 
 

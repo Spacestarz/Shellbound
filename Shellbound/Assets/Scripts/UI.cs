@@ -40,11 +40,6 @@ public class UI : MonoBehaviour
             Sliderobject.gameObject.SetActive(false);
         }
 
-        if (gameoverBOOL == true)
-        {
-            Debug.Log ("Game over bool is " + gameoverBOOL);       
-        }
-   
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
             Debug.Log("Restart the fight");
