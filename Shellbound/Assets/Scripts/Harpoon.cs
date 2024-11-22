@@ -50,7 +50,6 @@ public class Harpoon : MonoBehaviour
         }
         else if (fire.goingAway)
         {
-            Debug.Log("Harpoon 52");
             fire.ReturnHarpoon();
         }
     }
