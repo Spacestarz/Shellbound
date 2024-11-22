@@ -125,14 +125,14 @@ public class PlayerController : MonoBehaviour
             fire.ReturnHarpoon();
         }
 
-        if (PlayerSlice.SliceMode() && Input.GetButtonDown("Fire1"))
-        {
-            PlayerSlice.SetSliceMode(true);
-        }
-        else if (PlayerSlice.SliceMode() && Input.GetButtonUp("Fire1"))
-        {
-            PlayerSlice.SetSliceMode(false);
-        }
+        //if (PlayerSlice.SliceMode() && Input.GetButtonDown("Fire1"))
+        //{
+        //    PlayerSlice.SetSliceMode(true);
+        //}
+        //else if (PlayerSlice.SliceMode() && Input.GetButtonUp("Fire1"))
+        //{
+        //    PlayerSlice.SetSliceMode(false);
+        //}
 
         if (PlayerSlice.SliceMode() && Input.GetButton("Fire2"))
         {
