@@ -102,20 +102,22 @@ public class Boss2_attacks : MonoBehaviour
 
             // see the knockback direction in the scene view
             Debug.DrawRay(transform.position, direction * 10f, Color.red, 10f);
-
+    
             Debug.Log("PLAYER take dmg AUCH");
             healthSystem.TakeDamage(damage);
         }
 
-        void OnDrawGizmos()
-        {
-           //DRAWS AREA OF AOE ATTACK
-            Gizmos.color = Color.blue;
-            
-            Gizmos.DrawWireSphere(transform.position, radius);
+       
+    }
 
-            Debug.Log("drawing blue lol");
-        }
+    void OnDrawGizmos()
+    {
+        //DRAWS AREA OF AOE ATTACK
+        Gizmos.color = Color.blue;
+
+        Gizmos.DrawWireSphere(transform.position, radius);
+
+        Debug.Log("drawing blue lol");
     }
 }
 
