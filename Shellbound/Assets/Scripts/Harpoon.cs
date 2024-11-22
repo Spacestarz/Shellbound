@@ -26,6 +26,7 @@ public class Harpoon : MonoBehaviour
 
         if (collisioncheck.CompareTag("Enemy") && fire.goingAway && !collisioncheck.GetComponent<Base_enemy>().atta)
         {
+            fire.goingAway = false;
             collisionHIT = true;
 
             caughtObject = collisioncheck.gameObject;
@@ -49,6 +50,7 @@ public class Harpoon : MonoBehaviour
         }
         else if (fire.goingAway)
         {
+            Debug.Log("Harpoon 52");
             fire.ReturnHarpoon();
         }
     }
