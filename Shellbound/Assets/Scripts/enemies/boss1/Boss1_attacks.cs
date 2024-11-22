@@ -77,11 +77,11 @@ public class Boss1_attacks : base_enemi_attack
 
     private void BeVisible( GameObject obj)
     {
-        //var renderer = obj.GetComponent<Renderer>();
-        //if (renderer != null)
-        //{
-        //    renderer.enabled = true;
-        //}
+        var renderer = obj.GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            renderer.enabled = true;
+        }
 
         var spriteRenderer = obj.GetComponentInChildren<SpriteRenderer>();
         if (spriteRenderer != null)
@@ -93,11 +93,11 @@ public class Boss1_attacks : base_enemi_attack
     private void BeInvisible(GameObject obj)
     {
 
-        //var renderer = obj.GetComponent<Renderer>();
-        //if (renderer != null)
-        //{
-        //    renderer.enabled = false;
-        //}
+        var renderer = obj.GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            renderer.enabled = false;
+        }
 
         var spriteRenderer = obj.GetComponentInChildren<SpriteRenderer>();
         if (spriteRenderer != null)
