@@ -5,7 +5,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using System.Linq;
 using System;
-using UnityEditor.Timeline.Actions;
 
 public class Boss2_attacks : MonoBehaviour
 {
