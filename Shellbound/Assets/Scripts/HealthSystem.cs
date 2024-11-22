@@ -11,7 +11,6 @@ public class HealthSystem : MonoBehaviour
     public AudioSource sorce;
     public AudioClip audio;
 
-    public GameObject BOSSTESTING;
     public UI uiScript;
     public SpriteRenderer enemySprite;
 

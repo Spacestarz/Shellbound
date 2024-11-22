@@ -105,18 +105,17 @@ public class Boss2_attacks : MonoBehaviour
 
             Debug.Log("PLAYER take dmg AUCH");
             healthSystem.TakeDamage(damage);
-
         }
 
         void OnDrawGizmos()
         {
            //DRAWS AREA OF AOE ATTACK
-            Gizmos.color = Color.red;
+            Gizmos.color = Color.blue;
             
             Gizmos.DrawWireSphere(transform.position, radius);
 
+            Debug.Log("drawing blue lol");
         }
-
     }
 }
 
