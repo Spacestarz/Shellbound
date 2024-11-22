@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using System.Linq;
 using System;
+using UnityEditor.Timeline.Actions;
 
 public class Boss2_attacks : MonoBehaviour
 {
@@ -19,7 +20,10 @@ public class Boss2_attacks : MonoBehaviour
     private Rigidbody rbplayer;
     private Collider playerCollider;
     public GameObject player;
-    public GameObject Boss2; 
+    public GameObject Boss2;
+
+    private GameObject Aoeindicator;
+    
 
     public bool aoeattackGO = false;
     private bool timerIsRunning = false;
@@ -32,6 +36,8 @@ public class Boss2_attacks : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Aoeindicator = GameObject.Find("AOE indicator BOSS2");
+        Aoeindicator.SetActive(false);
         rbplayer = player.GetComponent<Rigidbody>();
         playerCollider = player.GetComponent<Collider>();
         rbGoblinShark.isKinematic = true;
@@ -44,7 +50,8 @@ public class Boss2_attacks : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.B))
         {
-            Aoeattack();     
+            Aoeindicator.SetActive(true);
+            Invoke("Aoeattack", 2.0f);
         }
 
         if (Input.GetKeyDown(KeyCode.F))
@@ -76,6 +83,7 @@ public class Boss2_attacks : MonoBehaviour
     public void KinematicOFF()
     {
         rbGoblinShark.isKinematic = true;
+       
     }
 
     public void Mouthattack()
@@ -90,6 +98,7 @@ public class Boss2_attacks : MonoBehaviour
         // Make this on a new script? 
 
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
+        Aoeindicator.SetActive(false);
 
         if ((hitColliders.Any(hitCollider => hitCollider.CompareTag("Player"))))
         {
@@ -105,6 +114,8 @@ public class Boss2_attacks : MonoBehaviour
     
             Debug.Log("PLAYER take dmg AUCH");
             healthSystem.TakeDamage(damage);
+
+            
         }
 
        
