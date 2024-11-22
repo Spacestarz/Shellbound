@@ -82,6 +82,12 @@ public class Boss1_attacks : base_enemi_attack
         {
             renderer.enabled = true;
         }
+
+        var spriteRenderer = obj.GetComponentInChildren<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.enabled = true;
+        }
     }
 
     private void BeInvisible(GameObject obj)
@@ -91,6 +97,12 @@ public class Boss1_attacks : base_enemi_attack
         if (renderer != null)
         {
             renderer.enabled = false;
+        }
+
+        var spriteRenderer = obj.GetComponentInChildren<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.enabled = false;
         }
     }
     public IEnumerator shockwave(float duration, float scale, float range)
