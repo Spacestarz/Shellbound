@@ -75,6 +75,7 @@ public class SlicePattern : MonoBehaviour
         {
             parentHealth.TakeDamage(5);
             fire.ReturnHarpoon();
+            Debug.Log("SlicePattern 78");
             PlayerSlice.SetSliceMode(false);
 
             ResetPattern();
@@ -95,8 +96,6 @@ public class SlicePattern : MonoBehaviour
 
     public void PlayAudio(string audio)
     {
-        Debug.Log("Audio");
-
         if (audio == "start")
         {
             audioSource.PlayOneShot(sliceStart);

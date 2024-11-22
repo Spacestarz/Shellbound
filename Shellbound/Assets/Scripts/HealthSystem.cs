@@ -27,7 +27,6 @@ public class HealthSystem : MonoBehaviour
     {
         currentHP -= damageTaken;
        
-        Debug.Log(currentHP + "/" + MaxHP);
         sorce.PlayOneShot(audio);
 
         if (gameObject.CompareTag("Player") && currentHP <= 0)

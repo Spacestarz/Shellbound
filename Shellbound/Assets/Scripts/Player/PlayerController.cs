@@ -107,6 +107,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Fire2") && Harpoon.hasCaught)
         {
+            Debug.Log("PlayerController 110");
             PlayerSlice.SetSliceMode(true);
             
             horizontalInput = 0;
@@ -114,6 +115,7 @@ public class PlayerController : MonoBehaviour
         }
         else if(Input.GetButton("Fire2") && Harpoon.hasCaught && !PlayerSlice.SliceMode())
         {
+            Debug.Log("PlayerController 118");
             PlayerSlice.SetSliceMode(true);
 
             horizontalInput = 0;
@@ -121,6 +123,7 @@ public class PlayerController : MonoBehaviour
         }
         else if(Input.GetButtonUp("Fire2") && Harpoon.hasCaught)
         {
+            Debug.Log("PlayerController 125");
             PlayerSlice.SetSliceMode(false);
             fire.ReturnHarpoon();
         }
