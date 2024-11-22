@@ -30,8 +30,8 @@ public class Enemi_Health : HealthSystem
     {
         Harponed = false;
         enemi = GetComponent<Base_enemy>();
-        enemi.start();
         enemi.enabled = true;
+        enemi.start();
     }
     private void Update()
     {
@@ -40,6 +40,7 @@ public class Enemi_Health : HealthSystem
         {
             transform.position = Vector3.MoveTowards(monster.position, player.position, dragspeed * Time.deltaTime);
             harpon.position = Vector3.MoveTowards(harpon.position, player.position, dragspeed * Time.deltaTime);
+            monster.GetComponent<Boss1_AI>().resetpositon();
         }
     }
 }

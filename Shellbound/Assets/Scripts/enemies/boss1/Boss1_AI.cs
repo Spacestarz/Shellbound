@@ -23,7 +23,7 @@ public class Boss1_AI : Base_enemy
         //kollar om ett objekt som har en layer definerad i player är inom en svere av diametern som defineras av attackrange.
         if (Range(startpunchrange))
         {
-            agent.SetDestination(transform.position);
+            resetpositon();
             //transform.LookAt(target);
             if (!cooling)
             {
@@ -32,22 +32,31 @@ public class Boss1_AI : Base_enemy
         }
         else if (Range(startshockwaverange) && atta)
         {
-            agent.SetDestination(transform.position);
             atta = false;
             StartCoroutine(attack.shockwave(shockwavespeed, shockwavezise, shockwaverange));
+            resetpositon();
         }
         else if (Range(startelastickrange) && atta)
         {
-            agent.SetDestination(transform.position);
             attack.Elastick(elastickrange, elastickspeed, elastickreturnspeed);
             atta = false;
+            resetpositon();
         }
-        else
+        else if (atta)
         {
             //seger åt agent componenten att gå mot punkten definerad i target.position
             agent.SetDestination(target.position);
         }
+        else
+        {
+            resetpositon();
+        }
 
+    }
+    public void resetpositon()
+    {
+        Debug.Log("resetlocation");
+        agent.SetDestination(transform.position);
     }
     
 }
