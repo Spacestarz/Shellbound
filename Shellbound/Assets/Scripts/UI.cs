@@ -45,7 +45,7 @@ public class UI : MonoBehaviour
             Debug.Log ("Game over bool is " + gameoverBOOL);       
         }
    
-        if (Input.GetKeyDown(KeyCode.Space) && gameoverBOOL == true)
+        if (Input.GetKeyDown(KeyCode.Backspace))
         {
             Debug.Log("Restart the fight");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
