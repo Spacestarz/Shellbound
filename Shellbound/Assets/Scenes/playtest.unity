@@ -1190,7 +1190,6 @@ MonoBehaviour:
   Player: {fileID: 295450713}
   sorce: {fileID: 295450723}
   audio: {fileID: 8300000, guid: cb2ec8cfff8bec140a2e6d29135b4407, type: 3}
-  BOSSTESTING: {fileID: 0}
   uiScript: {fileID: 1987324686}
   enemySprite: {fileID: 0}
 --- !u!114 &295450715
@@ -3421,7 +3420,6 @@ MonoBehaviour:
   Player: {fileID: 0}
   sorce: {fileID: 0}
   audio: {fileID: 8300000, guid: cb2ec8cfff8bec140a2e6d29135b4407, type: 3}
-  BOSSTESTING: {fileID: 0}
   uiScript: {fileID: 1987324686}
   enemySprite: {fileID: 2002692040}
   dragspeed: 25
@@ -3912,7 +3910,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9baad4673c0bec442aa37a68a12acb90, type: 2}
+  - {fileID: 2100000, guid: e1bd490ae1e2d414b8b41fa1a2903773, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
