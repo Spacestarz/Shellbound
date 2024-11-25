@@ -1302,6 +1302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69267e964b734eb44b1c5ce601137562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  harpoon: {fileID: 0}
   Anchor: {fileID: 2047234786}
   harpoonObject: {fileID: 1203022920}
   mainCam: {fileID: 900746539}
@@ -1322,6 +1323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a02ba5a109ff1f348a00eed2bf6b4b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  caughtObject: {fileID: 0}
 --- !u!114 &295450717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2387,6 +2389,7 @@ MonoBehaviour:
   claw: {fileID: 0}
   wave: {fileID: 0}
   velo: 0
+  still: 0
 --- !u!135 &653001506
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2510,6 +2513,11 @@ MonoBehaviour:
   - {fileID: 2257760662191509782, guid: 8abd623f614d7cb4a920cfd4aefacb46, type: 3}
   - {fileID: 6031990953434119768, guid: c0f5bc33b43a64546a5c3e574907612e, type: 3}
   - {fileID: 3216151100378877335, guid: 367f25e7fb2d44743a41889c9247307d, type: 3}
+  - {fileID: 3216151100378877335, guid: e5a145a1acf61cc49b01d6d0be7e7741, type: 3}
+  - {fileID: 3216151100378877335, guid: 564cf37feac60c34c88c629a24b6aee3, type: 3}
+  - {fileID: 240628594741510636, guid: 7128679aea813b042b3f990025cd08e7, type: 3}
+  - {fileID: 240628594741510636, guid: 12ec17254dce57540b8317492efec9fe, type: 3}
+  spawnedArrow: {fileID: 0}
   sliceStart: {fileID: 8300000, guid: f6437707c83ded646840dbdd62ff5b6f, type: 3}
   sliceFinish: {fileID: 8300000, guid: 5268ccce7c005d54f9a3f3d29c161d4c, type: 3}
 --- !u!114 &762033350

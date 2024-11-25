@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2257760662191509782}
   - component: {fileID: 2940620321265418670}
   m_Layer: 0
-  m_Name: L2R - Mid
+  m_Name: Right
   m_TagString: SliceTarget
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

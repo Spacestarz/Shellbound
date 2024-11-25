@@ -9,7 +9,7 @@ public class SlicePattern : MonoBehaviour
 
     public List<SliceTarget> possibleArrows;
     SliceTarget currentArrow;
-    SliceTarget spawnedArrow;
+    public SliceTarget spawnedArrow;
 
     Enemi_Health parentHealth;
 

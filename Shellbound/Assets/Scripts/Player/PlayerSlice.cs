@@ -12,9 +12,12 @@ public class PlayerSlice : MonoBehaviour
     static Vector2 mouseDirection;
 
     static float currentSliceTime = 0;
-    public static float sliceTickLength = 1f/15;
+    static float sliceTickLength = 1f/30;
 
-    static float successRequirement = 0.95f;
+    static float successRequirement = 0.8f;
+
+    static int succeededTicks = 0;
+    public static int requiredTicks = 3;
 
     private void Awake()
     {
@@ -30,6 +33,8 @@ public class PlayerSlice : MonoBehaviour
         if (sliceMode)
         {
             SliceTickTimer();
+            Debug.DrawLine((Vector2)caughtObject.transform.position+new Vector2(1,1), (Vector2)caughtObject.transform.position+targetDirection + new Vector2(1, 1), Color.red);
+            Debug.DrawLine((Vector2)caughtObject.transform.position + new Vector2(1, 1), (Vector2)caughtObject.transform.position+mouseDirection + new Vector2(1, 1), Color.white);
         }
     }
 
@@ -77,7 +82,6 @@ public class PlayerSlice : MonoBehaviour
 
     public static void SetCaughtObject(GameObject obj)
     {
-        Debug.Log("Caught sliec");
         instance.caughtObject = obj;
     }
 
@@ -92,7 +96,16 @@ public class PlayerSlice : MonoBehaviour
     public static void SetTargetDirection(Vector2 dir)
     {
         targetDirection = dir.normalized;
-        Debug.Log("targetDir:" + targetDirection);
+        
+        if (targetDirection.x != 0 ^ targetDirection.y != 0)
+        {
+            successRequirement = 0.8f;
+        }
+        else
+        {
+            successRequirement = 0.6f;
+        }
+        Debug.Log(successRequirement);
     }
 
 
@@ -126,8 +139,25 @@ public class PlayerSlice : MonoBehaviour
     {
         if (Vector2.Dot(mouseDirection, targetDirection) >= 0.94f)
         {
-            Debug.Log("Success!");
-            currentSlicePattern.NextSliceArrow();
+            succeededTicks++;
+
+            if (succeededTicks >= requiredTicks)
+            {
+                CompleteSlice();
+            }
         }
+        else
+        {
+            succeededTicks = 0;
+        }
+
+       
+    }
+
+    static void CompleteSlice()
+    {
+        currentSlicePattern.spawnedArrow.CompleteSlice();
+        currentSlicePattern.NextSliceArrow();
+        succeededTicks = 0;
     }
 }
