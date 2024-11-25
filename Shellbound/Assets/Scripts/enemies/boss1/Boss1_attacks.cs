@@ -11,7 +11,7 @@ public class Boss1_attacks : base_enemi_attack
     public bool velo = false;
     //public float firespeed = 4;
     float returnspeed = 10;
-    bool still = false;
+    public bool still = false;
     Boss1_AI parent;
     float elastickrange = 12;
     private void Awake()
@@ -62,6 +62,7 @@ public class Boss1_attacks : base_enemi_attack
     public void Elastick(float range, float firespeed, float returns)
     {
         Debug.Log("testc");
+        transform.LookAt(target);
         elastickrange = range;
         returnspeed = returns;
         BeVisible(claw);
@@ -108,6 +109,7 @@ public class Boss1_attacks : base_enemi_attack
     public IEnumerator shockwave(float duration, float scale, float range)
     {
         parent.stop();
+        transform.LookAt(target);
         still = true;
         BeVisible(wave);
         Vector3 startscale = wave.transform.localScale;

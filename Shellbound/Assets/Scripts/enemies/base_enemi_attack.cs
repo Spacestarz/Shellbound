@@ -7,7 +7,7 @@ public class base_enemi_attack : MonoBehaviour
     int damage = 1;
     bool ready = false;
     //public float range = 5;
-    public float pushForce = 10;
+    public float pushForce = 100;
     public Transform target;
     NavMeshAgent agent;
 
