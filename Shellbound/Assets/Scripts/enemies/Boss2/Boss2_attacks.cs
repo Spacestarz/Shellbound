@@ -5,14 +5,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 using System.Linq;
 using System;
+using DG.Tweening;
 
 public class Boss2_attacks : MonoBehaviour
 {
-    //testing spere thing
-    private float radius = 10f;
-
-
-    private int damage = 12;
     public int KnockbackStrenght; 
     public HealthSystem healthSystem;
     public Rigidbody rbGoblinShark;
@@ -21,11 +17,11 @@ public class Boss2_attacks : MonoBehaviour
     public GameObject player;
     public GameObject Boss2;
 
-    private GameObject Aoeindicator;
-    
-
-    public bool aoeattackGO = false;
+   
     private bool timerIsRunning = false;
+
+    private DashAttack_Boss2 callDashAttack;
+
     
     
     //TODO
@@ -35,99 +31,32 @@ public class Boss2_attacks : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Aoeindicator = GameObject.Find("AOE indicator BOSS2");
-        Aoeindicator.SetActive(false);
+        callDashAttack = GetComponent<DashAttack_Boss2>();
+
         rbplayer = player.GetComponent<Rigidbody>();
         playerCollider = player.GetComponent<Collider>();
         rbGoblinShark.isKinematic = true;
+
     }
 
     // Update is called once per frame
     void Update()
-    {     
-        Mouthattack();
-
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            Aoeindicator.SetActive(true);
-            Invoke("Aoeattack", 2.0f);
-        }
-
+    {         
         if (Input.GetKeyDown(KeyCode.F))
         {
             Dashattack();
         }
-
-     
-
     }
 
     public void Dashattack()
     {
-        //TODO
-        //TODO CHANGE IN NAVMESH add casual more speed
-
-        // add so the boss dashes forward
-        // (only need to get a temporary boost probarly because its already facing the player and following them
-        rbGoblinShark.isKinematic = false;
-        rbGoblinShark.AddForce (transform.forward * 20 * 5);
-        Debug.Log("Dash attack ");
-        Invoke(nameof(KinematicOFF), 1f); 
-
-        //red 
-        //kolla linerenderer
-        //look at event 
-    }
-
-    public void KinematicOFF()
-    {
-        rbGoblinShark.isKinematic = true;
-       
+        callDashAttack.DashAttack(); 
     }
 
     public void Mouthattack()
     {
         //Similar to the harpoon and the crabs punch arm can probarly borrow a bit of code from that 
     }
-
-    public void Aoeattack()
-    {
-        //TODO
-        //Fix when this will go off in the combat
-        // Make this on a new script? 
-
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
-        Aoeindicator.SetActive(false);
-
-        if ((hitColliders.Any(hitCollider => hitCollider.CompareTag("Player"))))
-        {
-
-            Vector3 direction = new Vector3(playerCollider.transform.position.x - transform.position.x, 
-              0f,
-             playerCollider.transform.position.z - transform.position.z).normalized;
-
-            rbplayer.AddForce(direction * KnockbackStrenght * 10, ForceMode.Impulse);
-
-            // see the knockback direction in the scene view
-            Debug.DrawRay(transform.position, direction * 10f, Color.red, 10f);
-    
-            Debug.Log("PLAYER take dmg AUCH");
-            healthSystem.TakeDamage(damage);
-
-            
-        }
-
-       
-    }
-
-    void OnDrawGizmos()
-    {
-        //DRAWS AREA OF AOE ATTACK
-        Gizmos.color = Color.blue;
-
-        Gizmos.DrawWireSphere(transform.position, radius);
-
-        Debug.Log("drawing blue lol");
-    }
+   
 }
 

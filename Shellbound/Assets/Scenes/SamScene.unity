@@ -1989,8 +1989,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1058780273}
   - component: {fileID: 1058780274}
+  - component: {fileID: 1058780275}
+  - component: {fileID: 1058780276}
   m_Layer: 10
-  m_Name: test inside circle?
+  m_Name: Inside circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2063,6 +2065,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!54 &1058780275
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058780272}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 120
+  m_CollisionDetection: 0
+--- !u!114 &1058780276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058780272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 904bb8c85e0f96f43a65ae5911fe14bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rbGoblinShark: {fileID: 1998195562}
+  KnockbackStrenght: 20
+  player: {fileID: 1071635489}
+  Boss2: {fileID: 1998195560}
+  aoeattackGO: 0
+  healthSystem: {fileID: 1071635492}
+  visibility: 0
 --- !u!1 &1071635489
 GameObject:
   m_ObjectHideFlags: 0
@@ -4538,6 +4586,7 @@ GameObject:
   - component: {fileID: 1998195563}
   - component: {fileID: 1998195562}
   - component: {fileID: 1998195561}
+  - component: {fileID: 1998195569}
   m_Layer: 12
   m_Name: Goblin shark
   m_TagString: Enemy
@@ -4562,7 +4611,6 @@ MonoBehaviour:
   rbGoblinShark: {fileID: 1998195562}
   player: {fileID: 1071635489}
   Boss2: {fileID: 1998195560}
-  aoeattackGO: 0
 --- !u!54 &1998195562
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4724,6 +4772,18 @@ Transform:
   - {fileID: 1706801888}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1998195569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998195560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ab7085f39c9a3c4a9cbf95d6c37631c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2036718380
 GameObject:
   m_ObjectHideFlags: 0
