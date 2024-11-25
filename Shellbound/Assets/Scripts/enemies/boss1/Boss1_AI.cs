@@ -20,7 +20,7 @@ public class Boss1_AI : Base_enemy
     public float elastickreturnspeed = 10;
     void Update()
     {
-        //kollar om ett objekt som har en layer definerad i player är inom en svere av diametern som defineras av attackrange.
+        //kollar om ett objekt som har en layer definerad i player ï¿½r inom en svere av diametern som defineras av attackrange.
         if (Range(startpunchrange))
         {
             resetpositon();
@@ -44,7 +44,7 @@ public class Boss1_AI : Base_enemy
         }
         else if (atta)
         {
-            //seger åt agent componenten att gå mot punkten definerad i target.position
+            //seger ï¿½t agent componenten att gï¿½ mot punkten definerad i target.position
             agent.SetDestination(target.position);
         }
         else

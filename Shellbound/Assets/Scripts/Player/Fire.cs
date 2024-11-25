@@ -5,7 +5,7 @@ using UnityEngine;
 public class Fire : MonoBehaviour
 {
     Rigidbody harpoonRigidBody;
-    Harpoon harpoon;
+    public Harpoon harpoon;
     HarpoonLine harpoonLine;
 
     public GameObject Anchor;
@@ -35,9 +35,6 @@ public class Fire : MonoBehaviour
         harpoonRigidBody.useGravity = false;
     }
 
-
-
-    // Update is called once per frame
     void Update()
     {
         //distance of the Anchor and rope
@@ -50,7 +47,6 @@ public class Fire : MonoBehaviour
 
     public void FireHarpoon()
     {
-        //TODO MAKE PLAYER NOT BE ABLE TO SHOOT WHEN IT GOES BACK!
         harpoon.SetVisibility(true);
         goingAway = true;
 
@@ -59,8 +55,6 @@ public class Fire : MonoBehaviour
         velocityZero = false;
         harpoonRigidBody.constraints = RigidbodyConstraints.None;
 
-        //it gets the same rotation as the main camera will probarly need to be changed when the real sprites gets implemented.  
-        harpoonObject.transform.rotation = Quaternion.LookRotation(mainCam.transform.up, mainCam.transform.forward);
         fired = true;
 
         if (harpoonObject.GetComponent<Harpoon>().collisionHIT == false)
@@ -73,6 +67,11 @@ public class Fire : MonoBehaviour
 
     public void ReturnHarpoon()
     {
+        if (PlayerSlice.SliceMode())
+        {
+            PlayerSlice.SetSliceMode(false);
+        }
+
         harpoon.SetVisibility(true);
         goingAway = false;
         harpoonRigidBody.velocity = Vector3.zero;

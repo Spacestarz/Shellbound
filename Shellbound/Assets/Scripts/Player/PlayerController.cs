@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         
-        if (!PlayerSlice.SliceMode() && Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {
             if (fire.fired)
             {
@@ -105,39 +105,30 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Fire2") && Harpoon.hasCaught)
-        {
-            PlayerSlice.SetSliceMode(true);
-            
-            horizontalInput = 0;
-            verticalInput = 0;
-        }
-        else if(Input.GetButton("Fire2") && Harpoon.hasCaught && !PlayerSlice.SliceMode())
-        {
-            PlayerSlice.SetSliceMode(true);
-
-            horizontalInput = 0;
-            verticalInput = 0;
-        }
-        else if(Input.GetButtonUp("Fire2") && Harpoon.hasCaught)
-        {
-            PlayerSlice.SetSliceMode(false);
-            fire.ReturnHarpoon();
-        }
-
-        //if (PlayerSlice.SliceMode() && Input.GetButtonDown("Fire1"))
+        //if (Input.GetButtonDown("Fire2") && Harpoon.hasCaught)
         //{
         //    PlayerSlice.SetSliceMode(true);
+            
+        //    horizontalInput = 0;
+        //    verticalInput = 0;
         //}
-        //else if (PlayerSlice.SliceMode() && Input.GetButtonUp("Fire1"))
+        //else if(Input.GetButton("Fire2") && Harpoon.hasCaught && !PlayerSlice.SliceMode())
+        //{
+        //    PlayerSlice.SetSliceMode(true);
+
+        //    horizontalInput = 0;
+        //    verticalInput = 0;
+        //}
+        //else if(Input.GetButtonUp("Fire2") && Harpoon.hasCaught)
         //{
         //    PlayerSlice.SetSliceMode(false);
+        //    fire.ReturnHarpoon();
         //}
 
-        if (PlayerSlice.SliceMode() && Input.GetButton("Fire2"))
-        {
-            PlayerSlice.SliceRayCast();
-        }
+        //if (PlayerSlice.SliceMode() && Input.GetButton("Fire2"))
+        //{
+        //    PlayerSlice.SliceRayCast();
+        //}
     }
 
     private void HandleDrag()
@@ -211,5 +202,11 @@ public class PlayerController : MonoBehaviour
     private void ResetDashCooldown()
     {
         readyToDash = true;
+    }
+
+    public void NullifyMovement()
+    {
+        horizontalInput = 0;
+        verticalInput = 0;
     }
 }

@@ -3,98 +3,64 @@ using UnityEngine;
 public class PlayerSlice : MonoBehaviour
 {
     static bool sliceMode;
-    static bool isSlicing;
-    static bool inSliceArea;
 
-    public static bool activatedThisFrame;
-    public static bool deactivatedThisFrame;
+    public static PlayerSlice instance;
+    public GameObject caughtObject;
+    public static SlicePattern currentSlicePattern;
 
-    static SliceTarget currentSliceTarget;
+    static Vector2 targetDirection;
+    static Vector2 mouseDirection;
 
-    private void Start()
+    static float currentSliceTime = 0;
+    public static float sliceTickLength = 1f/15;
+
+    static float successRequirement = 0.95f;
+
+    private void Awake()
     {
         sliceMode = false;
-    }
-
-    private void LateUpdate()
-    {
-        if (activatedThisFrame)
+        if (instance == null)
         {
-            Debug.Log("activated");
-            activatedThisFrame = false;
-        }
-        else if (deactivatedThisFrame)
-        {
-            Debug.Log("deactivated");
-            deactivatedThisFrame = false;
+            instance = this;
         }
     }
 
-    public static void SliceRayCast()
+    private void Update()
     {
-        
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Sliceable")) && hit.collider.CompareTag("SliceTarget"))
+        if (sliceMode)
         {
-            hit.collider.gameObject.GetComponent<SlicePoint>().CheckIfHittable();
-
-            if (!inSliceArea)
-            {
-                inSliceArea = true;
-            }
-        }
-        else if(inSliceArea)
-        {
-            //If the player leaves the slice area mid-slice...
-            inSliceArea = false;
-
-            if (currentSliceTarget != null)
-            {
-                currentSliceTarget.ResetSlice();
-            }
+            SliceTickTimer();
         }
     }
 
     public static void SetSliceMode(bool status)
     {
-        sliceMode = status;//!sliceMode;
-        isSlicing = false;
-        inSliceArea = false;
-
-        if (currentSliceTarget != null)
-        {
-            currentSliceTarget.ResetSlice();
-        }
-
-        ToggleCursor();
+        sliceMode = status;
 
         if (sliceMode)
         {
-            activatedThisFrame = true;
+            instance.GetComponent<PlayerController>().NullifyMovement();
+            currentSlicePattern = instance.caughtObject.GetComponentInChildren<SlicePattern>();
+            currentSlicePattern.NextSliceArrow();
         }
-        else
+        else if(currentSlicePattern != null)
         {
-            deactivatedThisFrame = true;
+            currentSlicePattern.DestroyArrow();
+            currentSlicePattern.ResetPattern();
+            ClearCaughtObject();
         }
+
+        SetCursor();
     }
+
 
     public static bool SliceMode()
     {
         return sliceMode;
     }
 
-    public static void SetIsSlicing(bool status)
-    {
-        isSlicing = status;
 
-        if (!isSlicing && currentSliceTarget)
-        {
-            currentSliceTarget.ResetSlice();
-        }
-    }
-
-    static void ToggleCursor()
+    static void SetCursor()
     {
         if (sliceMode)
         {
@@ -108,17 +74,60 @@ public class PlayerSlice : MonoBehaviour
         }
     }
 
-    public static void SetCurrentSliceTarget(SliceTarget sliceTarget)
+
+    public static void SetCaughtObject(GameObject obj)
     {
-        if (currentSliceTarget != null)
-        {
-            ClearCurrentSliceTarget();
-        }
-        currentSliceTarget = sliceTarget;
+        Debug.Log("Caught sliec");
+        instance.caughtObject = obj;
     }
 
-    public static void ClearCurrentSliceTarget()
+
+    public static void ClearCaughtObject()
     {
-        currentSliceTarget = null;
+        instance.caughtObject = null;
+        currentSlicePattern = null;
+    }
+
+
+    public static void SetTargetDirection(Vector2 dir)
+    {
+        targetDirection = dir.normalized;
+        Debug.Log("targetDir:" + targetDirection);
+    }
+
+
+    static void SliceTickTimer()
+    {
+        currentSliceTime += Time.deltaTime;
+
+        if (currentSliceTime >= sliceTickLength)
+        {
+            SliceTick();
+        }
+    }
+
+
+    static void SliceTick()
+    {
+        GetMouseDirection();
+        CompareSliceDirection();
+
+        currentSliceTime %= sliceTickLength;
+    }
+
+
+    static void GetMouseDirection()
+    {
+        mouseDirection = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")).normalized;
+    }
+
+
+    static void CompareSliceDirection()
+    {
+        if (Vector2.Dot(mouseDirection, targetDirection) >= 0.94f)
+        {
+            Debug.Log("Success!");
+            currentSlicePattern.NextSliceArrow();
+        }
     }
 }

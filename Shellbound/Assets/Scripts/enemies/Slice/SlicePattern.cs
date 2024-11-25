@@ -24,25 +24,10 @@ public class SlicePattern : MonoBehaviour
         fire = FindObjectOfType<Fire>();
     }
 
-    private void Update()
-    {
-        if (PlayerSlice.activatedThisFrame && !spawnedArrow)
-        {
-            NextSliceArrow();
-        }
-        else if (PlayerSlice.deactivatedThisFrame)
-        {
-            if (spawnedArrow)
-            {
-                DestroyArrow();
-            }
-            ResetPattern();
-        }
-    }
-
     public void DestroyArrow()
     {
         Destroy(spawnedArrow.gameObject);
+        totalSliced++;
     }
 
     public void NextSliceArrow()
@@ -68,6 +53,7 @@ public class SlicePattern : MonoBehaviour
             currentArrow = possibleArrows[i];
 
             MoveToEnd(i);
+            PlayerSlice.SetTargetDirection(currentArrow.direction);
             spawnedArrow = Instantiate(currentArrow, transform);
         }
 
@@ -88,7 +74,7 @@ public class SlicePattern : MonoBehaviour
         possibleArrows.Add(value);
     }
 
-    void ResetPattern()
+    public void ResetPattern()
     {
         totalSliced = 0;
     }

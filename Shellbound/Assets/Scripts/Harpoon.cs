@@ -31,6 +31,7 @@ public class Harpoon : MonoBehaviour
             collisionHIT = true;
 
             caughtObject = collisioncheck.gameObject;
+            PlayerSlice.SetCaughtObject(caughtObject);
             hasCaught = true;
 
             SetVisibility(false);
