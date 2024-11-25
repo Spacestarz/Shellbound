@@ -10,10 +10,15 @@ public class PlayerSlice : MonoBehaviour
     public static bool deactivatedThisFrame;
 
     static SliceTarget currentSliceTarget;
+    public static PlayerSlice instance;
 
-    private void Start()
+    private void Awake()
     {
         sliceMode = false;
+        if (instance == null)
+        {
+            instance = this;
+        }
     }
 
     private void LateUpdate()
@@ -58,7 +63,8 @@ public class PlayerSlice : MonoBehaviour
 
     public static void SetSliceMode(bool status)
     {
-        sliceMode = status;//!sliceMode;
+        instance.GetComponent<PlayerController>().NullifyMovement();
+        sliceMode = status;
         isSlicing = false;
         inSliceArea = false;
 

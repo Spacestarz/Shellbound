@@ -36,11 +36,16 @@ public class Enemi_Health : HealthSystem
     private void Update()
     {
         Distance = Vector3.Distance(monster.position, player.position);
-        if (Harponed && Distance > 3.5f)
+        if (Harponed && Distance > 5f)
         {
             transform.position = Vector3.MoveTowards(monster.position, player.position, dragspeed * Time.deltaTime);
             harpon.position = Vector3.MoveTowards(harpon.position, player.position, dragspeed * Time.deltaTime);
             monster.GetComponent<Boss1_AI>().resetpositon();
+        }
+        else if (Harponed && !PlayerSlice.SliceMode())
+        {
+            Debug.Log("Enemy Health 47");
+            PlayerSlice.SetSliceMode(true);
         }
     }
 }

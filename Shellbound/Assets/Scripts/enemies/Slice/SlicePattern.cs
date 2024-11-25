@@ -24,10 +24,15 @@ public class SlicePattern : MonoBehaviour
         fire = FindObjectOfType<Fire>();
     }
 
-    private void Update()
+    private void LateUpdate()
     {
+        if (PlayerSlice.activatedThisFrame)
+        {
+            Debug.Log("Pattern 31, spawned arrow" + spawnedArrow);
+        }
         if (PlayerSlice.activatedThisFrame && !spawnedArrow)
         {
+            Debug.Log("Pattern 39");
             NextSliceArrow();
         }
         else if (PlayerSlice.deactivatedThisFrame)
@@ -47,6 +52,7 @@ public class SlicePattern : MonoBehaviour
 
     public void NextSliceArrow()
     {
+        Debug.Log("Pattern 59");
         if (spawnedArrow)
         {
             DestroyArrow();
