@@ -8,6 +8,7 @@ public class SlicePattern : MonoBehaviour
     public int sliceAmount = 3;
 
     public List<SliceTarget> possibleArrows;
+
     SliceTarget currentArrow;
     public SliceTarget spawnedArrow;
 
@@ -17,16 +18,21 @@ public class SlicePattern : MonoBehaviour
     public AudioClip sliceStart;
     public AudioClip sliceFinish;
 
+    public SliceAnimate sliceAnimation;
+    public SliceAnimate spawnedSliceAnimation;
+
     private void Awake()
     {
+        fire = FindObjectOfType<Fire>();
         parentHealth = GetComponentInParent<Enemi_Health>();
         audioSource = GetComponentInParent<AudioSource>();
-        fire = FindObjectOfType<Fire>();
+
     }
 
     public void DestroyArrow()
     {
         Destroy(spawnedArrow.gameObject);
+
         totalSliced++;
     }
 
@@ -55,8 +61,9 @@ public class SlicePattern : MonoBehaviour
             MoveToEnd(i);
             PlayerSlice.SetTargetDirection(currentArrow.direction);
             spawnedArrow = Instantiate(currentArrow, transform);
+            
+            spawnedSliceAnimation = Instantiate(sliceAnimation, transform);
         }
-
         else
         {
             parentHealth.TakeDamage(5);
@@ -77,6 +84,13 @@ public class SlicePattern : MonoBehaviour
     public void ResetPattern()
     {
         totalSliced = 0;
+    }
+
+    public void FailPattern()
+    {
+        Destroy(spawnedSliceAnimation.gameObject);
+        fire.ReturnHarpoon();
+        ResetPattern();
     }
 
     public void PlayAudio(string audio)

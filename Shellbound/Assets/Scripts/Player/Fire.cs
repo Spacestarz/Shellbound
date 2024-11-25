@@ -21,7 +21,6 @@ public class Fire : MonoBehaviour
     //bools
     public bool fired = false;
     public bool goingAway = false;
-    bool velocityZero = false;
 
     // Start is called before the first frame update
     void Start()
@@ -52,7 +51,6 @@ public class Fire : MonoBehaviour
 
         harpoonObject.transform.position = Anchor.transform.position;
 
-        velocityZero = false;
         harpoonRigidBody.constraints = RigidbodyConstraints.None;
 
         fired = true;
@@ -75,7 +73,6 @@ public class Fire : MonoBehaviour
         harpoon.SetVisibility(true);
         goingAway = false;
         harpoonRigidBody.velocity = Vector3.zero;
-        velocityZero = true;
         harpoonObject.GetComponent<Harpoon>().collisionHIT = false;
 
         if (harpoonObject.GetComponent<Harpoon>().caughtObject != null)
@@ -101,7 +98,6 @@ public class Fire : MonoBehaviour
 
         harpoon.SetVisibility(false);
         fired = false;
-        velocityZero = false;
 
         yield break;
     }

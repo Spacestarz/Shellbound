@@ -2,19 +2,21 @@ using UnityEngine;
 
 public class SliceTarget : MonoBehaviour
 {
-    HealthSystem parentHealth;
+    Enemi_Health parentHealth;
     public SlicePattern pattern;
-
     public Vector2 direction;
+
 
     private void Awake()
     {
-        parentHealth = GetComponentInParent<HealthSystem>();
+        parentHealth = GetComponentInParent<Enemi_Health>();
         pattern = GetComponentInParent<SlicePattern>();
     }
 
     public void CompleteSlice()
     {
         parentHealth.TakeDamage(1);
+        pattern.PlayAudio("finish");
+        pattern.spawnedSliceAnimation.PlayAnimation();
     }
 }

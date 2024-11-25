@@ -26,7 +26,7 @@ public class HealthSystem : MonoBehaviour
     {
         currentHP -= damageTaken;
        
-        sorce.PlayOneShot(audio);
+        sorce.PlayOneShot(audio, 0.2f);
 
         if (gameObject.CompareTag("Player") && currentHP <= 0)
         {

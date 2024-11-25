@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerSlice : MonoBehaviour
@@ -8,16 +9,22 @@ public class PlayerSlice : MonoBehaviour
     public GameObject caughtObject;
     public static SlicePattern currentSlicePattern;
 
+    static Vector2 mouseMovement;
+
     static Vector2 targetDirection;
     static Vector2 mouseDirection;
 
-    static float currentSliceTime = 0;
+
+    static float sliceTickTime = 0;
     static float sliceTickLength = 1f/30;
+
+    static float sliceTime = 0;
+    static float sliceTimeLimit = 1f;
 
     static float successRequirement = 0.8f;
 
-    static int succeededTicks = 0;
-    public static int requiredTicks = 3;
+    static float currentMagnitude = 0;
+    static float requiredMagnitude = 5; 
 
     private void Awake()
     {
@@ -32,15 +39,15 @@ public class PlayerSlice : MonoBehaviour
     {
         if (sliceMode)
         {
-            SliceTickTimer();
-            Debug.DrawLine((Vector2)caughtObject.transform.position+new Vector2(1,1), (Vector2)caughtObject.transform.position+targetDirection + new Vector2(1, 1), Color.red);
-            Debug.DrawLine((Vector2)caughtObject.transform.position + new Vector2(1, 1), (Vector2)caughtObject.transform.position+mouseDirection + new Vector2(1, 1), Color.white);
+            Timer();
         }
     }
 
     public static void SetSliceMode(bool status)
     {
         sliceMode = status;
+        sliceTime = 0;
+        sliceTickTime = 0;
 
         if (sliceMode)
         {
@@ -52,7 +59,6 @@ public class PlayerSlice : MonoBehaviour
         {
             currentSlicePattern.DestroyArrow();
             currentSlicePattern.ResetPattern();
-            ClearCaughtObject();
         }
 
         SetCursor();
@@ -70,12 +76,11 @@ public class PlayerSlice : MonoBehaviour
         if (sliceMode)
         {
             Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = true;
+            Cursor.visible = false;
         }
         else
         {
             Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
         }
     }
 
@@ -103,19 +108,24 @@ public class PlayerSlice : MonoBehaviour
         }
         else
         {
-            successRequirement = 0.6f;
+            successRequirement = 0.5f;
         }
-        Debug.Log(successRequirement);
     }
 
 
-    static void SliceTickTimer()
+    static void Timer()
     {
-        currentSliceTime += Time.deltaTime;
+        sliceTickTime += Time.deltaTime;
+        sliceTime += Time.deltaTime;
 
-        if (currentSliceTime >= sliceTickLength)
+        if (sliceTickTime >= sliceTickLength)
         {
             SliceTick();
+        }
+
+        if (sliceTime >= sliceTimeLimit)
+        {
+            FailSlice();
         }
     }
 
@@ -125,13 +135,14 @@ public class PlayerSlice : MonoBehaviour
         GetMouseDirection();
         CompareSliceDirection();
 
-        currentSliceTime %= sliceTickLength;
+        sliceTickTime %= sliceTickLength;
     }
 
 
     static void GetMouseDirection()
     {
-        mouseDirection = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")).normalized;
+        mouseMovement = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        mouseDirection = mouseMovement.normalized;
     }
 
 
@@ -139,25 +150,32 @@ public class PlayerSlice : MonoBehaviour
     {
         if (Vector2.Dot(mouseDirection, targetDirection) >= 0.94f)
         {
-            succeededTicks++;
+            currentMagnitude += mouseMovement.magnitude;
 
-            if (succeededTicks >= requiredTicks)
+            if (currentMagnitude >= requiredMagnitude)
             {
                 CompleteSlice();
             }
         }
         else
         {
-            succeededTicks = 0;
+            currentMagnitude = 0;
         }
-
-       
     }
 
     static void CompleteSlice()
     {
         currentSlicePattern.spawnedArrow.CompleteSlice();
         currentSlicePattern.NextSliceArrow();
-        succeededTicks = 0;
+        currentMagnitude = 0;
+
+        sliceTime = 0;
+    }
+
+    static void FailSlice()
+    {
+        currentSlicePattern.FailPattern();
+        ClearCaughtObject();
+        SetSliceMode(false);
     }
 }
