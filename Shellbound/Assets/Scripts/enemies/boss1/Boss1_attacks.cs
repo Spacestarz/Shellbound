@@ -32,7 +32,7 @@ public class Boss1_attacks : base_enemi_attack
         }
         if (!still)
         {
-            transform.LookAt(target);
+            transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
         }
         dis = Vector3.Distance(transform.position, claw.transform.position);
         if (dis >= elastickrange)

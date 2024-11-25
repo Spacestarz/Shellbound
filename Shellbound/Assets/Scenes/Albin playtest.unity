@@ -1283,7 +1283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b2f8dc9852bda74aaa91398c240e7cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 3
+  MaxHP: 100000
   currentHP: 0
   Player: {fileID: 295450713}
   sorce: {fileID: 295450723}
@@ -1302,6 +1302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69267e964b734eb44b1c5ce601137562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  harpoon: {fileID: 0}
   Anchor: {fileID: 2047234786}
   harpoonObject: {fileID: 1203022920}
   mainCam: {fileID: 900746539}
@@ -1322,6 +1323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a02ba5a109ff1f348a00eed2bf6b4b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  caughtObject: {fileID: 0}
 --- !u!114 &295450717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2382,7 +2384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fd826a4314c1284f92206053a96c6a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pushForce: 100
+  pushForce: 10000
   target: {fileID: 0}
   claw: {fileID: 0}
   wave: {fileID: 0}
