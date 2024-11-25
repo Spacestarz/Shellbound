@@ -109,7 +109,7 @@ public class Boss1_attacks : base_enemi_attack
     public IEnumerator shockwave(float duration, float scale, float range)
     {
         parent.stop();
-        transform.LookAt(target);
+        transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
         still = true;
         BeVisible(wave);
         Vector3 startscale = wave.transform.localScale;
@@ -119,6 +119,7 @@ public class Boss1_attacks : base_enemi_attack
         Vector3 endlocation = new Vector3(0,-1,0);
         endlocation.z = endlocation.z + range;
         float elapsed = 0;
+        Debug.Log(endlocation);
 
         while (elapsed < duration)
         {
