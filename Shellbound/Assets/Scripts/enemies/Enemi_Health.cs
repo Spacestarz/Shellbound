@@ -44,7 +44,6 @@ public class Enemi_Health : HealthSystem
         }
         else if (Harponed && !PlayerSlice.SliceMode())
         {
-            Debug.Log("Enemy Health 47");
             PlayerSlice.SetSliceMode(true);
         }
     }

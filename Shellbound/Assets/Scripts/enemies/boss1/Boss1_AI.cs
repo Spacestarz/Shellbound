@@ -55,7 +55,7 @@ public class Boss1_AI : Base_enemy
     }
     public void resetpositon()
     {
-        Debug.Log("resetlocation");
+        //Debug.Log("resetlocation");
         agent.SetDestination(transform.position);
     }
     

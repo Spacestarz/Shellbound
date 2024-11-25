@@ -5,7 +5,7 @@ using UnityEngine;
 public class Fire : MonoBehaviour
 {
     Rigidbody harpoonRigidBody;
-    Harpoon harpoon;
+    public Harpoon harpoon;
     HarpoonLine harpoonLine;
 
     public GameObject Anchor;
