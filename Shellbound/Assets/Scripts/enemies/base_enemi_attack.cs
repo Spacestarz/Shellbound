@@ -30,7 +30,8 @@ public class base_enemi_attack : MonoBehaviour
             {
                 Debug.Log("hit");
                 ray.collider.GetComponent<HealthSystem>().TakeDamage(damage);
-                ray.collider.GetComponent<Rigidbody>().velocity = transform.forward * pushForce;
+                //ray.collider.GetComponent<Rigidbody>().velocity = transform.forward * pushForce;
+                ray.collider.GetComponent<Rigidbody>().AddForce(transform.forward * pushForce);
             }
 
         }
