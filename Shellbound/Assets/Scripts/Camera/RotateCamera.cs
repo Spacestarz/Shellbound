@@ -10,7 +10,7 @@ public class RotateCamera : MonoBehaviour
     public float xRotation;
     public float yRotation;
 
-    public Harpoon harpoonscript;
+    public GameObject Sliceboard;
 
     void Start()
     {
@@ -22,7 +22,10 @@ public class RotateCamera : MonoBehaviour
     {
         GetMouseInput();
 
-      
+      if (Harpoon.hasCaught)
+        {
+            transform.LookAt(Sliceboard.transform.position);
+        }
     }
 
     void GetMouseInput()
