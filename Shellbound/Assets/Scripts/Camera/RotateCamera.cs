@@ -10,15 +10,19 @@ public class RotateCamera : MonoBehaviour
     public float xRotation;
     public float yRotation;
 
+    public Harpoon harpoonscript;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Cursor.visible = false;  
     }
 
     void Update()
     {
         GetMouseInput();
+
+      
     }
 
     void GetMouseInput()
