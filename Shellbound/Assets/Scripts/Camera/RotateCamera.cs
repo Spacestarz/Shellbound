@@ -1,4 +1,8 @@
 using UnityEngine;
+using DG.Tweening;
+using TMPro.EditorUtilities;
+using System.Security.Cryptography;
+using System;
 
 public class RotateCamera : MonoBehaviour
 {
@@ -12,25 +16,41 @@ public class RotateCamera : MonoBehaviour
 
     public GameObject Sliceboard;
 
+    bool startedLooking;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;  
+        Cursor.visible = false;
     }
 
     void Update()
     {
-        GetMouseInput();
-
-      if (Harpoon.hasCaught)
+        if (Harpoon.hasCaught && !startedLooking)
         {
-            transform.LookAt(Sliceboard.transform.position);
+            startedLooking = true;
+            transform.DOLookAt(Sliceboard.transform.position, 0.5f).OnComplete(UpdateRotation);
         }
+        else if (!Harpoon.hasCaught)
+        {
+            GetMouseInput();
+        }
+    }
+
+    private void UpdateRotation()
+    {
+        xRotation = transform.localRotation.eulerAngles.x;
+        yRotation = transform.localRotation.eulerAngles.y;
     }
 
     void GetMouseInput()
     {
-        if (!PlayerSlice.SliceMode())
+        if (startedLooking)
+        {
+            startedLooking = false;
+        }
+
+        if (!Harpoon.hasCaught)
         {
             float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensitivityX;
             float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensitivityY;

@@ -104,31 +104,6 @@ public class PlayerController : MonoBehaviour
                 fire.FireHarpoon();
             }
         }
-
-        //if (Input.GetButtonDown("Fire2") && Harpoon.hasCaught)
-        //{
-        //    PlayerSlice.SetSliceMode(true);
-            
-        //    horizontalInput = 0;
-        //    verticalInput = 0;
-        //}
-        //else if(Input.GetButton("Fire2") && Harpoon.hasCaught && !PlayerSlice.SliceMode())
-        //{
-        //    PlayerSlice.SetSliceMode(true);
-
-        //    horizontalInput = 0;
-        //    verticalInput = 0;
-        //}
-        //else if(Input.GetButtonUp("Fire2") && Harpoon.hasCaught)
-        //{
-        //    PlayerSlice.SetSliceMode(false);
-        //    fire.ReturnHarpoon();
-        //}
-
-        //if (PlayerSlice.SliceMode() && Input.GetButton("Fire2"))
-        //{
-        //    PlayerSlice.SliceRayCast();
-        //}
     }
 
     private void HandleDrag()

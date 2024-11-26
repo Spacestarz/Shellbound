@@ -65,6 +65,11 @@ public class Fire : MonoBehaviour
 
     public void ReturnHarpoon()
     {
+        if (Harpoon.hasCaught)
+        {
+            Harpoon.hasCaught = false;
+        }
+
         if (PlayerSlice.SliceMode())
         {
             PlayerSlice.SetSliceMode(false);
@@ -79,7 +84,6 @@ public class Fire : MonoBehaviour
         {
             harpoonObject.GetComponent<Harpoon>().caughtObject.GetComponent<Enemi_Health>().EnableAI();
             harpoonObject.GetComponent<Harpoon>().caughtObject = null;
-            Harpoon.hasCaught = false;
         }
 
         StartCoroutine(nameof(MoveHarpoonBack));

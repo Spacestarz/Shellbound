@@ -8,7 +8,7 @@ public class Billboarding : MonoBehaviour
     void Update()
     {
         cameradir = Camera.main.transform.forward;
-        
+
         if (!rotateYAxis)
         {
             cameradir.y = 0; 

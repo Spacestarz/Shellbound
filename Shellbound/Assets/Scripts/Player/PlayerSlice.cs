@@ -141,7 +141,7 @@ public class PlayerSlice : MonoBehaviour
 
     static void GetMouseDirection()
     {
-        mouseMovement = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        mouseMovement = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
         mouseDirection = mouseMovement.normalized;
     }
 
