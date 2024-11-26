@@ -24,7 +24,7 @@ public class PlayerSlice : MonoBehaviour
     static float successRequirement = 0.8f;
 
     static float currentMagnitude = 0;
-    static float requiredMagnitude = 5; 
+    static float requiredMagnitude = 3; 
 
     private void Awake()
     {
@@ -104,11 +104,11 @@ public class PlayerSlice : MonoBehaviour
         
         if (targetDirection.x != 0 ^ targetDirection.y != 0)
         {
-            successRequirement = 0.8f;
+            successRequirement = 0.7f;
         }
         else
         {
-            successRequirement = 0.5f;
+            successRequirement = 0.4f;
         }
     }
 
