@@ -39,8 +39,7 @@ public class DashAttack_Boss2 : MonoBehaviour
 
     public void DashAttack()
     {
-       
-                 
+                     
         Vector3 direction = new Vector3(player.transform.position.x - transform.position.x,
           0f,
          player.transform.position.z - transform.position.z).normalized;
@@ -48,9 +47,17 @@ public class DashAttack_Boss2 : MonoBehaviour
         transform.DOMove(transform.position + direction * dashDistance, dashduration);
 
         endOfDash = transform.position + direction * dashDistance;
-        //DrawLine(transform.position, endOfDash);
-
+        DrawLine(transform.position, endOfDash);
 
         Debug.Log("Dash attack");       
-    }   
+    }
+
+    private void DrawLine(Vector3 position, Vector3 endOfDash)
+    {
+        lineRenderer.positionCount = 2;
+        lineRenderer.SetPosition(0, transform.position);
+        lineRenderer.SetPosition(1, endOfDash);
+         
+       Color color = Color.yellow;
+    }
 }

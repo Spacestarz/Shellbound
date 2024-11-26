@@ -3317,7 +3317,7 @@ MonoBehaviour:
   orientation: {fileID: 2140768821}
   xRotation: 0
   yRotation: 0
-  Sliceboard: {fileID: 0}
+  Sliceboard: {fileID: 724465975}
 --- !u!81 &1605889535
 AudioListener:
   m_ObjectHideFlags: 0
