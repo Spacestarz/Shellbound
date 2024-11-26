@@ -13,6 +13,7 @@ public class Base_enemy : MonoBehaviour
     //public float attackCooling = 5;
     public bool cooling = false;
     public bool atta = true;
+    public bool volnereble = false;
     public SpriteRenderer indicator;
 
     // Start is called before the first frame update
