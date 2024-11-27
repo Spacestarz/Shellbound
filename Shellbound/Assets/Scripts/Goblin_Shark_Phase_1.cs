@@ -9,6 +9,12 @@ public class Goblin_Shark_Phase_1 : Phase
     public override void PhaseStructure()
     {
        // Logic for phase 1
+
+
+        if(Time.deltaTime < 5)
+        {
+            
+        }
     }
 
 
