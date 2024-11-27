@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Boss1_AI : Base_enemy
 {
+    public GameObject clae;
+    public GameObject wave1;
+    public GameObject wave2;
     [Header("punch")]
     public float startpunchrange = 7;
     public float punchrange = 5;
@@ -18,6 +21,12 @@ public class Boss1_AI : Base_enemy
     public float elastickrange = 12;
     public float elastickspeed = 4;
     public float elastickreturnspeed = 10;
+    int i = 1;
+
+    private void Awake()
+    {
+
+    }
     void Update()
     {
         //kollar om ett objekt som har en layer definerad i player �r inom en svere av diametern som defineras av attackrange.
@@ -30,19 +39,43 @@ public class Boss1_AI : Base_enemy
                 StartCoroutine(Cool(punchspeed, punchrange));
             }
         }
-        else if (Range(startshockwaverange) && atta)
+        else if (Range(startelastickrange) && atta && !volnereble && phase == 2)
         {
             atta = false;
-            StartCoroutine(attack.shockwave(shockwavespeed, shockwavezise, shockwaverange));
+            if (i % 4 == 0)
+            {
+                attack.Elastick(elastickrange, elastickspeed, elastickreturnspeed);
+            }
+            else
+            {
+                StartCoroutine(attack.shockwave(shockwavespeed, shockwavezise, shockwaverange));
+
+            }
+            i++;
             resetpositon();
         }
-        else if (Range(startelastickrange) && atta)
+        else if (Range(startelastickrange) && atta && !volnereble && phase == 3)
+        {
+            atta = false;
+            if (i % 4 == 0)
+            {
+                attack.Elastick(elastickrange, elastickspeed, elastickreturnspeed);
+            }
+            else
+            {
+                StartCoroutine(attack.shockwave(shockwavespeed, shockwavezise, shockwaverange));
+                StartCoroutine(attack.shockwave(shockwavespeed, shockwavezise, shockwaverange));
+            }
+            i++;
+            resetpositon();
+        }
+        else if (Range(startelastickrange) && atta && !volnereble)
         {
             attack.Elastick(elastickrange, elastickspeed, elastickreturnspeed);
             atta = false;
             resetpositon();
         }
-        else if (atta)
+        else if (atta && !volnereble)
         {
             //seger �t agent componenten att g� mot punkten definerad i target.position
             agent.SetDestination(target.position);

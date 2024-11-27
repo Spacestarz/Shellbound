@@ -15,6 +15,7 @@ public class Base_enemy : MonoBehaviour
     public bool atta = true;
     public bool volnereble = false;
     public float volnerebleTime = 5;
+    public int phase = 1;
     public SpriteRenderer indicator;
 
     // Start is called before the first frame update

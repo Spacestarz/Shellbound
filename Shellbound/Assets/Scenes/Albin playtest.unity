@@ -2887,7 +2887,7 @@ MonoBehaviour:
   orientation: {fileID: 982985508}
   xRotation: 0
   yRotation: 0
-  Sliceboard: {fileID: 0}
+  Sliceboard: {fileID: 1610112769}
 --- !u!81 &900746543
 AudioListener:
   m_ObjectHideFlags: 0
@@ -3517,7 +3517,11 @@ MonoBehaviour:
   atta: 1
   volnereble: 0
   volnerebleTime: 5
+  phase: 1
   indicator: {fileID: 128280159}
+  clae: {fileID: 0}
+  wave1: {fileID: 0}
+  wave2: {fileID: 0}
   startpunchrange: 4
   punchrange: 4
   punchspeed: 0.5

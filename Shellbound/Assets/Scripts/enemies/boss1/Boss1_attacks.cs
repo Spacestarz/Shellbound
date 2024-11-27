@@ -14,6 +14,7 @@ public class Boss1_attacks : base_enemi_attack
     public bool still = false;
     Boss1_AI parent;
     float elastickrange = 12;
+    bool isfiered = false;
     private void Awake()
     {
         claw = transform.GetChild(0).gameObject;
@@ -109,6 +110,11 @@ public class Boss1_attacks : base_enemi_attack
     public IEnumerator shockwave(float duration, float scale, float range)
     {
         parent.stop();
+        if (isfiered)
+        {
+            yield return new WaitForSeconds(3);
+        }
+        isfiered = true;
         transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
         still = true;
         BeVisible(wave);
@@ -138,6 +144,7 @@ public class Boss1_attacks : base_enemi_attack
         BeInvisible(wave);
         wave.transform.localPosition = new Vector3(0,-1.5f,0);
         wave.transform.localScale = new Vector3(1, 0.5f, 1);
+        isfiered = false;
         parent.attacking();
     }
 
