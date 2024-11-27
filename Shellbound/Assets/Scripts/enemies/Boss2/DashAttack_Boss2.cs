@@ -38,8 +38,8 @@ public class DashAttack_Boss2 : MonoBehaviour
     }
 
     public void DashAttack()
-    {
-                     
+    {        
+        
         Vector3 direction = new Vector3(player.transform.position.x - transform.position.x,
           0f,
          player.transform.position.z - transform.position.z).normalized;
@@ -47,6 +47,7 @@ public class DashAttack_Boss2 : MonoBehaviour
         transform.DOMove(transform.position + direction * dashDistance, dashduration);
 
         endOfDash = transform.position + direction * dashDistance;
+        endOfDash = new Vector3(endOfDash.x, 0f, endOfDash.z);
         DrawLine(transform.position, endOfDash);
 
         Debug.Log("Dash attack");       
@@ -54,10 +55,14 @@ public class DashAttack_Boss2 : MonoBehaviour
 
     private void DrawLine(Vector3 position, Vector3 endOfDash)
     {
+        /*
+        make the linerenderer. 
+        make it not rotate etc. It seems to be "stuck" on the player so it follows it in rotation?
+
+        */
         lineRenderer.positionCount = 2;
-        lineRenderer.SetPosition(0, transform.position);
+        lineRenderer.SetPosition(0, new Vector3 (transform.position.x, 0f, transform.position.z));
         lineRenderer.SetPosition(1, endOfDash);
          
-       Color color = Color.yellow;
     }
 }
