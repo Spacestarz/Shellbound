@@ -14,6 +14,7 @@ public class Base_enemy : MonoBehaviour
     public bool cooling = false;
     public bool atta = true;
     public bool volnereble = false;
+    public float volnerebleTime = 5;
     public SpriteRenderer indicator;
 
     // Start is called before the first frame update
@@ -64,5 +65,11 @@ public class Base_enemy : MonoBehaviour
     public void attacking()
     {
         atta = true;
+    }
+    public IEnumerator weekTimer()
+    {
+        volnereble = true;
+        yield return new WaitForSeconds(volnerebleTime);
+        volnereble = false;
     }
 }

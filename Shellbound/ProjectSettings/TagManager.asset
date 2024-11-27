@@ -6,7 +6,7 @@ TagManager:
   tags:
   - SliceTarget
   - Enemy
-  - attack
+  - weakpoint
   layers:
   - Default
   - TransparentFX

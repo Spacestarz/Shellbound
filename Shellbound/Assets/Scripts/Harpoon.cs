@@ -25,7 +25,7 @@ public class Harpoon : MonoBehaviour
     public void OnTriggerEnter(Collider collisioncheck)
     {
 
-        if (collisioncheck.CompareTag("Enemy") && fire.goingAway && !collisioncheck.GetComponent<Base_enemy>().atta)
+        if (collisioncheck.CompareTag("Enemy") && fire.goingAway && collisioncheck.GetComponent<Base_enemy>().volnereble)
         {
             fire.goingAway = false;
             collisionHIT = true;
@@ -50,9 +50,9 @@ public class Harpoon : MonoBehaviour
             // Optionally, stop further rope movement or implement other logic
             Debug.Log("Rope stuck at: " + closestPoint);
         }
-        else if (collisioncheck.GetComponent("attack") && fire.goingAway)
+        else if (collisioncheck.CompareTag("weakpoint") && fire.goingAway)
         {
-
+            StartCoroutine(collisioncheck.transform.parent.parent.GetComponent<Base_enemy>().weekTimer());
         }
         else if (fire.goingAway)
         {

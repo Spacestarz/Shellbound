@@ -2887,6 +2887,7 @@ MonoBehaviour:
   orientation: {fileID: 982985508}
   xRotation: 0
   yRotation: 0
+  Sliceboard: {fileID: 0}
 --- !u!81 &900746543
 AudioListener:
   m_ObjectHideFlags: 0
@@ -3515,6 +3516,7 @@ MonoBehaviour:
   cooling: 0
   atta: 1
   volnereble: 0
+  volnerebleTime: 5
   indicator: {fileID: 128280159}
   startpunchrange: 4
   punchrange: 4
@@ -5600,7 +5602,7 @@ GameObject:
   - component: {fileID: 1617620548}
   m_Layer: 12
   m_Name: Claw
-  m_TagString: attack
+  m_TagString: weakpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
