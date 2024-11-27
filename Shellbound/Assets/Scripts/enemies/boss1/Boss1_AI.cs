@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Boss1_AI : Base_enemy
 {
+    //statemachine
     public GameObject clae;
     public GameObject wave1;
     public GameObject wave2;

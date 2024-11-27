@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class base_enemi_attack : MonoBehaviour
+public abstract class base_enemi_attack : MonoBehaviour
 {
     RaycastHit ray;
     int damage = 1;
@@ -11,6 +11,7 @@ public class base_enemi_attack : MonoBehaviour
     public Transform target;
     NavMeshAgent agent;
 
+    public abstract void phase();
     // Start is called before the first frame update
     public void Start()
     {
