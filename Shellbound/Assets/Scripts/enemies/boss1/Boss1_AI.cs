@@ -7,6 +7,7 @@ public class Boss1_AI : Base_enemy
     public GameObject clae;
     public GameObject wave1;
     public GameObject wave2;
+    public HealthSystem health;
     [Header("punch")]
     public float startpunchrange = 7;
     public float punchrange = 5;
@@ -83,6 +84,10 @@ public class Boss1_AI : Base_enemy
         else
         {
             resetpositon();
+        }
+        if (health.currentHP < 20)
+        {
+            phase = 2;
         }
 
     }
