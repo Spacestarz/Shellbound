@@ -7,6 +7,7 @@ TagManager:
   - SliceTarget
   - Enemy
   - weakpoint
+  - Harpoon
   layers:
   - Default
   - TransparentFX
