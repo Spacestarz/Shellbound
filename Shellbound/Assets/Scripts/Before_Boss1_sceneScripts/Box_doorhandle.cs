@@ -12,16 +12,14 @@ public class Box_doorhandle : MonoBehaviour
     private Vector3 endpos;
     private float pingPongResult;
 
-
     private bool stopPingPong = false;
 
     // Start is called before the first frame update
     void Start()
     {
         startpos = transform.position;
-        endpos = startpos + new Vector3 (0.5f, 0, 0);
-                  
-        Movement();       
+        //endpos = startpos + new Vector3 (0.5f, 0, 0);
+                              
     }
 
     // Update is called once per frame
@@ -29,15 +27,21 @@ public class Box_doorhandle : MonoBehaviour
     {
         //maybe do transform go there and then go there instead of dotween
         //kolla på mathfpingpong
+
+        if (stopPingPong == false)
+        {
+            Movement();
+        }
+        else
+        {
+            transform.position = startpos;
+        }
     }
 
     private void Movement()
     {
-        if (stopPingPong == false)
-        {
-            // pingPongResult = Mathf.PingPong(Time.time,1);
-            transform.position = new Vector3(startpos.x + Mathf.PingPong(Time.time, 1), transform.position.y, transform.position.z);
-        }
+        pingPongResult = Mathf.PingPong(Time.time,1);
+        transform.position = new Vector3(startpos.x , startpos.y, startpos.z + pingPongResult);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -46,10 +50,11 @@ public class Box_doorhandle : MonoBehaviour
         {
             stopPingPong = true;
             Debug.Log("Auch said the glove");
+            
 
-            transform.DOMove(startpos, 1f);
+            //transform.DOMove(startpos, 1f);
 
-            Debug.Log("IM HOME NOW YOU BAD");
+           // Debug.Log("IM HOME NOW YOU BAD");
         }       
     }
 }
