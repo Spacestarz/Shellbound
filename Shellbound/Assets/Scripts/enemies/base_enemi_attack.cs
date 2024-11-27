@@ -3,39 +3,36 @@ using UnityEngine.AI;
 
 public abstract class base_enemi_attack : MonoBehaviour
 {
-    RaycastHit ray;
-    int damage = 1;
-    bool ready = false;
-    //public float range = 5;
-    public float pushForce = 100;
-    public Transform target;
-    NavMeshAgent agent;
-
     public abstract void phase();
-    // Start is called before the first frame update
-    public void Start()
+
+    public int test = 0;
+    public Base_enemy enemy;
+    public Boss1_attacks attak;
+    NavMeshAgent agent;
+    public int i = 1;
+    [Header("punch")]
+    public float startpunchrange = 7;
+    public float punchrange = 5;
+    public float punchspeed = 4;
+    [Header("shockwave")]
+    public float startshockwaverange = 8;
+    public float shockwaverange = 15;
+    public float shockwavespeed = 3;
+    public float shockwavezise = 3;
+    [Header("elastick")]
+    public float startelastickrange = 12;
+    public float elastickrange = 12;
+    public float elastickspeed = 4;
+    public float elastickreturnspeed = 10;
+    private void Start()
     {
-        target = GameObject.Find("Player").transform;
-        agent = GetComponent<NavMeshAgent>();
+        Debug.Log("test");
+        enemy = GetComponentInParent<Base_enemy>();
+        attak = GetComponentInParent<Boss1_attacks>();
+        agent = GetComponentInParent<NavMeshAgent>();
     }
-
-    // Update is called once per frame
-    
-    public void Melee(float range)
+    public void resetpositon()
     {
-        if(Physics.SphereCast(gameObject.transform.position, 1, transform.forward, out ray, range))
-        {
-            
-            Debug.DrawRay(gameObject.transform.position, gameObject.transform.forward * 5, Color.red, 5);
-            if (ray.collider.gameObject.tag == "Player")
-            {
-                Debug.Log("hit");
-                ray.collider.GetComponent<HealthSystem>().TakeDamage(damage);
-                //ray.collider.GetComponent<Rigidbody>().velocity = transform.forward * pushForce;
-                ray.collider.GetComponent<Rigidbody>().AddForce(transform.forward * pushForce);
-            }
-
-        }
+        agent.SetDestination(transform.position);
     }
-
 }

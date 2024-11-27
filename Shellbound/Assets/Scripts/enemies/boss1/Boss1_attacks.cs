@@ -1,9 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class Boss1_attacks : base_enemi_attack
+public class Boss1_attacks : MonoBehaviour
 {
+    RaycastHit ray;
+    int damage = 1;
+    bool ready = false;
+    //public float range = 5;
+    public float pushForce = 100;
+    public Transform target;
+    NavMeshAgent agent;
+
     Rigidbody clawrig;
     public GameObject claw;
     public GameObject wave;
@@ -12,14 +21,16 @@ public class Boss1_attacks : base_enemi_attack
     //public float firespeed = 4;
     float returnspeed = 10;
     public bool still = false;
-    Boss1_AI parent;
+    Base_enemy parent;
     float elastickrange = 12;
     bool isfiered = false;
     private void Awake()
     {
+        target = GameObject.Find("Player").transform;
+        agent = GetComponent<NavMeshAgent>();
         claw = transform.GetChild(0).gameObject;
         wave = transform.GetChild(1).gameObject;
-        parent = transform.parent.GetComponent<Boss1_AI>();
+        parent = transform.parent.GetComponent<Base_enemy>();
         clawrig = claw.GetComponent<Rigidbody>();
         clawrig.constraints = RigidbodyConstraints.FreezeAll;
         clawrig.useGravity = false;
@@ -146,6 +157,22 @@ public class Boss1_attacks : base_enemi_attack
         wave.transform.localScale = new Vector3(1, 0.5f, 1);
         isfiered = false;
         parent.attacking();
+    }
+    public void Melee(float range)
+    {
+        if (Physics.SphereCast(gameObject.transform.position, 1, transform.forward, out ray, range))
+        {
+
+            Debug.DrawRay(gameObject.transform.position, gameObject.transform.forward * 5, Color.red, 5);
+            if (ray.collider.gameObject.tag == "Player")
+            {
+                Debug.Log("hit");
+                ray.collider.GetComponent<HealthSystem>().TakeDamage(damage);
+                //ray.collider.GetComponent<Rigidbody>().velocity = transform.forward * pushForce;
+                ray.collider.GetComponent<Rigidbody>().AddForce(transform.forward * pushForce);
+            }
+
+        }
     }
 
 }

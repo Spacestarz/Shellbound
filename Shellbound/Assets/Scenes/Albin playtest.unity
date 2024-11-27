@@ -122,6 +122,65 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &5805761
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5805763}
+  - component: {fileID: 5805762}
+  m_Layer: 0
+  m_Name: Phase1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &5805762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48064f2762f6f914783ca62e24458145, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  test: 0
+  enemy: {fileID: 1057958395}
+  attak: {fileID: 653001505}
+  i: 1
+  startpunchrange: 7
+  punchrange: 5
+  punchspeed: 4
+  startshockwaverange: 8
+  shockwaverange: 15
+  shockwavespeed: 3
+  shockwavezise: 3
+  startelastickrange: 12
+  elastickrange: 12
+  elastickspeed: 4
+  elastickreturnspeed: 10
+--- !u!4 &5805763
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805761}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7.754639, y: 9.350265, z: 28.199186}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1057958393}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &57916966
 GameObject:
   m_ObjectHideFlags: 0
@@ -3493,6 +3552,7 @@ GameObject:
   - component: {fileID: 1057958393}
   - component: {fileID: 1057958392}
   - component: {fileID: 1057958391}
+  - component: {fileID: 1057958395}
   - component: {fileID: 1057958390}
   - component: {fileID: 1057958389}
   - component: {fileID: 1057958388}
@@ -3601,29 +3661,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 302fb17a818570149a786a40836a22a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  agent: {fileID: 0}
-  attack: {fileID: 0}
-  cooling: 0
-  atta: 1
-  volnereble: 0
-  volnerebleTime: 5
-  phase: 1
-  indicator: {fileID: 128280159}
-  clae: {fileID: 0}
-  wave1: {fileID: 0}
-  wave2: {fileID: 0}
-  startpunchrange: 4
-  punchrange: 4
-  punchspeed: 0.5
-  startshockwaverange: 20
-  shockwaverange: 32
-  shockwavespeed: 2
-  shockwavezise: 10
-  startelastickrange: 28
-  elastickrange: 24
-  elastickspeed: 20
-  elastickreturnspeed: 40
+  phases:
+  - {fileID: 5805762}
+  - {fileID: 1222518109}
+  - {fileID: 1090784213}
+  phase: {fileID: 0}
 --- !u!195 &1057958391
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3671,6 +3713,9 @@ Transform:
   - {fileID: 201542234}
   - {fileID: 992783233}
   - {fileID: 613349513}
+  - {fileID: 5805763}
+  - {fileID: 1222518110}
+  - {fileID: 1090784214}
   - {fileID: 653001504}
   - {fileID: 2002692038}
   - {fileID: 1610112770}
@@ -3772,6 +3817,86 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1057958395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057958385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd2c6223a70199449af063f722675e62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  agent: {fileID: 0}
+  attack: {fileID: 0}
+  cooling: 0
+  atta: 1
+  volnereble: 0
+  volnerebleTime: 5
+  phase: 1
+  indicator: {fileID: 128280159}
+--- !u!1 &1090784212
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1090784214}
+  - component: {fileID: 1090784213}
+  m_Layer: 0
+  m_Name: Phase3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1090784213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1090784212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4924f10494617849972c5224cc62727, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  test: 0
+  enemy: {fileID: 1057958395}
+  attak: {fileID: 653001505}
+  i: 1
+  startpunchrange: 7
+  punchrange: 5
+  punchspeed: 4
+  startshockwaverange: 8
+  shockwaverange: 15
+  shockwavespeed: 3
+  shockwavezise: 3
+  startelastickrange: 12
+  elastickrange: 12
+  elastickspeed: 4
+  elastickreturnspeed: 10
+--- !u!4 &1090784214
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1090784212}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7.754639, y: 9.350265, z: 28.199186}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1057958393}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1203022920
 GameObject:
   m_ObjectHideFlags: 0
@@ -4138,6 +4263,65 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchor: {fileID: 2047234786}
+--- !u!1 &1222518108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1222518110}
+  - component: {fileID: 1222518109}
+  m_Layer: 0
+  m_Name: Phase2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1222518109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222518108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f75c98798e2c046b0b12120965b9b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  test: 0
+  enemy: {fileID: 1057958395}
+  attak: {fileID: 653001505}
+  i: 1
+  startpunchrange: 7
+  punchrange: 5
+  punchspeed: 4
+  startshockwaverange: 8
+  shockwaverange: 15
+  shockwavespeed: 3
+  shockwavezise: 3
+  startelastickrange: 12
+  elastickrange: 12
+  elastickspeed: 4
+  elastickreturnspeed: 10
+--- !u!4 &1222518110
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222518108}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7.754639, y: 9.350265, z: 28.199186}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1057958393}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1233248277
 GameObject:
   m_ObjectHideFlags: 0
