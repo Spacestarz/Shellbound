@@ -65,21 +65,28 @@ public class Harpoon : MonoBehaviour
         //Every tag that bounces the harpoon back, put into this "or"
         if (!collisionCheck.CompareTag("weakpoint"))
         {
-            fire.goingAway = false;
-            collisionHIT = true;
+            if (collisionCheck.CompareTag("Enemy") && !collisionCheck.GetComponent<Base_enemy>().volnereble)
+            {
+                fire.ReturnHarpoon();
+            }
+            else
+            {
+                fire.goingAway = false;
+                collisionHIT = true;
 
-            caughtObject = collisionCheck.gameObject;
-            PlayerSlice.SetCaughtObject(caughtObject);
-            hasCaught = true;
-            SetVisibility(false);
+                caughtObject = collisionCheck.gameObject;
+                PlayerSlice.SetCaughtObject(caughtObject);
+                hasCaught = true;
+                SetVisibility(false);
             
-            // Find the closest point on the collided object's surface to the rope
-            Vector3 closestPoint = collisionCheck.ClosestPoint(transform.position);
+                // Find the closest point on the collided object's surface to the rope
+                Vector3 closestPoint = collisionCheck.ClosestPoint(transform.position);
 
-            // Move the rope to this closest point
-            //make a lerp to make it more smooth?
-            transform.position = closestPoint;
-            rb.constraints = RigidbodyConstraints.FreezeAll;
+                // Move the rope to this closest point
+                //make a lerp to make it more smooth?
+                transform.position = closestPoint;
+                rb.constraints = RigidbodyConstraints.FreezeAll;
+            }
         }
         if (collisionCheck.CompareTag("Enemy") && collisionCheck.GetComponent<Base_enemy>().volnereble)
         {

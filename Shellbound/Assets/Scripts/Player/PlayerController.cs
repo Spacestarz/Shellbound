@@ -92,8 +92,8 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-        
-        if (Input.GetButtonDown("Fire1"))
+
+        if (Input.GetButtonDown("Fire1") && !PlayerSlice.SliceMode())
         {
             if (fire.fired)
             {
