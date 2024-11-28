@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -5,10 +6,9 @@ public abstract class base_enemi_attack : MonoBehaviour
 {
     public abstract void phase();
 
-    public int test = 0;
     public Base_enemy enemy;
-    public Boss1_attacks attak;
-    NavMeshAgent agent;
+    public Boss1_attacks attack;
+    public NavMeshAgent agent;
     public int i = 1;
     [Header("punch")]
     public float startpunchrange = 7;
@@ -26,13 +26,20 @@ public abstract class base_enemi_attack : MonoBehaviour
     public float elastickreturnspeed = 10;
     private void Start()
     {
-        Debug.Log("test");
         enemy = GetComponentInParent<Base_enemy>();
-        attak = GetComponentInParent<Boss1_attacks>();
+        //attak = GetComponentInParent<Boss1_attacks>();
         agent = GetComponentInParent<NavMeshAgent>();
     }
     public void resetpositon()
     {
         agent.SetDestination(transform.position);
+    }
+ 
+    public IEnumerator cooldown(float t)
+    {
+        yield return new WaitForSeconds(t);
+        enemy.atta = true;
+        attack.parent.start();
+        attack.still = false;
     }
 }

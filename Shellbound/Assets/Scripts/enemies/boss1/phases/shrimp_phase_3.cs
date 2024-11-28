@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class shrimp_phase_3 : base_enemi_attack
 {
+    public GameObject wave1;
+    public GameObject wave2;
     public override void phase()
     {
         if (enemy.Range(startpunchrange))
@@ -20,12 +22,13 @@ public class shrimp_phase_3 : base_enemi_attack
             enemy.atta = false;
             if (i % 4 == 0)
             {
-                enemy.attack.Elastick(elastickrange, elastickspeed, elastickreturnspeed);
+                attack.Elastick(elastickrange, elastickspeed, elastickreturnspeed);
             }
             else
             {
-                StartCoroutine(enemy.attack.shockwave(shockwavespeed, shockwavezise, shockwaverange));
-                StartCoroutine(enemy.attack.shockwave(shockwavespeed, shockwavezise, shockwaverange));
+                //StartCoroutine(attack.shockwave(shockwavespeed, shockwavezise, shockwaverange, wave1));
+                //StartCoroutine(attack.shockwave(shockwavespeed, shockwavezise, shockwaverange, wave2));
+                StartCoroutine(cooldown(shockwavespeed));
             }
             i++;
             resetpositon();

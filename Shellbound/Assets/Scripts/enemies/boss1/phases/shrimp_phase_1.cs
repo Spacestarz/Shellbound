@@ -17,7 +17,7 @@ public class shrimp_phase_1 : base_enemi_attack
         }
         else if (enemy.Range(startelastickrange) && enemy.atta && !enemy.volnereble)
         {
-            enemy.attack.Elastick(elastickrange, elastickspeed, elastickreturnspeed);
+            attack.Elastick(elastickrange, elastickspeed, elastickreturnspeed);
             enemy.atta = false;
             resetpositon();
         }
@@ -29,6 +29,5 @@ public class shrimp_phase_1 : base_enemi_attack
         {
             resetpositon();
         }
-        test = 2;
     }
 }

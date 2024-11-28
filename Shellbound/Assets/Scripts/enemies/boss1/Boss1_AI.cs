@@ -17,13 +17,14 @@ public class Boss1_AI : MonoBehaviour
     private void Update()
     {
         phase.phase();
-        if (health.currentHP < 30)
-        {
-            phase = phases[1];
-        }
-        else if (health.currentHP < 10)
+        if (health.currentHP < 10)
         {
             phase = phases[2];
+        }
+        else if (health.currentHP < 30)
+        {
+            Debug.Log("les then 10");
+            phase = phases[1];
         }
     }
 
