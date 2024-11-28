@@ -49,7 +49,7 @@ public class Boss1_attacks : MonoBehaviour
         dis = Vector3.Distance(transform.position, claw.transform.position);
         if (dis >= elastickrange)
         {
-            Debug.Log(dis);
+            //Debug.Log(dis);
             velo = true;
         }
         if (velo == true)

@@ -46,7 +46,7 @@ public class Base_enemy : MonoBehaviour
 
     public IEnumerator Cool(float attackCooling, float attackRange)
     {
-        Debug.Log("run");
+        //Debug.Log("run");
         cooling = true;
         yield return new WaitForSeconds(attackCooling);
         if (Range(attackRange) && this.enabled == true)
