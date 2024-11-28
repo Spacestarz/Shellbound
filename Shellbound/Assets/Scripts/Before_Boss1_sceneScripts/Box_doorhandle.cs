@@ -1,25 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+
 using DG.Tweening;
 using System;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
+using UnityEngine;
+
 
 public class Box_doorhandle : MonoBehaviour
 {
     private Vector3 startpos;
     private Vector3 endpos;
     private float pingPongResult;
+    private float duration = 1f;
 
-    private bool stopPingPong = false;
+    public bool stopPingPong = false;
+    public bool gloveHome = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        startpos = transform.position;
-        //endpos = startpos + new Vector3 (0.5f, 0, 0);
-                              
+        startpos = transform.position;                             
     }
 
     // Update is called once per frame
@@ -34,8 +32,18 @@ public class Box_doorhandle : MonoBehaviour
         }
         else
         {
-            transform.position = startpos;
+            //make a do move 
+            GetComponent<Collider>().enabled = false;
+            transform.DOMove(startpos, duration).OnComplete(kill);
         }
+    }
+
+    private void kill()
+    {
+        gloveHome = true;
+        Destroy(gameObject);
+        
+       
     }
 
     private void Movement()
@@ -50,11 +58,8 @@ public class Box_doorhandle : MonoBehaviour
         {
             stopPingPong = true;
             Debug.Log("Auch said the glove");
-            
 
-            //transform.DOMove(startpos, 1f);
-
-           // Debug.Log("IM HOME NOW YOU BAD");
-        }       
+        }      
+        
     }
 }
