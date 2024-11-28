@@ -22,41 +22,76 @@ public class Harpoon : MonoBehaviour
     }
 
 
-    public void OnTriggerEnter(Collider collisioncheck)
+    public void OnTriggerEnter(Collider collisionCheck)
     {
+        if (fire.goingAway && collisionCheck.CompareTag("Enemy") || collisionCheck.CompareTag("weakpoint"))
+        {
+            HarpoonHit(collisionCheck);
+            //fire.goingAway = false;
+            //collisionHIT = true;
 
-        if (collisioncheck.CompareTag("Enemy") && fire.goingAway && collisioncheck.GetComponent<Base_enemy>().volnereble)
+            //caughtObject = collisioncheck.gameObject;
+            //PlayerSlice.SetCaughtObject(caughtObject);
+            //hasCaught = true;
+
+            //SetVisibility(false);
+            //caughtObject.GetComponent<Enemi_Health>().DisableAI();
+
+            //// Find the closest point on the collided object's surface to the rope
+            //Vector3 closestPoint = collisioncheck.ClosestPoint(transform.position);
+
+            //// Move the rope to this closest point
+            ////make a lerp to make it more smooth?
+            //transform.position = closestPoint;
+            //rb.constraints = RigidbodyConstraints.FreezeAll;
+
+            //// Optionally, stop further rope movement or implement other logic
+            //Debug.Log("Rope stuck at: " + closestPoint);
+        }
+        //else if (collisionCheck.CompareTag("weakpoint") && fire.goingAway)
+        //{
+        //    //StartCoroutine(collisionCheck.transform.parent.parent.GetComponent<Base_enemy>().weekTimer());
+        //    //fire.ReturnHarpoon();
+        //}
+        else if (fire.goingAway)
+        {
+            fire.ReturnHarpoon();
+        }
+    }
+
+
+    void HarpoonHit(Collider collisionCheck)
+    {
+        //Every tag that bounces the harpoon back, put into this "or"
+        if (!collisionCheck.CompareTag("weakpoint"))
         {
             fire.goingAway = false;
             collisionHIT = true;
 
-            caughtObject = collisioncheck.gameObject;
+            caughtObject = collisionCheck.gameObject;
             PlayerSlice.SetCaughtObject(caughtObject);
             hasCaught = true;
-
             SetVisibility(false);
-            caughtObject.GetComponent<Enemi_Health>().DisableAI();
-
+            
             // Find the closest point on the collided object's surface to the rope
-            Vector3 closestPoint = collisioncheck.ClosestPoint(transform.position);
-
-            // Log the closest point for debugging
+            Vector3 closestPoint = collisionCheck.ClosestPoint(transform.position);
 
             // Move the rope to this closest point
             //make a lerp to make it more smooth?
             transform.position = closestPoint;
             rb.constraints = RigidbodyConstraints.FreezeAll;
+        }
+        else if (collisionCheck.CompareTag("Enemy") && collisionCheck.GetComponent<Base_enemy>().volnereble)
+        {
+            caughtObject.GetComponent<Enemi_Health>().DisableAI();
+        }
+        else if (collisionCheck.CompareTag(//Sams tag))
+        {
 
-            // Optionally, stop further rope movement or implement other logic
-            Debug.Log("Rope stuck at: " + closestPoint);
         }
-        else if (collisioncheck.CompareTag("weakpoint") && fire.goingAway)
+        else if(collisionCheck.CompareTag("weakpoint"))
         {
-            StartCoroutine(collisioncheck.transform.parent.parent.GetComponent<Base_enemy>().weekTimer());
-            fire.ReturnHarpoon();
-        }
-        else if (fire.goingAway)
-        {
+            StartCoroutine(collisionCheck.transform.parent.parent.GetComponent<Base_enemy>().weekTimer());
             fire.ReturnHarpoon();
         }
     }
