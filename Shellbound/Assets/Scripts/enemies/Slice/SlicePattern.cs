@@ -69,7 +69,8 @@ public class SlicePattern : MonoBehaviour
             parentHealth.TakeDamage(5);
             fire.ReturnHarpoon();
             PlayerSlice.SetSliceMode(false);
-
+            StartCoroutine(RotateCamera.SetCameraLock(false));
+            
             ResetPattern();
         }
     }
@@ -91,6 +92,7 @@ public class SlicePattern : MonoBehaviour
         Destroy(spawnedSliceAnimation.gameObject);
         fire.ReturnHarpoon();
         ResetPattern();
+        RotateCamera.isLocked = false;
     }
 
     public void PlayAudio(string audio)

@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerSlice : MonoBehaviour
@@ -54,8 +53,10 @@ public class PlayerSlice : MonoBehaviour
             instance.GetComponent<PlayerController>().NullifyMovement();
             currentSlicePattern = instance.caughtObject.GetComponentInChildren<SlicePattern>();
             currentSlicePattern.NextSliceArrow();
+
+            RotateCamera.isLocked = true;
         }
-        else if(currentSlicePattern != null)
+        else if (currentSlicePattern != null)
         {
             currentSlicePattern.DestroyArrow();
             currentSlicePattern.ResetPattern();

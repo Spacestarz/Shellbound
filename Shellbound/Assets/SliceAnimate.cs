@@ -20,7 +20,6 @@ public class SliceAnimate : MonoBehaviour
 
     public void PlayAnimation()
     {
-        Debug.Log("Sweehs");
         spriteRenderer.enabled = true;
         anim.SetTrigger("Slice Finished");
         StartCoroutine(DestroyAfterWait());

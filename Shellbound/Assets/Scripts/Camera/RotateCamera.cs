@@ -1,11 +1,11 @@
 using UnityEngine;
 using DG.Tweening;
-using TMPro.EditorUtilities;
-using System.Security.Cryptography;
-using System;
+using System.Collections;
 
 public class RotateCamera : MonoBehaviour
 {
+    public static bool isLocked;
+
     public float sensitivityX;
     public float sensitivityY;
 
@@ -50,7 +50,7 @@ public class RotateCamera : MonoBehaviour
             startedLooking = false;
         }
 
-        if (!Harpoon.hasCaught)
+        if (!Harpoon.hasCaught && !isLocked)
         {
             float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensitivityX;
             float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensitivityY;
@@ -64,5 +64,11 @@ public class RotateCamera : MonoBehaviour
             transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
             orientation.rotation = Quaternion.Euler(0, yRotation, 0);
         }
+    }
+
+    public static IEnumerator SetCameraLock(bool locked)
+    {
+        yield return new WaitForSecondsRealtime(0.2f);
+        isLocked = locked;
     }
 }

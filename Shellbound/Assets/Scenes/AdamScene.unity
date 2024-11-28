@@ -3488,7 +3488,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &1057958386
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3590,7 +3590,13 @@ MonoBehaviour:
   cooling: 0
   atta: 1
   volnereble: 0
+  volnerebleTime: 5
+  phase: 1
   indicator: {fileID: 128280159}
+  clae: {fileID: 0}
+  wave1: {fileID: 0}
+  wave2: {fileID: 0}
+  health: {fileID: 0}
   startpunchrange: 7
   punchrange: 5
   punchspeed: 4
@@ -5496,7 +5502,7 @@ GameObject:
   - component: {fileID: 1617620548}
   m_Layer: 12
   m_Name: Claw
-  m_TagString: Untagged
+  m_TagString: weakpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
