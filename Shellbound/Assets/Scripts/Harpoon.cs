@@ -101,6 +101,7 @@ public class Harpoon : MonoBehaviour
 
         else if(collisionCheck.CompareTag("weakpoint") && fire.goingAway)
         {
+            //Debug.Log("hit");
             StartCoroutine(collisionCheck.transform.parent.parent.GetComponent<Base_enemy>().weekTimer());
             fire.ReturnHarpoon();
         }

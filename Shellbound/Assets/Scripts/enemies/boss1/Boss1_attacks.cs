@@ -162,7 +162,7 @@ public class Boss1_attacks : MonoBehaviour
         transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
         Vector3 lokation = transform.position;
         lokation.y = lokation.y - 1.5f;
-        Debug.Log(wave.transform.rotation);
+        //Debug.Log(wave.transform.rotation);
         StartCoroutine(Instantiate(wave,lokation, Quaternion.Euler(new Vector3(transform.rotation.x,transform.rotation.y,90)), transform).GetComponent<Wave>().shockwave(duration, scale, range, target));
         
     }

@@ -21,7 +21,7 @@ public class Wave : MonoBehaviour
         Vector3 endlocation = new Vector3(0, -1.5f, 0);
         endlocation.z = endlocation.z + range;
         float elapsed = 0;
-        Debug.Log(endlocation);
+        //Debug.Log(endlocation);
 
         while (elapsed < duration)
         {
