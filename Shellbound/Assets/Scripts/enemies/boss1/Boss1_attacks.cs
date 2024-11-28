@@ -40,7 +40,7 @@ public class Boss1_attacks : MonoBehaviour
         if (Input.GetKey(KeyCode.Q))
         {
             //Melee();
-            //StartCoroutine(shockwave(3, 3, 3));
+            shockwave(2, 10, 32);
         }
         if (!still)
         {
@@ -159,6 +159,7 @@ public class Boss1_attacks : MonoBehaviour
     }*/
     public void shockwave(float duration, float scale, float range)
     {
+        transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
         Vector3 lokation = transform.position;
         lokation.y = lokation.y - 1.5f;
         Debug.Log(wave.transform.rotation);

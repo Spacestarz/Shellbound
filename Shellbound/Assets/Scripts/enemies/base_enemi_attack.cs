@@ -37,6 +37,7 @@ public abstract class base_enemi_attack : MonoBehaviour
  
     public IEnumerator cooldown(float t)
     {
+        
         yield return new WaitForSeconds(t);
         enemy.atta = true;
         attack.parent.start();

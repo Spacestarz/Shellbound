@@ -26,9 +26,9 @@ public class shrimp_phase_3 : base_enemi_attack
             }
             else
             {
-                //StartCoroutine(attack.shockwave(shockwavespeed, shockwavezise, shockwaverange, wave1));
-                //StartCoroutine(attack.shockwave(shockwavespeed, shockwavezise, shockwaverange, wave2));
-                StartCoroutine(cooldown(shockwavespeed));
+                attack.parent.stop();
+                attack.still = true;
+                StartCoroutine(dublewave());
             }
             i++;
             resetpositon();
@@ -40,6 +40,13 @@ public class shrimp_phase_3 : base_enemi_attack
         else
         {
             resetpositon();
+        }
+        IEnumerator dublewave()
+        {
+            attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
+            yield return new WaitForSeconds(1);
+            attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
+            StartCoroutine(cooldown(shockwavespeed));
         }
     }
 
