@@ -81,7 +81,7 @@ public class Harpoon : MonoBehaviour
             transform.position = closestPoint;
             rb.constraints = RigidbodyConstraints.FreezeAll;
         }
-        else if (collisionCheck.CompareTag("Enemy") && collisionCheck.GetComponent<Base_enemy>().volnereble)
+        if (collisionCheck.CompareTag("Enemy") && collisionCheck.GetComponent<Base_enemy>().volnereble)
         {
             caughtObject.GetComponent<Enemi_Health>().DisableAI();
         }
