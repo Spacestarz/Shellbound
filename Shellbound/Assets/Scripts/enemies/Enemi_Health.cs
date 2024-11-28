@@ -40,7 +40,7 @@ public class Enemi_Health : HealthSystem
         {
             transform.position = Vector3.MoveTowards(monster.position, player.position, dragspeed * Time.deltaTime);
             harpon.position = Vector3.MoveTowards(harpon.position, player.position, dragspeed * Time.deltaTime);
-            monster.GetComponent<Boss1_AI>().resetpositon();
+            monster.GetComponent<Boss1_AI>().phase.resetpositon();
         }
         else if (Harponed && !PlayerSlice.SliceMode())
         {

@@ -1,25 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class Boss1_attacks : base_enemi_attack
+public class Boss1_attacks : MonoBehaviour
 {
+    RaycastHit ray;
+    int damage = 1;
+    bool ready = false;
+    //public float range = 5;
+    public float pushForce = 100;
+    public Transform target;
+    NavMeshAgent agent;
+    public GameObject wave;
     Rigidbody clawrig;
     public GameObject claw;
-    public GameObject wave;
+    //public GameObject wave;
     float dis;
     public bool velo = false;
     //public float firespeed = 4;
     float returnspeed = 10;
     public bool still = false;
-    Boss1_AI parent;
+    public Base_enemy parent;
     float elastickrange = 12;
     bool isfiered = false;
     private void Awake()
     {
+        target = GameObject.Find("Player").transform;
+        agent = GetComponent<NavMeshAgent>();
         claw = transform.GetChild(0).gameObject;
-        wave = transform.GetChild(1).gameObject;
-        parent = transform.parent.GetComponent<Boss1_AI>();
+        //wave = transform.GetChild(1).gameObject;
+        parent = transform.parent.GetComponent<Base_enemy>();
         clawrig = claw.GetComponent<Rigidbody>();
         clawrig.constraints = RigidbodyConstraints.FreezeAll;
         clawrig.useGravity = false;
@@ -29,7 +40,7 @@ public class Boss1_attacks : base_enemi_attack
         if (Input.GetKey(KeyCode.Q))
         {
             //Melee();
-            StartCoroutine(shockwave(3, 3, 3));
+            shockwave(2, 10, 32);
         }
         if (!still)
         {
@@ -62,7 +73,6 @@ public class Boss1_attacks : base_enemi_attack
     }
     public void Elastick(float range, float firespeed, float returns)
     {
-        Debug.Log("testc");
         transform.LookAt(target);
         elastickrange = range;
         returnspeed = returns;
@@ -107,12 +117,12 @@ public class Boss1_attacks : base_enemi_attack
             spriteRenderer.enabled = false;
         }
     }
-    public IEnumerator shockwave(float duration, float scale, float range)
+    /*public IEnumerator shockwave(float duration, float scale, float range, GameObject wave)
     {
         parent.stop();
         if (isfiered)
         {
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(1);
         }
         isfiered = true;
         transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
@@ -135,9 +145,9 @@ public class Boss1_attacks : base_enemi_attack
             elapsed += Time.deltaTime;
             yield return null;  
         }
-        shockwavereturn();
+        shockwavereturn(wave);
     }
-    void shockwavereturn()
+    void shockwavereturn(GameObject wave)
     {
         parent.start();
         still = false;
@@ -145,7 +155,31 @@ public class Boss1_attacks : base_enemi_attack
         wave.transform.localPosition = new Vector3(0,-1.5f,0);
         wave.transform.localScale = new Vector3(1, 0.5f, 1);
         isfiered = false;
-        parent.attacking();
+        //parent.attacking();
+    }*/
+    public void shockwave(float duration, float scale, float range)
+    {
+        transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
+        Vector3 lokation = transform.position;
+        lokation.y = lokation.y - 1.5f;
+        Debug.Log(wave.transform.rotation);
+        StartCoroutine(Instantiate(wave,lokation, Quaternion.Euler(new Vector3(transform.rotation.x,transform.rotation.y,90)), transform).GetComponent<Wave>().shockwave(duration, scale, range, target));
+        
+    }
+    public void Melee(float range)
+    {
+        if (Physics.SphereCast(gameObject.transform.position, 1, transform.forward, out ray, range))
+        {
+
+            Debug.DrawRay(gameObject.transform.position, gameObject.transform.forward * 5, Color.red, 5);
+            if (ray.collider.gameObject.tag == "Player")
+            {
+                ray.collider.GetComponent<HealthSystem>().TakeDamage(damage);
+                //ray.collider.GetComponent<Rigidbody>().velocity = transform.forward * pushForce;
+                ray.collider.GetComponent<Rigidbody>().AddForce(transform.forward * pushForce);
+            }
+
+        }
     }
 
 }
