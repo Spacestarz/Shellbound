@@ -46,6 +46,7 @@ public class Fire : MonoBehaviour
 
     public void FireHarpoon()
     {
+        harpoon.gameObject.SetActive(true);
         harpoon.SetVisibility(true);
         goingAway = true;
 
@@ -96,6 +97,8 @@ public class Fire : MonoBehaviour
             harpoonObject.transform.position = Vector3.Lerp(harpoonObject.transform.position, Anchor.transform.position, speedReturn * Time.deltaTime);
             yield return null;
         }
+
+        harpoon.gameObject.SetActive(false);
 
         harpoonObject.transform.position = Anchor.transform.position;
         harpoonRigidBody.constraints = RigidbodyConstraints.FreezeAll;
