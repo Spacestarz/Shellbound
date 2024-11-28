@@ -69,8 +69,13 @@ public class Base_enemy : MonoBehaviour
     }
     public IEnumerator weekTimer()
     {
+        Debug.Log("week");
         volnereble = true;
         yield return new WaitForSeconds(volnerebleTime);
         volnereble = false;
+    }
+    public void wekend()
+    {
+        StartCoroutine(weekTimer());
     }
 }
