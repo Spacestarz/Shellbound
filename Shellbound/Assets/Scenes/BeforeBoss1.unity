@@ -281,7 +281,7 @@ GameObject:
   - component: {fileID: 65448415}
   m_Layer: 0
   m_Name: Handske knapp
-  m_TagString: Untagged
+  m_TagString: TutorialHookThis
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -298,7 +298,8 @@ Transform:
   m_LocalPosition: {x: -0.3037634, y: -0.33791634, z: 0.5400009}
   m_LocalScale: {x: 0.0033717342, y: 0.011695073, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1096847031}
   m_Father: {fileID: 1887147148}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &65448415
@@ -1604,7 +1605,7 @@ MonoBehaviour:
   orientation: {fileID: 1613128431}
   xRotation: 0
   yRotation: 0
-  Sliceboard: {fileID: 0}
+  Sliceboard: {fileID: 1096847030}
 --- !u!81 &406300720
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2539,6 +2540,80 @@ Transform:
   - {fileID: 566776891}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1096847030
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1096847031}
+  - component: {fileID: 1096847033}
+  - component: {fileID: 1096847032}
+  m_Layer: 12
+  m_Name: SliceBoard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1096847031
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096847030}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 13.486699, y: 11.16457, z: 3}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 65448414}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1096847032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096847030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ebeb3987f70cd44da1dae606d6b40e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalSliced: 0
+  sliceAmount: 3
+  possibleArrows:
+  - {fileID: 240628594741510636, guid: 4516b10eecedda347b7645b7760df7c3, type: 3}
+  - {fileID: 2257760662191509782, guid: 8abd623f614d7cb4a920cfd4aefacb46, type: 3}
+  - {fileID: 6031990953434119768, guid: c0f5bc33b43a64546a5c3e574907612e, type: 3}
+  - {fileID: 3216151100378877335, guid: 367f25e7fb2d44743a41889c9247307d, type: 3}
+  - {fileID: 3216151100378877335, guid: e5a145a1acf61cc49b01d6d0be7e7741, type: 3}
+  - {fileID: 3216151100378877335, guid: 564cf37feac60c34c88c629a24b6aee3, type: 3}
+  - {fileID: 240628594741510636, guid: 7128679aea813b042b3f990025cd08e7, type: 3}
+  - {fileID: 240628594741510636, guid: 12ec17254dce57540b8317492efec9fe, type: 3}
+  spawnedArrow: {fileID: 0}
+  sliceStart: {fileID: 8300000, guid: f6437707c83ded646840dbdd62ff5b6f, type: 3}
+  sliceFinish: {fileID: 8300000, guid: 5268ccce7c005d54f9a3f3d29c161d4c, type: 3}
+  sliceAnimation: {fileID: 0}
+  spawnedSliceAnimation: {fileID: 0}
+--- !u!114 &1096847033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096847030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe92ec157195ba24eb440787308457bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateYAxis: 0
 --- !u!1 &1130533531
 GameObject:
   m_ObjectHideFlags: 0

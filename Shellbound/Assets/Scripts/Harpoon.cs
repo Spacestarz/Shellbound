@@ -24,7 +24,7 @@ public class Harpoon : MonoBehaviour
 
     public void OnTriggerEnter(Collider collisionCheck)
     {
-        if (fire.goingAway && collisionCheck.CompareTag("Enemy") || collisionCheck.CompareTag("weakpoint"))
+        if (fire.goingAway && collisionCheck.CompareTag("Enemy") || collisionCheck.CompareTag("weakpoint") || collisionCheck.CompareTag("TutorialHookThis"))
         {
             HarpoonHit(collisionCheck);
             //fire.goingAway = false;
@@ -85,10 +85,13 @@ public class Harpoon : MonoBehaviour
         {
             caughtObject.GetComponent<Enemi_Health>().DisableAI();
         }
-        else if (collisionCheck.CompareTag(//Sams tag))
+
+        else if (collisionCheck.CompareTag("TutorialHookThis"))
         {
+            Debug.Log("HIHO TUTORIAL");
 
         }
+
         else if(collisionCheck.CompareTag("weakpoint"))
         {
             StartCoroutine(collisionCheck.transform.parent.parent.GetComponent<Base_enemy>().weekTimer());

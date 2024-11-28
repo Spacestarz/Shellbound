@@ -30,14 +30,18 @@ public class Door_open : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
-        if (Input.GetKeyDown(KeyCode.F) || gloveScript.stopPingPong == true && gloveScript.gloveHome == true )
-        {   
+        Debug.Log("is the first door done" + gloveScript.firstDoorDone);
+
+        if (Input.GetKeyDown(KeyCode.F) || gloveScript.stopPingPong == true && gloveScript.gloveHome == true &&
+            gloveScript.firstDoorDone == false)
+        {
+            OpenDoor();
+           
             //when glove is home make a little like door close and then the big door opens
             gloveScript.gloveHome = false;
-            OpenDoor();          
+                  
         }
-
+        
         if (Input.GetKeyDown(KeyCode.R))
         {
             CloseDoor();
@@ -48,6 +52,7 @@ public class Door_open : MonoBehaviour
     {
         transform.DOMove(endpos, duration);
         Debug.Log("open");
+        gloveScript.firstDoorDone = true;
     }
 
     public void CloseDoor()

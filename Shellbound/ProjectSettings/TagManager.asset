@@ -9,6 +9,7 @@ TagManager:
   - weakpoint
   - Harpoon
   - Door
+  - TutorialHookThis
   layers:
   - Default
   - TransparentFX

@@ -13,6 +13,7 @@ public class Box_doorhandle : MonoBehaviour
 
     public bool stopPingPong = false;
     public bool gloveHome = false;
+    public bool firstDoorDone = false;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +32,7 @@ public class Box_doorhandle : MonoBehaviour
             Movement();
         }
         else
-        {
+        {         
             //make a do move 
             GetComponent<Collider>().enabled = false;
             transform.DOMove(startpos, duration).OnComplete(kill);
@@ -40,10 +41,9 @@ public class Box_doorhandle : MonoBehaviour
 
     private void kill()
     {
+        Debug.Log("Kill me");
         gloveHome = true;
-        Destroy(gameObject);
-        
-       
+        Destroy(gameObject);    
     }
 
     private void Movement()
@@ -58,7 +58,6 @@ public class Box_doorhandle : MonoBehaviour
         {
             stopPingPong = true;
             Debug.Log("Auch said the glove");
-
         }      
         
     }
