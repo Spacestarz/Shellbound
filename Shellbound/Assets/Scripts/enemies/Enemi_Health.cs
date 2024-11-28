@@ -20,18 +20,24 @@ public class Enemi_Health : HealthSystem
     }
     public void DisableAI()
     {
-        Harponed = true;
-        enemi = GetComponent<Base_enemy>();
-        enemi.stop();
-        enemi.enabled = false;
+        if (GetComponent<Base_enemy>() != null)
+        {
+            Harponed = true;
+            enemi = GetComponent<Base_enemy>();
+            enemi.stop();
+            enemi.enabled = false;
+        }
 
     }
     public void EnableAI()
     {
-        Harponed = false;
-        enemi = GetComponent<Base_enemy>();
-        enemi.enabled = true;
-        enemi.start();
+        if (GetComponent<Base_enemy>() != null)
+        {
+            Harponed = false;
+            enemi = GetComponent<Base_enemy>();
+            enemi.enabled = true;
+            enemi.start();
+        }
     }
     private void Update()
     {

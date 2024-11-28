@@ -6,6 +6,15 @@ using UnityEngine;
 
 public class Box_doorhandle : MonoBehaviour
 {
+    /*
+     * 
+    TODO
+    1. Make a public bool for the glove
+    2. On the glove have a onDestroy 
+    3, in the OnDestroy have a if check that checks if the bool is true
+    4. is the bool true then it will open the door
+
+    */
     private Vector3 startpos;
     private Vector3 endpos;
     private float pingPongResult;
@@ -13,12 +22,21 @@ public class Box_doorhandle : MonoBehaviour
 
     public bool stopPingPong = false;
     public bool gloveHome = false;
-    public bool firstDoorDone = false;
+    private Door_open DoorOpenScript;
+
+
+    public bool DestroyandOPEN = false;
+
+    public bool firstGlove = false;
+    public bool secondGlove = false;
+    public bool lastGlove = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        startpos = transform.position;                             
+        DoorOpenScript = GetComponentInParent<Door_open>();
+
+        startpos = transform.position;                
     }
 
     // Update is called once per frame
@@ -31,9 +49,9 @@ public class Box_doorhandle : MonoBehaviour
         {
             Movement();
         }
-        else
+        else if (stopPingPong == true && firstGlove == true) 
         {         
-            //make a do move 
+             
             GetComponent<Collider>().enabled = false;
             transform.DOMove(startpos, duration).OnComplete(kill);
         }
@@ -43,7 +61,7 @@ public class Box_doorhandle : MonoBehaviour
     {
         Debug.Log("Kill me");
         gloveHome = true;
-        Destroy(gameObject);    
+        OnDestroy();  
     }
 
     private void Movement()
@@ -60,5 +78,13 @@ public class Box_doorhandle : MonoBehaviour
             Debug.Log("Auch said the glove");
         }      
         
+    }
+
+    public void OnDestroy()
+    {
+        Debug.Log("On deastroy");
+        DestroyandOPEN = true;
+        DoorOpenScript.OpenDoor();
+        Destroy(gameObject);
     }
 }

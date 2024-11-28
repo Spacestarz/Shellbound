@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +21,7 @@ public class Check_Trigger : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
+       
         door_Open.CloseDoor();
     }
 }
