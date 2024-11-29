@@ -18,7 +18,7 @@ public class PlayerSlice : MonoBehaviour
     static float sliceTickLength = 1f/30;
 
     static float sliceTime = 0;
-    static float sliceTimeLimit = 1f;
+    static float sliceTimeLimit = 0.75f;
 
     static float requiredDotProduct = 0.8f;
 
@@ -106,13 +106,13 @@ public class PlayerSlice : MonoBehaviour
         //If only one axis isn't 0 (orthigonal)
         if (targetDirection.x != 0 ^ targetDirection.y != 0)
         {
-            requiredDotProduct = 0.94f;
-            requiredMagnitude = 5f;
+            requiredDotProduct = 0.7f;
+            requiredMagnitude = 7f;
         }
         // (Diagonal)
         else
         {
-            requiredDotProduct = 0.9f;
+            requiredDotProduct = 0.8f;
             requiredMagnitude = 3.5f;
         }
     }
