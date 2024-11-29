@@ -163,7 +163,7 @@ public class Boss1_attacks : MonoBehaviour
         Vector3 lokation = transform.position;
         lokation.y = lokation.y - 1.5f;
         //Debug.Log(wave.transform.rotation);
-        StartCoroutine(Instantiate(wave,lokation, Quaternion.Euler(new Vector3(transform.rotation.x,transform.rotation.y,90)), transform).GetComponent<Wave>().shockwave(duration, scale, range, target));
+        StartCoroutine(Instantiate(wave,lokation, Quaternion.Euler(new Vector3(transform.rotation.x, transform.rotation.y, 90))).GetComponent<Wave>().shockwave(duration, scale, range, target));
         
     }
     public void Melee(float range)

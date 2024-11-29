@@ -7,19 +7,19 @@ public class Wave : MonoBehaviour
     private void Awake()
     {
         //StartCoroutine(shockwave());
-        transform.localEulerAngles = new Vector3(transform.rotation.x, transform.rotation.y, 90);
     }
     public IEnumerator shockwave(float duration, float scale, float range, Transform target)
     {
         //parent.stop();
-        //transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
+        transform.LookAt((target.localPosition));
+        transform.localEulerAngles = new Vector3(transform.rotation.y, transform.eulerAngles.y, 90);
         //still = true;
         Vector3 startscale = transform.localScale;
         Vector3 endscale = Vector3.one;
         endscale.y = endscale.y * scale;
         Vector3 startlocation = transform.localPosition;
-        Vector3 endlocation = new Vector3(0, -1.5f, 0);
-        endlocation.z = endlocation.z + range;
+        Vector3 endlocation = transform.forward;
+        endlocation = endlocation * range;
         float elapsed = 0;
         //Debug.Log(endlocation);
 

@@ -3601,7 +3601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 044710b50ac9b5d41be608ae9ca1e960, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 40
+  MaxHP: 9
   currentHP: 0
   Player: {fileID: 0}
   sorce: {fileID: 0}
