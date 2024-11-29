@@ -11,7 +11,7 @@ public class Wave : MonoBehaviour
     public IEnumerator shockwave(float duration, float scale, float range, Transform target)
     {
         //parent.stop();
-        transform.LookAt((target.localPosition));
+        transform.LookAt((target.position));
         transform.localEulerAngles = new Vector3(transform.rotation.y, transform.eulerAngles.y, 90);
         //still = true;
         Vector3 startscale = transform.localScale;
@@ -19,9 +19,15 @@ public class Wave : MonoBehaviour
         endscale.y = endscale.y * scale;
         Vector3 startlocation = transform.localPosition;
         Vector3 endlocation = transform.forward;
-        endlocation = endlocation * range;
-        float elapsed = 0;
+
+        //Debug.Log(transform.rotation);
+        //Debug.Log(transform.eulerAngles);
+        //Debug.Log(transform.forward);
+
+        endlocation = endlocation * range + startlocation;
         //Debug.Log(endlocation);
+        //Debug.DrawLine(startlocation,endlocation,Color.red, 10);
+        float elapsed = 0;
 
         while (elapsed < duration)
         {
