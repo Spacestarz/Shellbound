@@ -87,7 +87,10 @@ public class Fire : MonoBehaviour
             harpoonObject.GetComponent<Harpoon>().caughtObject = null;
         }
 
-        StartCoroutine(nameof(MoveHarpoonBack));
+        if (gameObject.activeSelf)
+        {
+            StartCoroutine(nameof(MoveHarpoonBack));
+        }
     }
 
     IEnumerator MoveHarpoonBack()

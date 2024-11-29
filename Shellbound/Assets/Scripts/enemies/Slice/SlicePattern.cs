@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ public class SlicePattern : MonoBehaviour
     SliceTarget currentArrow;
     public SliceTarget spawnedArrow;
 
-    Enemi_Health parentHealth;
+    SliceableObject parentSlice;
 
     AudioSource audioSource;
     public AudioClip sliceStart;
@@ -24,7 +25,7 @@ public class SlicePattern : MonoBehaviour
     private void Awake()
     {
         fire = FindObjectOfType<Fire>();
-        parentHealth = GetComponentInParent<Enemi_Health>();
+        parentSlice = GetComponentInParent<SliceableObject>();
         audioSource = GetComponentInParent<AudioSource>();
 
     }
@@ -66,7 +67,7 @@ public class SlicePattern : MonoBehaviour
         }
         else
         {
-            parentHealth.TakeDamage(5);
+            parentSlice.FinalSlice();
             fire.ReturnHarpoon();
             PlayerSlice.SetSliceMode(false);
             StartCoroutine(RotateCamera.SetCameraLock(false));

@@ -20,10 +20,10 @@ public class PlayerSlice : MonoBehaviour
     static float sliceTime = 0;
     static float sliceTimeLimit = 1f;
 
-    static float successRequirement = 0.8f;
+    static float requiredDotProduct = 0.8f;
 
     static float currentMagnitude = 0;
-    static float requiredMagnitude = 3; 
+    static float requiredMagnitude = 5; 
 
     private void Awake()
     {
@@ -103,13 +103,17 @@ public class PlayerSlice : MonoBehaviour
     {
         targetDirection = dir.normalized;
         
+        //If only one axis isn't 0 (orthigonal)
         if (targetDirection.x != 0 ^ targetDirection.y != 0)
         {
-            successRequirement = 0.7f;
+            requiredDotProduct = 0.94f;
+            requiredMagnitude = 5f;
         }
+        // (Diagonal)
         else
         {
-            successRequirement = 0.4f;
+            requiredDotProduct = 0.9f;
+            requiredMagnitude = 3.5f;
         }
     }
 
@@ -149,7 +153,7 @@ public class PlayerSlice : MonoBehaviour
 
     static void CompareSliceDirection()
     {
-        if (Vector2.Dot(mouseDirection, targetDirection) >= 0.94f)
+        if (Vector2.Dot(mouseDirection, targetDirection) >= requiredDotProduct)
         {
             currentMagnitude += mouseMovement.magnitude;
 

@@ -18,8 +18,9 @@ public class RotateCamera : MonoBehaviour
 
     bool startedLooking;
 
-    void Start()
+    void Awake()
     {
+        isLocked = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -58,7 +59,7 @@ public class RotateCamera : MonoBehaviour
             yRotation += mouseX;
             xRotation -= mouseY;
 
-            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+            xRotation = Mathf.Clamp(xRotation, -25, 45);
             yRotation %= 360;
 
             transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
