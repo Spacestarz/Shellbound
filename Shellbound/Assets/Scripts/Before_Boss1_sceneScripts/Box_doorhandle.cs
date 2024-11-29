@@ -27,9 +27,7 @@ public class Box_doorhandle : MonoBehaviour
 
     public bool DestroyandOPEN = false;
 
-    public bool firstGlove = false;
-    public bool secondGlove = false;
-    public bool lastGlove = false;
+    public bool movePingPong = false;
 
     // Start is called before the first frame update
     void Start()
@@ -45,11 +43,11 @@ public class Box_doorhandle : MonoBehaviour
         //maybe do transform go there and then go there instead of dotween
         //kolla på mathfpingpong
 
-        if (stopPingPong == false)
+        if (stopPingPong == false && movePingPong == true)
         {
             Movement();
         }
-        else if (stopPingPong == true && firstGlove == true) 
+        else if (stopPingPong == true && movePingPong == true) 
         {         
              
             GetComponent<Collider>().enabled = false;
