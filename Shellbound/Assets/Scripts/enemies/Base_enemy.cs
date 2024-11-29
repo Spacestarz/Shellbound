@@ -29,11 +29,11 @@ public class Base_enemy : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (!volnereble && !indicator.enabled)
+        if (volnereble && !indicator.enabled)
         {
             indicator.enabled = true;
         }
-        else if(volnereble && indicator.enabled)
+        else if(!volnereble && indicator.enabled)
         {
             indicator.enabled=false;
         }
