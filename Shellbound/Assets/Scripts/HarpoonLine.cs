@@ -26,7 +26,7 @@ public class HarpoonLine : MonoBehaviour
             }
             else
             {
-                lineRenderer.SetPosition(1, harpoon.caughtObject.transform.position);
+                lineRenderer.SetPosition(1, harpoon.caughtObject.sliceBoard.transform.position);
             }
         }
     }

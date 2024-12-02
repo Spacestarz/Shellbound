@@ -12,6 +12,11 @@ public class SliceableObject : MonoBehaviour
 
     public Type type;
 
+    public void Awake()
+    {
+        sliceBoard = GetComponentInChildren<SlicePattern>();
+    }
+
     public void SingleSlice()
     {
         Debug.Log("SingleSlice");
