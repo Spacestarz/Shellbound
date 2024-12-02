@@ -23,7 +23,6 @@ public class Boss1_AI : MonoBehaviour
         }
         else if (health.currentHP < 30)
         {
-            //Debug.Log("les then 10");
             phase = phases[1];
         }
     }
