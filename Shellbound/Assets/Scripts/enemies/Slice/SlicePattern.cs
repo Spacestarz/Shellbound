@@ -4,6 +4,7 @@ using UnityEngine;
 public class SlicePattern : MonoBehaviour
 {
     Fire fire;
+    
     public int totalSliced = 0;
     public int sliceAmount = 3;
 
@@ -20,6 +21,7 @@ public class SlicePattern : MonoBehaviour
 
     public SliceAnimate sliceAnimation;
     public SliceAnimate spawnedSliceAnimation;
+
 
     private void Awake()
     {

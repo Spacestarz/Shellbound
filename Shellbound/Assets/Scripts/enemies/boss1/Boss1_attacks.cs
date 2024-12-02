@@ -100,6 +100,12 @@ public class Boss1_attacks : MonoBehaviour
         {
             spriteRenderer.enabled = true;
         }
+
+        var line = obj.GetComponent<MovingLine>();
+        if(line != null)
+        {
+            line.SetVisible(true);
+        }
     }
 
     private void BeInvisible(GameObject obj)
@@ -115,6 +121,12 @@ public class Boss1_attacks : MonoBehaviour
         if (spriteRenderer != null)
         {
             spriteRenderer.enabled = false;
+        }
+
+        var line = obj.GetComponent<MovingLine>();
+        if (line != null)
+        {
+            line.SetVisible(false);
         }
     }
     /*public IEnumerator shockwave(float duration, float scale, float range, GameObject wave)

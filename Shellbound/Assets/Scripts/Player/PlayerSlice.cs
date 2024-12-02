@@ -119,8 +119,7 @@ public class PlayerSlice : MonoBehaviour
             requiredDotProduct = 0.9f;
             requiredMagnitude = 17f;
         }
-        // (Diagonal)
-        else
+        else // (Diagonal)
         {
             requiredDotProduct = 0.8f;
             requiredMagnitude = 13f;
@@ -165,22 +164,26 @@ public class PlayerSlice : MonoBehaviour
     {
         if (Vector2.Dot(mouseDirection, targetDirection) >= requiredDotProduct)
         {
-            successfulTicks++;
-            //currentMagnitude += mouseMovement.magnitude;
-
-            //if (currentMagnitude >= requiredMagnitude)
-            //{
-            //    CompleteSlice();
-            //}
-            if(successfulTicks >= requiredTicks)
-            {
-                CompleteSlice();
-            }
+            SuccessfulTick();
         }
         else
         {
-            //currentMagnitude = 0;
             successfulTicks = 0;
+        }
+
+        if (currentSlicePattern != null)
+        {
+            currentSlicePattern.spawnedArrow.TurnRed(successfulTicks, requiredTicks);
+        }
+    }
+
+    static void SuccessfulTick()
+    {
+        successfulTicks++;
+
+        if (successfulTicks >= requiredTicks)
+        {
+            CompleteSlice();
         }
     }
 
@@ -198,6 +201,5 @@ public class PlayerSlice : MonoBehaviour
         currentSlicePattern.FailPattern();
         ClearCaughtObject();
         SetSliceMode(false);
-
     }
 }

@@ -57,7 +57,7 @@ public class RotateCamera : MonoBehaviour
         yRotation += mouseX;
         xRotation -= mouseY;
 
-        xRotation = Mathf.Clamp(xRotation, -25, 45);
+        xRotation = Mathf.Clamp(xRotation, -25, 25);
         yRotation %= 360;
 
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
