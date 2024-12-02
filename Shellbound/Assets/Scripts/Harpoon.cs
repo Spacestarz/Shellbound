@@ -77,7 +77,6 @@ public class Harpoon : MonoBehaviour
 
         else if (collisionCheck.CompareTag("TutorialHookThis"))
         {
-            Debug.Log("HIHO TUTORIAL");
 
         }
 

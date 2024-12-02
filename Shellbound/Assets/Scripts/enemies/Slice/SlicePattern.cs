@@ -32,7 +32,6 @@ public class SlicePattern : MonoBehaviour
 
     public void DestroyArrow()
     {
-        Debug.Log("DestroyArrow");
         Destroy(spawnedArrow.gameObject);
 
         totalSliced++;
@@ -40,10 +39,8 @@ public class SlicePattern : MonoBehaviour
 
     public void NextSliceArrow()
     {
-        Debug.Log("NextSliceArrow");
         if (spawnedArrow)
         {
-            Debug.Log("NSA - spawnedArrow - Destroy");
             DestroyArrow();
         }
 

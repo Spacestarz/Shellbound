@@ -63,8 +63,6 @@ public class RotateCamera : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(0.4f);
         isLocked = locked;
-        Debug.Log("locked = " + locked);
-        Debug.Log(transform.localRotation.eulerAngles);
         yield break;
     }
 }

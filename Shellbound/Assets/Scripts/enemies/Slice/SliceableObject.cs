@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SliceableObject : MonoBehaviour
 {
     public SlicePattern sliceBoard;
+
 
     public enum Type
     {
@@ -11,6 +13,7 @@ public class SliceableObject : MonoBehaviour
     }
 
     public Type type;
+    [SerializeField] private UnityEvent testEvent;
 
     public void Awake()
     {
@@ -19,7 +22,6 @@ public class SliceableObject : MonoBehaviour
 
     public void SingleSlice()
     {
-        Debug.Log("SingleSlice");
         switch(type)
         {
             case Type.Enemy:
@@ -33,12 +35,19 @@ public class SliceableObject : MonoBehaviour
 
     public void FinalSlice()
     {
-        Debug.Log("FinalSlice");
         switch (type)
         {
             case Type.Enemy:
                 GetComponent<HealthSystem>().TakeDamage(5);
                 break;
+            case Type.Trigger:
+                testEvent.Invoke();
+                break;
         }
+    }
+
+    public void TurnThingRed()
+    {
+        GetComponentInChildren<SpriteRenderer>().color = Color.red;
     }
 }

@@ -71,7 +71,6 @@ public class Fire : MonoBehaviour
 
         if (PlayerSlice.SliceMode())
         {
-            Debug.Log("Fire set slice false");
             PlayerSlice.SetSliceMode(false);
         }
 
