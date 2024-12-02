@@ -111,13 +111,13 @@ public class PlayerSlice : MonoBehaviour
         //If only one axis is 0 (orthogonal)
         if (targetDirection.x != 0 ^ targetDirection.y != 0)
         {
-            requiredDotProduct = 0.95f;
+            requiredDotProduct = 0.9f;
             requiredMagnitude = 17f;
         }
         // (Diagonal)
         else
         {
-            requiredDotProduct = 0.85f;
+            requiredDotProduct = 0.8f;
             requiredMagnitude = 13f;
         }
     }
