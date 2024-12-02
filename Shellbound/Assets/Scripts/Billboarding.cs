@@ -3,21 +3,21 @@ using UnityEngine;
 public class Billboarding : MonoBehaviour
 {
     public bool rotateYAxis = false;
-    Vector3 cameradir; 
+    Vector3 cameraDir; 
 
-    void Update()
+    void LateUpdate()
     {
-        cameradir = Camera.main.transform.forward;
+        cameraDir = Camera.main.transform.forward;
 
         if (!rotateYAxis)
         {
-            cameradir.y = 0; 
+            cameraDir.y = 0; 
         }
 
         //rotates the sprite to face the camera
-        if (cameradir != Vector3.zero)
+        if (cameraDir != Vector3.zero)
         {
-            transform.rotation = Quaternion.LookRotation(cameradir);
+            transform.rotation = Quaternion.LookRotation(cameraDir);
         }
     }
 }

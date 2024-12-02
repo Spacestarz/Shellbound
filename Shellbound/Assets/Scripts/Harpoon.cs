@@ -57,16 +57,15 @@ public class Harpoon : MonoBehaviour
                 collisionHIT = true;
 
                 caughtObject = collisionCheck.GetComponent<SliceableObject>();
-                PlayerSlice.SetCaughtObject(caughtObject);
-                RotateCamera.LockOntoSliceBoard(caughtObject.GetComponentInChildren<SlicePattern>());
                 hasCaught = true;
+                
+                Camera.main.GetComponent<RotateCamera>().LockOntoSliceBoard(caughtObject.GetComponentInChildren<SlicePattern>());
+                PlayerSlice.SetCaughtObject(caughtObject);
+
                 SetVisibility(false);
             
-                // Find the closest point on the collided object's surface to the rope
                 Vector3 closestPoint = collisionCheck.ClosestPoint(transform.position);
 
-                // Move the rope to this closest point
-                //make a lerp to make it more smooth?
                 transform.position = closestPoint;
                 rb.constraints = RigidbodyConstraints.FreezeAll;
             }

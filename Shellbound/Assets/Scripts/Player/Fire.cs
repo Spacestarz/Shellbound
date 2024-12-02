@@ -1,11 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Fire : MonoBehaviour
 {
     Rigidbody harpoonRigidBody;
-    public Harpoon harpoon;
+    Harpoon harpoon;
     HarpoonLine harpoonLine;
 
     public GameObject Anchor;
@@ -25,7 +24,6 @@ public class Fire : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         harpoon = harpoonObject.GetComponent<Harpoon>();
         harpoonRigidBody = harpoonObject.GetComponent<Rigidbody>();
         harpoonLine = harpoonObject.GetComponent<HarpoonLine>();
@@ -46,7 +44,7 @@ public class Fire : MonoBehaviour
 
     public void FireHarpoon()
     {
-        harpoon.gameObject.SetActive(true);
+        harpoonObject.SetActive(true);
         harpoon.SetVisibility(true);
         goingAway = true;
 
@@ -73,18 +71,25 @@ public class Fire : MonoBehaviour
 
         if (PlayerSlice.SliceMode())
         {
+            Debug.Log("Fire set slice false");
             PlayerSlice.SetSliceMode(false);
         }
 
-        harpoon.SetVisibility(true);
         goingAway = false;
-        harpoonRigidBody.velocity = Vector3.zero;
+        harpoonObject.GetComponent<Harpoon>().SetVisibility(true);
         harpoonObject.GetComponent<Harpoon>().collisionHIT = false;
+        harpoonRigidBody.velocity = Vector3.zero;
 
-        if (harpoonObject.GetComponent<Harpoon>().caughtObject != null)
+        if (harpoon.caughtObject)
         {
-            harpoonObject.GetComponent<Harpoon>().caughtObject.GetComponent<Enemi_Health>().EnableAI();
-            harpoonObject.GetComponent<Harpoon>().caughtObject = null;
+            PlayerSlice.ClearCaughtObject();
+
+            if(harpoon.caughtObject.CompareTag("Enemy"))
+            {
+                harpoonObject.GetComponent<Harpoon>().caughtObject.GetComponent<Enemi_Health>().EnableAI();
+            }
+
+            harpoon.caughtObject = null;
         }
 
         if (gameObject.activeSelf)
@@ -101,7 +106,7 @@ public class Fire : MonoBehaviour
             yield return null;
         }
 
-        harpoon.gameObject.SetActive(false);
+        harpoonObject.SetActive(false);
 
         harpoonObject.transform.position = Anchor.transform.position;
         harpoonRigidBody.constraints = RigidbodyConstraints.FreezeAll;

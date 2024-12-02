@@ -4,8 +4,7 @@ using System.Collections;
 
 public class RotateCamera : MonoBehaviour
 {
-    public static RotateCamera instance;
-    public static bool isLocked;
+    public bool isLocked;
 
     public float sensitivityX;
     public float sensitivityY;
@@ -20,11 +19,6 @@ public class RotateCamera : MonoBehaviour
         isLocked = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
-        if (instance == null)
-        {
-            instance = this;
-        }
     }
 
     void Update()
@@ -33,44 +27,44 @@ public class RotateCamera : MonoBehaviour
         {
             LockOntoSliceBoard(Harpoon.instance.caughtObject.sliceBoard);
         }
-        else if (!Harpoon.hasCaught)
+        else if (!Harpoon.hasCaught && !isLocked)
         {
             GetMouseInput();
         }
     }
 
-    public static void LockOntoSliceBoard(SlicePattern sliceBoard)
+    public void LockOntoSliceBoard(SlicePattern sliceBoard)
     {
-        instance.transform.DOLookAt(sliceBoard.transform.position, 0.5f).OnComplete(UpdateRotation);
+        transform.DOLookAt(sliceBoard.transform.position, 0.5f).OnComplete(UpdateRotation);
     }
 
-    private static void UpdateRotation()
+    private void UpdateRotation()
     {
-        instance.xRotation = instance.transform.localRotation.eulerAngles.x;
-        instance.yRotation = instance.transform.localRotation.eulerAngles.y;
+        xRotation = transform.localRotation.eulerAngles.x;
+        yRotation = transform.localRotation.eulerAngles.y;
     }
 
     void GetMouseInput()
     {
-        if (!Harpoon.hasCaught && !isLocked)
-        {
-            float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensitivityX;
-            float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensitivityY;
+        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensitivityX;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensitivityY;
 
-            yRotation += mouseX;
-            xRotation -= mouseY;
+        yRotation += mouseX;
+        xRotation -= mouseY;
 
-            xRotation = Mathf.Clamp(xRotation, -25, 45);
-            yRotation %= 360;
+        xRotation = Mathf.Clamp(xRotation, -25, 45);
+        yRotation %= 360;
 
-            transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-            orientation.rotation = Quaternion.Euler(0, yRotation, 0);
-        }
+        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
     }
 
-    public static IEnumerator SetCameraLock(bool locked)
+    public IEnumerator SetCameraLock(bool locked)
     {
         yield return new WaitForSecondsRealtime(0.4f);
         isLocked = locked;
+        Debug.Log("locked = " + locked);
+        Debug.Log(transform.localRotation.eulerAngles);
+        yield break;
     }
 }

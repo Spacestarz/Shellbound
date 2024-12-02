@@ -3,17 +3,16 @@ using UnityEngine;
 public class PlayerSlice : MonoBehaviour
 {
     static bool sliceMode;
+    static Camera mainCam;
 
     public static PlayerSlice instance;
     public SliceableObject caughtObject;
-    public RotateCamera camRotation;
     public static SlicePattern currentSlicePattern;
 
     static Vector2 mouseMovement;
 
     static Vector2 targetDirection;
     static Vector2 mouseDirection;
-
 
     static float sliceTickTime = 0;
     static float sliceTickLength = 0.033f;
@@ -28,6 +27,8 @@ public class PlayerSlice : MonoBehaviour
 
     private void Awake()
     {
+        mainCam = Camera.main;
+
         sliceMode = false;
 
         if (instance == null)
@@ -36,7 +37,7 @@ public class PlayerSlice : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if (sliceMode)
         {
@@ -52,11 +53,12 @@ public class PlayerSlice : MonoBehaviour
 
         if (sliceMode)
         {
+            Debug.Log("SliceMode!");
             instance.GetComponent<PlayerController>().NullifyMovement();
             currentSlicePattern = instance.caughtObject.GetComponentInChildren<SlicePattern>();
             currentSlicePattern.NextSliceArrow();
 
-            RotateCamera.isLocked = true;
+            mainCam.GetComponent<RotateCamera>().isLocked = true;
         }
         else if (currentSlicePattern != null)
         {
@@ -91,6 +93,7 @@ public class PlayerSlice : MonoBehaviour
     public static void SetCaughtObject(SliceableObject obj)
     {
         instance.caughtObject = obj;
+        SetSliceMode(true);
         //instance.caughtObject.GetComponentInChildren<SlicePattern>().NextSliceArrow();
     }
 
@@ -105,18 +108,18 @@ public class PlayerSlice : MonoBehaviour
     public static void SetTargetDirection(Vector2 dir)
     {
         targetDirection = dir.normalized;
-        
+
         //If only one axis is 0 (orthogonal)
         if (targetDirection.x != 0 ^ targetDirection.y != 0)
         {
-            requiredDotProduct = 0.7f;
-            requiredMagnitude = 7f;
+            requiredDotProduct = 0.95f;
+            requiredMagnitude = 17f;
         }
         // (Diagonal)
         else
         {
-            requiredDotProduct = 0.8f;
-            requiredMagnitude = 3.5f;
+            requiredDotProduct = 0.85f;
+            requiredMagnitude = 13f;
         }
     }
 
@@ -167,7 +170,6 @@ public class PlayerSlice : MonoBehaviour
         }
         else
         {
-            Debug.Log("LOLNOOB");
             currentMagnitude = 0;
         }
     }
@@ -176,7 +178,7 @@ public class PlayerSlice : MonoBehaviour
     {
         currentSlicePattern.spawnedArrow.CompleteSlice();
         currentSlicePattern.NextSliceArrow();
-        currentMagnitude = 0;
+        currentMagnitude -= mouseMovement.magnitude / 2;
 
         sliceTime = 0;
     }
