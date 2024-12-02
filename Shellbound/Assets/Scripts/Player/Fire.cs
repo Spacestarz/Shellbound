@@ -75,8 +75,8 @@ public class Fire : MonoBehaviour
         }
 
         goingAway = false;
-        harpoonObject.GetComponent<Harpoon>().SetVisibility(true);
-        harpoonObject.GetComponent<Harpoon>().collisionHIT = false;
+        harpoon.SetVisibility(true);
+        harpoon.collisionHIT = false;
         harpoonRigidBody.velocity = Vector3.zero;
 
         if (harpoon.caughtObject)
@@ -85,7 +85,8 @@ public class Fire : MonoBehaviour
 
             if(harpoon.caughtObject.CompareTag("Enemy"))
             {
-                harpoonObject.GetComponent<Harpoon>().caughtObject.GetComponent<Enemi_Health>().EnableAI();
+                harpoon.caughtObject.GetComponent<Enemi_Health>().EnableAI();
+                harpoon.caughtObject.GetComponent<Base_enemy>().volnereble = false;
             }
 
             harpoon.caughtObject = null;
