@@ -39,7 +39,6 @@ public class RotateCamera : MonoBehaviour
 
     public void LockOntoSliceBoard(SlicePattern sliceBoard)
     {
-        sequence.Play();
         sequence.Append(transform.DOLookAt(sliceBoard.transform.position, 0.5f).OnComplete(UpdateRotation));
         //transform.DOLookAt(sliceBoard.transform.position, 0.5f).OnComplete(UpdateRotation);
     }
@@ -52,7 +51,6 @@ public class RotateCamera : MonoBehaviour
 
     void GetMouseInput()
     {
-        sequence.Kill();
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensitivityX;
         float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensitivityY;
 
@@ -68,8 +66,9 @@ public class RotateCamera : MonoBehaviour
 
     public IEnumerator SetCameraLock(bool locked)
     {
-        yield return new WaitForSecondsRealtime(0.4f);
+        yield return new WaitForSecondsRealtime(0.2f);
         isLocked = locked;
+        sequence.Kill();
         yield break;
     }
 }

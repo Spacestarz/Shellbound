@@ -1,4 +1,3 @@
-using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,7 +26,6 @@ public class SlicePattern : MonoBehaviour
         fire = FindObjectOfType<Fire>();
         parentSlice = GetComponentInParent<SliceableObject>();
         audioSource = GetComponentInParent<AudioSource>();
-
     }
 
     public void DestroyArrow()

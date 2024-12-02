@@ -18,7 +18,7 @@ public class PlayerSlice : MonoBehaviour
     static float sliceTickLength = 0.033f;
 
     static float sliceTime = 0;
-    static float sliceTimeLimit = 0.75f;
+    static float sliceTimeLimit = 1.25f;
 
     static float requiredDotProduct = 0.8f;
 
@@ -53,7 +53,6 @@ public class PlayerSlice : MonoBehaviour
 
         if (sliceMode)
         {
-            Debug.Log("SliceMode!");
             instance.GetComponent<PlayerController>().NullifyMovement();
             currentSlicePattern = instance.caughtObject.GetComponentInChildren<SlicePattern>();
             currentSlicePattern.NextSliceArrow();
