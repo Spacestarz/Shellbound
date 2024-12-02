@@ -7,7 +7,7 @@ public class shrimp_phase_2 : base_enemi_attack
     public GameObject wave1;
     public override void phase()
     {
-        if (enemy.Range(startpunchrange))
+        if (enemy.Range(startpunchrange) && !enemy.volnereble && !PlayerSlice.SliceMode())
         {
             resetpositon();
             //transform.LookAt(target);
@@ -16,7 +16,7 @@ public class shrimp_phase_2 : base_enemi_attack
                 StartCoroutine(enemy.Cool(punchspeed, punchrange));
             }
         }
-        else if (enemy.Range(startelastickrange) && enemy.atta && !enemy.volnereble)
+        else if (enemy.Range(startelastickrange) && enemy.atta && !enemy.volnereble && !PlayerSlice.SliceMode())
         {
             enemy.atta = false;
             if (i % 4 == 0)
@@ -35,7 +35,7 @@ public class shrimp_phase_2 : base_enemi_attack
             i++;
             resetpositon();
         }
-        else if (enemy.atta && !enemy.volnereble)
+        else if (enemy.atta && !enemy.volnereble && !PlayerSlice.SliceMode())
         {
             enemy.agent.SetDestination(enemy.target.position);
         }

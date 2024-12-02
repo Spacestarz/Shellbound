@@ -155,8 +155,8 @@ MonoBehaviour:
   attack: {fileID: 653001505}
   agent: {fileID: 0}
   i: 1
-  startpunchrange: 4
-  punchrange: 4
+  startpunchrange: 6
+  punchrange: 6
   punchspeed: 0.5
   startshockwaverange: 20
   shockwaverange: 32
@@ -226,7 +226,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe92ec157195ba24eb440787308457bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateXAxis: 1
   rotateYAxis: 0
+  rotateZAxis: 1
 --- !u!212 &57916969
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -430,7 +432,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe92ec157195ba24eb440787308457bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateXAxis: 1
   rotateYAxis: 0
+  rotateZAxis: 1
 --- !u!212 &109101911
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -980,7 +984,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe92ec157195ba24eb440787308457bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateXAxis: 1
   rotateYAxis: 0
+  rotateZAxis: 1
 --- !u!212 &223748790
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1198,7 +1204,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe92ec157195ba24eb440787308457bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateXAxis: 1
   rotateYAxis: 0
+  rotateZAxis: 1
 --- !u!1 &291186773
 GameObject:
   m_ObjectHideFlags: 0
@@ -1361,7 +1369,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69267e964b734eb44b1c5ce601137562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  harpoon: {fileID: 0}
   Anchor: {fileID: 2047234786}
   harpoonObject: {fileID: 1203022920}
   mainCam: {fileID: 900746539}
@@ -1836,7 +1843,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe92ec157195ba24eb440787308457bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateXAxis: 1
   rotateYAxis: 0
+  rotateZAxis: 1
 --- !u!212 &421148323
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1934,7 +1943,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe92ec157195ba24eb440787308457bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateXAxis: 1
   rotateYAxis: 0
+  rotateZAxis: 1
 --- !u!212 &453648268
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2032,7 +2043,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe92ec157195ba24eb440787308457bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateXAxis: 1
   rotateYAxis: 0
+  rotateZAxis: 1
 --- !u!212 &549569005
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2236,7 +2249,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe92ec157195ba24eb440787308457bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateXAxis: 1
   rotateYAxis: 0
+  rotateZAxis: 1
 --- !u!212 &572018808
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3032,12 +3047,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7427acb61093eb4ba1561aafbcdb443, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLocked: 0
   sensitivityX: 150
   sensitivityY: 150
   orientation: {fileID: 982985508}
   xRotation: 0
   yRotation: 0
-  Sliceboard: {fileID: 1610112769}
 --- !u!81 &900746543
 AudioListener:
   m_ObjectHideFlags: 0
@@ -3622,7 +3637,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe92ec157195ba24eb440787308457bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateXAxis: 1
   rotateYAxis: 0
+  rotateZAxis: 1
 --- !u!54 &1057958389
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3851,7 +3868,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a31a64441122e24da7444412add4561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sliceBoard: {fileID: 0}
   type: 0
+  testEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1090784212
 GameObject:
   m_ObjectHideFlags: 0
@@ -4917,7 +4938,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe92ec157195ba24eb440787308457bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateXAxis: 1
   rotateYAxis: 0
+  rotateZAxis: 1
 --- !u!212 &1370315868
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5777,7 +5800,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe92ec157195ba24eb440787308457bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateXAxis: 1
   rotateYAxis: 0
+  rotateZAxis: 1
 --- !u!1 &1616492115
 GameObject:
   m_ObjectHideFlags: 0
@@ -6229,7 +6254,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe92ec157195ba24eb440787308457bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateXAxis: 1
   rotateYAxis: 0
+  rotateZAxis: 1
 --- !u!212 &1706250613
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6518,7 +6545,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe92ec157195ba24eb440787308457bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateXAxis: 1
   rotateYAxis: 0
+  rotateZAxis: 1
 --- !u!212 &2001088829
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6617,7 +6646,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe92ec157195ba24eb440787308457bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateXAxis: 1
   rotateYAxis: 0
+  rotateZAxis: 1
 --- !u!212 &2002692040
 SpriteRenderer:
   m_ObjectHideFlags: 0
