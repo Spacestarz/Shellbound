@@ -4,6 +4,7 @@ using System.Collections;
 
 public class RotateCamera : MonoBehaviour
 {
+    public static RotateCamera instance;
     public static bool isLocked;
 
     public float sensitivityX;
@@ -14,23 +15,23 @@ public class RotateCamera : MonoBehaviour
     public float xRotation;
     public float yRotation;
 
-    public GameObject Sliceboard;
-
-    bool startedLooking;
-
     void Awake()
     {
         isLocked = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        if (instance == null)
+        {
+            instance = this;
+        }
     }
 
     void Update()
     {
-        if (Harpoon.hasCaught && !startedLooking)
+        if (Harpoon.hasCaught)// && !startedLooking)
         {
-            startedLooking = true;
-            transform.DOLookAt(Sliceboard.transform.position, 0.5f).OnComplete(UpdateRotation);
+            LockOntoSliceBoard(Harpoon.instance.caughtObject.sliceBoard);
         }
         else if (!Harpoon.hasCaught)
         {
@@ -38,19 +39,19 @@ public class RotateCamera : MonoBehaviour
         }
     }
 
-    private void UpdateRotation()
+    public static void LockOntoSliceBoard(SlicePattern sliceBoard)
     {
-        xRotation = transform.localRotation.eulerAngles.x;
-        yRotation = transform.localRotation.eulerAngles.y;
+        instance.transform.DOLookAt(sliceBoard.transform.position, 0.5f).OnComplete(UpdateRotation);
+    }
+
+    private static void UpdateRotation()
+    {
+        instance.xRotation = instance.transform.localRotation.eulerAngles.x;
+        instance.yRotation = instance.transform.localRotation.eulerAngles.y;
     }
 
     void GetMouseInput()
     {
-        if (startedLooking)
-        {
-            startedLooking = false;
-        }
-
         if (!Harpoon.hasCaught && !isLocked)
         {
             float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensitivityX;
@@ -69,7 +70,7 @@ public class RotateCamera : MonoBehaviour
 
     public static IEnumerator SetCameraLock(bool locked)
     {
-        yield return new WaitForSecondsRealtime(0.2f);
+        yield return new WaitForSecondsRealtime(0.4f);
         isLocked = locked;
     }
 }

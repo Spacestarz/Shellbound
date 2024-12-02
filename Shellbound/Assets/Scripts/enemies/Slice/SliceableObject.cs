@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class SliceableObject : MonoBehaviour
 {
+    public SlicePattern sliceBoard;
+
     public enum Type
     {
         Enemy,
@@ -12,6 +14,7 @@ public class SliceableObject : MonoBehaviour
 
     public void SingleSlice()
     {
+        Debug.Log("SingleSlice");
         switch(type)
         {
             case Type.Enemy:
@@ -25,6 +28,7 @@ public class SliceableObject : MonoBehaviour
 
     public void FinalSlice()
     {
+        Debug.Log("FinalSlice");
         switch (type)
         {
             case Type.Enemy:

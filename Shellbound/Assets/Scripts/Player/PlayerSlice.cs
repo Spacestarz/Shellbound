@@ -5,7 +5,8 @@ public class PlayerSlice : MonoBehaviour
     static bool sliceMode;
 
     public static PlayerSlice instance;
-    public GameObject caughtObject;
+    public SliceableObject caughtObject;
+    public RotateCamera camRotation;
     public static SlicePattern currentSlicePattern;
 
     static Vector2 mouseMovement;
@@ -15,7 +16,7 @@ public class PlayerSlice : MonoBehaviour
 
 
     static float sliceTickTime = 0;
-    static float sliceTickLength = 1f/30;
+    static float sliceTickLength = 0.033f;
 
     static float sliceTime = 0;
     static float sliceTimeLimit = 0.75f;
@@ -23,11 +24,12 @@ public class PlayerSlice : MonoBehaviour
     static float requiredDotProduct = 0.8f;
 
     static float currentMagnitude = 0;
-    static float requiredMagnitude = 5; 
+    static float requiredMagnitude = 5;
 
     private void Awake()
     {
         sliceMode = false;
+
         if (instance == null)
         {
             instance = this;
@@ -86,9 +88,10 @@ public class PlayerSlice : MonoBehaviour
     }
 
 
-    public static void SetCaughtObject(GameObject obj)
+    public static void SetCaughtObject(SliceableObject obj)
     {
         instance.caughtObject = obj;
+        //instance.caughtObject.GetComponentInChildren<SlicePattern>().NextSliceArrow();
     }
 
 
@@ -103,7 +106,7 @@ public class PlayerSlice : MonoBehaviour
     {
         targetDirection = dir.normalized;
         
-        //If only one axis isn't 0 (orthigonal)
+        //If only one axis is 0 (orthogonal)
         if (targetDirection.x != 0 ^ targetDirection.y != 0)
         {
             requiredDotProduct = 0.7f;
@@ -164,6 +167,7 @@ public class PlayerSlice : MonoBehaviour
         }
         else
         {
+            Debug.Log("LOLNOOB");
             currentMagnitude = 0;
         }
     }
