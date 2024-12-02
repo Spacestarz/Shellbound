@@ -1628,8 +1628,8 @@ MonoBehaviour:
   Anchor: {fileID: 2047234786}
   harpoonObject: {fileID: 1203022920}
   mainCam: {fileID: 900746539}
-  fireRate: 20
-  speedReturn: 20
+  fireRate: 40
+  speedReturn: 30
   maxDistancefromAnchor: 15
   fired: 0
   goingAway: 0

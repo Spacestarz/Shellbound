@@ -25,6 +25,9 @@ public class PlayerSlice : MonoBehaviour
     static float currentMagnitude = 0;
     static float requiredMagnitude = 5;
 
+    static int successfulTicks = 0;
+    static int requiredTicks = 3;
+
     private void Awake()
     {
         mainCam = Camera.main;
@@ -50,6 +53,9 @@ public class PlayerSlice : MonoBehaviour
         sliceMode = status;
         sliceTime = 0;
         sliceTickTime = 0;
+
+        successfulTicks = 0;
+        currentMagnitude = 0;
 
         if (sliceMode)
         {
@@ -93,7 +99,6 @@ public class PlayerSlice : MonoBehaviour
     {
         instance.caughtObject = obj;
         SetSliceMode(true);
-        //instance.caughtObject.GetComponentInChildren<SlicePattern>().NextSliceArrow();
     }
 
 
@@ -160,16 +165,22 @@ public class PlayerSlice : MonoBehaviour
     {
         if (Vector2.Dot(mouseDirection, targetDirection) >= requiredDotProduct)
         {
-            currentMagnitude += mouseMovement.magnitude;
+            successfulTicks++;
+            //currentMagnitude += mouseMovement.magnitude;
 
-            if (currentMagnitude >= requiredMagnitude)
+            //if (currentMagnitude >= requiredMagnitude)
+            //{
+            //    CompleteSlice();
+            //}
+            if(successfulTicks >= requiredTicks)
             {
                 CompleteSlice();
             }
         }
         else
         {
-            currentMagnitude = 0;
+            //currentMagnitude = 0;
+            successfulTicks = 0;
         }
     }
 
@@ -177,7 +188,7 @@ public class PlayerSlice : MonoBehaviour
     {
         currentSlicePattern.spawnedArrow.CompleteSlice();
         currentSlicePattern.NextSliceArrow();
-        currentMagnitude -= mouseMovement.magnitude / 2;
+        successfulTicks = 0;
 
         sliceTime = 0;
     }
@@ -187,5 +198,6 @@ public class PlayerSlice : MonoBehaviour
         currentSlicePattern.FailPattern();
         ClearCaughtObject();
         SetSliceMode(false);
+
     }
 }
