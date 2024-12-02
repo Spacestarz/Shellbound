@@ -12,6 +12,7 @@ TagManager:
   - TutorialHookThis
   - Outer Spere
   - Inner spere
+  - Ground
   layers:
   - Default
   - TransparentFX
