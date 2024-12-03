@@ -8,12 +8,8 @@ public class Crowd_Projectile : MonoBehaviour
     public Crowd_attacks crowd_Attacks;
 
     public bool crowdAttackHitGround = false;
-    private Vector3 startPos;
+    public Vector3 startPos;
     private Rigidbody rb;
-
-    private Vector3 playerPOS;
-
-
 
     //The circle 
     public GameObject attackIndicator;
@@ -22,17 +18,9 @@ public class Crowd_Projectile : MonoBehaviour
     
     void Start()
     {
-        
-        startPos = transform.position;
         rb = GetComponent<Rigidbody>();
-
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        playerPOS = player.transform.position;
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -41,20 +29,20 @@ public class Crowd_Projectile : MonoBehaviour
             crowdAttackHitGround = true;
            // Debug.Log("Ground ");
 
-            crowd_Attacks.ThrowAttack();
-        
+            crowd_Attacks.ThrowAttack(this);
         }       
     }
 
-    public void Attack()
+    public void Attack(Vector3 target)
     {
-       // attackIndicator.SetActive(true);
-        transform.position = new Vector3(playerPOS.x, startPos.y, playerPOS.z);
- 
-        attackIndicator.transform.position = player.transform.position;
-      
+        // attackIndicator.SetActive(true);
+        transform.position = new Vector3(target.x, target.y, startPos.z);
+
+      //comment out this for now to fix?
+      //  attackIndicator.transform.position = player.transform.position;
+
         //transform.position = startPos;  
-        rb.velocity = transform.up * -10f;
+        GetComponent<Rigidbody>().velocity = Vector3.down * 2f;
 
     }
 

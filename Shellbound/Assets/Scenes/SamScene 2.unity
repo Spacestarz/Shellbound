@@ -6765,6 +6765,8 @@ MonoBehaviour:
   player: {fileID: 295450713}
   crowd_Attacks: {fileID: 131096207}
   crowdAttackHitGround: 0
+  startPos: {x: 0, y: 0, z: 14}
+  attackIndicator: {fileID: 298029373}
 --- !u!1 &1987324685
 GameObject:
   m_ObjectHideFlags: 0

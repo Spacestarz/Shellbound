@@ -15,7 +15,6 @@ public class Crowd_attacks : MonoBehaviour
     private float radius = 2;
 
     public HealthSystem healthSystem;
-    private Crowd_Projectile Crowd_Projectile;
 
     // Start is called before the first frame update
     void Start()
@@ -25,9 +24,7 @@ public class Crowd_attacks : MonoBehaviour
        attackIndicator = GameObject.Find("Circle");
        attackIndicator.SetActive(false);
 
-       Crowd_Projectile = GetComponentInChildren<Crowd_Projectile>();
-       projectileRB = projectile.GetComponent<Rigidbody>();
-     
+       projectileRB = projectile.GetComponent<Rigidbody>();   
     }
 
     // Update is called once per frame
@@ -36,10 +33,14 @@ public class Crowd_attacks : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.R))
         {
-            attackIndicator.SetActive(true);
+            //tror attackindicator ej får spelarens position för den får den infon av crowd_projectile?
+            var newAttack = Instantiate(attackIndicator, player.transform.position, Quaternion.identity); //the rotation need to be in -90 degree
+            newAttack.SetActive(true);
+            Destroy(newAttack, 5);
             WhereIsPlayer();
+
         }
-      
+
         /*
         TODO 
         Check where the player is and make the attack go there. 
@@ -53,45 +54,43 @@ public class Crowd_attacks : MonoBehaviour
     private void WhereIsPlayer()
     {
         transform.position = player.transform.position;
-        Crowd_Projectile.Attack();
 
-        Invoke("ThrowAttack", 0.1f);
+        var newProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
+
+        newProjectile.GetComponent<Crowd_Projectile>().Attack(transform.position);
+
+        attackIndicator.transform.position = player.transform.position;
+
+        ThrowAttack(newProjectile.GetComponentInChildren<Crowd_Projectile>());
+        //Invoke("ThrowAttack", 0.1f);
     }
 
-    public void ThrowAttack()
+    public void ThrowAttack(Crowd_Projectile newProjectile)
     {
-
-        //make hit ground gets false even if it doesent hit the player
-           
+              
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
        
-        if ((hitColliders.Any(hitCollider => hitCollider.CompareTag("Player") && Crowd_Projectile.crowdAttackHitGround == true)))
+        if ((hitColliders.Any(hitCollider => hitCollider.CompareTag("Player") && newProjectile.crowdAttackHitGround == true)))
         {
             Debug.Log("Player take damage");
             healthSystem.TakeDamage(damage);
 
-            Crowd_Projectile.crowdAttackHitGround = false;
+            newProjectile.crowdAttackHitGround = false;
           
         }
 
-        else if(hitColliders.Any(hitCollider => hitCollider.CompareTag("Ground")) && Crowd_Projectile.crowdAttackHitGround == true)
+        else if(hitColliders.Any(hitCollider => hitCollider.CompareTag("Ground")) && newProjectile.crowdAttackHitGround == true)
         {
-            Crowd_Projectile.crowdAttackHitGround = false;
+            newProjectile.crowdAttackHitGround = false;
            // Debug.Log("Dident hit player sad");
         }
-
        
-        
     }
-
     private void OnDrawGizmos()
     {
         //DRAWS AREA OF AOE ATTACK
         Gizmos.color = Color.red;
 
-        Gizmos.DrawWireSphere(transform.position, radius);
-        
-    }
-    
-
+        Gizmos.DrawWireSphere(transform.position, radius);    
+    }    
  }
