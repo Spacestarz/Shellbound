@@ -70,9 +70,11 @@ public class Base_enemy : MonoBehaviour
     public IEnumerator weekTimer()
     {
         Debug.Log("week");
+        agent.SetDestination(transform.position);
         volnereble = true;
         yield return new WaitForSeconds(volnerebleTime);
         volnereble = false;
+        transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
     }
     public void wekend()
     {

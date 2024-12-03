@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1b3b4b945939a54ea0b23d3396115fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d12f75f42568b04e943d596aa05a6f3, type: 3}
   m_Name: sack-pro_SkeletonData
   m_EditorClassIdentifier: 
   atlasAssets:
@@ -19,7 +19,7 @@ MonoBehaviour:
   isUpgradingBlendModeMaterials: 0
   blendModeMaterials:
     requiresBlendModeMaterials: 0
-    applyAdditiveMaterial: 0
+    applyAdditiveMaterial: 1
     additiveMaterials: []
     multiplyMaterials: []
     screenMaterials: []
