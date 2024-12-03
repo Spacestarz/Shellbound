@@ -5,7 +5,7 @@ using UnityEngine.AI;
 public abstract class base_enemi_attack : MonoBehaviour
 {
     public abstract void phase();
-
+    public Crowd_attacks crowd;
     public Base_enemy enemy;
     public Boss1_attacks attack;
     public NavMeshAgent agent;

@@ -11,18 +11,23 @@ public class Crowd_attacks : MonoBehaviour
     private GameObject attackIndicator;
 
     private Rigidbody projectileRB;
-    private int damage = 5;
+    private int damage = 1;
     private float radius = 2;
 
     public HealthSystem healthSystem;
     private Crowd_Projectile Crowd_Projectile;
+
     // Start is called before the first frame update
     void Start()
     {
+       //got the attackindicator here to just make it disappear on start
+       //and the rest is on the projectile script. 
        attackIndicator = GameObject.Find("Circle");
+       attackIndicator.SetActive(false);
+
        Crowd_Projectile = GetComponentInChildren<Crowd_Projectile>();
        projectileRB = projectile.GetComponent<Rigidbody>();
-       attackIndicator.SetActive(false);
+     
     }
 
     // Update is called once per frame
@@ -31,6 +36,7 @@ public class Crowd_attacks : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.R))
         {
+            attackIndicator.SetActive(true);
             WhereIsPlayer();
         }
       
@@ -46,31 +52,36 @@ public class Crowd_attacks : MonoBehaviour
 
     private void WhereIsPlayer()
     {
-
-        Crowd_Projectile.Attack();
-        
-       // projectileRB.velocity = transform.up * -10;
-
-
         transform.position = player.transform.position;
-        attackIndicator.transform.position = player.transform.position;
-        attackIndicator.SetActive(true);
+        Crowd_Projectile.Attack();
 
         Invoke("ThrowAttack", 0.1f);
     }
 
     public void ThrowAttack()
     {
+
+        //make hit ground gets false even if it doesent hit the player
            
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
-
+       
         if ((hitColliders.Any(hitCollider => hitCollider.CompareTag("Player") && Crowd_Projectile.crowdAttackHitGround == true)))
         {
             Debug.Log("Player take damage");
             healthSystem.TakeDamage(damage);
 
             Crowd_Projectile.crowdAttackHitGround = false;
+          
         }
+
+        else if(hitColliders.Any(hitCollider => hitCollider.CompareTag("Ground")) && Crowd_Projectile.crowdAttackHitGround == true)
+        {
+            Crowd_Projectile.crowdAttackHitGround = false;
+           // Debug.Log("Dident hit player sad");
+        }
+
+       
+        
     }
 
     private void OnDrawGizmos()
@@ -79,7 +90,7 @@ public class Crowd_attacks : MonoBehaviour
         Gizmos.color = Color.red;
 
         Gizmos.DrawWireSphere(transform.position, radius);
-        Debug.Log("Drawing for circle spere");
+        
     }
     
 
