@@ -4,7 +4,7 @@ public class Harpoon : MonoBehaviour
 {
     SpriteRenderer sr;
     Rigidbody rb;
-    HarpoonLine line;
+    MovingLine line;
 
     public static Harpoon instance;
     
@@ -18,7 +18,7 @@ public class Harpoon : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         sr = GetComponentInChildren<SpriteRenderer>();
-        line = GetComponentInChildren<HarpoonLine>();
+        line = GetComponentInChildren<MovingLine>();
         sr.enabled = false;
         hasCaught = false;
 
@@ -93,7 +93,7 @@ public class Harpoon : MonoBehaviour
         sr.enabled = visibility;
         if (!hasCaught)
         {
-            line.SetEnabled(visibility);
+            line.SetVisible(visibility);
         }
     }
 }

@@ -18,12 +18,15 @@ public class PlayerSlice : MonoBehaviour
     static float sliceTickLength = 0.033f;
 
     static float sliceTime = 0;
-    static float sliceTimeLimit = 0.75f;
+    static float sliceTimeLimit = 1.25f;
 
     static float requiredDotProduct = 0.8f;
 
     static float currentMagnitude = 0;
     static float requiredMagnitude = 5;
+
+    static int successfulTicks = 0;
+    static int requiredTicks = 3;
 
     private void Awake()
     {
@@ -51,9 +54,11 @@ public class PlayerSlice : MonoBehaviour
         sliceTime = 0;
         sliceTickTime = 0;
 
+        successfulTicks = 0;
+        currentMagnitude = 0;
+
         if (sliceMode)
         {
-            Debug.Log("SliceMode!");
             instance.GetComponent<PlayerController>().NullifyMovement();
             currentSlicePattern = instance.caughtObject.GetComponentInChildren<SlicePattern>();
             currentSlicePattern.NextSliceArrow();
@@ -94,7 +99,6 @@ public class PlayerSlice : MonoBehaviour
     {
         instance.caughtObject = obj;
         SetSliceMode(true);
-        //instance.caughtObject.GetComponentInChildren<SlicePattern>().NextSliceArrow();
     }
 
 
@@ -112,13 +116,12 @@ public class PlayerSlice : MonoBehaviour
         //If only one axis is 0 (orthogonal)
         if (targetDirection.x != 0 ^ targetDirection.y != 0)
         {
-            requiredDotProduct = 0.95f;
+            requiredDotProduct = 0.9f;
             requiredMagnitude = 17f;
         }
-        // (Diagonal)
-        else
+        else // (Diagonal)
         {
-            requiredDotProduct = 0.85f;
+            requiredDotProduct = 0.8f;
             requiredMagnitude = 13f;
         }
     }
@@ -161,16 +164,26 @@ public class PlayerSlice : MonoBehaviour
     {
         if (Vector2.Dot(mouseDirection, targetDirection) >= requiredDotProduct)
         {
-            currentMagnitude += mouseMovement.magnitude;
-
-            if (currentMagnitude >= requiredMagnitude)
-            {
-                CompleteSlice();
-            }
+            SuccessfulTick();
         }
         else
         {
-            currentMagnitude = 0;
+            successfulTicks = 0;
+        }
+
+        if (currentSlicePattern != null)
+        {
+            currentSlicePattern.spawnedArrow.TurnRed(successfulTicks, requiredTicks);
+        }
+    }
+
+    static void SuccessfulTick()
+    {
+        successfulTicks++;
+
+        if (successfulTicks >= requiredTicks)
+        {
+            CompleteSlice();
         }
     }
 
@@ -178,7 +191,7 @@ public class PlayerSlice : MonoBehaviour
     {
         currentSlicePattern.spawnedArrow.CompleteSlice();
         currentSlicePattern.NextSliceArrow();
-        currentMagnitude -= mouseMovement.magnitude / 2;
+        successfulTicks = 0;
 
         sliceTime = 0;
     }

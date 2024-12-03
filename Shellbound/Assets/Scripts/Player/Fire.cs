@@ -5,7 +5,7 @@ public class Fire : MonoBehaviour
 {
     Rigidbody harpoonRigidBody;
     Harpoon harpoon;
-    HarpoonLine harpoonLine;
+    MovingLine harpoonLine;
 
     public GameObject Anchor;
     public GameObject harpoonObject;
@@ -26,7 +26,7 @@ public class Fire : MonoBehaviour
     {
         harpoon = harpoonObject.GetComponent<Harpoon>();
         harpoonRigidBody = harpoonObject.GetComponent<Rigidbody>();
-        harpoonLine = harpoonObject.GetComponent<HarpoonLine>();
+        harpoonLine = harpoonObject.GetComponent<MovingLine>();
 
         harpoonRigidBody.constraints = RigidbodyConstraints.FreezeAll;
         harpoonRigidBody.useGravity = false;

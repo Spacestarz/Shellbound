@@ -8,7 +8,7 @@ public class shrimp_phase_3 : base_enemi_attack
     public GameObject wave2;
     public override void phase()
     {
-        if (enemy.Range(startpunchrange))
+        if (enemy.Range(startpunchrange) && !enemy.volnereble && !PlayerSlice.SliceMode())
         {
             resetpositon();
             //transform.LookAt(target);
@@ -17,7 +17,7 @@ public class shrimp_phase_3 : base_enemi_attack
                 StartCoroutine(enemy.Cool(punchspeed, punchrange));
             }
         }
-        else if (enemy.Range(startelastickrange) && enemy.atta && !enemy.volnereble)
+        else if (enemy.Range(startelastickrange) && enemy.atta && !enemy.volnereble && !PlayerSlice.SliceMode())
         {
             enemy.atta = false;
             if (i % 4 == 0)
@@ -28,7 +28,7 @@ public class shrimp_phase_3 : base_enemi_attack
             {
                 attack.parent.stop();
                 attack.still = true;
-                StartCoroutine(dublewave());
+                StartCoroutine(dublewave(2));
             }
             i++;
             resetpositon();
@@ -41,11 +41,15 @@ public class shrimp_phase_3 : base_enemi_attack
         {
             resetpositon();
         }
-        IEnumerator dublewave()
+        IEnumerator dublewave(int amount)
         {
-            attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
-            yield return new WaitForSeconds(1);
-            attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
+            for(int j = 0; j < amount; j++)
+            {
+                yield return new WaitForSeconds(1); 
+                attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
+
+            }
+            //attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
             StartCoroutine(cooldown(shockwavespeed));
         }
     }
