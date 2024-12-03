@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48064f2762f6f914783ca62e24458145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crowd: {fileID: 0}
   enemy: {fileID: 1057958395}
   attack: {fileID: 653001505}
   agent: {fileID: 0}
@@ -1433,8 +1434,8 @@ MonoBehaviour:
   MaxHP: 10
   currentHP: 0
   Player: {fileID: 295450713}
-  sorce: {fileID: 295450723}
-  audio: {fileID: 8300000, guid: cb2ec8cfff8bec140a2e6d29135b4407, type: 3}
+  source: {fileID: 0}
+  audioClip: {fileID: 0}
   uiScript: {fileID: 1987324686}
   enemySprite: {fileID: 0}
 --- !u!114 &295450715
@@ -3784,8 +3785,8 @@ MonoBehaviour:
   MaxHP: 40
   currentHP: 0
   Player: {fileID: 0}
-  sorce: {fileID: 0}
-  audio: {fileID: 8300000, guid: cb2ec8cfff8bec140a2e6d29135b4407, type: 3}
+  source: {fileID: 0}
+  audioClip: {fileID: 0}
   uiScript: {fileID: 1987324686}
   enemySprite: {fileID: 2002692040}
   dragspeed: 25
@@ -4066,6 +4067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4924f10494617849972c5224cc62727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crowd: {fileID: 0}
   enemy: {fileID: 1057958395}
   attack: {fileID: 653001505}
   agent: {fileID: 0}
@@ -4494,6 +4496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0f75c98798e2c046b0b12120965b9b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crowd: {fileID: 0}
   enemy: {fileID: 1057958395}
   attack: {fileID: 653001505}
   agent: {fileID: 0}
@@ -6765,7 +6768,7 @@ MonoBehaviour:
   player: {fileID: 295450713}
   crowd_Attacks: {fileID: 131096207}
   crowdAttackHitGround: 0
-  startPos: {x: 0, y: 0, z: 14}
+  startPos: {x: 0, y: 14, z: 0}
   attackIndicator: {fileID: 298029373}
 --- !u!1 &1987324685
 GameObject:

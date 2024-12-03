@@ -36,7 +36,7 @@ public class Crowd_Projectile : MonoBehaviour
     public void Attack(Vector3 target)
     {
         // attackIndicator.SetActive(true);
-        transform.position = new Vector3(target.x, target.y, startPos.z);
+        transform.position = new Vector3(target.x, startPos.y, target.z);
 
       //comment out this for now to fix?
       //  attackIndicator.transform.position = player.transform.position;

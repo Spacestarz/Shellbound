@@ -33,8 +33,8 @@ public class Crowd_attacks : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.R))
         {
-            //tror attackindicator ej får spelarens position för den får den infon av crowd_projectile?
-            var newAttack = Instantiate(attackIndicator, player.transform.position, Quaternion.identity); //the rotation need to be in -90 degree
+           
+            var newAttack = Instantiate(attackIndicator, player.transform.position, Quaternion.Euler(-90,0,0)); //the rotation need to be in -90 degree
             newAttack.SetActive(true);
             Destroy(newAttack, 5);
             WhereIsPlayer();
