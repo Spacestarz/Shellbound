@@ -25,7 +25,7 @@ public class shrimp_phase_2 : base_enemi_attack
             }
             else
             {
-                attack.parent.stop();
+                //attack.parent.stop();
                 attack.still = true;
                 attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
                 StartCoroutine(cooldown(shockwavespeed));
@@ -35,7 +35,7 @@ public class shrimp_phase_2 : base_enemi_attack
             i++;
             resetpositon();
         }
-        else if (enemy.atta && !enemy.volnereble && !PlayerSlice.SliceMode())
+        else if (!enemy.volnereble && !PlayerSlice.SliceMode())
         {
             enemy.agent.SetDestination(enemy.target.position);
         }

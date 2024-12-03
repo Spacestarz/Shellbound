@@ -26,14 +26,14 @@ public class shrimp_phase_3 : base_enemi_attack
             }
             else
             {
-                attack.parent.stop();
+                //attack.parent.stop();
                 attack.still = true;
                 StartCoroutine(dublewave(2));
             }
             i++;
             resetpositon();
         }
-        else if (enemy.atta && !enemy.volnereble)
+        else if (!enemy.volnereble)
         {
             enemy.agent.SetDestination(enemy.target.position);
         }
@@ -45,8 +45,8 @@ public class shrimp_phase_3 : base_enemi_attack
         {
             for(int j = 0; j < amount; j++)
             {
-                attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
                 yield return new WaitForSeconds(1); 
+                attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
 
             }
             //attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);

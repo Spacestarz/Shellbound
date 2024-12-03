@@ -77,7 +77,7 @@ public class Boss1_attacks : MonoBehaviour
         elastickrange = range;
         returnspeed = returns;
         BeVisible(claw);
-        parent.stop();
+        //parent.stop();
         still = true;
         //claw.transform.position = transform.position;
 
@@ -188,7 +188,8 @@ public class Boss1_attacks : MonoBehaviour
             {
                 ray.collider.GetComponent<HealthSystem>().TakeDamage(damage);
                 //ray.collider.GetComponent<Rigidbody>().velocity = transform.forward * pushForce;
-                ray.collider.GetComponent<Rigidbody>().AddForce(transform.forward * pushForce);
+                //Debug.Log(transform.forward);
+                ray.collider.GetComponent<Rigidbody>().AddForce(new Vector3(transform.forward.x, 0,transform.forward.z) * pushForce);
             }
 
         }

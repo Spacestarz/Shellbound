@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: f8e00f712aa848546b044b9c97439165, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 2168fc0669ce18742b81d4431baf7667, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48064f2762f6f914783ca62e24458145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crowd: {fileID: 0}
   enemy: {fileID: 1057958395}
   attack: {fileID: 653001505}
   agent: {fileID: 0}
@@ -164,8 +165,8 @@ MonoBehaviour:
   shockwavezise: 10
   startelastickrange: 20
   elastickrange: 24
-  elastickspeed: 30
-  elastickreturnspeed: 60
+  elastickspeed: 20
+  elastickreturnspeed: 40
 --- !u!4 &5805763
 Transform:
   m_ObjectHideFlags: 0
@@ -4217,6 +4218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4924f10494617849972c5224cc62727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crowd: {fileID: 0}
   enemy: {fileID: 1057958395}
   attack: {fileID: 653001505}
   agent: {fileID: 0}
@@ -4645,6 +4647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0f75c98798e2c046b0b12120965b9b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crowd: {fileID: 0}
   enemy: {fileID: 1057958395}
   attack: {fileID: 653001505}
   agent: {fileID: 0}
