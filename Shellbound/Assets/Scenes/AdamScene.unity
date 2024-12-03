@@ -659,6 +659,7 @@ MonoBehaviour:
   velo: 0
   still: 0
   parent: {fileID: 0}
+  animator: {fileID: 979701966}
 --- !u!135 &111425350
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -818,7 +819,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: eee8d85d3fc5a1a46bf2d2701a2afb2f, type: 3}
   m_Color: {r: 1, g: 0.00969137, b: 0, a: 1}
   m_FlipX: 0
@@ -1640,8 +1641,8 @@ MonoBehaviour:
   MaxHP: 100
   currentHP: 0
   Player: {fileID: 295450713}
-  sorce: {fileID: 295450723}
-  audio: {fileID: 8300000, guid: cb2ec8cfff8bec140a2e6d29135b4407, type: 3}
+  source: {fileID: 0}
+  audioClip: {fileID: 0}
   uiScript: {fileID: 1987324686}
   enemySprite: {fileID: 0}
 --- !u!114 &295450715
@@ -3001,6 +3002,7 @@ GameObject:
   - component: {fileID: 722802114}
   - component: {fileID: 722802113}
   - component: {fileID: 722802112}
+  - component: {fileID: 722802123}
   m_Layer: 12
   m_Name: enemy_test
   m_TagString: Enemy
@@ -3037,8 +3039,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.13
-  m_Pitch: 1
+  m_Volume: 0.58
+  m_Pitch: 2.13
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -3159,8 +3161,8 @@ MonoBehaviour:
   MaxHP: 40
   currentHP: 0
   Player: {fileID: 0}
-  sorce: {fileID: 0}
-  audio: {fileID: 8300000, guid: cb2ec8cfff8bec140a2e6d29135b4407, type: 3}
+  source: {fileID: 0}
+  audioClip: {fileID: 0}
   uiScript: {fileID: 1987324686}
   enemySprite: {fileID: 979701963}
   dragspeed: 25
@@ -3300,6 +3302,27 @@ Transform:
   - {fileID: 12678199}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &722802123
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722802111}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &765902788
 GameObject:
   m_ObjectHideFlags: 0
@@ -4074,6 +4097,7 @@ GameObject:
   - component: {fileID: 979701965}
   - component: {fileID: 979701963}
   - component: {fileID: 979701964}
+  - component: {fileID: 979701966}
   m_Layer: 12
   m_Name: sprite
   m_TagString: Untagged
@@ -4164,6 +4188,27 @@ Transform:
   - {fileID: 132259001}
   m_Father: {fileID: 722802122}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &979701966
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 979701962}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 936688d38d6e0c14db0616f9ed636625, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &982985507
 GameObject:
   m_ObjectHideFlags: 0

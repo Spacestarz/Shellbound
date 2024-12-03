@@ -1,15 +1,12 @@
-using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
-
 public class HealthSystem : MonoBehaviour
 {
     public float MaxHP;
     public float currentHP;
     public GameObject Player;
-    public AudioSource sorce;
-    public AudioClip audio;
+    public AudioSource source;
+    public AudioClip audioClip;
 
     public UI uiScript;
     public SpriteRenderer enemySprite;
@@ -19,14 +16,14 @@ public class HealthSystem : MonoBehaviour
     void Start()
     {      
         currentHP = MaxHP;
-        sorce = GetComponent<AudioSource>();
+        source = GetComponent<AudioSource>();
     }
 
     public void TakeDamage(int damageTaken)
     {
         currentHP -= damageTaken;
        
-        sorce.PlayOneShot(audio, 0.2f);
+        source.PlayOneShot(audioClip, 0.2f);
 
         if (gameObject.CompareTag("Player") && currentHP <= 0)
         {
