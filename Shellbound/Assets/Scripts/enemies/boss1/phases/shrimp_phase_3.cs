@@ -45,8 +45,8 @@ public class shrimp_phase_3 : base_enemi_attack
         {
             for(int j = 0; j < amount; j++)
             {
-                yield return new WaitForSeconds(1); 
                 attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
+                yield return new WaitForSeconds(1); 
 
             }
             //attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
