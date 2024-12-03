@@ -16,6 +16,7 @@ public class Crowd_attacks : MonoBehaviour
 
     public HealthSystem healthSystem;
     private Crowd_Projectile Crowd_Projectile;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,18 +52,8 @@ public class Crowd_attacks : MonoBehaviour
 
     private void WhereIsPlayer()
     {
-
+        transform.position = player.transform.position;
         Crowd_Projectile.Attack();
-
-        //unneccecary i know sr. TO DO
-        //make so it doesent check the position of the playeer twice.
-        //one for the projectile and one for the attack indicator. 
-
-      //  transform.position = player.transform.position;
-      // attackIndicator.transform.position = player.transform.position;
-
-        //moves this to projectile script to test
-        //attackIndicator.SetActive(true);
 
         Invoke("ThrowAttack", 0.1f);
     }
@@ -73,15 +64,24 @@ public class Crowd_attacks : MonoBehaviour
         //make hit ground gets false even if it doesent hit the player
            
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
-
+       
         if ((hitColliders.Any(hitCollider => hitCollider.CompareTag("Player") && Crowd_Projectile.crowdAttackHitGround == true)))
         {
             Debug.Log("Player take damage");
             healthSystem.TakeDamage(damage);
 
             Crowd_Projectile.crowdAttackHitGround = false;
-            Debug.Log("Bool for shit. 81 on crowd_attacks script" + "" + Crowd_Projectile.crowdAttackHitGround);
+          
         }
+
+        else if(hitColliders.Any(hitCollider => hitCollider.CompareTag("Ground")) && Crowd_Projectile.crowdAttackHitGround == true)
+        {
+            Crowd_Projectile.crowdAttackHitGround = false;
+           // Debug.Log("Dident hit player sad");
+        }
+
+       
+        
     }
 
     private void OnDrawGizmos()

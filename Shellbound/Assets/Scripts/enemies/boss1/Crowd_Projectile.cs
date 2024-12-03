@@ -15,13 +15,8 @@ public class Crowd_Projectile : MonoBehaviour
 
 
 
-    //testing 
+    //The circle 
     public GameObject attackIndicator;
-
-    //antingen compare tag med ground och då kommer aoe och gör skada
-
-    //ELLER bara säg efter 3 sec t ex så tar den som är inne i spere damage
-
 
     // Start is called before the first frame update
     
@@ -30,9 +25,7 @@ public class Crowd_Projectile : MonoBehaviour
         
         startPos = transform.position;
         rb = GetComponent<Rigidbody>();
-      //  attackIndicator = GameObject.Find("Circle");
 
-        Debug.Log("Awake");
     }
 
     // Update is called once per frame
@@ -46,10 +39,10 @@ public class Crowd_Projectile : MonoBehaviour
        if (other.CompareTag("Ground"))
         {
             crowdAttackHitGround = true;
-            Debug.Log("Ground ");
+           // Debug.Log("Ground ");
 
             crowd_Attacks.ThrowAttack();
-         
+        
         }       
     }
 
