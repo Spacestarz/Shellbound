@@ -11,7 +11,7 @@ public class Crowd_attacks : MonoBehaviour
     private GameObject attackIndicator;
 
     private Rigidbody projectileRB;
-    private int damage = 5;
+    private int damage = 1;
     private float radius = 2;
 
     public HealthSystem healthSystem;
@@ -19,10 +19,14 @@ public class Crowd_attacks : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       //got the attackindicator here to just make it disappear on start
+       //and the rest is on the projectile script. 
        attackIndicator = GameObject.Find("Circle");
+       attackIndicator.SetActive(false);
+
        Crowd_Projectile = GetComponentInChildren<Crowd_Projectile>();
        projectileRB = projectile.GetComponent<Rigidbody>();
-       attackIndicator.SetActive(false);
+     
     }
 
     // Update is called once per frame
@@ -31,6 +35,7 @@ public class Crowd_attacks : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.R))
         {
+            attackIndicator.SetActive(true);
             WhereIsPlayer();
         }
       
@@ -48,19 +53,24 @@ public class Crowd_attacks : MonoBehaviour
     {
 
         Crowd_Projectile.Attack();
-        
-       // projectileRB.velocity = transform.up * -10;
 
+        //unneccecary i know sr. TO DO
+        //make so it doesent check the position of the playeer twice.
+        //one for the projectile and one for the attack indicator. 
 
-        transform.position = player.transform.position;
-        attackIndicator.transform.position = player.transform.position;
-        attackIndicator.SetActive(true);
+      //  transform.position = player.transform.position;
+      // attackIndicator.transform.position = player.transform.position;
+
+        //moves this to projectile script to test
+        //attackIndicator.SetActive(true);
 
         Invoke("ThrowAttack", 0.1f);
     }
 
     public void ThrowAttack()
     {
+
+        //make hit ground gets false even if it doesent hit the player
            
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
 
@@ -70,6 +80,7 @@ public class Crowd_attacks : MonoBehaviour
             healthSystem.TakeDamage(damage);
 
             Crowd_Projectile.crowdAttackHitGround = false;
+            Debug.Log("Bool for shit. 81 on crowd_attacks script" + "" + Crowd_Projectile.crowdAttackHitGround);
         }
     }
 
@@ -79,7 +90,7 @@ public class Crowd_attacks : MonoBehaviour
         Gizmos.color = Color.red;
 
         Gizmos.DrawWireSphere(transform.position, radius);
-        Debug.Log("Drawing for circle spere");
+        
     }
     
 
