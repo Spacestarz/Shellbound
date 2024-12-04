@@ -47,11 +47,11 @@ public abstract class base_enemi_attack : MonoBehaviour
     }
     public IEnumerator dublewave(int amount)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.7f);
         for (int j = 0; j < amount; j++)
         {
             attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.7f);
 
         }
         //attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
