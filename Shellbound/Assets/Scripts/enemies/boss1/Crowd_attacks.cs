@@ -16,6 +16,13 @@ public class Crowd_attacks : MonoBehaviour
 
     public HealthSystem healthSystem;
 
+   
+    private Vector3 attackIndicatorPosition;
+
+    //time when the red circle gets destroyed
+    [Header("Destroytimer of circle and projectile")]
+    [SerializeField] private float destroyTimer = 5;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,36 +40,33 @@ public class Crowd_attacks : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.R))
         {
-           
-            var newAttack = Instantiate(attackIndicator, player.transform.position, Quaternion.Euler(-90,0,0)); //the rotation need to be in -90 degree
+            attackIndicatorPosition = new Vector3(player.transform.position.x, (float)0.04, player.transform.position.z);
+            attackIndicator.transform.position = attackIndicatorPosition;
+
+
+            var newAttack = Instantiate(attackIndicator, attackIndicatorPosition, Quaternion.Euler(-90,0,0)); //the rotation need to be in -90 degree
             newAttack.SetActive(true);
-            Destroy(newAttack, 5);
+            Destroy(newAttack, destroyTimer);
             WhereIsPlayer();
 
         }
 
         /*
         TODO 
-        Check where the player is and make the attack go there. 
-        Make it have a aoe circle so player can see where the attack will strike. 
-
-        one circle soon done
-        maybe get like triple projectiles in a row or in random places?
+        make circle not float above ground.
         */
     }
 
     private void WhereIsPlayer()
-    {
+    {   
         transform.position = player.transform.position;
 
         var newProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
+        Destroy(newProjectile, destroyTimer);
 
         newProjectile.GetComponent<Crowd_Projectile>().Attack(transform.position);
 
-        attackIndicator.transform.position = player.transform.position;
-
         ThrowAttack(newProjectile.GetComponentInChildren<Crowd_Projectile>());
-        //Invoke("ThrowAttack", 0.1f);
     }
 
     public void ThrowAttack(Crowd_Projectile newProjectile)
@@ -75,8 +79,7 @@ public class Crowd_attacks : MonoBehaviour
             Debug.Log("Player take damage");
             healthSystem.TakeDamage(damage);
 
-            newProjectile.crowdAttackHitGround = false;
-          
+            newProjectile.crowdAttackHitGround = false;        
         }
 
         else if(hitColliders.Any(hitCollider => hitCollider.CompareTag("Ground")) && newProjectile.crowdAttackHitGround == true)

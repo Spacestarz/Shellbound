@@ -14,6 +14,9 @@ public class Crowd_Projectile : MonoBehaviour
     //The circle 
     public GameObject attackIndicator;
 
+    [Header("Speed of projectile")]
+    [SerializeField] private float speed = 2f;
+
     // Start is called before the first frame update
     
     void Start()
@@ -27,7 +30,6 @@ public class Crowd_Projectile : MonoBehaviour
        if (other.CompareTag("Ground"))
         {
             crowdAttackHitGround = true;
-           // Debug.Log("Ground ");
 
             crowd_Attacks.ThrowAttack(this);
         }       
@@ -35,15 +37,8 @@ public class Crowd_Projectile : MonoBehaviour
 
     public void Attack(Vector3 target)
     {
-        // attackIndicator.SetActive(true);
         transform.position = new Vector3(target.x, startPos.y, target.z);
 
-      //comment out this for now to fix?
-      //  attackIndicator.transform.position = player.transform.position;
-
-        //transform.position = startPos;  
-        GetComponent<Rigidbody>().velocity = Vector3.down * 2f;
-
+        GetComponent<Rigidbody>().velocity = Vector3.down * speed;
     }
-
 }
