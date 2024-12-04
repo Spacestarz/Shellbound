@@ -22,7 +22,8 @@ public class shrimp_phase_3 : base_enemi_attack
             enemy.atta = false;
             if (i % 4 == 0)
             {
-                attack.Elastick(elastickrange, elastickspeed, elastickreturnspeed);
+                //attack.Elastick(elastickrange, elastickspeed, elastickreturnspeed);
+                StartCoroutine(elestickdelay(elastickdelai));
             }
             else
             {

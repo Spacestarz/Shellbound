@@ -25,6 +25,7 @@ public abstract class base_enemi_attack : MonoBehaviour
     public float elastickrange = 12;
     public float elastickspeed = 4;
     public float elastickreturnspeed = 10;
+    public float elastickdelai = 1;
     private void Start()
     {
         enemy = GetComponentInParent<Base_enemy>();
@@ -56,5 +57,11 @@ public abstract class base_enemi_attack : MonoBehaviour
         }
         //attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
         StartCoroutine(cooldown(shockwavespeed));
+    }
+    public IEnumerator elestickdelay(float time)
+    {
+        enemy.atta = false;
+        yield return new WaitForSeconds(time);
+        attack.Elastick(elastickrange, elastickspeed, elastickreturnspeed);
     }
 }
