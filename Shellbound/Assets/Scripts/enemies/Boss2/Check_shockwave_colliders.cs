@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System;
 
 public class Check_shockwave_colliders : MonoBehaviour
 {
@@ -37,8 +38,9 @@ public class Check_shockwave_colliders : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.G))
         {
             Vector3 endScale = new Vector3(1 * Scale, 1 * Scale, 1);
-            transform.DOScale(endScale, 2f);
+            transform.DOScale(endScale, 2f).OnComplete(ResetShockwave); 
         }
+      
 
 
         if (OuterRing.playerPresent ^ innerring.playerPresent) 
@@ -49,4 +51,8 @@ public class Check_shockwave_colliders : MonoBehaviour
         }
     }
 
+    private void ResetShockwave()
+    {
+        transform.localScale = Vector3.zero;
+    }
 }
