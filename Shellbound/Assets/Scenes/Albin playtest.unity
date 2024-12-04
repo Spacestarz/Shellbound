@@ -4233,7 +4233,7 @@ MonoBehaviour:
   punchspeed: 1
   startshockwaverange: 20
   shockwaverange: 30
-  shockwavespeed: 1
+  shockwavespeed: 2
   shockwavezise: 20
   startelastickrange: 20
   elastickrange: 24
@@ -4663,7 +4663,7 @@ MonoBehaviour:
   punchspeed: 1
   startshockwaverange: 20
   shockwaverange: 35
-  shockwavespeed: 1
+  shockwavespeed: 2
   shockwavezise: 10
   startelastickrange: 20
   elastickrange: 24
