@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Albin playtest.unity
     guid: a78d4a5e1b597a0429420be7baa78516
+  - enabled: 1
+    path: Assets/Scenes/BeforeBoss1.unity
+    guid: bed8f183c8daf7b439c4f25b35050fcd
   m_configObjects: {}

@@ -508,7 +508,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe92ec157195ba24eb440787308457bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateXAxis: 1
   rotateYAxis: 0
+  rotateZAxis: 1
 --- !u!1 &611043673
 GameObject:
   m_ObjectHideFlags: 0
@@ -856,7 +858,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe92ec157195ba24eb440787308457bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateXAxis: 1
   rotateYAxis: 0
+  rotateZAxis: 1
 --- !u!1 &743654597
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,6 +1097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a47520c7f5469c74387df8994541db54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectile: {fileID: 0}
   anchor: {fileID: 1600586300}
 --- !u!114 &743654601
 MonoBehaviour:
@@ -1299,7 +1304,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe92ec157195ba24eb440787308457bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateXAxis: 1
   rotateYAxis: 0
+  rotateZAxis: 1
 --- !u!212 &781591479
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1858,7 +1865,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe92ec157195ba24eb440787308457bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateXAxis: 1
   rotateYAxis: 0
+  rotateZAxis: 1
 --- !u!212 &1046355400
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2079,7 +2088,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69267e964b734eb44b1c5ce601137562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  harpoon: {fileID: 0}
   Anchor: {fileID: 1600586300}
   harpoonObject: {fileID: 743654597}
   mainCam: {fileID: 1605889532}
@@ -2097,7 +2105,7 @@ Transform:
   m_GameObject: {fileID: 1071635489}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.48, y: 1.37, z: -7.24}
+  m_LocalPosition: {x: -53.1, y: 1.37, z: -7.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2121,8 +2129,8 @@ MonoBehaviour:
   MaxHP: 50
   currentHP: 0
   Player: {fileID: 1071635489}
-  sorce: {fileID: 0}
-  audio: {fileID: 0}
+  source: {fileID: 0}
+  audioClip: {fileID: 0}
   uiScript: {fileID: 1565388506}
   enemySprite: {fileID: 1262773259}
 --- !u!114 &1071635493
@@ -2308,7 +2316,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe92ec157195ba24eb440787308457bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateXAxis: 1
   rotateYAxis: 0
+  rotateZAxis: 1
 --- !u!212 &1076790046
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2552,8 +2562,8 @@ MonoBehaviour:
   MaxHP: 1
   currentHP: 1
   Player: {fileID: 1071635489}
-  sorce: {fileID: 0}
-  audio: {fileID: 0}
+  source: {fileID: 0}
+  audioClip: {fileID: 0}
   uiScript: {fileID: 1565388506}
   enemySprite: {fileID: 0}
   dragspeed: 15
@@ -2812,7 +2822,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe92ec157195ba24eb440787308457bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateXAxis: 1
   rotateYAxis: 0
+  rotateZAxis: 1
 --- !u!212 &1262773259
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3518,12 +3530,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7427acb61093eb4ba1561aafbcdb443, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLocked: 0
   sensitivityX: 400
   sensitivityY: 400
   orientation: {fileID: 2140768821}
   xRotation: 0
   yRotation: 0
-  Sliceboard: {fileID: 724465975}
 --- !u!81 &1605889535
 AudioListener:
   m_ObjectHideFlags: 0
@@ -3756,8 +3768,8 @@ MonoBehaviour:
   MaxHP: 40
   currentHP: 0
   Player: {fileID: 0}
-  sorce: {fileID: 0}
-  audio: {fileID: 8300000, guid: cb2ec8cfff8bec140a2e6d29135b4407, type: 3}
+  source: {fileID: 0}
+  audioClip: {fileID: 0}
   uiScript: {fileID: 0}
   enemySprite: {fileID: 2032646328}
   dragspeed: 25
@@ -3773,7 +3785,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe92ec157195ba24eb440787308457bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateXAxis: 1
   rotateYAxis: 0
+  rotateZAxis: 1
 --- !u!54 &1621372781
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4188,7 +4202,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe92ec157195ba24eb440787308457bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateXAxis: 1
   rotateYAxis: 0
+  rotateZAxis: 1
 --- !u!1 &1789971541
 GameObject:
   m_ObjectHideFlags: 0
@@ -4516,7 +4532,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.44, y: -0.42, z: -10}
-  m_LocalScale: {x: 5.5, y: 1.04, z: 8.34}
+  m_LocalScale: {x: 13.66805, y: 1.20068, z: 13.780182}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -4622,7 +4638,7 @@ Transform:
   m_GameObject: {fileID: 1842980668}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -17.42, y: -0.37, z: -15.57}
+  m_LocalPosition: {x: -54.7, y: -0.37, z: -15.57}
   m_LocalScale: {x: 8.651204, y: 10.085972, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5064,8 +5080,8 @@ MonoBehaviour:
   MaxHP: 1
   currentHP: 1
   Player: {fileID: 1071635489}
-  sorce: {fileID: 0}
-  audio: {fileID: 0}
+  source: {fileID: 0}
+  audioClip: {fileID: 0}
   uiScript: {fileID: 1565388506}
   enemySprite: {fileID: 0}
   dragspeed: 15
@@ -5361,7 +5377,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe92ec157195ba24eb440787308457bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateXAxis: 1
   rotateYAxis: 0
+  rotateZAxis: 1
 --- !u!4 &2032646330
 Transform:
   m_ObjectHideFlags: 0

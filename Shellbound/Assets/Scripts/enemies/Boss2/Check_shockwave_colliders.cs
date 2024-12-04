@@ -11,16 +11,15 @@ public class Check_shockwave_colliders : MonoBehaviour
     //use on triggerstay
 
     public GameObject player;
-    private Collider SpereColliders;
-    private Collider MaskCollider;
+    public Collider SpereColliders;
+    public Collider MaskCollider;
 
     public bool outerSpere = false;
     public bool innerSpere = false;
     // Start is called before the first frame update
     void Start()
     {
-        SpereColliders = GetComponent<Collider>();
-        MaskCollider = GetComponentInChildren<Collider>();
+
     }
 
     // Update is called once per frame
@@ -52,7 +51,7 @@ public class Check_shockwave_colliders : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            
+            Debug.Log("Goodbye player");
         }
     }
 }

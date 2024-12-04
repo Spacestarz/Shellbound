@@ -2,10 +2,12 @@
 using DG.Tweening;
 using System;
 using UnityEngine;
+using TMPro;
 
 
 public class Box_doorhandle : MonoBehaviour
 {
+    //Pretty sure i could have made this easier with unity events? 
     /*
      * 
     TODO
@@ -24,16 +26,16 @@ public class Box_doorhandle : MonoBehaviour
     public bool gloveHome = false;
     private Door_open DoorOpenScript;
 
-
     public bool DestroyandOPEN = false;
 
     public bool movePingPong = false;
+    public TextMeshPro auchtext;
 
     // Start is called before the first frame update
     void Start()
     {
         DoorOpenScript = GetComponentInParent<Door_open>();
-
+        auchtext.enabled = false;
         startpos = transform.position;                
     }
 
@@ -72,7 +74,9 @@ public class Box_doorhandle : MonoBehaviour
     {    
         if (other.CompareTag("Harpoon"))
         {
+            auchtext.enabled = true;
             stopPingPong = true;
+
             Debug.Log("Auch said the glove");
         }      
         
@@ -80,7 +84,7 @@ public class Box_doorhandle : MonoBehaviour
 
     public void OnDestroy()
     {
-        Debug.Log("On deastroy");
+        Debug.Log("Destroyed opening door");
         DestroyandOPEN = true;
         DoorOpenScript.OpenDoor();
         Destroy(gameObject);
