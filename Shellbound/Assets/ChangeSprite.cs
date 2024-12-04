@@ -9,7 +9,6 @@ public class ChangeSprite : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.GetComponent<SpriteRenderer>().sprite = newSprite;
-        Debug.Log(newSprite.ToString());
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

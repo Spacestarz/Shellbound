@@ -22,8 +22,8 @@ public class PlayerSlice : MonoBehaviour
 
     static float requiredDotProduct = 0.8f;
 
-    static float currentMagnitude = 0;
-    static float requiredMagnitude = 5;
+    //static float currentMagnitude = 0;
+    //static float requiredMagnitude = 5;
 
     static int successfulTicks = 0;
     static int requiredTicks = 3;
@@ -55,7 +55,7 @@ public class PlayerSlice : MonoBehaviour
         sliceTickTime = 0;
 
         successfulTicks = 0;
-        currentMagnitude = 0;
+        //currentMagnitude = 0;
 
         if (sliceMode)
         {
@@ -117,12 +117,12 @@ public class PlayerSlice : MonoBehaviour
         if (targetDirection.x != 0 ^ targetDirection.y != 0)
         {
             requiredDotProduct = 0.9f;
-            requiredMagnitude = 17f;
+            //requiredMagnitude = 17f;
         }
         else // (Diagonal)
         {
             requiredDotProduct = 0.8f;
-            requiredMagnitude = 13f;
+            //requiredMagnitude = 13f;
         }
     }
 

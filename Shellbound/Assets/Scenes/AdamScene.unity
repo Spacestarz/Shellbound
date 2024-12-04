@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: f8e00f712aa848546b044b9c97439165, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 2168fc0669ce18742b81d4431baf7667, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -151,9 +151,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4924f10494617849972c5224cc62727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crowd: {fileID: 0}
   enemy: {fileID: 722802119}
   attack: {fileID: 111425349}
   agent: {fileID: 0}
+  wavemount: 1
   i: 1
   startpunchrange: 4
   punchrange: 4
@@ -166,6 +168,7 @@ MonoBehaviour:
   elastickrange: 24
   elastickspeed: 50
   elastickreturnspeed: 100
+  elastickdelai: 1
   wave1: {fileID: 0}
   wave2: {fileID: 0}
 --- !u!4 &8263796
@@ -652,14 +655,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fd826a4314c1284f92206053a96c6a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pushForce: 10000
+  pushForce: 1000
   target: {fileID: 0}
   wave: {fileID: 5627876896858272488, guid: c5231bb911209024b8a2f83c0b6f50a1, type: 3}
   claw: {fileID: 0}
   velo: 0
   still: 0
   parent: {fileID: 0}
-  animator: {fileID: 979701966}
 --- !u!135 &111425350
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1694,10 +1696,10 @@ MonoBehaviour:
   groundDrag: 5
   jumpForce: 6
   jumpCooldown: 0.25
-  airMultiplier: 0.4
+  airMultiplier: 4
   dashForce: 28
-  dashDuration: 0.2
-  dashCooldown: 3
+  dashDuration: 0.25
+  dashCooldown: 0.5
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
@@ -1819,6 +1821,7 @@ Transform:
   - {fileID: 982985508}
   - {fileID: 1040312569}
   - {fileID: 2047234787}
+  - {fileID: 900746540}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &295450723
@@ -2906,9 +2909,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0f75c98798e2c046b0b12120965b9b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crowd: {fileID: 0}
   enemy: {fileID: 722802119}
   attack: {fileID: 111425349}
   agent: {fileID: 0}
+  wavemount: 1
   i: 1
   startpunchrange: 4
   punchrange: 4
@@ -2921,6 +2926,7 @@ MonoBehaviour:
   elastickrange: 24
   elastickspeed: 40
   elastickreturnspeed: 80
+  elastickdelai: 1
   wave1: {fileID: 0}
 --- !u!4 &658964784
 Transform:
@@ -3817,13 +3823,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 900746539}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0.9715285, z: -0, w: -0.23692282}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1393181794}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 295450722}
+  m_LocalEulerAnglesHint: {x: 0, y: -207.41, z: 0}
 --- !u!114 &900746541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3831,7 +3837,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 900746539}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ab76d79daa65fa4e9eaeb4af27f2aae, type: 3}
   m_Name: 
@@ -5452,38 +5458,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1393181793
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1393181794}
-  m_Layer: 0
-  m_Name: CameraHolder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1393181794
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1393181793}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.24, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 900746540}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1415350910
 GameObject:
   m_ObjectHideFlags: 0
@@ -6069,9 +6043,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48064f2762f6f914783ca62e24458145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crowd: {fileID: 0}
   enemy: {fileID: 722802119}
   attack: {fileID: 111425349}
   agent: {fileID: 0}
+  wavemount: 1
   i: 1
   startpunchrange: 4
   punchrange: 4
@@ -6084,6 +6060,7 @@ MonoBehaviour:
   elastickrange: 24
   elastickspeed: 30
   elastickreturnspeed: 60
+  elastickdelai: 1
 --- !u!4 &1504767608
 Transform:
   m_ObjectHideFlags: 0
@@ -7508,7 +7485,6 @@ SceneRoots:
   - {fileID: 409375071}
   - {fileID: 295450722}
   - {fileID: 1203022926}
-  - {fileID: 1393181794}
   - {fileID: 1597404349}
   - {fileID: 152013315}
   - {fileID: 258128960}

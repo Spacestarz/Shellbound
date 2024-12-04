@@ -185,13 +185,13 @@ public class Boss1_attacks : MonoBehaviour
     {
         if (Physics.SphereCast(gameObject.transform.position, 1, transform.forward, out ray, range))
         {
-
             Debug.DrawRay(gameObject.transform.position, gameObject.transform.forward * 5, Color.red, 5);
             if (ray.collider.gameObject.tag == "Player")
             {
                 ray.collider.GetComponent<HealthSystem>().TakeDamage(damage);
                 //ray.collider.GetComponent<Rigidbody>().velocity = transform.forward * pushForce;
                 //Debug.Log(transform.forward);
+                ray.collider.GetComponent<PlayerController>().GetKnockedBack();
                 ray.collider.GetComponent<Rigidbody>().AddForce(new Vector3(transform.forward.x, 0,transform.forward.z) * pushForce);
             }
 

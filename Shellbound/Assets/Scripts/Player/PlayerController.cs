@@ -1,3 +1,4 @@
+using System.Data;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -18,6 +19,8 @@ public class PlayerController : MonoBehaviour
     bool dashing;
     bool readyToDash;
 
+    bool knockedBack;
+
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
@@ -29,6 +32,7 @@ public class PlayerController : MonoBehaviour
     float verticalInput;
 
     Vector3 moveDirection;
+    Vector3 flatVelo;
 
     Rigidbody rb;
     PlayerSlice slice;
@@ -52,7 +56,6 @@ public class PlayerController : MonoBehaviour
     {
         GroundCheck();
         GetInputs();
-        LimitToMaxSpeed();
         HandleDrag();
     }
 
@@ -88,7 +91,6 @@ public class PlayerController : MonoBehaviour
                     readyToDash = false;
                     Dash();
                     Invoke(nameof(EndDash), dashDuration);
-                    Invoke(nameof(ResetDashCooldown), dashCooldown);
                 }
             }
         }
@@ -108,28 +110,39 @@ public class PlayerController : MonoBehaviour
 
     private void HandleDrag()
     {
-        if (grounded)
+        if (grounded && !dashing && !knockedBack)
         {
             rb.drag = groundDrag;
         }
-        else rb.drag = 0;
+        else
+        {
+            rb.drag = 0;
+            Debug.Log("No drag " + rb.drag);
+        }
     }
 
     private void MovePlayer()
     {
+        float xMovement;
+        float zMovement;
         if (!dashing)
         {
             moveDirection = (orientation.forward * verticalInput) + orientation.right * horizontalInput;
+            moveDirection.Normalize();
         }
+            xMovement = moveDirection.x * maxSpeed;
+            zMovement = moveDirection.z * maxSpeed;
 
-        if (grounded && !dashing)
+        if (grounded && !dashing && !knockedBack)
         {
-            rb.AddForce(10f * maxSpeed * moveDirection.normalized, ForceMode.Force);
+            rb.velocity = new Vector3(xMovement, rb.velocity.y, zMovement);
         }
-
-        else if (!grounded && !dashing)
+        else if (!grounded && !dashing && !knockedBack)
         {
-            rb.AddForce(10f * airMultiplier * maxSpeed * moveDirection.normalized, ForceMode.Force);
+            if (moveDirection != Vector3.zero)
+            {
+                rb.velocity = new Vector3(xMovement, rb.velocity.y, zMovement);
+            }
         }
         else if (dashing)
         {
@@ -137,21 +150,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void LimitToMaxSpeed()
-    {
-        Vector3 flatVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-
-        if (!dashing && flatVelocity.magnitude > maxSpeed)
-        {
-            Vector3 limitedVelocity = flatVelocity.normalized * maxSpeed;
-            rb.velocity = new Vector3(limitedVelocity.x, rb.velocity.y, limitedVelocity.z);
-        }
-    }
 
     private void Jump()
     {
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
 
@@ -163,8 +165,6 @@ public class PlayerController : MonoBehaviour
     private void Dash()
     {
         dashing = true;
-
-        rb.drag = 0;
     }
 
     private void EndDash()
@@ -172,6 +172,7 @@ public class PlayerController : MonoBehaviour
         dashing = false;
 
         rb.drag = groundDrag;
+        Invoke(nameof(ResetDashCooldown), dashCooldown);
     }
 
     private void ResetDashCooldown()
@@ -183,5 +184,20 @@ public class PlayerController : MonoBehaviour
     {
         horizontalInput = 0;
         verticalInput = 0;
+    }
+
+    public void GetKnockedBack()
+    {
+        Debug.Log("Knokc");
+        knockedBack = true;
+        rb.drag = 0;
+        Invoke(nameof(ResetKnockedBack), 0.2f);
+    }
+
+    void ResetKnockedBack()
+    {
+        Debug.Log("reset");
+        knockedBack = false;
+        rb.drag = groundDrag;
     }
 }
