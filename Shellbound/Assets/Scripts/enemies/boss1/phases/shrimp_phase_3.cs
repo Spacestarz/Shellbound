@@ -28,7 +28,8 @@ public class shrimp_phase_3 : base_enemi_attack
             {
                 //attack.parent.stop();
                 attack.still = true;
-                StartCoroutine(dublewave(2));
+                wavemount = Random.Range(1, 4);
+                StartCoroutine(dublewave(wavemount));
             }
             i++;
             resetpositon();
@@ -41,17 +42,7 @@ public class shrimp_phase_3 : base_enemi_attack
         {
             resetpositon();
         }
-        IEnumerator dublewave(int amount)
-        {
-            for(int j = 0; j < amount; j++)
-            {
-                yield return new WaitForSeconds(1); 
-                attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
-
-            }
-            //attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
-            StartCoroutine(cooldown(shockwavespeed));
-        }
+        
     }
 
 }

@@ -27,8 +27,10 @@ public class shrimp_phase_2 : base_enemi_attack
             {
                 //attack.parent.stop();
                 attack.still = true;
-                attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
-                StartCoroutine(cooldown(shockwavespeed));
+                //attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
+                //StartCoroutine(cooldown(shockwavespeed));
+                wavemount = Random.Range(1, 2);
+                StartCoroutine(dublewave(wavemount));
                 
 
             }

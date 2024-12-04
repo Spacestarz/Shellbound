@@ -76,6 +76,7 @@ public class Boss1_attacks : MonoBehaviour
         transform.LookAt(target);
         elastickrange = range;
         returnspeed = returns;
+        
         BeVisible(claw);
         //parent.stop();
         still = true;
@@ -106,6 +107,7 @@ public class Boss1_attacks : MonoBehaviour
         {
             line.SetVisible(true);
         }
+        obj.GetComponent<Collider>().enabled = true;
     }
 
     private void BeInvisible(GameObject obj)
@@ -128,6 +130,7 @@ public class Boss1_attacks : MonoBehaviour
         {
             line.SetVisible(false);
         }
+        obj.GetComponent<Collider>().enabled = false;
     }
     /*public IEnumerator shockwave(float duration, float scale, float range, GameObject wave)
     {
