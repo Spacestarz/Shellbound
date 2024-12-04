@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Check_shockwave_colliders : MonoBehaviour
 {
@@ -11,47 +12,41 @@ public class Check_shockwave_colliders : MonoBehaviour
     //use on triggerstay
 
     public GameObject player;
-    public Collider SpereColliders;
-    public Collider MaskCollider;
 
-    public bool outerSpere = false;
-    public bool innerSpere = false;
+    public Outer_Ring OuterRing;
+    public inner_ring innerring;
+    public HealthSystem healthSystem;
+
+
+    [Header("Change scale of circle")]
+    [SerializeField] private int Scale;
+    [Header("Damage number")]
+    [SerializeField] private int damage = 1;
     // Start is called before the first frame update
     void Start()
     {
-
+        
+        transform.localScale = Vector3.zero;
     }
 
     // Update is called once per frame
     void Update()
     {
         
-    }
 
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag ("Player"))
+        if (Input.GetKeyDown(KeyCode.G))
         {
-            Debug.Log("Hello player");
+            Vector3 endScale = new Vector3(1 * Scale, 1 * Scale, 1);
+            transform.DOScale(endScale, 2f);
         }
 
-        if (other.CompareTag("Inner spere"))
-        {
-            Debug.Log("Inner spere");
-        }
 
-        if (other.CompareTag("Outer Spere"))
+        if (OuterRing.playerPresent ^ innerring.playerPresent) 
         {
-            Debug.Log("Outer Spere");
-        }
-     
-    }
+            Debug.Log("TAKE DAMAGE BOYYY");
 
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            Debug.Log("Goodbye player");
+            healthSystem.TakeDamage(damage);
         }
     }
+
 }
