@@ -85,7 +85,7 @@ public class Fire : MonoBehaviour
 
             if(harpoon.caughtObject.CompareTag("Enemy"))
             {
-                harpoon.caughtObject.GetComponent<Enemi_Health>().EnableAI();
+                harpoon.caughtObject.GetComponent<Enemi_health>().EnableAI();
                 harpoon.caughtObject.GetComponent<Base_enemy>().volnereble = false;
             }
 

@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -11,6 +12,9 @@ public abstract class base_enemi_attack : MonoBehaviour
     public NavMeshAgent agent;
     public int wavemount = 1;
     public int i = 1;
+    [Header("anim bools")]
+    public bool ElastickAnim = false;
+    public bool WaveAnim = false;
     [Header("punch")]
     public float startpunchrange = 7;
     public float punchrange = 5;
@@ -20,6 +24,7 @@ public abstract class base_enemi_attack : MonoBehaviour
     public float shockwaverange = 15;
     public float shockwavespeed = 3;
     public float shockwavezise = 3;
+    public float shockwavetimer = 0.7f;
     [Header("elastick")]
     public float startelastickrange = 12;
     public float elastickrange = 12;
@@ -48,20 +53,26 @@ public abstract class base_enemi_attack : MonoBehaviour
     }
     public IEnumerator dublewave(int amount)
     {
+        WaveAnim = true;
         yield return new WaitForSeconds(0.7f);
         for (int j = 0; j < amount; j++)
         {
+            WaveAnim = false;
             attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
             yield return new WaitForSeconds(0.7f);
+            WaveAnim = true;
 
         }
+        WaveAnim = false;
         //attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
         StartCoroutine(cooldown(shockwavespeed));
     }
     public IEnumerator elestickdelay(float time)
     {
+        ElastickAnim = true;
         enemy.atta = false;
         yield return new WaitForSeconds(time);
+        ElastickAnim = false;
         attack.Elastick(elastickrange, elastickspeed, elastickreturnspeed);
     }
 }

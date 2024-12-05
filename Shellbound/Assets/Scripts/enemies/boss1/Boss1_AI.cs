@@ -7,12 +7,12 @@ public class Boss1_AI : MonoBehaviour
     //statemachine
     public List<base_enemi_attack> phases;
     public base_enemi_attack phase;
-    Enemi_Health health;
+    Enemi_health health;
 
     private void Awake()
     {
         phase = phases[0];
-        health = GetComponent<Enemi_Health>();
+        health = GetComponent<Enemi_health>();
     }
     private void Update()
     {

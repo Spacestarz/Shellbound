@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -73,6 +71,7 @@ public class Boss1_attacks : MonoBehaviour
     }
     public void Elastick(float range, float firespeed, float returns)
     {
+        
         transform.LookAt(target);
         elastickrange = range;
         returnspeed = returns;
