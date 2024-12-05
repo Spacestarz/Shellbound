@@ -17,8 +17,9 @@ public class shrimp_phase_1 : base_enemi_attack
         }
         else if (enemy.Range(startelastickrange) && enemy.atta && !enemy.volnereble && !PlayerSlice.SliceMode())
         {
-            attack.Elastick(elastickrange, elastickspeed, elastickreturnspeed);
-            enemy.atta = false;
+            StartCoroutine(elestickdelay(elastickdelai));
+            //attack.Elastick(elastickrange, elastickspeed, elastickreturnspeed);
+            //enemy.atta = false;
             //resetpositon();
         }
         else if (!enemy.volnereble && !PlayerSlice.SliceMode())

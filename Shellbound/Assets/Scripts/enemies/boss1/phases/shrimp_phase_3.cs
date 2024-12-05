@@ -22,13 +22,15 @@ public class shrimp_phase_3 : base_enemi_attack
             enemy.atta = false;
             if (i % 4 == 0)
             {
-                attack.Elastick(elastickrange, elastickspeed, elastickreturnspeed);
+                //attack.Elastick(elastickrange, elastickspeed, elastickreturnspeed);
+                StartCoroutine(elestickdelay(elastickdelai));
             }
             else
             {
                 //attack.parent.stop();
                 attack.still = true;
-                StartCoroutine(dublewave(2));
+                wavemount = Random.Range(1, 4);
+                StartCoroutine(dublewave(wavemount));
             }
             i++;
             resetpositon();
@@ -41,17 +43,7 @@ public class shrimp_phase_3 : base_enemi_attack
         {
             resetpositon();
         }
-        IEnumerator dublewave(int amount)
-        {
-            for(int j = 0; j < amount; j++)
-            {
-                yield return new WaitForSeconds(1); 
-                attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
-
-            }
-            //attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
-            StartCoroutine(cooldown(shockwavespeed));
-        }
+        
     }
 
 }

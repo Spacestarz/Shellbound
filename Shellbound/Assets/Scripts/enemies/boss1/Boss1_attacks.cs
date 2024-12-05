@@ -76,6 +76,7 @@ public class Boss1_attacks : MonoBehaviour
         transform.LookAt(target);
         elastickrange = range;
         returnspeed = returns;
+        
         BeVisible(claw);
         //parent.stop();
         still = true;
@@ -106,6 +107,7 @@ public class Boss1_attacks : MonoBehaviour
         {
             line.SetVisible(true);
         }
+        obj.GetComponent<Collider>().enabled = true;
     }
 
     private void BeInvisible(GameObject obj)
@@ -128,6 +130,7 @@ public class Boss1_attacks : MonoBehaviour
         {
             line.SetVisible(false);
         }
+        obj.GetComponent<Collider>().enabled = false;
     }
     /*public IEnumerator shockwave(float duration, float scale, float range, GameObject wave)
     {
@@ -182,13 +185,13 @@ public class Boss1_attacks : MonoBehaviour
     {
         if (Physics.SphereCast(gameObject.transform.position, 1, transform.forward, out ray, range))
         {
-
             Debug.DrawRay(gameObject.transform.position, gameObject.transform.forward * 5, Color.red, 5);
             if (ray.collider.gameObject.tag == "Player")
             {
                 ray.collider.GetComponent<HealthSystem>().TakeDamage(damage);
                 //ray.collider.GetComponent<Rigidbody>().velocity = transform.forward * pushForce;
                 //Debug.Log(transform.forward);
+                ray.collider.GetComponent<PlayerController>().GetKnockedBack();
                 ray.collider.GetComponent<Rigidbody>().AddForce(new Vector3(transform.forward.x, 0,transform.forward.z) * pushForce);
             }
 

@@ -21,14 +21,17 @@ public class shrimp_phase_2 : base_enemi_attack
             enemy.atta = false;
             if (i % 4 == 0)
             {
-                attack.Elastick(elastickrange, elastickspeed, elastickreturnspeed);
+                //attack.Elastick(elastickrange, elastickspeed, elastickreturnspeed);
+                StartCoroutine(elestickdelay(elastickdelai));
             }
             else
             {
                 //attack.parent.stop();
                 attack.still = true;
-                attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
-                StartCoroutine(cooldown(shockwavespeed));
+                //attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
+                //StartCoroutine(cooldown(shockwavespeed));
+                wavemount = Random.Range(1, 2);
+                StartCoroutine(dublewave(wavemount));
                 
 
             }

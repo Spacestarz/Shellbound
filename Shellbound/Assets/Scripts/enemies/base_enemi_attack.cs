@@ -9,6 +9,7 @@ public abstract class base_enemi_attack : MonoBehaviour
     public Base_enemy enemy;
     public Boss1_attacks attack;
     public NavMeshAgent agent;
+    public int wavemount = 1;
     public int i = 1;
     [Header("punch")]
     public float startpunchrange = 7;
@@ -24,6 +25,7 @@ public abstract class base_enemi_attack : MonoBehaviour
     public float elastickrange = 12;
     public float elastickspeed = 4;
     public float elastickreturnspeed = 10;
+    public float elastickdelai = 1;
     private void Start()
     {
         enemy = GetComponentInParent<Base_enemy>();
@@ -38,9 +40,28 @@ public abstract class base_enemi_attack : MonoBehaviour
     public IEnumerator cooldown(float t)
     {
         
-        yield return new WaitForSeconds(t);
+        //yield return new WaitForSeconds(t);
         enemy.atta = true;
         attack.parent.start();
         attack.still = false;
+        yield return null;
+    }
+    public IEnumerator dublewave(int amount)
+    {
+        yield return new WaitForSeconds(0.7f);
+        for (int j = 0; j < amount; j++)
+        {
+            attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
+            yield return new WaitForSeconds(0.7f);
+
+        }
+        //attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
+        StartCoroutine(cooldown(shockwavespeed));
+    }
+    public IEnumerator elestickdelay(float time)
+    {
+        enemy.atta = false;
+        yield return new WaitForSeconds(time);
+        attack.Elastick(elastickrange, elastickspeed, elastickreturnspeed);
     }
 }

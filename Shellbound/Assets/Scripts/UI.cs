@@ -64,7 +64,7 @@ public class UI : MonoBehaviour
 
     public void GameOver()
     {
-        player.SetActive(false);
+        player.GetComponent<PlayerController>().enabled = false;
         gameoverBLACK.SetActive(true);
         gameOverScreen.SetActive(true);
         gameoverBOOL = true;
@@ -74,9 +74,8 @@ public class UI : MonoBehaviour
 
     public void DefeatedBOSS()
     {
-        player.SetActive(false);
+        player.GetComponent<PlayerController>().enabled = false;
         gameoverBLACK.SetActive(true);
-        player.SetActive (false);
         youwinScreen.SetActive(true);
 
         defeatedbossBOOL = true;
