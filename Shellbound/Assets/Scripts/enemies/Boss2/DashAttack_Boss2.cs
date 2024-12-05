@@ -53,6 +53,8 @@ public class DashAttack_Boss2 : MonoBehaviour
         Debug.Log("Dash attack");       
     }
 
+    
+    
     private void DrawLine(Vector3 position, Vector3 endOfDash)
     {
         /*
@@ -65,4 +67,6 @@ public class DashAttack_Boss2 : MonoBehaviour
         lineRenderer.SetPosition(1, endOfDash);
          
     }
+       
+
 }
