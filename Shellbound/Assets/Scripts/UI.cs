@@ -7,9 +7,12 @@ using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour
 {
-    public Slider Sliderobject;
-    public HealthSystem HealthSystem;
+    public Slider PlayerSliderobject;
+    public Slider EnemySliderObject;
+    public HealthSystem PlayerHealthSystem;
+    public HealthSystem EnemyHealthSystem;
     public GameObject player;
+    public GameObject Enemy;
     private GameObject gameOverScreen;
     private GameObject gameoverBLACK;
 
@@ -22,7 +25,8 @@ public class UI : MonoBehaviour
     void Start()
     {
         youwinScreen = GameObject.Find("You win");
-        Sliderobject.maxValue = HealthSystem.MaxHP;
+        PlayerSliderobject.maxValue = PlayerHealthSystem.MaxHP;
+        EnemySliderObject.maxValue = EnemyHealthSystem.MaxHP;
         gameOverScreen = GameObject.Find("Game_Over ");
         gameoverBLACK = GameObject.Find("Background panel");
         youwinScreen.SetActive(false);
@@ -33,11 +37,12 @@ public class UI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Sliderobject.value = HealthSystem.currentHP;
+        PlayerSliderobject.value = PlayerHealthSystem.currentHP;
+        EnemySliderObject.value = EnemyHealthSystem.currentHP;
 
-        if (Sliderobject.value == 0)
+        if (PlayerSliderobject.value == 0)
         {
-            Sliderobject.gameObject.SetActive(false);
+            PlayerSliderobject.gameObject.SetActive(false);
         }
 
         if (Input.GetKeyDown(KeyCode.Backspace))
