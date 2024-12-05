@@ -1,4 +1,3 @@
-using System.Data;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -10,7 +9,6 @@ public class PlayerController : MonoBehaviour
 
     public float jumpForce;
     public float jumpCooldown;
-    public float airMultiplier;
     bool readyToJump;
 
     public float dashForce;
@@ -24,7 +22,7 @@ public class PlayerController : MonoBehaviour
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
-    bool grounded;
+    [HideInInspector] public bool grounded;
 
     public Transform orientation;
 
@@ -117,7 +115,6 @@ public class PlayerController : MonoBehaviour
         else
         {
             rb.drag = 0;
-            Debug.Log("No drag " + rb.drag);
         }
     }
 
@@ -188,7 +185,6 @@ public class PlayerController : MonoBehaviour
 
     public void GetKnockedBack()
     {
-        Debug.Log("Knokc");
         knockedBack = true;
         rb.drag = 0;
         Invoke(nameof(ResetKnockedBack), 0.2f);
@@ -196,7 +192,6 @@ public class PlayerController : MonoBehaviour
 
     void ResetKnockedBack()
     {
-        Debug.Log("reset");
         knockedBack = false;
         rb.drag = groundDrag;
     }
