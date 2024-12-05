@@ -155,6 +155,7 @@ MonoBehaviour:
   enemy: {fileID: 1057958395}
   attack: {fileID: 653001505}
   agent: {fileID: 0}
+  wavemount: 1
   i: 1
   startpunchrange: 4
   punchrange: 4
@@ -621,6 +622,7 @@ MonoBehaviour:
   player: {fileID: 295450713}
   projectile: {fileID: 1830634140}
   healthSystem: {fileID: 295450714}
+  destroyTimer: 5
 --- !u!1 &152013314
 GameObject:
   m_ObjectHideFlags: 0
@@ -4071,6 +4073,7 @@ MonoBehaviour:
   enemy: {fileID: 1057958395}
   attack: {fileID: 653001505}
   agent: {fileID: 0}
+  wavemount: 1
   i: 1
   startpunchrange: 4
   punchrange: 4
@@ -4500,6 +4503,7 @@ MonoBehaviour:
   enemy: {fileID: 1057958395}
   attack: {fileID: 653001505}
   agent: {fileID: 0}
+  wavemount: 1
   i: 1
   startpunchrange: 4
   punchrange: 4
@@ -6770,6 +6774,7 @@ MonoBehaviour:
   crowdAttackHitGround: 0
   startPos: {x: 0, y: 14, z: 0}
   attackIndicator: {fileID: 298029373}
+  speed: 5
 --- !u!1 &1987324685
 GameObject:
   m_ObjectHideFlags: 0
