@@ -38,6 +38,8 @@ public class Crowd_attacks : MonoBehaviour
     void Update()
     {
         
+
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             attackIndicatorPosition = new Vector3(player.transform.position.x, (float)0.04, player.transform.position.z);
@@ -50,7 +52,6 @@ public class Crowd_attacks : MonoBehaviour
             WhereIsPlayer();
 
         }
-
         /*
         TODO 
         make circle not float above ground.
@@ -71,9 +72,11 @@ public class Crowd_attacks : MonoBehaviour
 
     public void ThrowAttack(Crowd_Projectile newProjectile)
     {
-              
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
-       
+        Debug.Log("Throwattack");
+
+        // Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
+        Collider[] hitColliders = Physics.OverlapSphere(newProjectile.transform.position, radius);
+
         if ((hitColliders.Any(hitCollider => hitCollider.CompareTag("Player") && newProjectile.crowdAttackHitGround == true)))
         {
             Debug.Log("Player take damage");
@@ -85,15 +88,17 @@ public class Crowd_attacks : MonoBehaviour
         else if(hitColliders.Any(hitCollider => hitCollider.CompareTag("Ground")) && newProjectile.crowdAttackHitGround == true)
         {
             newProjectile.crowdAttackHitGround = false;
-           // Debug.Log("Dident hit player sad");
+            Debug.Log("Dident hit player sad");
         }
        
     }
     private void OnDrawGizmos()
     {
+        
         //DRAWS AREA OF AOE ATTACK
         Gizmos.color = Color.red;
 
-        Gizmos.DrawWireSphere(transform.position, radius);    
+       // Gizmos.DrawWireSphere(transform.position, radius);
+        Gizmos.DrawWireSphere(transform.position, radius);
     }    
  }
