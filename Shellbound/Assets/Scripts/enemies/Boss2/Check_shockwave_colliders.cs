@@ -6,11 +6,11 @@ using System;
 
 public class Check_shockwave_colliders : MonoBehaviour
 {
-
-    //if player are in one spere take damage
-    //if the player are in both DONT take damage
-
-    //use on triggerstay
+    /*
+    //TODO
+    if the player is not on ground 
+    the player wont take damage
+    */
 
     public GameObject player;
 
@@ -23,10 +23,10 @@ public class Check_shockwave_colliders : MonoBehaviour
     [SerializeField] private int Scale;
     [Header("Damage number")]
     [SerializeField] private int damage = 1;
+
     // Start is called before the first frame update
     void Start()
-    {
-        
+    {      
         transform.localScale = Vector3.zero;
     }
 
@@ -34,15 +34,12 @@ public class Check_shockwave_colliders : MonoBehaviour
     void Update()
     {
         
-
         if (Input.GetKeyDown(KeyCode.G))
         {
             Vector3 endScale = new Vector3(1 * Scale, 1 * Scale, 1);
             transform.DOScale(endScale, 2f).OnComplete(ResetShockwave); 
         }
       
-
-
         if (OuterRing.playerPresent ^ innerring.playerPresent) 
         {
             Debug.Log("TAKE DAMAGE BOYYY");
