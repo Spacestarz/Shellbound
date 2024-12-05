@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemi_Health : HealthSystem
+public class Enemi_health : HealthSystem
 {
-    bool Harponed = false;
+    [HideInInspector] public bool Harponed = false;
     Base_enemy enemi;
     public float dragspeed = 5;
     Transform monster;

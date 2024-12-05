@@ -72,7 +72,7 @@ public class Harpoon : MonoBehaviour
         }
         if (collisionCheck.CompareTag("Enemy") && collisionCheck.GetComponent<Base_enemy>().volnereble)
         {
-            caughtObject.GetComponent<Enemi_Health>().DisableAI();
+            caughtObject.GetComponent<Enemi_health>().DisableAI();
         }
 
         else if (collisionCheck.CompareTag("TutorialHookThis"))
