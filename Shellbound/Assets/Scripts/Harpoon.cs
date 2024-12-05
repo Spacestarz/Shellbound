@@ -59,7 +59,7 @@ public class Harpoon : MonoBehaviour
                 caughtObject = collisionCheck.GetComponent<SliceableObject>();
                 hasCaught = true;
                 
-                Camera.main.GetComponent<RotateCamera>().LockOntoSliceBoard(caughtObject.GetComponentInChildren<SlicePattern>());
+                //Camera.main.GetComponent<RotateCamera>().LockOntoSliceBoard(caughtObject.GetComponentInChildren<SlicePattern>());
                 PlayerSlice.SetCaughtObject(caughtObject);
 
                 SetVisibility(false);

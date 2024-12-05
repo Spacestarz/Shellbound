@@ -187,6 +187,7 @@ public class Boss1_attacks : MonoBehaviour
             Debug.DrawRay(gameObject.transform.position, gameObject.transform.forward * 5, Color.red, 5);
             if (ray.collider.gameObject.tag == "Player")
             {
+                parent.GetComponentInChildren<MantisAnimator>().anim.SetTrigger("Jabbing");
                 ray.collider.GetComponent<HealthSystem>().TakeDamage(damage);
                 //ray.collider.GetComponent<Rigidbody>().velocity = transform.forward * pushForce;
                 //Debug.Log(transform.forward);

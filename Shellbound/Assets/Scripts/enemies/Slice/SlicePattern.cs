@@ -94,7 +94,7 @@ public class SlicePattern : MonoBehaviour
         Destroy(spawnedSliceAnimation.gameObject);
         fire.ReturnHarpoon();
         ResetPattern();
-        Camera.main.GetComponent<RotateCamera>().isLocked = false;
+        StartCoroutine(Camera.main.GetComponent<RotateCamera>().SetCameraLock(false));
     }
 
     public void PlayAudio(string audio)
