@@ -28,8 +28,9 @@ public class MantisAnimator : MonoBehaviour
 
     void Update()
     {
-        if (enemyAI.volnereble && !anim.GetBool("Vulnerable") && !enemyHealth.Harponed)
+        if (enemyAI.volnereble && !anim.GetBool("Vulnerable"))
         {
+            Debug.Log("Vulny!");
             anim.SetBool("Vulnerable", true);
             Debug.Log("Squick");
         }
@@ -40,7 +41,7 @@ public class MantisAnimator : MonoBehaviour
 
         if (enemyHealth.Harponed && !anim.GetBool("Harpooned"))
         {
-            anim.SetBool("Vulnerable", false);
+            Debug.Log("Harpy!");
             anim.SetBool("Harpooned", true);
         }
         else if (!enemyHealth.Harponed && anim.GetBool("Harpooned"))
@@ -58,7 +59,7 @@ public class MantisAnimator : MonoBehaviour
         //    anim.SetBool("Punch", false);
         //}
 
-        if (enemyAgent.velocity.magnitude > 0.1 && !anim.GetBool("Walking") && !anim.GetBool("Punch") && !anim.GetBool("Shockwave 0"))
+        if (enemyAgent.velocity.magnitude > 0.1 && !anim.GetBool("Walking") && !anim.GetBool("Shockwave 0"))
         {
             anim.SetBool("Walking", true);
         }
