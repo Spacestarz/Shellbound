@@ -48,15 +48,15 @@ public class MantisAnimator : MonoBehaviour
             anim.SetBool("Harpooned", false);
         }
 
-        if (enemyAttack.ElastickAnim && !anim.GetBool("Punch"))
-        {
-            anim.SetBool("Punch", true);
-            anim.SetBool("Shockwave 0", false);
-        }
-        else if(!enemyAttack.ElastickAnim && anim.GetBool("Punch"))
-        {
-            anim.SetBool("Punch", false);
-        }
+        //if (enemyAttack.ElastickAnim && !anim.GetBool("Punch"))
+        //{
+        //    anim.SetBool("Punch", true);
+        //    anim.SetBool("Shockwave 0", false);
+        //}
+        //else if(!enemyAttack.ElastickAnim && anim.GetBool("Punch"))
+        //{
+        //    anim.SetBool("Punch", false);
+        //}
 
         if (enemyAgent.velocity.magnitude > 0.1 && !anim.GetBool("Walking") && !anim.GetBool("Punch") && !anim.GetBool("Shockwave 0"))
         {

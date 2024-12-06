@@ -61,7 +61,7 @@ public abstract class base_enemi_attack : MonoBehaviour
         {
             WaveAnim = false;
             attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
-            yield return new WaitForSeconds(0.7f);
+            yield return new WaitForSeconds(1.4f);
             enemy.GetComponentInChildren<MantisAnimator>().anim.SetBool("Shockwave 0", false);
             WaveAnim = true;
         }
@@ -73,6 +73,7 @@ public abstract class base_enemi_attack : MonoBehaviour
     {
         ElastickAnim = true;
         enemy.atta = false;
+        enemy.GetComponentInChildren<MantisAnimator>().anim.SetTrigger("Punch 0");
         yield return new WaitForSeconds(time);
         ElastickAnim = false;
         attack.Elastick(elastickrange, elastickspeed, elastickreturnspeed);
