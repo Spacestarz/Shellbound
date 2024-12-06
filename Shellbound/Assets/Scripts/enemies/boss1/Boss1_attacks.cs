@@ -192,7 +192,7 @@ public class Boss1_attacks : MonoBehaviour
         if (Physics.SphereCast(gameObject.transform.position, 1, transform.forward, out ray, range))
         {
             Debug.DrawRay(gameObject.transform.position, gameObject.transform.forward * 5, Color.red, 5);
-            if (ray.collider.gameObject.tag == "Player")
+            if (ray.collider.gameObject.tag == "Player" && !parent.volnereble)
             {
                 sorce.PlayOneShot(jabsound, 4);
                 parent.GetComponentInChildren<MantisAnimator>().anim.SetTrigger("Jabbing");
