@@ -1,4 +1,3 @@
-using Spine.Unity.Examples;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,6 +8,8 @@ public class MantisAnimator : MonoBehaviour
     Base_enemy enemyAI;
     Enemi_health enemyHealth;
     base_enemi_attack enemyAttack;
+    shrimp_phase_2 phase2;
+    shrimp_phase_3 phase3;
 
     [HideInInspector] public Animator anim;
 
@@ -18,6 +19,8 @@ public class MantisAnimator : MonoBehaviour
         enemyAI = enemyToControl.GetComponent<Base_enemy>();
         enemyHealth = enemyToControl.GetComponent<Enemi_health>();
         enemyAttack = enemyToControl.GetComponentInChildren<base_enemi_attack>();
+        phase2 = enemyToControl.GetComponentInChildren<shrimp_phase_2>();
+        phase3 = enemyToControl.GetComponentInChildren<shrimp_phase_3>();
 
         anim = GetComponent<Animator>();
     }
@@ -25,10 +28,10 @@ public class MantisAnimator : MonoBehaviour
 
     void Update()
     {
-
-        if (enemyAI.volnereble && !anim.GetBool("Vulnerable"))
+        if (enemyAI.volnereble && !anim.GetBool("Vulnerable") && !enemyHealth.Harponed)
         {
             anim.SetBool("Vulnerable", true);
+            Debug.Log("Squick");
         }
         else if (!enemyAI.volnereble && anim.GetBool("Vulnerable"))
         {
@@ -37,6 +40,7 @@ public class MantisAnimator : MonoBehaviour
 
         if (enemyHealth.Harponed && !anim.GetBool("Harpooned"))
         {
+            anim.SetBool("Vulnerable", false);
             anim.SetBool("Harpooned", true);
         }
         else if (!enemyHealth.Harponed && anim.GetBool("Harpooned"))
@@ -53,7 +57,19 @@ public class MantisAnimator : MonoBehaviour
             anim.SetBool("Punch", false);
         }
 
-        if (enemyAgent.velocity.magnitude > 0.1 && !anim.GetBool("Walking") && !anim.GetBool("Punch"))
+        //if (!anim.GetBool("Shockwave") & phase2.WaveAnim || phase3.WaveAnim)
+        //{
+        //    Debug.Log("TRUE");
+        //    anim.SetBool("Shockwave 0", true);
+        //    anim.SetTrigger("Shockwave");
+        //}
+        //else if(anim.GetBool("Shockwave 0") & !phase2.WaveAnim || !phase3.WaveAnim)
+        //{
+        //    Debug.Log("FALSE");
+        //    anim.SetBool("Shockwave 0", false);
+        //}
+
+        if (enemyAgent.velocity.magnitude > 0.1 && !anim.GetBool("Walking") && !anim.GetBool("Punch") && !anim.GetBool("Shockwave 0"))
         {
             anim.SetBool("Walking", true);
         }
@@ -61,5 +77,6 @@ public class MantisAnimator : MonoBehaviour
         {
             anim.SetBool("Walking", false);
         }
+
     }
 }

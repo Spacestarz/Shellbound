@@ -1432,6 +1432,7 @@ Transform:
   m_Children:
   - {fileID: 1791876803}
   - {fileID: 2002714466}
+  - {fileID: 1144978595}
   m_Father: {fileID: 1749666384}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &611649606
@@ -2808,11 +2809,11 @@ Transform:
   m_GameObject: {fileID: 1144978594}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.937, y: 1.154, z: 0}
+  m_LocalPosition: {x: 1.04, y: 0.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1749666384}
+  m_Father: {fileID: 540073431}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1178559567
 GameObject:
@@ -4291,6 +4292,10 @@ MonoBehaviour:
   velo: 0
   still: 0
   parent: {fileID: 0}
+  sorce: {fileID: 0}
+  wavesound: {fileID: 0}
+  elastickstartsound: {fileID: 0}
+  jabsound: {fileID: 0}
 --- !u!135 &1707469095
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4431,7 +4436,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 6b14284634af10c42bf7677335b648b1, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.13
   m_Pitch: 1
@@ -4561,6 +4566,7 @@ MonoBehaviour:
   enemySprite: {fileID: 540073429}
   Harponed: 0
   dragspeed: 25
+  crack: {fileID: 0}
 --- !u!114 &1749666378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4693,7 +4699,6 @@ Transform:
   - {fileID: 1707469098}
   - {fileID: 540073431}
   - {fileID: 1178559568}
-  - {fileID: 1144978595}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1791876802

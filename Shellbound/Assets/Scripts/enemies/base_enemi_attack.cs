@@ -54,14 +54,16 @@ public abstract class base_enemi_attack : MonoBehaviour
     public IEnumerator dublewave(int amount)
     {
         WaveAnim = true;
+        enemy.GetComponentInChildren<MantisAnimator>().anim.SetTrigger("Shockwave");
+        enemy.GetComponentInChildren<MantisAnimator>().anim.SetBool("Shockwave 0", true);
         yield return new WaitForSeconds(0.7f);
         for (int j = 0; j < amount; j++)
         {
             WaveAnim = false;
             attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
             yield return new WaitForSeconds(0.7f);
+            enemy.GetComponentInChildren<MantisAnimator>().anim.SetBool("Shockwave 0", false);
             WaveAnim = true;
-
         }
         WaveAnim = false;
         //attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
