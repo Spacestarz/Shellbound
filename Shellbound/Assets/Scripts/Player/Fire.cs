@@ -58,7 +58,6 @@ public class Fire : MonoBehaviour
         {
             //It move the direction of the main cameras z axis
             harpoonRigidBody.velocity = mainCam.transform.forward * fireRate;
-
         }
     }
 

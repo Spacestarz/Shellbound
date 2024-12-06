@@ -39,14 +39,12 @@ public class MouthAttack : MonoBehaviour
     void Update()
     {
         //stealing a bit from the fire script
-
-
         dist = Vector3.Distance(Anchor.transform.position, transform.position);
-
 
         if (dist > maxDistancefromAnchor && goingAway)
         {
-            MouthGoBack();
+            StartCoroutine(nameof(MouthGoBack));
+           // MouthGoBack();
         }
 
         if (Input.GetKeyDown(KeyCode.T))
@@ -54,18 +52,33 @@ public class MouthAttack : MonoBehaviour
             FireMouth();
            
         }
-
         
     }
 
+    private IEnumerator MouthGoBack()
+    {
+        mouthRigidBody.velocity = Vector3.zero;
+        while (dist >= 1)
+        {
+            mouthObject.transform.position = Vector3.Lerp(mouthObject.transform.position, Anchor.transform.position, speedReturn * Time.deltaTime);
+            yield return null;
+        }
+        
+        //mouthObject.transform.position = Vector3.Lerp(mouthObject.transform.position, Anchor.transform.position, speedReturn * Time.deltaTime);
+        Debug.Log("mouthgoback");
+        collisionHIT = false;
+        yield return null;
+    }
+
+    /*
     private void MouthGoBack()
     {
-       // mouthObject.velocity = Vector3.zero;
+        mouthRigidBody.velocity = Vector3.zero;
         mouthObject.transform.position = Vector3.Lerp(mouthObject.transform.position, Anchor.transform.position, speedReturn * Time.deltaTime);
         Debug.Log("mouthgoback");
         collisionHIT = false;
     }
-
+    */
     public void FireMouth()
     {
        // mouthObject.SetActive(true);
@@ -74,7 +87,8 @@ public class MouthAttack : MonoBehaviour
 
         mouthObject.transform.position = Anchor.transform.position;
 
-        mouthRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
+        mouthRigidBody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY; ;
+        
 
         fired = true;
         mouth.transform.position = Vector3.MoveTowards(mouth.transform.position, player.transform.position, maxDistance * Time.deltaTime);
@@ -96,9 +110,8 @@ public class MouthAttack : MonoBehaviour
         }
         else if (goingAway)
         {
+            Debug.Log("mouthattack 99");
             MouthGoBack();
         }
     }
-
-
 }

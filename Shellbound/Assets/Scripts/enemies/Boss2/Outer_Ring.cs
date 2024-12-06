@@ -21,7 +21,7 @@ public class Outer_Ring : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Outer spere");
+            //Debug.Log("Outer spere");
             playerPresent = true;
         }
 
@@ -31,7 +31,7 @@ public class Outer_Ring : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("EXIT Outer spere");
+            //Debug.Log("EXIT Outer spere");
             playerPresent = false;
         }
     }
