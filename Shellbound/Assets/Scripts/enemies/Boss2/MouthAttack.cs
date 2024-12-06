@@ -21,6 +21,7 @@ public class MouthAttack : MonoBehaviour
 
     public float maxDistancefromAnchor = 15f; //test this to see whats best
 
+    private SpriteRenderer sr;
 
     //bools
     public bool fired = false;
@@ -29,10 +30,14 @@ public class MouthAttack : MonoBehaviour
 
     private float maxDistance = 10f;
 
+    //TODO
+    //MAKE MOUTH INVISIBLE WHEN ON THE BOSS
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        sr = GetComponent<SpriteRenderer>();
+        sr.enabled = false;
     }
 
     // Update is called once per frame
@@ -57,13 +62,17 @@ public class MouthAttack : MonoBehaviour
 
     private IEnumerator MouthGoBack()
     {
+        Debug.Log("mouthgoback METHOD");
         mouthRigidBody.velocity = Vector3.zero;
         while (dist >= 1)
         {
             mouthObject.transform.position = Vector3.Lerp(mouthObject.transform.position, Anchor.transform.position, speedReturn * Time.deltaTime);
             yield return null;
         }
-        
+
+        mouthObject.transform.position = Anchor.transform.position;
+        mouthRigidBody.constraints = RigidbodyConstraints.FreezeAll;
+
         //mouthObject.transform.position = Vector3.Lerp(mouthObject.transform.position, Anchor.transform.position, speedReturn * Time.deltaTime);
         Debug.Log("mouthgoback");
         collisionHIT = false;
@@ -81,6 +90,7 @@ public class MouthAttack : MonoBehaviour
     */
     public void FireMouth()
     {
+        sr.enabled = true;
        // mouthObject.SetActive(true);
         //harpoon.SetVisibility(true);
         goingAway = true;
@@ -91,23 +101,30 @@ public class MouthAttack : MonoBehaviour
         
 
         fired = true;
+
         mouth.transform.position = Vector3.MoveTowards(mouth.transform.position, player.transform.position, maxDistance * Time.deltaTime);
 
         if (collisionHIT == false)
         {
             //It move the direction of the main cameras z axis
-            mouthRigidBody.velocity = mainCam.transform.forward * fireRate;
+            mouthRigidBody.velocity = boss.transform.forward * fireRate;
 
         }
     }
 
     public void OnTriggerEnter(Collider collisionCheck)
     {
+        //make a ontriggerstay? So the player gets continued eaten on if they dont dash away? 
+        // the player will be stuck in like 1 sec and then they can dash away.
+
         if (goingAway && collisionCheck.CompareTag("Player"))
         {
             Debug.Log("player here");
             collisionHIT = true;
+            MouthGoBack();
+            Debug.Log("Time to go back");
         }
+
         else if (goingAway)
         {
             Debug.Log("mouthattack 99");
