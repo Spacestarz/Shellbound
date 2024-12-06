@@ -22,6 +22,11 @@ public class Boss1_attacks : MonoBehaviour
     public Base_enemy parent;
     float elastickrange = 12;
     bool isfiered = false;
+    [Header("sound")]
+    public AudioSource sorce;
+    public AudioClip wavesound;
+    public AudioClip elastickstartsound;
+    public AudioClip jabsound;
     private void Awake()
     {
         target = GameObject.Find("Player").transform;
