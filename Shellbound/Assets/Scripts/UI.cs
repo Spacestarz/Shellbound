@@ -37,13 +37,21 @@ public class UI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerSliderobject.value = PlayerHealthSystem.currentHP;
-        EnemySliderObject.value = EnemyHealthSystem.currentHP;
-
-        if (PlayerSliderobject.value == 0)
+        if(PlayerSliderobject != null)
         {
-            PlayerSliderobject.gameObject.SetActive(false);
+            PlayerSliderobject.value = PlayerHealthSystem.currentHP;
+            
+            if (PlayerSliderobject.value == 0)
+            {
+                PlayerSliderobject.gameObject.SetActive(false);
+            }
         }
+
+        if (EnemySliderObject != null)
+        {
+            EnemySliderObject.value = EnemyHealthSystem.currentHP;
+        }
+
 
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
