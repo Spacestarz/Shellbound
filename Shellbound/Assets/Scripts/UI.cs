@@ -25,8 +25,11 @@ public class UI : MonoBehaviour
     void Start()
     {
         youwinScreen = GameObject.Find("You win");
-        PlayerSliderobject.maxValue = PlayerHealthSystem.MaxHP;
-        EnemySliderObject.maxValue = EnemyHealthSystem.MaxHP;
+
+        if (PlayerSliderobject != null)
+            PlayerSliderobject.maxValue = PlayerHealthSystem.MaxHP;
+        if (EnemySliderObject != null)
+            EnemySliderObject.maxValue = EnemyHealthSystem.MaxHP;
         gameOverScreen = GameObject.Find("Game_Over ");
         gameoverBLACK = GameObject.Find("Background panel");
         youwinScreen.SetActive(false);
