@@ -51,23 +51,12 @@ public class MantisAnimator : MonoBehaviour
         if (enemyAttack.ElastickAnim && !anim.GetBool("Punch"))
         {
             anim.SetBool("Punch", true);
+            anim.SetBool("Shockwave 0", false);
         }
         else if(!enemyAttack.ElastickAnim && anim.GetBool("Punch"))
         {
             anim.SetBool("Punch", false);
         }
-
-        //if (!anim.GetBool("Shockwave") & phase2.WaveAnim || phase3.WaveAnim)
-        //{
-        //    Debug.Log("TRUE");
-        //    anim.SetBool("Shockwave 0", true);
-        //    anim.SetTrigger("Shockwave");
-        //}
-        //else if(anim.GetBool("Shockwave 0") & !phase2.WaveAnim || !phase3.WaveAnim)
-        //{
-        //    Debug.Log("FALSE");
-        //    anim.SetBool("Shockwave 0", false);
-        //}
 
         if (enemyAgent.velocity.magnitude > 0.1 && !anim.GetBool("Walking") && !anim.GetBool("Punch") && !anim.GetBool("Shockwave 0"))
         {
