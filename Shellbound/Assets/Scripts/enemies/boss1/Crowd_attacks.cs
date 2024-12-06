@@ -19,10 +19,19 @@ public class Crowd_attacks : MonoBehaviour
    
     private Vector3 attackIndicatorPosition;
 
+    //testing to make courutines
+    private IEnumerator coroutine;
+
     //time when the red circle gets destroyed
     [Header("Destroytimer of circle and projectile")]
     [SerializeField] private float destroyTimer = 5;
 
+    /*
+    //TODO AND FIXES ETC
+    no projectile just after x time if player is in the attackindicator take damage
+    make the attackindicator spawn with a overlapspere so the player if they go back to one circle can take dmg. 
+
+    */
     // Start is called before the first frame update
     void Start()
     {
@@ -58,12 +67,25 @@ public class Crowd_attacks : MonoBehaviour
     {   
         transform.position = player.transform.position;
 
-        var newProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
-        Destroy(newProjectile, destroyTimer);
+        //var newProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
+        //Destroy(newProjectile, destroyTimer);
 
-        newProjectile.GetComponent<Crowd_Projectile>().Attack(transform.position);
+        //newProjectile.GetComponent<Crowd_Projectile>().Attack(transform.position);
 
-        ThrowAttack(newProjectile.GetComponentInChildren<Crowd_Projectile>());
+        //do an invoke instead so make it based on time instead of collision based probarly
+        //NEED TO MAKE A courutine instead because because
+
+        coroutine = DelayThrowAttack(2f);
+        StartCoroutine(coroutine);
+
+      
+    }
+
+
+    private IEnumerator DelayThrowAttack(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        //ThrowAttack(newProjectile.GetComponentInChildren<Crowd_Projectile>());
     }
 
     public void ThrowAttack(Crowd_Projectile newProjectile)

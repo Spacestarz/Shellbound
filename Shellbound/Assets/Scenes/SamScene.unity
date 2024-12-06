@@ -1035,6 +1035,37 @@ MonoBehaviour:
   rotateXAxis: 1
   rotateYAxis: 0
   rotateZAxis: 1
+--- !u!1 &737637422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 737637423}
+  m_Layer: 0
+  m_Name: ---------------------------------
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &737637423
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 737637422}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.4345627, y: -7.6114464, z: -25.059235}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &743654597
 GameObject:
   m_ObjectHideFlags: 0
@@ -1818,6 +1849,10 @@ MonoBehaviour:
   velo: 0
   still: 0
   parent: {fileID: 0}
+  sorce: {fileID: 0}
+  wavesound: {fileID: 0}
+  elastickstartsound: {fileID: 0}
+  jabsound: {fileID: 0}
 --- !u!135 &964553802
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2807,6 +2842,7 @@ MonoBehaviour:
   enemySprite: {fileID: 0}
   Harponed: 0
   dragspeed: 15
+  crack: {fileID: 0}
 --- !u!114 &1228000851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4270,6 +4306,7 @@ MonoBehaviour:
   enemySprite: {fileID: 2032646328}
   Harponed: 0
   dragspeed: 25
+  crack: {fileID: 0}
 --- !u!114 &1621372780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4567,6 +4604,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1998195568}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!1 &1713723197
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1713723199}
+  - component: {fileID: 1713723198}
+  m_Layer: 0
+  m_Name: Phase1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1713723198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713723197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e965577e4505444a82ce6b9f44218b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  goblinShark: {fileID: 0}
+  fart: 0
+--- !u!4 &1713723199
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713723197}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.968502, y: -7.298664, z: -19.794958}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1730766117
 GameObject:
   m_ObjectHideFlags: 0
@@ -5509,6 +5593,7 @@ GameObject:
   - component: {fileID: 1998195569}
   - component: {fileID: 1998195570}
   - component: {fileID: 1998195571}
+  - component: {fileID: 1998195572}
   m_Layer: 12
   m_Name: Goblin shark
   m_TagString: Enemy
@@ -5815,6 +5900,22 @@ MonoBehaviour:
   enemySprite: {fileID: 0}
   Harponed: 0
   dragspeed: 5
+  crack: {fileID: 0}
+--- !u!114 &1998195572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998195560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e401f44566889d4b8b2a085650624a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phases:
+  - {fileID: 1713723198}
+  - {fileID: 0}
 --- !u!1 &2032646327
 GameObject:
   m_ObjectHideFlags: 0
@@ -5970,6 +6071,10 @@ MonoBehaviour:
   velo: 0
   still: 0
   parent: {fileID: 0}
+  sorce: {fileID: 0}
+  wavesound: {fileID: 0}
+  elastickstartsound: {fileID: 0}
+  jabsound: {fileID: 0}
 --- !u!135 &2036718383
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6182,7 +6287,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 1825447725}
   - {fileID: 1998195568}
-  - {fileID: 1565388505}
   - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 199202416}
@@ -6190,11 +6294,14 @@ SceneRoots:
   - {fileID: 747429680}
   - {fileID: 464461995}
   - {fileID: 1228000855}
-  - {fileID: 1730766118}
   - {fileID: 743654606}
   - {fileID: 1621372785}
   - {fileID: 1115868792}
   - {fileID: 1321493565}
+  - {fileID: 1713723199}
+  - {fileID: 1730766118}
+  - {fileID: 1565388505}
   - {fileID: 1474813338}
   - {fileID: 1061084194}
   - {fileID: 1482463189}
+  - {fileID: 737637423}

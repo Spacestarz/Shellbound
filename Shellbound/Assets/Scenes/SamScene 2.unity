@@ -157,6 +157,8 @@ MonoBehaviour:
   agent: {fileID: 0}
   wavemount: 1
   i: 1
+  ElastickAnim: 0
+  WaveAnim: 0
   startpunchrange: 4
   punchrange: 4
   punchspeed: 0.5
@@ -164,10 +166,12 @@ MonoBehaviour:
   shockwaverange: 32
   shockwavespeed: 2
   shockwavezise: 10
+  shockwavetimer: 0.7
   startelastickrange: 28
   elastickrange: 24
   elastickspeed: 20
   elastickreturnspeed: 40
+  elastickdelai: 1
 --- !u!4 &5805763
 Transform:
   m_ObjectHideFlags: 0
@@ -603,8 +607,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1830634144}
   - {fileID: 298029375}
+  - {fileID: 1830634144}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &131096207
@@ -1489,7 +1493,6 @@ MonoBehaviour:
   groundDrag: 5
   jumpForce: 6
   jumpCooldown: 0.25
-  airMultiplier: 0.4
   dashForce: 28
   dashDuration: 0.2
   dashCooldown: 3
@@ -1497,6 +1500,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 1024
+  grounded: 0
   orientation: {fileID: 982985508}
 --- !u!54 &295450718
 Rigidbody:
@@ -2500,6 +2504,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e965577e4505444a82ce6b9f44218b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  goblinShark: {fileID: 0}
   fart: 5
 --- !u!4 &611649608
 Transform:
@@ -2676,6 +2682,10 @@ MonoBehaviour:
   velo: 0
   still: 0
   parent: {fileID: 0}
+  sorce: {fileID: 0}
+  wavesound: {fileID: 0}
+  elastickstartsound: {fileID: 0}
+  jabsound: {fileID: 0}
 --- !u!135 &653001506
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3791,7 +3801,9 @@ MonoBehaviour:
   audioClip: {fileID: 0}
   uiScript: {fileID: 1987324686}
   enemySprite: {fileID: 2002692040}
+  Harponed: 0
   dragspeed: 25
+  crack: {fileID: 0}
 --- !u!114 &1057958388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4022,7 +4034,6 @@ MonoBehaviour:
   volnereble: 0
   volnerebleTime: 5
   phase: 1
-  indicator: {fileID: 128280159}
 --- !u!114 &1057958396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4075,6 +4086,8 @@ MonoBehaviour:
   agent: {fileID: 0}
   wavemount: 1
   i: 1
+  ElastickAnim: 0
+  WaveAnim: 0
   startpunchrange: 4
   punchrange: 4
   punchspeed: 0.5
@@ -4082,10 +4095,12 @@ MonoBehaviour:
   shockwaverange: 35
   shockwavespeed: 2
   shockwavezise: 10
+  shockwavetimer: 0.7
   startelastickrange: 28
   elastickrange: 24
   elastickspeed: 20
   elastickreturnspeed: 40
+  elastickdelai: 1
   wave1: {fileID: 0}
   wave2: {fileID: 0}
 --- !u!4 &1090784214
@@ -4505,6 +4520,8 @@ MonoBehaviour:
   agent: {fileID: 0}
   wavemount: 1
   i: 1
+  ElastickAnim: 0
+  WaveAnim: 0
   startpunchrange: 4
   punchrange: 4
   punchspeed: 0.5
@@ -4512,10 +4529,12 @@ MonoBehaviour:
   shockwaverange: 35
   shockwavespeed: 2
   shockwavezise: 10
+  shockwavetimer: 0.7
   startelastickrange: 28
   elastickrange: 24
   elastickspeed: 20
   elastickreturnspeed: 40
+  elastickdelai: 1
   wave1: {fileID: 0}
 --- !u!4 &1222518110
 Transform:
@@ -6661,7 +6680,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -6804,9 +6823,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d29364eb4e614342985e4d34cf33e43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sliderobject: {fileID: 1616492117}
-  HealthSystem: {fileID: 295450714}
+  PlayerSliderobject: {fileID: 0}
+  EnemySliderObject: {fileID: 0}
+  PlayerHealthSystem: {fileID: 0}
+  EnemyHealthSystem: {fileID: 0}
   player: {fileID: 295450713}
+  Enemy: {fileID: 0}
   gameoverBOOL: 0
   defeatedbossBOOL: 0
 --- !u!4 &1987324687

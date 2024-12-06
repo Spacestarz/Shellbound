@@ -24,7 +24,7 @@ public class Crowd_Projectile : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-
+    /*
     private void OnTriggerEnter(Collider other)
     {
        if (other.CompareTag("Ground"))
@@ -34,6 +34,7 @@ public class Crowd_Projectile : MonoBehaviour
             crowd_Attacks.ThrowAttack(this);
         }       
     }
+    */
 
     public void Attack(Vector3 target)
     {
