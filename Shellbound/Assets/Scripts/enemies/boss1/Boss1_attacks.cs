@@ -37,6 +37,7 @@ public class Boss1_attacks : MonoBehaviour
         clawrig = claw.GetComponent<Rigidbody>();
         clawrig.constraints = RigidbodyConstraints.FreezeAll;
         clawrig.useGravity = false;
+        sorce = GetComponentInParent<AudioSource>();
     }
     public void Update()
     {
@@ -76,7 +77,7 @@ public class Boss1_attacks : MonoBehaviour
     }
     public void Elastick(float range, float firespeed, float returns)
     {
-        
+        sorce.PlayOneShot(elastickstartsound);
         transform.LookAt(target);
         elastickrange = range;
         returnspeed = returns;
@@ -178,6 +179,7 @@ public class Boss1_attacks : MonoBehaviour
     }*/
     public void shockwave(float duration, float scale, float range)
     {
+        sorce.PlayOneShot(wavesound);
         transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
         Vector3 lokation = transform.position;
         lokation.y = lokation.y - 1.5f;
@@ -192,6 +194,7 @@ public class Boss1_attacks : MonoBehaviour
             Debug.DrawRay(gameObject.transform.position, gameObject.transform.forward * 5, Color.red, 5);
             if (ray.collider.gameObject.tag == "Player")
             {
+                sorce.PlayOneShot(jabsound);
                 parent.GetComponentInChildren<MantisAnimator>().anim.SetTrigger("Jabbing");
                 ray.collider.GetComponent<HealthSystem>().TakeDamage(damage);
                 //ray.collider.GetComponent<Rigidbody>().velocity = transform.forward * pushForce;

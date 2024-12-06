@@ -2734,8 +2734,8 @@ MonoBehaviour:
   still: 0
   parent: {fileID: 0}
   sorce: {fileID: 0}
-  wavesound: {fileID: 0}
-  elasticksound: {fileID: 0}
+  wavesound: {fileID: 8300000, guid: 53b12810830021d44ab20ababf5be8ff, type: 3}
+  elastickstartsound: {fileID: 8300000, guid: e9cf99480170fa74d8c8844b2d56c990, type: 3}
   jabsound: {fileID: 0}
 --- !u!135 &653001506
 SphereCollider:
