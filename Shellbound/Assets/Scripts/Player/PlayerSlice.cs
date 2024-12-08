@@ -18,7 +18,7 @@ public class PlayerSlice : MonoBehaviour
     static float sliceTickLength = 0.033f;
 
     static float sliceTime = 0;
-    static float sliceTimeLimit = 12.25f;
+    static float sliceTimeLimit = 12.5f;
 
     static float requiredDotProduct = 0.8f;
 

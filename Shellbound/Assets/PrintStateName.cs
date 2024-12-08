@@ -1,12 +1,21 @@
 using Spine.Unity;
 using UnityEngine;
 
-public class ChangeAnimation : StateMachineBehaviour
+public class PrintStateName : StateMachineBehaviour
 {
     public SkeletonAnimation newAnimation;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+
+        if (stateInfo.IsName("Vulnerable"))
+        {
+            Debug.Log("Vuln started");
+        }
+        else if (stateInfo.IsName("Harpooned"))
+        {
+            Debug.Log("Harp started");
+        }
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

@@ -58,6 +58,7 @@ public class Base_enemy : MonoBehaviour
     public IEnumerator weekTimer()
     {
         Debug.Log("week");
+        GetComponentInChildren<MantisAnimator>().anim.SetTrigger("Vulnerable");
         agent.SetDestination(transform.position);
         volnereble = true;
         yield return new WaitForSeconds(volnerebleTime);
@@ -67,5 +68,10 @@ public class Base_enemy : MonoBehaviour
     public void wekend()
     {
         StartCoroutine(weekTimer());
+    }
+
+    public void StopWeakTimer()
+    {
+        StopCoroutine(weekTimer());
     }
 }
