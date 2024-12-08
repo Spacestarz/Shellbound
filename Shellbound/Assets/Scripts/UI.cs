@@ -58,7 +58,6 @@ public class UI : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
-            Debug.Log("Restart the fight");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         /* //added to be able to defeat boss if you want to debug
@@ -69,7 +68,6 @@ public class UI : MonoBehaviour
         */
         if ((Input.GetKeyDown(KeyCode.Space) && defeatedbossBOOL == true))
         {
-            Debug.Log("Restart the fight");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -84,8 +82,6 @@ public class UI : MonoBehaviour
         gameoverBLACK.SetActive(true);
         gameOverScreen.SetActive(true);
         gameoverBOOL = true;
-
-        Debug.Log ("game over is" + gameoverBOOL);      
     }
 
     public void DefeatedBOSS()
@@ -95,6 +91,5 @@ public class UI : MonoBehaviour
         youwinScreen.SetActive(true);
 
         defeatedbossBOOL = true;
-        Debug.Log("You killed boss grats");
     }
 }

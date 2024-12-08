@@ -50,7 +50,6 @@ public class HealthSystem : MonoBehaviour
     public void PlayerDead()
     {
         //Game over screen for player
-        Debug.Log("INSERT DEAD SCREEN");
         uiScript.GameOver();
     }
 

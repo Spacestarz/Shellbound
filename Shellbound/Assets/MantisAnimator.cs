@@ -30,9 +30,7 @@ public class MantisAnimator : MonoBehaviour
     {
         if (enemyAI.volnereble && !anim.GetBool("Vulnerable"))
         {
-            Debug.Log("Vulny!");
             anim.SetBool("Vulnerable", true);
-            Debug.Log("Squick");
         }
         else if (!enemyAI.volnereble && anim.GetBool("Vulnerable"))
         {
@@ -41,7 +39,6 @@ public class MantisAnimator : MonoBehaviour
 
         if (enemyHealth.Harponed && !anim.GetBool("Harpooned"))
         {
-            Debug.Log("Harpy!");
             anim.SetBool("Harpooned", true);
         }
         else if (!enemyHealth.Harponed && anim.GetBool("Harpooned"))
@@ -49,21 +46,11 @@ public class MantisAnimator : MonoBehaviour
             anim.SetBool("Harpooned", false);
         }
 
-        //if (enemyAttack.ElastickAnim && !anim.GetBool("Punch"))
-        //{
-        //    anim.SetBool("Punch", true);
-        //    anim.SetBool("Shockwave 0", false);
-        //}
-        //else if(!enemyAttack.ElastickAnim && anim.GetBool("Punch"))
-        //{
-        //    anim.SetBool("Punch", false);
-        //}
-
-        if (enemyAgent.velocity.magnitude > 0.1 && !anim.GetBool("Walking") && !anim.GetBool("Shockwave 0"))
+        if (enemyAgent.velocity.magnitude > 0.1 && !anim.GetBool("Walking") && !anim.GetBool("Vulnerable"))
         {
             anim.SetBool("Walking", true);
         }
-        else if (enemyAgent.velocity.magnitude <= 0.1 && anim.GetBool("Walking"))
+        else if (enemyAgent.velocity.magnitude <= 0.1 && anim.GetBool("Walking") || anim.GetBool("Vulnerable"))
         {
             anim.SetBool("Walking", false);
         }
