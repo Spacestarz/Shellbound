@@ -90,7 +90,6 @@ public class SlicePattern : MonoBehaviour
 
     void FindPossibleArrows(int i)
     {
-        Debug.Log("Spawned arrow: " + arrows[i].transform.name);
         possibleArrows.Clear();
 
         switch(i)
@@ -125,24 +124,20 @@ public class SlicePattern : MonoBehaviour
     void SetPossibleArrows(int a, int b, int c, int d, int e)
     {
         int[] ints = {a, b, c, d, e};
-        Debug.Log("possible:");
 
         foreach (int i in ints)
         {
             possibleArrows.Add(arrows[i]);
-            Debug.Log(arrows[i].transform.name);
         }
     }
 
     void SetPossibleArrows(int a, int b, int c)
     {
         int[] ints = {a, b, c};
-        Debug.Log("possible:");
         
         foreach (int i in ints)
         {
             possibleArrows.Add(arrows[i]);
-            Debug.Log(arrows[i].transform.name);
         }
     }
 
@@ -153,7 +148,6 @@ public class SlicePattern : MonoBehaviour
 
     public void FailPattern()
     {
-        Debug.Log("Failed Pattern");
         Destroy(spawnedSliceAnimation.gameObject);
         fire.ReturnHarpoon();
         ResetPattern();
