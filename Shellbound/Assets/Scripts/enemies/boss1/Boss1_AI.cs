@@ -10,7 +10,7 @@ public class Boss1_AI : MonoBehaviour
     Enemi_health health;
     Base_enemy enemy;
     public AudioClip PhaseSwitchSound;
-    bool PhaseSwitch = false;
+    public bool PhaseSwitch = false;
 
     private void Awake()
     {
