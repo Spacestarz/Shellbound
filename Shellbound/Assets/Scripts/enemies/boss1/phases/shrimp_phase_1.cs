@@ -10,9 +10,9 @@ public class shrimp_phase_1 : base_enemi_attack
         {
             resetpositon();
             transform.LookAt(new Vector3(attack.target.position.x, transform.position.y, attack.target.position.z));
-            if (!enemy.cooling)
+            if (!attack.cooling)
             {
-                StartCoroutine(enemy.Cool(punchspeed, punchrange));
+                StartCoroutine(attack.Cool(punchspeed, punchrange));
             }
         }
         else if (enemy.Range(startelastickrange) && enemy.atta && !enemy.volnereble && !PlayerSlice.SliceMode())
