@@ -9,9 +9,7 @@ public class UI : MonoBehaviour
 {
     public Slider PlayerSliderobject;
     public Slider EnemySliderObject;
-    public HealthSystem PlayerHealthSystem;
-    public HealthSystem EnemyHealthSystem;
-    public GameObject player;
+    GameObject player;
     public GameObject Enemy;
     private GameObject gameOverScreen;
     private GameObject gameoverBLACK;
@@ -24,12 +22,14 @@ public class UI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+
         youwinScreen = GameObject.Find("You win");
 
         if (PlayerSliderobject != null)
-            PlayerSliderobject.maxValue = PlayerHealthSystem.MaxHP;
+            PlayerSliderobject.maxValue = player.GetComponent<HealthSystem>().MaxHP;
         if (EnemySliderObject != null)
-            EnemySliderObject.maxValue = EnemyHealthSystem.MaxHP;
+            EnemySliderObject.maxValue = Enemy.GetComponent<HealthSystem>().MaxHP;
         gameOverScreen = GameObject.Find("Game_Over ");
         gameoverBLACK = GameObject.Find("Background panel");
         youwinScreen.SetActive(false);
@@ -42,7 +42,7 @@ public class UI : MonoBehaviour
     {
         if(PlayerSliderobject != null)
         {
-            PlayerSliderobject.value = PlayerHealthSystem.currentHP;
+            PlayerSliderobject.value = player.GetComponent<HealthSystem>().currentHP;
             
             if (PlayerSliderobject.value == 0)
             {
@@ -52,7 +52,7 @@ public class UI : MonoBehaviour
 
         if (EnemySliderObject != null)
         {
-            EnemySliderObject.value = EnemyHealthSystem.currentHP;
+            EnemySliderObject.value = Enemy.GetComponent<HealthSystem>().currentHP;
         }
 
 
