@@ -9,9 +9,7 @@ public class UI : MonoBehaviour
 {
     public Slider PlayerSliderobject;
     public Slider EnemySliderObject;
-    public HealthSystem PlayerHealthSystem;
-    public HealthSystem EnemyHealthSystem;
-    public GameObject player;
+    GameObject player;
     public GameObject Enemy;
     private GameObject gameOverScreen;
     private GameObject gameoverBLACK;
@@ -24,9 +22,14 @@ public class UI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+
         youwinScreen = GameObject.Find("You win");
-        PlayerSliderobject.maxValue = PlayerHealthSystem.MaxHP;
-        EnemySliderObject.maxValue = EnemyHealthSystem.MaxHP;
+
+        if (PlayerSliderobject != null)
+            PlayerSliderobject.maxValue = player.GetComponent<HealthSystem>().MaxHP;
+        if (EnemySliderObject != null)
+            EnemySliderObject.maxValue = Enemy.GetComponent<HealthSystem>().MaxHP;
         gameOverScreen = GameObject.Find("Game_Over ");
         gameoverBLACK = GameObject.Find("Background panel");
         youwinScreen.SetActive(false);
@@ -37,17 +40,24 @@ public class UI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerSliderobject.value = PlayerHealthSystem.currentHP;
-        EnemySliderObject.value = EnemyHealthSystem.currentHP;
-
-        if (PlayerSliderobject.value == 0)
+        if(PlayerSliderobject != null)
         {
-            PlayerSliderobject.gameObject.SetActive(false);
+            PlayerSliderobject.value = player.GetComponent<HealthSystem>().currentHP;
+            
+            if (PlayerSliderobject.value == 0)
+            {
+                PlayerSliderobject.gameObject.SetActive(false);
+            }
         }
+
+        if (EnemySliderObject != null)
+        {
+            EnemySliderObject.value = Enemy.GetComponent<HealthSystem>().currentHP;
+        }
+
 
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
-            Debug.Log("Restart the fight");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         /* //added to be able to defeat boss if you want to debug
@@ -58,7 +68,6 @@ public class UI : MonoBehaviour
         */
         if ((Input.GetKeyDown(KeyCode.Space) && defeatedbossBOOL == true))
         {
-            Debug.Log("Restart the fight");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -73,8 +82,6 @@ public class UI : MonoBehaviour
         gameoverBLACK.SetActive(true);
         gameOverScreen.SetActive(true);
         gameoverBOOL = true;
-
-        Debug.Log ("game over is" + gameoverBOOL);      
     }
 
     public void DefeatedBOSS()
@@ -84,6 +91,5 @@ public class UI : MonoBehaviour
         youwinScreen.SetActive(true);
 
         defeatedbossBOOL = true;
-        Debug.Log("You killed boss grats");
     }
 }

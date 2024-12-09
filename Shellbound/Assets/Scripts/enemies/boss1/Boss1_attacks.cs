@@ -1,7 +1,8 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Boss1_attacks : MonoBehaviour
+public class Boss1_attacks : BossAttacksCommon
 {
     RaycastHit ray;
     int damage = 1;
@@ -22,6 +23,12 @@ public class Boss1_attacks : MonoBehaviour
     public Base_enemy parent;
     float elastickrange = 12;
     bool isfiered = false;
+    public bool cooling = false;
+    [Header("sound")]
+    public AudioSource sorce;
+    public AudioClip wavesound;
+    public AudioClip elastickstartsound;
+    public AudioClip jabsound;
     private void Awake()
     {
         target = GameObject.Find("Player").transform;
@@ -32,6 +39,7 @@ public class Boss1_attacks : MonoBehaviour
         clawrig = claw.GetComponent<Rigidbody>();
         clawrig.constraints = RigidbodyConstraints.FreezeAll;
         clawrig.useGravity = false;
+        sorce = GetComponentInParent<AudioSource>();
     }
     public void Update()
     {
@@ -71,7 +79,7 @@ public class Boss1_attacks : MonoBehaviour
     }
     public void Elastick(float range, float firespeed, float returns)
     {
-        
+        sorce.PlayOneShot(elastickstartsound);
         transform.LookAt(target);
         elastickrange = range;
         returnspeed = returns;
@@ -173,20 +181,35 @@ public class Boss1_attacks : MonoBehaviour
     }*/
     public void shockwave(float duration, float scale, float range)
     {
+        sorce.PlayOneShot(wavesound);
         transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
         Vector3 lokation = transform.position;
         lokation.y = lokation.y - 1.5f;
         //Debug.Log(wave.transform.rotation);
         StartCoroutine(Instantiate(wave,lokation, Quaternion.Euler(new Vector3(transform.rotation.x, transform.rotation.y, 90))).GetComponent<Wave>().shockwave(duration, scale, range, target));
+        Camera.main.GetComponent<CameraHandler>().ShakeCamera();
         
+    }
+    public IEnumerator Cool(float attackCooling, float attackRange)
+    {
+        //Debug.Log("run");
+        cooling = true;
+        yield return new WaitForSeconds(attackCooling);
+        if (parent.Range(attackRange) && this.enabled == true)
+        {
+            Melee(attackRange);
+        }
+        cooling = false;
     }
     public void Melee(float range)
     {
         if (Physics.SphereCast(gameObject.transform.position, 1, transform.forward, out ray, range))
         {
             Debug.DrawRay(gameObject.transform.position, gameObject.transform.forward * 5, Color.red, 5);
-            if (ray.collider.gameObject.tag == "Player")
+            if (ray.collider.gameObject.tag == "Player" && !parent.volnereble)
             {
+                sorce.PlayOneShot(jabsound, 4);
+                parent.GetComponentInChildren<MantisAnimator>().anim.SetTrigger("Jabbing");
                 ray.collider.GetComponent<HealthSystem>().TakeDamage(damage);
                 //ray.collider.GetComponent<Rigidbody>().velocity = transform.forward * pushForce;
                 //Debug.Log(transform.forward);

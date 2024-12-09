@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,7 +11,7 @@ public class GoblinSharkStateMachine : MonoBehaviour
         phase = phases[0];
     }
 
-    // Update is called once per frame
+    // Update is called once per frame99
     void Update()
     {
         phase.PhaseStructure();

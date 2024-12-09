@@ -93,16 +93,9 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Fire1") && !PlayerSlice.SliceMode())
+        if (Input.GetButtonDown("Fire1") && !PlayerSlice.SliceMode() && !fire.fired)
         {
-            if (fire.fired)
-            {
-                fire.ReturnHarpoon();
-            }
-            else
-            {
-                fire.FireHarpoon();
-            }
+            fire.FireHarpoon();
         }
     }
 
@@ -162,6 +155,7 @@ public class PlayerController : MonoBehaviour
     private void Dash()
     {
         dashing = true;
+        Camera.main.GetComponent<CameraHandler>().ChangeFOV(dashDuration);
     }
 
     private void EndDash()

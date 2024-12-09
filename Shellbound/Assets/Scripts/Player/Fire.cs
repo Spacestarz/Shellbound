@@ -16,7 +16,6 @@ public class Fire : MonoBehaviour
     float dist;
     public float maxDistancefromAnchor = 15f; //test this to see whats best
 
-
     //bools
     public bool fired = false;
     public bool goingAway = false;
@@ -58,7 +57,6 @@ public class Fire : MonoBehaviour
         {
             //It move the direction of the main cameras z axis
             harpoonRigidBody.velocity = mainCam.transform.forward * fireRate;
-
         }
     }
 

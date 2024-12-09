@@ -59,7 +59,6 @@ public class Harpoon : MonoBehaviour
                 caughtObject = collisionCheck.GetComponent<SliceableObject>();
                 hasCaught = true;
                 
-                Camera.main.GetComponent<RotateCamera>().LockOntoSliceBoard(caughtObject.GetComponentInChildren<SlicePattern>());
                 PlayerSlice.SetCaughtObject(caughtObject);
 
                 SetVisibility(false);
@@ -73,6 +72,7 @@ public class Harpoon : MonoBehaviour
         if (collisionCheck.CompareTag("Enemy") && collisionCheck.GetComponent<Base_enemy>().volnereble)
         {
             caughtObject.GetComponent<Enemi_health>().DisableAI();
+            caughtObject.GetComponent<Base_enemy>().StopWeakTimer();
         }
 
         else if (collisionCheck.CompareTag("TutorialHookThis"))
@@ -82,7 +82,6 @@ public class Harpoon : MonoBehaviour
 
         else if(collisionCheck.CompareTag("weakpoint") && fire.goingAway)
         {
-            //Debug.Log("hit");
             collisionCheck.transform.parent.parent.GetComponent<Base_enemy>().wekend();
             fire.ReturnHarpoon();
         }

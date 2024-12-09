@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Goblin_Shark_Phase_1 : Phase
 {
+    public GameObject player;
+    public GameObject goblinShark;
+
     public int fart;
     
     public override void PhaseStructure()

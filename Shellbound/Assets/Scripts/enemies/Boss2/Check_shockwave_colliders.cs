@@ -24,9 +24,12 @@ public class Check_shockwave_colliders : MonoBehaviour
     [Header("Damage number")]
     [SerializeField] private int damage = 1;
 
+    public PlayerController playerController;
+
     // Start is called before the first frame update
     void Start()
-    {      
+    {   
+       // playerController = GetComponent<PlayerController>();
         transform.localScale = Vector3.zero;
     }
 
@@ -39,8 +42,8 @@ public class Check_shockwave_colliders : MonoBehaviour
             Vector3 endScale = new Vector3(1 * Scale, 1 * Scale, 1);
             transform.DOScale(endScale, 2f).OnComplete(ResetShockwave); 
         }
-      
-        if (OuterRing.playerPresent ^ innerring.playerPresent) 
+
+        if (OuterRing.playerPresent ^ innerring.playerPresent && playerController.grounded == true)  
         {
             Debug.Log("TAKE DAMAGE BOYYY");
 

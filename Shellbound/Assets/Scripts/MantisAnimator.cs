@@ -1,4 +1,3 @@
-using Spine.Unity;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,14 +7,18 @@ public class MantisAnimator : MonoBehaviour
     NavMeshAgent enemyAgent;
     Base_enemy enemyAI;
     Enemi_health enemyHealth;
+    base_enemi_attack enemyAttack;
+    Boss1_AI bossAI;
 
-    [HideInInspector] Animator anim;
+    [HideInInspector] public Animator anim;
 
     void Awake()
     {
         enemyAgent = enemyToControl.GetComponent<NavMeshAgent>();
         enemyAI = enemyToControl.GetComponent<Base_enemy>();
         enemyHealth = enemyToControl.GetComponent<Enemi_health>();
+        enemyAttack = enemyToControl.GetComponentInChildren<base_enemi_attack>();
+        bossAI = enemyToControl.GetComponent<Boss1_AI>();
 
         anim = GetComponent<Animator>();
     }
@@ -23,6 +26,15 @@ public class MantisAnimator : MonoBehaviour
 
     void Update()
     {
+        if (enemyHealth.Harponed && !anim.GetBool("Harpooned"))
+        {
+            anim.SetBool("Harpooned", true);
+        }
+        else if (!enemyHealth.Harponed && anim.GetBool("Harpooned"))
+        {
+            anim.SetBool("Harpooned", false);
+        }
+
         if (enemyAgent.velocity.magnitude > 0.1 && !anim.GetBool("Walking"))
         {
             anim.SetBool("Walking", true);
@@ -32,13 +44,13 @@ public class MantisAnimator : MonoBehaviour
             anim.SetBool("Walking", false);
         }
 
-        if(enemyAI.volnereble && !anim.GetBool("Vulnerable"))
+        if(bossAI.PhaseSwitch && !anim.GetBool("PhaseSwitch"))
         {
-            anim.SetBool("Vulnerable", true);
+            anim.SetBool("PhaseSwitch", true);
         }
-        else if(!enemyAI.volnereble && anim.GetBool("Vulnerable"))
+        else if(!bossAI.PhaseSwitch && anim.GetBool("PhaseSwitch"))
         {
-            anim.SetBool("Vulnerable", false);
+            anim.SetBool("PhaseSwitch", false);
         }
     }
 }

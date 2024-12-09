@@ -14,22 +14,19 @@ public class RotateCamera : MonoBehaviour
     public float xRotation;
     public float yRotation;
 
-    Sequence sequence;
-
     void Awake()
     {
-        transform.localEulerAngles = new Vector3(0, 150, 0);
+        UpdateRotation();
 
         isLocked = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        sequence = DOTween.Sequence();
     }
 
     void Update()
     {
-        if (Harpoon.hasCaught)// && !startedLooking)
+        if (Harpoon.hasCaught)
         {
             LockOntoSliceBoard(Harpoon.instance.caughtObject.sliceBoard);
         }
@@ -41,14 +38,13 @@ public class RotateCamera : MonoBehaviour
 
     public void LockOntoSliceBoard(SlicePattern sliceBoard)
     {
-        sequence.Append(transform.DOLookAt(sliceBoard.transform.position, 0.5f).OnComplete(UpdateRotation));
-        //transform.DOLookAt(sliceBoard.transform.position, 0.5f).OnComplete(UpdateRotation);
+        transform.DOLookAt(sliceBoard.transform.position, 0.5f).OnComplete(UpdateRotation);
     }
 
     private void UpdateRotation()
     {
-        xRotation = transform.localRotation.eulerAngles.x;
-        yRotation = transform.localRotation.eulerAngles.y;
+        xRotation = transform.rotation.eulerAngles.x;
+        yRotation = transform.rotation.eulerAngles.y;
     }
 
     void GetMouseInput()
@@ -56,19 +52,32 @@ public class RotateCamera : MonoBehaviour
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensitivityX;
         float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensitivityY;
 
-        yRotation += mouseX;
         xRotation -= mouseY;
+        yRotation += mouseX;
 
-        xRotation = Mathf.Clamp(xRotation, -25, 25);
+        
+        ClampRotation(ref xRotation);
+        
         yRotation %= 360;
 
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
     }
 
+    void ClampRotation(ref float axisRot)
+    {
+        if(axisRot < 0)
+        {
+            axisRot += 360;
+        }
+        axisRot -= 180;
+        axisRot = Mathf.Clamp(axisRot, 155, 205);
+        axisRot += 180;
+    }
+
     public IEnumerator SetCameraLock(bool locked)
     {
-        sequence.Kill();
+        this.DOKill();
         yield return new WaitForSecondsRealtime(0.2f);
         isLocked = locked;
         yield break;

@@ -18,7 +18,7 @@ public class PlayerSlice : MonoBehaviour
     static float sliceTickLength = 0.033f;
 
     static float sliceTime = 0;
-    static float sliceTimeLimit = 1.25f;
+    static float sliceTimeLimit = 12.5f;
 
     static float requiredDotProduct = 0.8f;
 
@@ -26,7 +26,7 @@ public class PlayerSlice : MonoBehaviour
     //static float requiredMagnitude = 5;
 
     static int successfulTicks = 0;
-    static int requiredTicks = 3;
+    static readonly int requiredTicks = 3;
 
     private void Awake()
     {
@@ -189,7 +189,9 @@ public class PlayerSlice : MonoBehaviour
 
     static void CompleteSlice()
     {
-        currentSlicePattern.spawnedArrow.CompleteSlice();
+        Camera.main.GetComponent<CameraHandler>().ShakeCameraSlice(targetDirection.normalized);
+
+        currentSlicePattern.spawnedArrow.CompleteSlice(targetDirection);
         currentSlicePattern.NextSliceArrow();
         successfulTicks = 0;
 

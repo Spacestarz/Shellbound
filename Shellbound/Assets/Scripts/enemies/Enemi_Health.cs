@@ -9,6 +9,7 @@ public class Enemi_health : HealthSystem
     Transform player;
     Transform harpon;
     float Distance;
+    public AudioClip crack;
 
     private void Awake()
     {
@@ -24,6 +25,7 @@ public class Enemi_health : HealthSystem
             enemi = GetComponent<Base_enemy>();
             enemi.stop();
             enemi.enabled = false;
+            source.PlayOneShot(crack);
         }
 
     }

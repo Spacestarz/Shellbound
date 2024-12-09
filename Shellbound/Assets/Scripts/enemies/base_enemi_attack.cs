@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -53,15 +52,23 @@ public abstract class base_enemi_attack : MonoBehaviour
     }
     public IEnumerator dublewave(int amount)
     {
+        if(amount == 1)
+        {
+            enemy.GetComponentInChildren<MantisAnimator>().anim.SetTrigger("Shockwave");
+        }
+        else if(amount > 1)
+        {
+            enemy.GetComponentInChildren<MantisAnimator>().anim.SetTrigger("Double Shockwave");
+        }
         WaveAnim = true;
-        yield return new WaitForSeconds(0.7f);
+        
+        yield return new WaitForSeconds(2.9f);
         for (int j = 0; j < amount; j++)
         {
             WaveAnim = false;
             attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
-            yield return new WaitForSeconds(0.7f);
+            yield return new WaitForSeconds(1.0f);
             WaveAnim = true;
-
         }
         WaveAnim = false;
         //attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
@@ -71,6 +78,7 @@ public abstract class base_enemi_attack : MonoBehaviour
     {
         ElastickAnim = true;
         enemy.atta = false;
+        enemy.GetComponentInChildren<MantisAnimator>().anim.SetTrigger("Punch 0");
         yield return new WaitForSeconds(time);
         ElastickAnim = false;
         attack.Elastick(elastickrange, elastickspeed, elastickreturnspeed);

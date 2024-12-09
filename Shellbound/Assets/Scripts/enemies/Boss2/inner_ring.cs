@@ -21,7 +21,7 @@ public class inner_ring : MonoBehaviour
     {
        if (other.CompareTag("Player"))
         {
-            Debug.Log("Inner spere");
+            //Debug.Log("Inner spere");
             playerPresent = true;
         }
         
@@ -31,7 +31,7 @@ public class inner_ring : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("EXIT Inner spere");
+            //Debug.Log("EXIT Inner spere");
             playerPresent = false;
         }
     }

@@ -17,6 +17,10 @@ public class Crowd_Projectile : MonoBehaviour
     [Header("Speed of projectile")]
     [SerializeField] private float speed = 2f;
 
+    //todo
+    //DELETE THIS SCRIPT!
+
+
     // Start is called before the first frame update
     
     void Start()
@@ -24,7 +28,7 @@ public class Crowd_Projectile : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-
+    /*
     private void OnTriggerEnter(Collider other)
     {
        if (other.CompareTag("Ground"))
@@ -34,6 +38,7 @@ public class Crowd_Projectile : MonoBehaviour
             crowd_Attacks.ThrowAttack(this);
         }       
     }
+    */
 
     public void Attack(Vector3 target)
     {
