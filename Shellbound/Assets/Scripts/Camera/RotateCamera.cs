@@ -18,7 +18,8 @@ public class RotateCamera : MonoBehaviour
 
     void Awake()
     {
-        transform.localEulerAngles = new Vector3(0, 150, 0);
+        UpdateRotation();
+        //transform.localEulerAngles = new Vector3(0, 150, 0);
 
         isLocked = false;
         Cursor.lockState = CursorLockMode.Locked;
