@@ -8,8 +8,8 @@ public class MouthAttack : MonoBehaviour
 {
 
     public Rigidbody mouthRigidBody;
-    public GameObject player;
-    public GameObject boss;
+    private GameObject player;
+    private GameObject boss;
     public GameObject mouth;
 
     public GameObject mouthObject;
@@ -38,6 +38,8 @@ public class MouthAttack : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         sr.enabled = false;
+
+       // player = getgame
     }
 
     // Update is called once per frame

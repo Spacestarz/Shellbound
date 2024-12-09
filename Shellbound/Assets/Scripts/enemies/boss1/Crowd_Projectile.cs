@@ -17,6 +17,10 @@ public class Crowd_Projectile : MonoBehaviour
     [Header("Speed of projectile")]
     [SerializeField] private float speed = 2f;
 
+    //todo
+    //DELETE THIS SCRIPT!
+
+
     // Start is called before the first frame update
     
     void Start()
