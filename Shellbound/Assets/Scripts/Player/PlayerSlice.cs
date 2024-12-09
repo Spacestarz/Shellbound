@@ -26,7 +26,7 @@ public class PlayerSlice : MonoBehaviour
     //static float requiredMagnitude = 5;
 
     static int successfulTicks = 0;
-    static int requiredTicks = 3;
+    static readonly int requiredTicks = 3;
 
     private void Awake()
     {
@@ -189,6 +189,8 @@ public class PlayerSlice : MonoBehaviour
 
     static void CompleteSlice()
     {
+        Camera.main.GetComponent<CameraHandler>().ShakeCameraSlice(targetDirection.normalized);
+
         currentSlicePattern.spawnedArrow.CompleteSlice(targetDirection);
         currentSlicePattern.NextSliceArrow();
         successfulTicks = 0;

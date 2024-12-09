@@ -21,7 +21,6 @@ public class SliceTarget : MonoBehaviour
         parentSlice.GetComponent<SliceableObject>().SingleSlice();
         pattern.PlayAudio("finish");
         pattern.spawnedSliceAnimation.PlayAnimation();
-        Camera.main.GetComponent<CameraHandler>().ShakeCameraSlice(dir.normalized);
     }
 
     public void TurnRed(float a, float b)

@@ -32,7 +32,7 @@ public class HealthSystem : MonoBehaviour
 
         if (gameObject.CompareTag("Enemy") && currentHP <= 0)
         {
-            Bossdead();
+            Destroy(gameObject);
         }
 
         if (gameObject.CompareTag("Enemy"))

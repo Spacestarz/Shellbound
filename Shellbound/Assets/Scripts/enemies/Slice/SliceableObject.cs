@@ -5,7 +5,6 @@ public class SliceableObject : MonoBehaviour
 {
     public SlicePattern sliceBoard;
 
-
     public enum Type
     {
         Enemy,
@@ -44,10 +43,5 @@ public class SliceableObject : MonoBehaviour
                 testEvent.Invoke();
                 break;
         }
-    }
-
-    public void TurnThingRed()
-    {
-        GetComponentInChildren<SpriteRenderer>().color = Color.red;
     }
 }

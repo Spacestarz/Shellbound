@@ -8,6 +8,7 @@ public class MantisAnimator : MonoBehaviour
     Base_enemy enemyAI;
     Enemi_health enemyHealth;
     base_enemi_attack enemyAttack;
+    Boss1_AI bossAI;
 
     [HideInInspector] public Animator anim;
 
@@ -17,6 +18,7 @@ public class MantisAnimator : MonoBehaviour
         enemyAI = enemyToControl.GetComponent<Base_enemy>();
         enemyHealth = enemyToControl.GetComponent<Enemi_health>();
         enemyAttack = enemyToControl.GetComponentInChildren<base_enemi_attack>();
+        bossAI = enemyToControl.GetComponent<Boss1_AI>();
 
         anim = GetComponent<Animator>();
     }
@@ -40,6 +42,15 @@ public class MantisAnimator : MonoBehaviour
         else if (enemyAgent.velocity.magnitude <= 0.1 && anim.GetBool("Walking"))
         {
             anim.SetBool("Walking", false);
+        }
+
+        if(bossAI.PhaseSwitch && !anim.GetBool("PhaseSwitch"))
+        {
+            anim.SetBool("PhaseSwitch", true);
+        }
+        else if(!bossAI.PhaseSwitch && anim.GetBool("PhaseSwitch"))
+        {
+            anim.SetBool("PhaseSwitch", false);
         }
     }
 }
