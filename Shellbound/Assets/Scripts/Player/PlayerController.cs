@@ -155,6 +155,7 @@ public class PlayerController : MonoBehaviour
     private void Dash()
     {
         dashing = true;
+        Camera.main.GetComponent<CameraHandler>().ChangeFOV(dashDuration);
     }
 
     private void EndDash()

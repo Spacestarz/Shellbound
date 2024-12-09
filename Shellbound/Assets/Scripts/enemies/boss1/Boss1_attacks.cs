@@ -1,7 +1,8 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Boss1_attacks : MonoBehaviour
+public class Boss1_attacks : BossAttacksCommon
 {
     RaycastHit ray;
     int damage = 1;
@@ -22,6 +23,7 @@ public class Boss1_attacks : MonoBehaviour
     public Base_enemy parent;
     float elastickrange = 12;
     bool isfiered = false;
+    public bool cooling = false;
     [Header("sound")]
     public AudioSource sorce;
     public AudioClip wavesound;
@@ -185,7 +187,19 @@ public class Boss1_attacks : MonoBehaviour
         lokation.y = lokation.y - 1.5f;
         //Debug.Log(wave.transform.rotation);
         StartCoroutine(Instantiate(wave,lokation, Quaternion.Euler(new Vector3(transform.rotation.x, transform.rotation.y, 90))).GetComponent<Wave>().shockwave(duration, scale, range, target));
+        Camera.main.GetComponent<CameraHandler>().ShakeCamera();
         
+    }
+    public IEnumerator Cool(float attackCooling, float attackRange)
+    {
+        //Debug.Log("run");
+        cooling = true;
+        yield return new WaitForSeconds(attackCooling);
+        if (parent.Range(attackRange) && this.enabled == true)
+        {
+            Melee(attackRange);
+        }
+        cooling = false;
     }
     public void Melee(float range)
     {
