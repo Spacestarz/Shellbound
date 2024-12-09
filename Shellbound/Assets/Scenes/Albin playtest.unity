@@ -96,7 +96,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 721446d47a4f0234aa1b033bda098c70, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -5300,6 +5300,8 @@ MonoBehaviour:
   - {fileID: 1222518109}
   - {fileID: 1090784213}
   phase: {fileID: 0}
+  PhaseSwitchSound: {fileID: 0}
+  PhaseSwitch: 0
 --- !u!195 &1057958391
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -9761,6 +9763,8 @@ MonoBehaviour:
   - {fileID: 579549223}
   - {fileID: 375789364}
   phase: {fileID: 0}
+  PhaseSwitchSound: {fileID: 0}
+  PhaseSwitch: 0
 --- !u!114 &1800359120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9915,9 +9919,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d5b35928f4ff7046baf62bc738a0f59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1763454777}
-  projectile: {fileID: 767105944}
-  healthSystem: {fileID: 1763454779}
+  preFabCircle: {fileID: 0}
+  instance: {fileID: 0}
   destroyTimer: 7
 --- !u!4 &1830281277
 Transform:
