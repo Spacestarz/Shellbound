@@ -8,8 +8,6 @@ public class MantisAnimator : MonoBehaviour
     Base_enemy enemyAI;
     Enemi_health enemyHealth;
     base_enemi_attack enemyAttack;
-    shrimp_phase_2 phase2;
-    shrimp_phase_3 phase3;
 
     [HideInInspector] public Animator anim;
 
@@ -19,8 +17,6 @@ public class MantisAnimator : MonoBehaviour
         enemyAI = enemyToControl.GetComponent<Base_enemy>();
         enemyHealth = enemyToControl.GetComponent<Enemi_health>();
         enemyAttack = enemyToControl.GetComponentInChildren<base_enemi_attack>();
-        phase2 = enemyToControl.GetComponentInChildren<shrimp_phase_2>();
-        phase3 = enemyToControl.GetComponentInChildren<shrimp_phase_3>();
 
         anim = GetComponent<Animator>();
     }

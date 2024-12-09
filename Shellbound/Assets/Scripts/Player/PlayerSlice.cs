@@ -189,7 +189,7 @@ public class PlayerSlice : MonoBehaviour
 
     static void CompleteSlice()
     {
-        currentSlicePattern.spawnedArrow.CompleteSlice();
+        currentSlicePattern.spawnedArrow.CompleteSlice(targetDirection);
         currentSlicePattern.NextSliceArrow();
         successfulTicks = 0;
 

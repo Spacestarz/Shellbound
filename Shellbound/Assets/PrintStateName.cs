@@ -8,14 +8,6 @@ public class PrintStateName : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
-        if (stateInfo.IsName("Vulnerable"))
-        {
-            Debug.Log("Vuln started");
-        }
-        else if (stateInfo.IsName("Harpooned"))
-        {
-            Debug.Log("Harp started");
-        }
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

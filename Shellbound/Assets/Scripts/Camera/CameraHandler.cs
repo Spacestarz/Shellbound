@@ -20,13 +20,12 @@ public class CameraHandler : MonoBehaviour
 
     public void ShakeCamera()
     {
-        Debug.Log("E");
         Camera.main.DOShakePosition(0.2f, new Vector3(0.2f, 1, 0), 10, 45, true, ShakeRandomnessMode.Harmonic);
     }
 
-    public void ShakeCamera(Vector3 direction)
+    public void ShakeCameraSlice(Vector3 direction)
     {
-        Camera.main.DOShakePosition(0.2f, new Vector3(0.2f, 1, 0), 10, 45, false, ShakeRandomnessMode.Harmonic);
+        Camera.main.DOShakePosition(0.15f, new Vector3(direction.x, direction.y) * 0.5f, 5, 25, true, ShakeRandomnessMode.Harmonic);
     }
 
     public void ChangeFOV(float duration)

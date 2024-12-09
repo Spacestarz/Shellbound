@@ -1,4 +1,5 @@
 using Unity.VisualScripting;
+using UnityEditor.SearchService;
 using UnityEngine;
 
 public class SliceTarget : MonoBehaviour
@@ -8,7 +9,6 @@ public class SliceTarget : MonoBehaviour
     public Vector2 direction;
     SpriteRenderer spriteRenderer;
 
-
     private void Awake()
     {
         pattern = GetComponentInParent<SlicePattern>();
@@ -16,11 +16,12 @@ public class SliceTarget : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    public void CompleteSlice()
+    public void CompleteSlice(Vector2 dir)
     {
         parentSlice.GetComponent<SliceableObject>().SingleSlice();
         pattern.PlayAudio("finish");
         pattern.spawnedSliceAnimation.PlayAnimation();
+        Camera.main.GetComponent<CameraHandler>().ShakeCameraSlice(dir.normalized);
     }
 
     public void TurnRed(float a, float b)

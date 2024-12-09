@@ -43,8 +43,6 @@ public class RotateCamera : MonoBehaviour
     public void LockOntoSliceBoard(SlicePattern sliceBoard)
     {
         sequence.Append(transform.DOLookAt(sliceBoard.transform.position, 0.5f).OnComplete(UpdateRotation));
-        StartCoroutine(nameof(SoManyLogsWhileShitIsHappening));
-        //transform.DOLookAt(sliceBoard.transform.position, 0.5f).OnComplete(UpdateRotation);
     }
 
     private void UpdateRotation()
@@ -86,16 +84,6 @@ public class RotateCamera : MonoBehaviour
         sequence.Kill();
         yield return new WaitForSecondsRealtime(0.2f);
         isLocked = locked;
-        yield break;
-    }
-
-    IEnumerator SoManyLogsWhileShitIsHappening()
-    {
-        while(isLocked)
-        {
-            
-            yield return null;
-        }
         yield break;
     }
 }
