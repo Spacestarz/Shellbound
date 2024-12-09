@@ -14,23 +14,19 @@ public class RotateCamera : MonoBehaviour
     public float xRotation;
     public float yRotation;
 
-    Sequence sequence;
-
     void Awake()
     {
         UpdateRotation();
-        //transform.localEulerAngles = new Vector3(0, 150, 0);
 
         isLocked = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        sequence = DOTween.Sequence();
     }
 
     void Update()
     {
-        if (Harpoon.hasCaught)// && !startedLooking)
+        if (Harpoon.hasCaught)
         {
             LockOntoSliceBoard(Harpoon.instance.caughtObject.sliceBoard);
         }
@@ -47,7 +43,7 @@ public class RotateCamera : MonoBehaviour
 
     private void UpdateRotation()
     {
-        xRotation = transform.rotation.eulerAngles.x;//localRotation.eulerAngles.x;
+        xRotation = transform.rotation.eulerAngles.x;
         yRotation = transform.rotation.eulerAngles.y;
     }
 
@@ -81,7 +77,7 @@ public class RotateCamera : MonoBehaviour
 
     public IEnumerator SetCameraLock(bool locked)
     {
-        transform.DOKill();
+        this.DOKill();
         yield return new WaitForSecondsRealtime(0.2f);
         isLocked = locked;
         yield break;

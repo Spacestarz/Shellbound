@@ -3,13 +3,16 @@ using DG.Tweening;
 
 public class CameraHandler : MonoBehaviour
 {
-    Vector3 defaultSpot;
+    Vector3 defaultPosition;
+    Vector3 defaultRotation;
+    Transform orientation;
 
     void Awake()
     {
-        defaultSpot = transform.localPosition;
         Application.targetFrameRate = 120;
-        Debug.Log(defaultSpot);
+        defaultPosition = transform.localPosition;
+        defaultRotation = transform.localEulerAngles;
+        orientation = Camera.main.GetComponent<RotateCamera>().orientation;
     }
 
     private void Update()
@@ -28,13 +31,38 @@ public class CameraHandler : MonoBehaviour
 
     public void ShakeCameraSlice(Vector3 direction)
     {
-        transform.DOLocalRotate(transform.localEulerAngles + direction, 0.2f).OnComplete(ResetPosition);
+        Vector3 dirToMove = Vector3.zero;
+        if(direction.x < 0)
+        {
+            dirToMove -= orientation.right;
+        }
+        else if(direction.x > 0)
+        {
+            dirToMove += orientation.right;
+        }
+
+        if(direction.y < 0)
+        {
+            dirToMove -= orientation.up;
+        }
+        else if (direction.y > 0)
+        {
+            dirToMove += orientation.up;
+        }
+
+
+        transform.DOMove(transform.position +  0.3f * dirToMove, 0.1f).OnComplete(ResetPosition);
         //Camera.main.DOShakePosition(0.15f, new Vector3(direction.x, -direction.y) * 0.5f, 5, 25, false, ShakeRandomnessMode.Harmonic);
     }
 
     void ResetPosition()
     {
-        transform.DOLocalMove(defaultSpot, 0.2f);
+        transform.DOLocalMove(defaultPosition, 0.1f);
+    }
+
+    void ResetRotation()
+    {
+        transform.DOLocalRotate(defaultRotation, 0.2f);
     }
 
     public void ChangeFOV(float duration)
