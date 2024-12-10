@@ -14,6 +14,8 @@ public class Crowd_attacks : MonoBehaviour
 
     private float randomSpawnTime;
 
+    public Boss1_AI Boss1_AI;
+   
     /*
     //random range i float
     3-10 sekunder. Ffunkar bra!
@@ -31,6 +33,7 @@ public class Crowd_attacks : MonoBehaviour
     {
 
         player = GameObject.Find("Player");
+   
         StartCoroutine(nameof(Spawn));
     }
 
@@ -38,7 +41,7 @@ public class Crowd_attacks : MonoBehaviour
     void Update()
     {     
         
-        
+        Debug.Log("Boss phase is now" + " " + Boss1_AI.phase);
         if (Input.GetKeyDown(KeyCode.R))
         {
            
