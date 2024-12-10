@@ -77,14 +77,14 @@ public class PlayerController : MonoBehaviour
                 verticalInput = Input.GetAxisRaw("Vertical");
 
                 //Space to jump
-                if (Input.GetButton("Jump") && readyToJump && grounded)
+                if (Input.GetButtonDown("Jump") && readyToJump && grounded)
                 {
                     readyToJump = false;
                     Jump();
                     Invoke(nameof(ResetJumpCooldown), jumpCooldown);
                 }
                 //Shift to dash
-                if (Input.GetButton("Fire3") && readyToDash && grounded && moveDirection != Vector3.zero)
+                if (Input.GetButtonDown("Fire3") && readyToDash && grounded && moveDirection != Vector3.zero)
                 {
                     readyToDash = false;
                     Dash();

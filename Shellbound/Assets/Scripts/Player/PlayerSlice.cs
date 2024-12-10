@@ -167,7 +167,13 @@ public class PlayerSlice : MonoBehaviour
         }
         else
         {
-            successfulTicks = 0;
+            failedTicks++;
+
+            if(failedTicks >= 2)
+            {
+                successfulTicks = 0;
+                failedTicks = 0;
+            }
         }
 
         if (currentSlicePattern != null)
@@ -179,6 +185,7 @@ public class PlayerSlice : MonoBehaviour
     static void SuccessfulTick()
     {
         successfulTicks++;
+        failedTicks = 0;
 
         if (successfulTicks >= requiredTicks)
         {
