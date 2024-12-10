@@ -20,6 +20,9 @@ public class AttackIndicator : MonoBehaviour
 
     public GameObject preFabCircle;
    
+    /*
+     * TODO CANT ATTACK WHILE IN CIRCLE
+    */
     // Start is called before the first frame update
     void Awake()
     {

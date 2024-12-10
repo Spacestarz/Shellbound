@@ -18,7 +18,7 @@ public class Boss1_AI : MonoBehaviour
         health = GetComponent<Enemi_health>();
         enemy = GetComponent<Base_enemy>();
     }
-    private void Update()
+    public void Update()
     {
         phase.phase();
         if (health.currentHP < health.MaxHP * 0.3 && phase == phases[1] && !PhaseSwitch)
