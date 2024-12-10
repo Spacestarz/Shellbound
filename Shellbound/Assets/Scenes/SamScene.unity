@@ -213,7 +213,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &28863894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1089,10 +1089,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouthRigidBody: {fileID: 598477969}
+  player: {fileID: 1897039136}
+  boss: {fileID: 1998195560}
   mouth: {fileID: 598477967}
   mouthObject: {fileID: 598477967}
   Anchor: {fileID: 1998195560}
-  mainCam: {fileID: 0}
+  mainCam: {fileID: 1617874817}
   fireRate: 20
   speedReturn: 1
   maxDistancefromAnchor: 15
@@ -1426,7 +1428,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &641352372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5102,7 +5104,7 @@ Transform:
   m_GameObject: {fileID: 1897039136}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.693539, y: 1, z: 6.292338}
+  m_LocalPosition: {x: 6.29, y: 1, z: -15.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5451,7 +5453,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1998195561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5465,9 +5467,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   KnockbackStrenght: 20
-  healthSystem: {fileID: 0}
+  healthSystem: {fileID: 1897039138}
   rbGoblinShark: {fileID: 1998195562}
-  player: {fileID: 0}
+  player: {fileID: 1897039136}
   Boss2: {fileID: 1998195560}
 --- !u!54 &1998195562
 Rigidbody:
@@ -5625,7 +5627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashDistance: 10
-  player: {fileID: 0}
+  player: {fileID: 1897039136}
 --- !u!120 &1998195570
 LineRenderer:
   serializedVersion: 2
@@ -5744,7 +5746,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 0
   currentHP: 0
-  Player: {fileID: 0}
+  Player: {fileID: 1897039136}
   source: {fileID: 0}
   audioClip: {fileID: 0}
   uiScript: {fileID: 1565388506}
