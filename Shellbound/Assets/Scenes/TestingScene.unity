@@ -312,7 +312,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -415,11 +415,14 @@ MonoBehaviour:
   groundDrag: 5
   jumpForce: 4
   jumpCooldown: 0.25
-  airMultiplier: 0.4
+  dashForce: 0
+  dashDuration: 0
+  dashCooldown: 0
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
     m_Bits: 1024
+  grounded: 0
   orientation: {fileID: 646720946}
 --- !u!1 &899707474
 GameObject:
@@ -558,6 +561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7427acb61093eb4ba1561aafbcdb443, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLocked: 0
   sensitivityX: 400
   sensitivityY: 400
   orientation: {fileID: 646720946}
@@ -575,7 +579,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ab76d79daa65fa4e9eaeb4af27f2aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraPosition: {fileID: 899707475}
 --- !u!1 &1082903220
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,7 +672,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
