@@ -6,7 +6,7 @@ public class PlayerSlice : MonoBehaviour
     static Camera mainCam;
 
     public static PlayerSlice instance;
-    public SliceableObject caughtObject;
+    public HookableObject caughtObject;
     public static SlicePattern currentSlicePattern;
 
     static Vector2 mouseMovement;
@@ -15,18 +15,17 @@ public class PlayerSlice : MonoBehaviour
     static Vector2 mouseDirection;
 
     static float sliceTickTime = 0;
-    static float sliceTickLength = 0.033f;
+    static readonly float sliceTickLength = 0.011f;
 
     static float sliceTime = 0;
-    static float sliceTimeLimit = 12.5f;
+    static readonly float sliceTimeLimit = 1.25f;
 
     static float requiredDotProduct = 0.8f;
 
-    //static float currentMagnitude = 0;
-    //static float requiredMagnitude = 5;
-
     static int successfulTicks = 0;
-    static readonly int requiredTicks = 3;
+    static int failedTicks = 0;
+    static readonly int requiredTicks = 10;
+
 
     private void Awake()
     {
@@ -55,12 +54,11 @@ public class PlayerSlice : MonoBehaviour
         sliceTickTime = 0;
 
         successfulTicks = 0;
-        //currentMagnitude = 0;
 
         if (sliceMode)
         {
             instance.GetComponent<PlayerController>().NullifyMovement();
-            currentSlicePattern = instance.caughtObject.GetComponentInChildren<SlicePattern>();
+            currentSlicePattern = instance.caughtObject.sliceableObject.sliceBoard;
             currentSlicePattern.NextSliceArrow();
 
             mainCam.GetComponent<RotateCamera>().isLocked = true;
@@ -69,6 +67,8 @@ public class PlayerSlice : MonoBehaviour
         {
             currentSlicePattern.DestroyArrow();
             currentSlicePattern.ResetPattern();
+            
+            instance.GetComponent<Fire>().ReturnHarpoon();
         }
 
         SetCursor();
@@ -95,7 +95,7 @@ public class PlayerSlice : MonoBehaviour
     }
 
 
-    public static void SetCaughtObject(SliceableObject obj)
+    public static void SetCaughtObject(HookableObject obj)
     {
         instance.caughtObject = obj;
         SetSliceMode(true);
@@ -104,6 +104,7 @@ public class PlayerSlice : MonoBehaviour
 
     public static void ClearCaughtObject()
     {
+        instance.caughtObject.Uncaught();
         instance.caughtObject = null;
         currentSlicePattern = null;
     }
@@ -116,13 +117,11 @@ public class PlayerSlice : MonoBehaviour
         //If only one axis is 0 (orthogonal)
         if (targetDirection.x != 0 ^ targetDirection.y != 0)
         {
-            requiredDotProduct = 0.9f;
-            //requiredMagnitude = 17f;
+            requiredDotProduct = 0.85f;
         }
         else // (Diagonal)
         {
             requiredDotProduct = 0.8f;
-            //requiredMagnitude = 13f;
         }
     }
 
@@ -168,7 +167,13 @@ public class PlayerSlice : MonoBehaviour
         }
         else
         {
-            successfulTicks = 0;
+            failedTicks++;
+
+            if(failedTicks >= 2)
+            {
+                successfulTicks = 0;
+                failedTicks = 0;
+            }
         }
 
         if (currentSlicePattern != null)
@@ -180,6 +185,7 @@ public class PlayerSlice : MonoBehaviour
     static void SuccessfulTick()
     {
         successfulTicks++;
+        failedTicks = 0;
 
         if (successfulTicks >= requiredTicks)
         {
@@ -192,16 +198,23 @@ public class PlayerSlice : MonoBehaviour
         Camera.main.GetComponent<CameraHandler>().ShakeCameraSlice(targetDirection.normalized);
 
         currentSlicePattern.spawnedArrow.CompleteSlice(targetDirection);
-        currentSlicePattern.NextSliceArrow();
+        if(currentSlicePattern)
+        {
+            currentSlicePattern.NextSliceArrow();
+        }
+        
         successfulTicks = 0;
-
         sliceTime = 0;
     }
 
     static void FailSlice()
     {
         currentSlicePattern.FailPattern();
-        ClearCaughtObject();
+        if(instance.caughtObject)
+        {
+            ClearCaughtObject();
+        }
+
         SetSliceMode(false);
     }
 }

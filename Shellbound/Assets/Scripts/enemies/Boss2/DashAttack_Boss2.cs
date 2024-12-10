@@ -34,7 +34,7 @@ public class DashAttack_Boss2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+       //TODO clean empy updates etc
     }
 
     public void DashAttack()

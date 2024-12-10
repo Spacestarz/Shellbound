@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class MainMenueSpecials : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class MainMenueSpecials : MonoBehaviour
     public GameObject StartButon;
     GameObject QuitButon;
     GameObject manager;
+    bool twening = false;
     private void Awake()
     {
         StartButon = GameObject.Find("start");
@@ -20,13 +22,31 @@ public class MainMenueSpecials : MonoBehaviour
     }
     public void credits()
     {
-        if (CreditText.activeSelf == true)
+        if (CreditText.activeSelf == true && !twening)
         {
-            CreditText.SetActive(false);
+            twening = true;
+            CreditText.transform.DOMoveX(50,2).OnComplete(hide);
+           //CreditText.SetActive(false);
         }
-        else if (CreditText.activeSelf == false)
+        else if (CreditText.activeSelf == false && !twening)
         {
-            CreditText.SetActive(true);
+            twening = true;
+            //CreditText.SetActive(true);
+            CreditText.transform.DOMoveX(25, 2).OnPlay(show).OnComplete(setfalse);
         }
     }
+    void hide()
+    {
+        CreditText.SetActive(false);
+        setfalse();
+    }
+    void show()
+    {
+        CreditText.SetActive(true);
+    }
+    void setfalse()
+    {
+        twening = false;
+    }
+
 }

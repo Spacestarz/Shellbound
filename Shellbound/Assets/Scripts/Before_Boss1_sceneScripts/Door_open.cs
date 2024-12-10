@@ -1,11 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using System;
-using JetBrains.Annotations;
-using System.Runtime.CompilerServices;
-using static UnityEngine.Rendering.VirtualTexturing.Debugging;
 
 public class Door_open : MonoBehaviour
 {

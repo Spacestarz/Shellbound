@@ -8,8 +8,8 @@ public class MouthAttack : MonoBehaviour
 {
 
     public Rigidbody mouthRigidBody;
-    private GameObject player;
-    private GameObject boss;
+    public GameObject player;
+    public GameObject boss;
     public GameObject mouth;
 
     public GameObject mouthObject;
@@ -38,8 +38,6 @@ public class MouthAttack : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         sr.enabled = false;
-
-       // player = getgame
     }
 
     // Update is called once per frame
@@ -56,15 +54,14 @@ public class MouthAttack : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.T))
         {
-            FireMouth();
-           
-        }
-        
+            FireMouth();       
+        }       
     }
 
     private IEnumerator MouthGoBack()
     {
-        Debug.Log("mouthgoback METHOD");
+       // Debug.Log("mouthgoback METHOD");
+
         mouthRigidBody.velocity = Vector3.zero;
         while (dist >= 1)
         {
@@ -76,7 +73,7 @@ public class MouthAttack : MonoBehaviour
         mouthRigidBody.constraints = RigidbodyConstraints.FreezeAll;
 
         //mouthObject.transform.position = Vector3.Lerp(mouthObject.transform.position, Anchor.transform.position, speedReturn * Time.deltaTime);
-        Debug.Log("mouthgoback");
+        //Debug.Log("Mouth is home");
         collisionHIT = false;
         yield return null;
     }
@@ -90,6 +87,7 @@ public class MouthAttack : MonoBehaviour
         collisionHIT = false;
     }
     */
+
     public void FireMouth()
     {
         sr.enabled = true;
@@ -101,17 +99,17 @@ public class MouthAttack : MonoBehaviour
 
         mouthRigidBody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY; ;
         
-
         fired = true;
 
         mouth.transform.position = Vector3.MoveTowards(mouth.transform.position, player.transform.position, maxDistance * Time.deltaTime);
-
+        
         if (collisionHIT == false)
         {
             //It move the direction of the main cameras z axis
-            mouthRigidBody.velocity = boss.transform.forward * fireRate;
-
+            mouthRigidBody.velocity = -mainCam.transform.forward * fireRate;
+            
         }
+        
     }
 
     public void OnTriggerEnter(Collider collisionCheck)
@@ -121,16 +119,17 @@ public class MouthAttack : MonoBehaviour
 
         if (goingAway && collisionCheck.CompareTag("Player"))
         {
-            Debug.Log("player here");
             collisionHIT = true;
-            MouthGoBack();
-            Debug.Log("Time to go back");
+            // Debug.Log("player here");
+            StartCoroutine(nameof(MouthGoBack));
+            Debug.Log("Go back because of player");
         }
-
+        /*
         else if (goingAway)
         {
             Debug.Log("mouthattack 99");
             MouthGoBack();
         }
+        */
     }
 }

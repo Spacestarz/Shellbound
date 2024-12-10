@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6629037883446122114}
   - component: {fileID: -276438863539318959}
   - component: {fileID: -4222586280873580220}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: attackIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 4632664452930522911}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -3.8955555, y: 0.04, z: 15.167111}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalPosition: {x: 11.601868, y: 0.04, z: -8.996733}
+  m_LocalScale: {x: 6, y: 6, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
