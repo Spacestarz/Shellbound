@@ -24,7 +24,7 @@ public class PlayerSlice : MonoBehaviour
 
     static int successfulTicks = 0;
     static int failedTicks = 0;
-    static readonly int requiredTicks = 14;
+    static readonly int requiredTicks = 10;
 
 
     private void Awake()
