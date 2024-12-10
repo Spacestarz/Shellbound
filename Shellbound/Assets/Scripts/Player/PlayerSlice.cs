@@ -189,9 +189,12 @@ public class PlayerSlice : MonoBehaviour
         Camera.main.GetComponent<CameraHandler>().ShakeCameraSlice(targetDirection.normalized);
 
         currentSlicePattern.spawnedArrow.CompleteSlice(targetDirection);
-        currentSlicePattern.NextSliceArrow();
+        if(currentSlicePattern)
+        {
+            currentSlicePattern.NextSliceArrow();
+        }
+        
         successfulTicks = 0;
-
         sliceTime = 0;
     }
 
