@@ -8,8 +8,8 @@ public class SliceTarget : MonoBehaviour
     SpriteRenderer spriteRenderer;
 
     public GameObject circle;
-    Transform circleSpawn;
-    Transform circleGoal;
+    Vector2 circleSpawn;
+    Vector2 circleGoal;
 
     private void Awake()
     {
@@ -18,8 +18,8 @@ public class SliceTarget : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         circle = transform.GetChild(0).GetChild(0).gameObject;
 
-        circleSpawn.position = circle.transform.localPosition;
-        circleGoal.position = circle.transform.localPosition *= -1;
+        circleSpawn = circle.transform.localPosition;
+        circleGoal = circle.transform.localPosition *= -1;
     }
 
     public void CompleteSlice(Vector2 dir)
@@ -32,6 +32,6 @@ public class SliceTarget : MonoBehaviour
     public void TurnRed(float a, float b)
     {
         spriteRenderer.color = Color.Lerp(Color.white, Color.green, a/b);
-        circle.transform.position = Vector2.Lerp(circleSpawn.localPosition, circleGoal.localPosition, a/b);
+        circle.transform.localPosition = Vector2.Lerp(circleSpawn, circleGoal, a/b);
     }
 }

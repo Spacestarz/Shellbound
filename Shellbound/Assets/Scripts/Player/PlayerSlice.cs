@@ -68,10 +68,6 @@ public class PlayerSlice : MonoBehaviour
             
             instance.GetComponent<Fire>().ReturnHarpoon();
         }
-        else
-        {
-            ClearCaughtObject();
-        }
 
         SetCursor();
     }
