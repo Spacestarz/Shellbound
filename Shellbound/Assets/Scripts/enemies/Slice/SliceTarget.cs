@@ -29,9 +29,9 @@ public class SliceTarget : MonoBehaviour
         pattern.spawnedSliceAnimation.PlayAnimation();
     }
 
-    public void TurnRed(float a, float b)
+    public void TurnRed(float a, float b, float c, float d)
     {
         spriteRenderer.color = Color.Lerp(Color.white, Color.green, a/b);
-        circle.transform.localPosition = Vector2.Lerp(circleSpawn, circleGoal, a/b);
+        circle.transform.localPosition = Vector2.Lerp(circleSpawn, circleGoal, c/d);
     }
 }
