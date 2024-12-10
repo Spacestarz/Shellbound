@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackIndicator : MonoBehaviour
 {
-   // private Crowd_attacks crowd_Attacks;
+   
     private GameObject crowdScriptLocation;
 
     [Header("Destroytimer of circle")]
@@ -19,9 +19,7 @@ public class AttackIndicator : MonoBehaviour
     private bool playerInCircle = false;
 
     public GameObject preFabCircle;
-
-
-
+   
     // Start is called before the first frame update
     void Awake()
     {
