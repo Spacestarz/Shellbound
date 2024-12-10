@@ -48,6 +48,7 @@ public class SceneController : MonoBehaviour
     public void GoToMenue()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = true;
         SceneManager.LoadScene(0);
     }
     public void NextLevel()
