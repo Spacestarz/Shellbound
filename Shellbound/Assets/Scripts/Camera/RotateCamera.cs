@@ -28,7 +28,7 @@ public class RotateCamera : MonoBehaviour
     {
         if (Harpoon.hasCaught)
         {
-            LockOntoSliceBoard(Harpoon.instance.caughtObject.sliceBoard);
+            LockOntoSliceBoard(Harpoon.instance.caughtObject.sliceableObject.sliceBoard);
         }
         else if (!Harpoon.hasCaught && !isLocked)
         {

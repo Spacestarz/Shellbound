@@ -8,7 +8,7 @@ public class Harpoon : MonoBehaviour
 
     public static Harpoon instance;
     
-    public SliceableObject caughtObject;
+    public HookableObject caughtObject;
     public Fire fire;
 
     public bool collisionHIT = false;
@@ -29,11 +29,11 @@ public class Harpoon : MonoBehaviour
     }
 
 
-    public void OnTriggerEnter(Collider collisionCheck)
+    public void OnTriggerEnter(Collider other)
     {
-        if (fire.goingAway && collisionCheck.CompareTag("Enemy") || collisionCheck.CompareTag("weakpoint") || collisionCheck.CompareTag("TutorialHookThis"))
+        if (fire.goingAway && other.GetComponent<HookableObject>())// && other.CompareTag("Enemy") || other.CompareTag("weakpoint") || other.CompareTag("TutorialHookThis"))
         {
-            HarpoonHit(collisionCheck);
+            other.GetComponent<HookableObject>().GetHit();
         }
         else if (fire.goingAway)
         {
@@ -42,49 +42,33 @@ public class Harpoon : MonoBehaviour
     }
 
 
-    void HarpoonHit(Collider collisionCheck)
+    void HarpoonHit(Collider other)
     {
-        //Every tag that bounces the harpoon back, put into this "or"
-        if (!collisionCheck.CompareTag("weakpoint"))
-        {
-            if (collisionCheck.CompareTag("Enemy") && !collisionCheck.GetComponent<Base_enemy>().volnereble)
-            {
-                fire.ReturnHarpoon();
-            }
-            else
-            {
-                fire.goingAway = false;
-                collisionHIT = true;
+        other.GetComponent<HookableObject>().GetHit();
 
-                caughtObject = collisionCheck.GetComponent<SliceableObject>();
-                hasCaught = true;
-                
-                PlayerSlice.SetCaughtObject(caughtObject);
+        //if (other.CompareTag("Enemy") && !other.GetComponent<Base_enemy>().volnereble)
+        //{
+        //    fire.ReturnHarpoon();
+        //}
+        //else
+        //{
+        //    fire.goingAway = false;
+        //    collisionHIT = true;
 
-                SetVisibility(false);
+        //    SetVisibility(false);
             
-                Vector3 closestPoint = collisionCheck.ClosestPoint(transform.position);
+        //}
 
-                transform.position = closestPoint;
-                rb.constraints = RigidbodyConstraints.FreezeAll;
-            }
-        }
-        if (collisionCheck.CompareTag("Enemy") && collisionCheck.GetComponent<Base_enemy>().volnereble)
-        {
-            caughtObject.GetComponent<Enemi_health>().DisableAI();
-            caughtObject.GetComponent<Base_enemy>().StopWeakTimer();
-        }
+        //if (other.CompareTag("Enemy") && other.GetComponent<Base_enemy>().volnereble)
+        //{
+        //    caughtObject.GetComponent<Enemi_health>().DisableAI();
+        //    caughtObject.GetComponent<Base_enemy>().StopWeakTimer();
+        //}
 
-        else if (collisionCheck.CompareTag("TutorialHookThis"))
-        {
-
-        }
-
-        else if(collisionCheck.CompareTag("weakpoint") && fire.goingAway)
-        {
-            collisionCheck.transform.parent.parent.GetComponent<Base_enemy>().wekend();
-            fire.ReturnHarpoon();
-        }
+        //else if (other.CompareTag("weakpoint") && fire.goingAway)
+        //{
+        //    fire.ReturnHarpoon();
+        //}
     }
 
     public void SetVisibility(bool visibility)
@@ -94,5 +78,13 @@ public class Harpoon : MonoBehaviour
         {
             line.SetVisible(visibility);
         }
+    }
+
+    public static void SetCaughtObject(HookableObject hookableObject)
+    {
+        instance.caughtObject = hookableObject;
+        PlayerSlice.SetCaughtObject(instance.caughtObject);
+        hasCaught = true;
+
     }
 }

@@ -6,7 +6,7 @@ public class PlayerSlice : MonoBehaviour
     static Camera mainCam;
 
     public static PlayerSlice instance;
-    public SliceableObject caughtObject;
+    public HookableObject caughtObject;
     public static SlicePattern currentSlicePattern;
 
     static Vector2 mouseMovement;
@@ -18,15 +18,12 @@ public class PlayerSlice : MonoBehaviour
     static float sliceTickLength = 0.033f;
 
     static float sliceTime = 0;
-    static float sliceTimeLimit = 12.5f;
+    static float sliceTimeLimit = 1.25f;
 
     static float requiredDotProduct = 0.8f;
 
-    //static float currentMagnitude = 0;
-    //static float requiredMagnitude = 5;
-
     static int successfulTicks = 0;
-    static readonly int requiredTicks = 3;
+    static readonly int requiredTicks = 4;
 
     private void Awake()
     {
@@ -55,12 +52,11 @@ public class PlayerSlice : MonoBehaviour
         sliceTickTime = 0;
 
         successfulTicks = 0;
-        //currentMagnitude = 0;
 
         if (sliceMode)
         {
             instance.GetComponent<PlayerController>().NullifyMovement();
-            currentSlicePattern = instance.caughtObject.GetComponentInChildren<SlicePattern>();
+            currentSlicePattern = instance.caughtObject.sliceableObject.sliceBoard;
             currentSlicePattern.NextSliceArrow();
 
             mainCam.GetComponent<RotateCamera>().isLocked = true;
@@ -95,7 +91,7 @@ public class PlayerSlice : MonoBehaviour
     }
 
 
-    public static void SetCaughtObject(SliceableObject obj)
+    public static void SetCaughtObject(HookableObject obj)
     {
         instance.caughtObject = obj;
         SetSliceMode(true);
@@ -104,6 +100,7 @@ public class PlayerSlice : MonoBehaviour
 
     public static void ClearCaughtObject()
     {
+        instance.caughtObject.Uncaught();
         instance.caughtObject = null;
         currentSlicePattern = null;
     }
@@ -117,12 +114,10 @@ public class PlayerSlice : MonoBehaviour
         if (targetDirection.x != 0 ^ targetDirection.y != 0)
         {
             requiredDotProduct = 0.9f;
-            //requiredMagnitude = 17f;
         }
         else // (Diagonal)
         {
             requiredDotProduct = 0.8f;
-            //requiredMagnitude = 13f;
         }
     }
 
@@ -201,7 +196,11 @@ public class PlayerSlice : MonoBehaviour
     static void FailSlice()
     {
         currentSlicePattern.FailPattern();
-        ClearCaughtObject();
+        if(instance.caughtObject)
+        {
+            ClearCaughtObject();
+        }
+
         SetSliceMode(false);
     }
 }

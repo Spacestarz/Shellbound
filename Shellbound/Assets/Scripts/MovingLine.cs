@@ -36,7 +36,7 @@ public class MovingLine : MonoBehaviour
                 }
                 else
                 {
-                    lineRenderer.SetPosition(1, harpoon.caughtObject.sliceBoard.transform.position);
+                    lineRenderer.SetPosition(1, harpoon.caughtObject.GetComponent<SliceableObject>().sliceBoard.transform.position);
                 }
             }
             else

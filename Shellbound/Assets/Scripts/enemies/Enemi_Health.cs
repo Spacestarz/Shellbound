@@ -44,9 +44,9 @@ public class Enemi_health : HealthSystem
         Distance = Vector3.Distance(monster.position, player.position);
         if (Harponed && Distance > 5f)
         {
-            transform.position = Vector3.MoveTowards(monster.position, player.position, dragspeed * Time.deltaTime);
-            harpon.position = Vector3.MoveTowards(harpon.position, player.position, dragspeed * Time.deltaTime);
-            monster.GetComponent<Boss1_AI>().phase.resetpositon();
+            //transform.position = Vector3.MoveTowards(monster.position, player.position, dragspeed * Time.deltaTime);
+            //harpon.position = Vector3.MoveTowards(harpon.position, player.position, dragspeed * Time.deltaTime);
+            //monster.GetComponent<Boss1_AI>().phase.resetpositon();
         }
     }
 }
