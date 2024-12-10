@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class SliceTarget : MonoBehaviour
 {
-    public SlicePattern pattern;
     SliceableObject parentSlice;
-    public Vector2 direction;
     SpriteRenderer spriteRenderer;
+    public SlicePattern pattern;
+    public Vector2 direction;
 
     public GameObject circle;
     Vector2 circleSpawn;
