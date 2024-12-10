@@ -86,16 +86,22 @@ public class HookableObject : MonoBehaviour
             {
                 GetComponent<Enemi_health>().DisableAI();
                 GetComponent<Base_enemy>().StopWeakTimer();
+                
+                Harpoon.SetCaughtObject(this);
+                isCaught = true;
+                fire.goingAway = false;
             }
             else
             {
                 fire.ReturnHarpoon();
             }
         }
-        isCaught = true;
-        fire.goingAway = false;
-
-        Harpoon.SetCaughtObject(this);
+        else
+        {
+            Harpoon.SetCaughtObject(this);
+            isCaught = true;
+            fire.goingAway = false;
+        }
     }
 
 
@@ -103,6 +109,4 @@ public class HookableObject : MonoBehaviour
     {
         isCaught = false;
     }
-
-
 }

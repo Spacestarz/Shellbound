@@ -1,5 +1,6 @@
-using System.Collections;
+using DG.Tweening;
 using UnityEngine;
+
 public class HealthSystem : MonoBehaviour
 {
     public float MaxHP;
@@ -32,12 +33,14 @@ public class HealthSystem : MonoBehaviour
 
         if (gameObject.CompareTag("Enemy") && currentHP <= 0)
         {
-            Destroy(gameObject);
-        }
+            if(GetComponent<HookableObject>().isCaught)
+            {
+                PlayerSlice.SetSliceMode(false);
+                Camera.main.GetComponent<RotateCamera>().DOKill();
+                Camera.main.GetComponent<RotateCamera>().isLocked = false;
+            }
 
-        if (gameObject.CompareTag("Enemy"))
-        {
-            StartCoroutine(FlashRed());
+            Destroy(gameObject);
         }
 
     }
@@ -51,12 +54,5 @@ public class HealthSystem : MonoBehaviour
     {
         //Game over screen for player
         uiScript.GameOver();
-    }
-
-    IEnumerator FlashRed()
-    {
-        enemySprite.color = Color.red;
-        yield return new WaitForSecondsRealtime(0.2f);
-        enemySprite.color = Color.white;
     }
 }
