@@ -3451,6 +3451,7 @@ GameObject:
   - component: {fileID: 665235480}
   - component: {fileID: 665235479}
   - component: {fileID: 665235478}
+  - component: {fileID: 665235483}
   - component: {fileID: 665235477}
   m_Layer: 12
   m_Name: Claw
@@ -3662,6 +3663,38 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 665235475}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &665235483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665235475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1bcb049e53f463428f1188d0f3f8ec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1800359120}
+        m_TargetAssemblyTypeName: Base_enemy, Assembly-CSharp
+        m_MethodName: wekend
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  type: 0
+  hookBehavior: 1
+  sliceableObject: {fileID: 0}
+  pullSpeed: 25
+  isCaught: 0
 --- !u!1 &713784168
 GameObject:
   m_ObjectHideFlags: 0
@@ -9539,6 +9572,7 @@ GameObject:
   - component: {fileID: 1800359115}
   - component: {fileID: 1800359114}
   - component: {fileID: 1800359113}
+  - component: {fileID: 1800359124}
   m_Layer: 12
   m_Name: enemy_test (1)
   m_TagString: Enemy
@@ -9839,6 +9873,26 @@ Transform:
   - {fileID: 898481710}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1800359124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800359112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1bcb049e53f463428f1188d0f3f8ec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  type: 0
+  hookBehavior: 0
+  sliceableObject: {fileID: 0}
+  pullSpeed: 5
+  isCaught: 0
 --- !u!1 &1816708122
 GameObject:
   m_ObjectHideFlags: 0
@@ -9920,8 +9974,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   preFabCircle: {fileID: 0}
-  instance: {fileID: 0}
-  destroyTimer: 7
 --- !u!4 &1830281277
 Transform:
   m_ObjectHideFlags: 0

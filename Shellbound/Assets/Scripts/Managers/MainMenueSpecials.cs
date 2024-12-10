@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class MainMenueSpecials : MonoBehaviour
 {
@@ -22,11 +23,22 @@ public class MainMenueSpecials : MonoBehaviour
     {
         if (CreditText.activeSelf == true)
         {
-            CreditText.SetActive(false);
+            CreditText.transform.DOMoveX(350,2).OnComplete(hide);
+           //CreditText.SetActive(false);
         }
         else if (CreditText.activeSelf == false)
         {
-            CreditText.SetActive(true);
+            //CreditText.SetActive(true);
+            CreditText.transform.DOMoveX(250, 2).OnPlay(show);
         }
     }
+    void hide()
+    {
+        CreditText.SetActive(false);
+    }
+    void show()
+    {
+        CreditText.SetActive(true);
+    }
+
 }
