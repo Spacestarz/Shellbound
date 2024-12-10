@@ -52,44 +52,36 @@ public class Crowd_attacks : MonoBehaviour
     {
         while (Boss1_AI.activePhase == 0)
         {
-            Debug.Log("PHASE 1 of circles ACTIVE");
-
             randomSpawnTime = Random.Range(3f, 10f);
-           // Debug.Log("Spawning another circle in" + " " + randomSpawnTime);
             yield return new WaitForSeconds(randomSpawnTime);
 
-            preFabCirclePosition = new Vector3(player.transform.position.x, (float)0.04, player.transform.position.z);
-            preFabCircle.transform.position = preFabCirclePosition;
-
-            Instantiate(preFabCircle, preFabCirclePosition, Quaternion.Euler(-90, 0, 0)); //the rotation need to be in -90 degree
+            SpawnCircle();
         }  
         
         while (Boss1_AI.activePhase == 1)
         {
-            Debug.Log("PHASE 2 of circles ACTIVE");
             randomSpawnTime = Random.Range(2f, 5f);
-            //Debug.Log("Spawning another circle in" + " " + randomSpawnTime);
             yield return new WaitForSeconds(randomSpawnTime);
 
-            preFabCirclePosition = new Vector3(player.transform.position.x, (float)0.04, player.transform.position.z);
-            preFabCircle.transform.position = preFabCirclePosition;
-
-            Instantiate(preFabCircle, preFabCirclePosition, Quaternion.Euler(-90, 0, 0)); //the rotation need to be in -90 degree
+            SpawnCircle();
         }
 
         while (Boss1_AI.activePhase == 2)
         {
-            Debug.Log("PHASE 3 of circles ACTIVE");
             randomSpawnTime = Random.Range(5f, 12f);
-            //Debug.Log("Spawning another circle in" + " " + randomSpawnTime);
             yield return new WaitForSeconds(randomSpawnTime);
 
-            preFabCirclePosition = new Vector3(player.transform.position.x, (float)0.04, player.transform.position.z);
-            preFabCircle.transform.position = preFabCirclePosition;
-
-            Instantiate(preFabCircle, preFabCirclePosition, Quaternion.Euler(-90, 0, 0)); //the rotation need to be in -90 degree
+            SpawnCircle();
         }
 
+    }
+
+    private void SpawnCircle()
+    {
+        preFabCirclePosition = new Vector3(player.transform.position.x, (float)0.04, player.transform.position.z);
+        preFabCircle.transform.position = preFabCirclePosition;
+
+        Instantiate(preFabCircle, preFabCirclePosition, Quaternion.Euler(-90, 0, 0)); //the rotation need to be in -90 degree
     }
 }
 
