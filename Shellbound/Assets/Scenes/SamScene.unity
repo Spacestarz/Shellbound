@@ -1666,6 +1666,7 @@ MonoBehaviour:
   phase: {fileID: 0}
   PhaseSwitchSound: {fileID: 0}
   PhaseSwitch: 0
+  activePhase: 0
 --- !u!114 &641352380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2272,7 +2273,7 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 2112
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -4927,7 +4928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b2f8dc9852bda74aaa91398c240e7cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 10
+  MaxHP: 100
   currentHP: 0
   Player: {fileID: 1897039136}
   source: {fileID: 0}

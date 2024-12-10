@@ -20,9 +20,7 @@ public class AttackIndicator : MonoBehaviour
 
     public GameObject preFabCircle;
    
-    /*
-     * TODO CANT ATTACK WHILE IN CIRCLE
-    */
+   
     // Start is called before the first frame update
     void Awake()
     {
@@ -42,7 +40,7 @@ public class AttackIndicator : MonoBehaviour
 
     public void IsPlayerHere()
     {
-        Debug.Log("check if player circle");
+       // Debug.Log("check if player circle");
         if (playerInCircle == true)
         {
             healthSystem.TakeDamage(damage);

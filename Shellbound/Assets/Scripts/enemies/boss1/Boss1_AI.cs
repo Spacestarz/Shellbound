@@ -11,10 +11,11 @@ public class Boss1_AI : MonoBehaviour
     Base_enemy enemy;
     public AudioClip PhaseSwitchSound;
     public bool PhaseSwitch = false;
+    public int activePhase = 0;
 
     private void Awake()
     {
-        phase = phases[0];
+        phase = phases[activePhase];
         health = GetComponent<Enemi_health>();
         enemy = GetComponent<Base_enemy>();
     }
@@ -24,12 +25,14 @@ public class Boss1_AI : MonoBehaviour
         if (health.currentHP < health.MaxHP * 0.3 && phase == phases[1] && !PhaseSwitch)
         {
             //phase = phases[2];
-            StartCoroutine(wait(4, 2));
+            activePhase = 2;
+            StartCoroutine(wait(4, activePhase));
         }
         else if (health.currentHP < health.MaxHP * 0.7 && phase == phases[0] && !PhaseSwitch)
         {
             //phase = phases[1];
-            StartCoroutine(wait(4, 1));
+            activePhase = 1;
+            StartCoroutine(wait(4, activePhase));
         }
     }
 
@@ -47,6 +50,5 @@ public class Boss1_AI : MonoBehaviour
         enemy.atta = true;
         enemy.start();
     }
-
 
 }
