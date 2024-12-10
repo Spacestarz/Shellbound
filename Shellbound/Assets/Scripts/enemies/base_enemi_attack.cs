@@ -2,13 +2,13 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public abstract class base_enemi_attack : MonoBehaviour
+public abstract class base_enemi_attack : BasePhaseScript
 {
-    public abstract void phase();
+    //public abstract void phase();
     public Crowd_attacks crowd;
-    public Base_enemy enemy;
+    
     public Boss1_attacks attack;
-    public NavMeshAgent agent;
+    
     public int wavemount = 1;
     public int i = 1;
     [Header("anim bools")]
@@ -36,10 +36,7 @@ public abstract class base_enemi_attack : MonoBehaviour
         //attak = GetComponentInParent<Boss1_attacks>();
         agent = GetComponentInParent<NavMeshAgent>();
     }
-    public void resetpositon()
-    {
-        agent.SetDestination(transform.position);
-    }
+    
  
     public IEnumerator cooldown(float t)
     {

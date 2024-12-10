@@ -349,10 +349,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0f75c98798e2c046b0b12120965b9b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crowd: {fileID: 0}
-  enemy: {fileID: 641352380}
-  attack: {fileID: 2084519821}
   agent: {fileID: 0}
+  enemy: {fileID: 641352380}
+  crowd: {fileID: 0}
+  attack: {fileID: 2084519821}
   wavemount: 1
   i: 1
   ElastickAnim: 0
@@ -478,10 +478,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4924f10494617849972c5224cc62727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crowd: {fileID: 0}
-  enemy: {fileID: 641352380}
-  attack: {fileID: 2084519821}
   agent: {fileID: 0}
+  enemy: {fileID: 641352380}
+  crowd: {fileID: 0}
+  attack: {fileID: 2084519821}
   wavemount: 1
   i: 1
   ElastickAnim: 0
@@ -560,6 +560,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e965577e4505444a82ce6b9f44218b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  enemy: {fileID: 0}
   player: {fileID: 0}
   goblinShark: {fileID: 0}
   fart: 0
@@ -835,6 +837,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c44e98ad1db3d894188f9dd10da41118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  enemy: {fileID: 0}
   player: {fileID: 0}
   goblinShark: {fileID: 0}
 --- !u!4 &475482922
@@ -1760,6 +1764,8 @@ MonoBehaviour:
   PhaseSwitchSound: {fileID: 0}
   PhaseSwitch: 0
   activePhase: 0
+  phase2HPPercent: 0.7
+  phase3HPPercent: 0.3
 --- !u!114 &641352380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2862,6 +2868,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 787cae332caed9242a04e9318cbe1f09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  enemy: {fileID: 0}
   player: {fileID: 0}
   goblinShark: {fileID: 0}
 --- !u!1 &963194225
@@ -3868,8 +3876,8 @@ MonoBehaviour:
   translator:
     autoReset: 1
     useCustomMixMode: 1
-    layerMixModes: 0100000000000000
-    layerBlendModes: 0100000003000000
+    layerMixModes: 010000000000000000000000
+    layerBlendModes: 010000000300000003000000
   updateTiming: 1
 --- !u!95 &1380028097
 Animator:
@@ -4098,10 +4106,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48064f2762f6f914783ca62e24458145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crowd: {fileID: 0}
-  enemy: {fileID: 641352380}
-  attack: {fileID: 2084519821}
   agent: {fileID: 0}
+  enemy: {fileID: 641352380}
+  crowd: {fileID: 0}
+  attack: {fileID: 2084519821}
   wavemount: 1
   i: 1
   ElastickAnim: 0
@@ -4638,6 +4646,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e965577e4505444a82ce6b9f44218b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  enemy: {fileID: 0}
   player: {fileID: 0}
   goblinShark: {fileID: 0}
   fart: 0
@@ -5619,6 +5629,7 @@ GameObject:
   - component: {fileID: 1998195571}
   - component: {fileID: 1998195573}
   - component: {fileID: 1998195572}
+  - component: {fileID: 1998195574}
   m_Layer: 12
   m_Name: Goblin shark
   m_TagString: Enemy
@@ -5946,7 +5957,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1998195560}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29e0fe3cada8462468da1c54d9f1b412, type: 3}
   m_Name: 
@@ -5957,6 +5968,28 @@ MonoBehaviour:
   - {fileID: 475482921}
   PhaseSwitch: 0
   activePhase: 0
+--- !u!114 &1998195574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998195560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302fb17a818570149a786a40836a22a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phases:
+  - {fileID: 297186010}
+  - {fileID: 957544144}
+  - {fileID: 475482921}
+  phase: {fileID: 0}
+  PhaseSwitchSound: {fileID: 0}
+  PhaseSwitch: 0
+  activePhase: 0
+  phase2HPPercent: 0.7
+  phase3HPPercent: 0.3
 --- !u!1 &2064915106
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,7 +20,7 @@ public class Boss2AI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        phase.PhaseStructure();
+        phase.phase();
         if (health.currentHP < health.MaxHP / 0.3)
         {
             activePhase = 2;
@@ -33,4 +33,17 @@ public class Boss2AI : MonoBehaviour
         }
         // if boss hp > 50 phase = Phases[1]
     }
+    /*IEnumerator wait(float time, int NewPhase)
+    {
+        enemy.stop();
+        enemy.atta = false;
+        PhaseSwitch = true;
+        health.source.PlayOneShot(PhaseSwitchSound);
+        enemy.GetComponentInChildren<MantisAnimator>().anim.SetTrigger("NewPhase");
+        yield return new WaitForSeconds(time);
+        phase = phases[NewPhase];
+        PhaseSwitch = false;
+        enemy.atta = true;
+        enemy.start();
+    }*/
 }

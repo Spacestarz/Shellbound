@@ -8,7 +8,7 @@ public class Goblin_Shark_Phase_1 : Phase
 
     public int fart;
     
-    public override void PhaseStructure()
+    public override void phase()
     {
        // Logic for phase 1
 
