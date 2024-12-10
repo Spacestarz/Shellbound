@@ -65,6 +65,12 @@ public class PlayerSlice : MonoBehaviour
         {
             currentSlicePattern.DestroyArrow();
             currentSlicePattern.ResetPattern();
+            
+            instance.GetComponent<Fire>().ReturnHarpoon();
+        }
+        else
+        {
+            ClearCaughtObject();
         }
 
         SetCursor();

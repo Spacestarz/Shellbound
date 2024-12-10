@@ -32,6 +32,7 @@ public class RotateCamera : MonoBehaviour
         }
         else if (!Harpoon.hasCaught && !isLocked)
         {
+            this.DOKill();
             GetMouseInput();
         }
     }

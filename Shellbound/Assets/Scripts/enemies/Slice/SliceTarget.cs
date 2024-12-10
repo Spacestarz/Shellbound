@@ -1,5 +1,3 @@
-using Unity.VisualScripting;
-using UnityEditor.SearchService;
 using UnityEngine;
 
 public class SliceTarget : MonoBehaviour
@@ -9,11 +7,19 @@ public class SliceTarget : MonoBehaviour
     public Vector2 direction;
     SpriteRenderer spriteRenderer;
 
+    public GameObject circle;
+    Transform circleSpawn;
+    Transform circleGoal;
+
     private void Awake()
     {
         pattern = GetComponentInParent<SlicePattern>();
         parentSlice = transform.parent.GetComponentInParent<SliceableObject>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        circle = transform.GetChild(0).GetChild(0).gameObject;
+
+        circleSpawn.position = circle.transform.localPosition;
+        circleGoal.position = circle.transform.localPosition *= -1;
     }
 
     public void CompleteSlice(Vector2 dir)
@@ -25,7 +31,7 @@ public class SliceTarget : MonoBehaviour
 
     public void TurnRed(float a, float b)
     {
-        spriteRenderer.color = Color.Lerp(Color.white, Color.red, a/b);
+        spriteRenderer.color = Color.Lerp(Color.white, Color.green, a/b);
+        circle.transform.position = Vector2.Lerp(circleSpawn.localPosition, circleGoal.localPosition, a/b);
     }
-
 }
