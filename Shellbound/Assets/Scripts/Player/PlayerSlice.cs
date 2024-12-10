@@ -15,15 +15,17 @@ public class PlayerSlice : MonoBehaviour
     static Vector2 mouseDirection;
 
     static float sliceTickTime = 0;
-    static float sliceTickLength = 0.033f;
+    static readonly float sliceTickLength = 0.011f;
 
     static float sliceTime = 0;
-    static float sliceTimeLimit = 1.25f;
+    static readonly float sliceTimeLimit = 1.25f;
 
     static float requiredDotProduct = 0.8f;
 
     static int successfulTicks = 0;
-    static readonly int requiredTicks = 4;
+    static int failedTicks = 0;
+    static readonly int requiredTicks = 12;
+
 
     private void Awake()
     {
@@ -115,7 +117,7 @@ public class PlayerSlice : MonoBehaviour
         //If only one axis is 0 (orthogonal)
         if (targetDirection.x != 0 ^ targetDirection.y != 0)
         {
-            requiredDotProduct = 0.9f;
+            requiredDotProduct = 0.85f;
         }
         else // (Diagonal)
         {

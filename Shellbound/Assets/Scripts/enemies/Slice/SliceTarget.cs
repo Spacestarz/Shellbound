@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class SliceTarget : MonoBehaviour
 {
-    public SlicePattern pattern;
     SliceableObject parentSlice;
-    public Vector2 direction;
     SpriteRenderer spriteRenderer;
+    public SlicePattern pattern;
+    public Vector2 direction;
 
     public GameObject circle;
     Vector2 circleSpawn;
@@ -29,9 +29,9 @@ public class SliceTarget : MonoBehaviour
         pattern.spawnedSliceAnimation.PlayAnimation();
     }
 
-    public void TurnRed(float a, float b, float c, float d)
+    public void TurnRed(float a, float b)
     {
         spriteRenderer.color = Color.Lerp(Color.white, Color.green, a/b);
-        circle.transform.localPosition = Vector2.Lerp(circleSpawn, circleGoal, c/d);
+        circle.transform.localPosition = Vector2.Lerp(circleSpawn, circleGoal, a/b);
     }
 }
