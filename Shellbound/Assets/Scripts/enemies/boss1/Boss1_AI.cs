@@ -42,7 +42,6 @@ public class Boss1_AI : MonoBehaviour
         enemy.atta = false;
         PhaseSwitch = true;
         health.source.PlayOneShot(PhaseSwitchSound);
-        //animation start line goes here I think
         enemy.GetComponentInChildren<MantisAnimator>().anim.SetTrigger("NewPhase");
         yield return new WaitForSeconds(time);
         phase = phases[NewPhase];
