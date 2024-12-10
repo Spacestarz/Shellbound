@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: rock_1 1
+  m_Name: algae ripple
   m_Shader: {fileID: -6465566751694194690, guid: d623639cc01d1874eb0c2c027330ee07, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
