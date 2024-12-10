@@ -1,9 +1,5 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
-using JetBrains.Annotations;
 using Random = UnityEngine.Random;
 
 public class Crowd_attacks : MonoBehaviour
@@ -28,7 +24,6 @@ public class Crowd_attacks : MonoBehaviour
 
     */
 
-    // Start is called before the first frame update
     void Start()
     {
 
@@ -36,17 +31,6 @@ public class Crowd_attacks : MonoBehaviour
    
         StartCoroutine(nameof(Spawn));
     }
-
-    // Update is called once per frame
-    void Update()
-    {     
-        
-        
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-           
-        }
-    }  
     
     IEnumerator Spawn()
     {
