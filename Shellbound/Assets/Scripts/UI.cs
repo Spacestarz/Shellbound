@@ -14,49 +14,38 @@ public class UI : MonoBehaviour
     private GameObject gameOverScreen;
     private GameObject gameoverBLACK;
 
-    private GameObject tutorialUI;
-
     private GameObject youwinScreen;
 
     public bool gameoverBOOL = false;
     public bool defeatedbossBOOL = false;
-
+  
     // Start is called before the first frame update
     void Start()
-    {   
-        Scene currentScene = SceneManager.GetActiveScene();
+    {
+       
+      player = GameObject.FindGameObjectWithTag("Player");
 
-        // Check if its the tutorialscene
-        if (currentScene.name == "BeforeBoss1")
-        {
-            TutorialScene();
-            Debug.Log("This is the BeforeBoss1 scene.");
-        }
+      youwinScreen = GameObject.Find("You win");
 
-
-
-        player = GameObject.FindGameObjectWithTag("Player");
-
-        youwinScreen = GameObject.Find("You win");
-
-        if (PlayerSliderobject != null)
-            PlayerSliderobject.maxValue = player.GetComponent<HealthSystem>().MaxHP;
-        if (EnemySliderObject != null)
-            EnemySliderObject.maxValue = Enemy.GetComponent<HealthSystem>().MaxHP;
-        gameOverScreen = GameObject.Find("Game_Over ");
-        gameoverBLACK = GameObject.Find("Background panel");
-        youwinScreen.SetActive(false);
-        gameoverBLACK.SetActive(false);
-        gameOverScreen.SetActive(false);
+      if (PlayerSliderobject != null)
+          PlayerSliderobject.maxValue = player.GetComponent<HealthSystem>().MaxHP;
+       if (EnemySliderObject != null)
+      EnemySliderObject.maxValue = Enemy.GetComponent<HealthSystem>().MaxHP;
+      gameOverScreen = GameObject.Find("Game_Over ");
+      gameoverBLACK = GameObject.Find("Background panel");
+      youwinScreen.SetActive(false);
+      gameoverBLACK.SetActive(false);
+      gameOverScreen.SetActive(false);
+    
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(PlayerSliderobject != null)
+        if (PlayerSliderobject != null)
         {
             PlayerSliderobject.value = player.GetComponent<HealthSystem>().currentHP;
-            
+
             if (PlayerSliderobject.value == 0)
             {
                 PlayerSliderobject.gameObject.SetActive(false);
@@ -66,6 +55,11 @@ public class UI : MonoBehaviour
         if (EnemySliderObject != null)
         {
             EnemySliderObject.value = Enemy.GetComponent<HealthSystem>().currentHP;
+        }
+
+        if ((Input.GetKeyDown(KeyCode.Space) && defeatedbossBOOL == true))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
 
@@ -81,15 +75,13 @@ public class UI : MonoBehaviour
         }
         */
 
-        if ((Input.GetKeyDown(KeyCode.Space) && defeatedbossBOOL == true))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }
     }
+
 
     public void GameOver()
     {
@@ -108,10 +100,8 @@ public class UI : MonoBehaviour
         defeatedbossBOOL = true;
     }
 
-    public void TutorialScene()
-    {
 
-        tutorialUI = GameObject.Find("Background panel");
-        Debug.Log("Tutorial method");
-    }
 }
+
+
+

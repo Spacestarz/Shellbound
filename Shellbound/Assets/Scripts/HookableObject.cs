@@ -6,6 +6,7 @@ public class HookableObject : MonoBehaviour
     public enum Type
     {
         Trigger,
+        Enemy,
         Other
     }
     public enum HookBehavior
@@ -38,6 +39,7 @@ public class HookableObject : MonoBehaviour
         sliceableObject = GetComponent<SliceableObject>();
     }
 
+
     void Update()
     {
         caughtLocation = transform.position;
@@ -49,6 +51,7 @@ public class HookableObject : MonoBehaviour
             GetComponent<Boss1_AI>().phase.resetpositon();
         }
     }
+
 
     public void GetHit()
     {
@@ -77,6 +80,7 @@ public class HookableObject : MonoBehaviour
                 break;
         }
     }
+
 
     void GetCaught()
     {
@@ -110,22 +114,25 @@ public class HookableObject : MonoBehaviour
         isCaught = false;
     }
 
+
     public bool IsHookable()
     {
-        if (GetComponent<Base_enemy>())
+        if(!isCaught)
         {
-            if (GetComponent<Base_enemy>().volnereble)
+            if (type == Type.Enemy && GetComponent<Base_enemy>().volnereble)
             {
                 return true;
             }
-            else
+            else if(type == Type.Enemy)
             {
                 return false;
             }
+
+            return true;
         }
         else
         {
-            return true;
+            return false;
         }
     }
 }

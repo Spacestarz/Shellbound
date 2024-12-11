@@ -1,12 +1,14 @@
+using DG.Tweening;
 using UnityEngine;
 
-public class Crosshair : MonoBehaviour
+public class HittableScan : MonoBehaviour
 {
     Fire fire;
-    public LayerMask layerMask;
-
     Vector3 rayOrigin;
-    Vector3 rayDirection;
+    
+    public LayerMask layerMask;
+    public CrosshairSpinner crosshair;
+
     
     bool isHookable;
 
@@ -19,7 +21,6 @@ public class Crosshair : MonoBehaviour
     void Update()
     {
         rayOrigin = fire.Anchor.transform.position;
-        //rayDirection = Camera.main.transform.forward;
         CastRay();
     }
 
@@ -27,6 +28,7 @@ public class Crosshair : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
+
         if (Physics.Raycast(rayOrigin, ray.direction, out hit, fire.maxDistancefromAnchor, ~layerMask) && hit.collider.GetComponent<HookableObject>())
         {
             isHookable = hit.collider.GetComponent<HookableObject>().IsHookable();
@@ -37,10 +39,22 @@ public class Crosshair : MonoBehaviour
         }
         
         Debug.DrawRay(rayOrigin, ray.direction * fire.maxDistancefromAnchor, Color.yellow);
+
+        SetCrosshairSpin();
     }
     
-    void SpinCrosshair()
-    {
 
+    void SetCrosshairSpin()
+    {
+        crosshair.SetSpinning(isHookable);
+        //if(isHookable && !crosshair.isSpinning)
+        //{
+        //    crosshair.SetSpinning(true);
+        //}
+        //else if(!isHookable && crosshair.isSpinning)
+        //{
+        //    crosshair.SetSpinning(false);
+        //    crosshair.ResetRotation();
+        //}
     }
 }

@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public float dashForce;
     public float dashDuration;
     public float dashCooldown;
-    bool dashing;
+   public bool dashing;
     bool readyToDash;
 
     bool knockedBack;
