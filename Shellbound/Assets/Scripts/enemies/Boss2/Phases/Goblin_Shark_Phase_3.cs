@@ -15,7 +15,7 @@ public class Goblin_Shark_Phase_3 : Phase
         else if (enemy.Range(10) && enemy.atta && !enemy.volnereble && !PlayerSlice.SliceMode())
         {
             enemy.atta = false;
-            attacks.Dashattack();
+            attacks.Dashattack(DashDistance, DashDuration);
         }
         else if (!enemy.volnereble && !PlayerSlice.SliceMode())
         {

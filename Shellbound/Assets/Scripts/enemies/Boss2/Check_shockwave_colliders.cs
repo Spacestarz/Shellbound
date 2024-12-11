@@ -21,9 +21,11 @@ public class Check_shockwave_colliders : MonoBehaviour
 
 
     [Header("Change scale of circle")]
-    [SerializeField] private int Scale;
+    [SerializeField] private float Scale;
     [Header("Damage number")]
     [SerializeField] private int damage = 1;
+    [Header("time to reach max size")]
+    [SerializeField]private float duration = 2;
 
     public PlayerController playerController;
 
@@ -41,7 +43,7 @@ public class Check_shockwave_colliders : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.G))
         {
-            shackwave();
+            shackwave(Scale, duration);
         }
 
         if (OuterRing.playerPresent ^ innerring.playerPresent && playerController.grounded == true)  
@@ -57,9 +59,11 @@ public class Check_shockwave_colliders : MonoBehaviour
         transform.localScale = Vector3.zero;
         enemy.atta = true;
     }
-    public void shackwave()
+    public void shackwave(float WaveDistance, float WaveDuration)
     {
+        Scale = WaveDistance;
+        duration = WaveDuration;
         Vector3 endScale = new Vector3(1 * Scale, 1 * Scale, 1);
-        transform.DOScale(endScale, 2f).OnComplete(ResetShockwave);
+        transform.DOScale(endScale, duration).OnComplete(ResetShockwave);
     }
 }
