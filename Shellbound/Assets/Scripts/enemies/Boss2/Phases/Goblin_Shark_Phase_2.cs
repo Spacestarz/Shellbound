@@ -11,14 +11,14 @@ public class Goblin_Shark_Phase_2 : Phase
         if (enemy.Range(10) && enemy.atta && !enemy.volnereble && !PlayerSlice.SliceMode())
         {
             enemy.atta = false;
-            attacks.Dashattack();
+            attacks.Dashattack(DashDistance, DashDuration);
         }
         else if (enemy.Range(28) && enemy.atta && !enemy.volnereble)
         {
             enemy.atta = false;
             if (i % 4 == 0)
             {
-                attacks.shockwave();
+                attacks.shockwave(WaveDistance, WaveDuration);
                 //attack.Elastick(elastickrange, elastickspeed, elastickreturnspeed);
                 //StartCoroutine(elestickdelay(elastickdelai));
             }
@@ -46,7 +46,7 @@ public class Goblin_Shark_Phase_2 : Phase
         for (int j = 0; j <= amount; j++)
         {
             yield return new WaitForSeconds(1.0f);
-            attacks.Mouthattack();
+            attacks.Mouthattack(MouthSpeed, MouthReturn, MouthDistance);
         }
         enemy.attacking();
     }

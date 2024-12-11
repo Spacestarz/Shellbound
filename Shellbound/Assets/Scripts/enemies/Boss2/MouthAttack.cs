@@ -54,7 +54,7 @@ public class MouthAttack : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.T))
         {
-            FireMouth();       
+            FireMouth(20,1,15);       
         }       
     }
 
@@ -88,8 +88,11 @@ public class MouthAttack : MonoBehaviour
     }
     */
 
-    public void FireMouth()
+    public void FireMouth(float MouthSpeed, float MouthReturn, float MouthDistance)
     {
+        fireRate = MouthSpeed;
+        speedReturn = MouthReturn;
+        maxDistancefromAnchor = MouthDistance;
         sr.enabled = true;
        // mouthObject.SetActive(true);
         //harpoon.SetVisibility(true);

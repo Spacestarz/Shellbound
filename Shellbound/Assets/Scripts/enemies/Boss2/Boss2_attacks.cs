@@ -48,24 +48,24 @@ public class Boss2_attacks : BossAttacksCommon
     {         
         if (Input.GetKeyDown(KeyCode.F))
         {
-            Dashattack();
+            Dashattack(10,2);
         }
     }
 
-    public void Dashattack()
+    public void Dashattack(float DashDistance, float DashDuration)
     {
-        callDashAttack.DashAttack(); 
+        callDashAttack.DashAttack(DashDistance, DashDuration); 
     }
 
-    public void Mouthattack()
+    public void Mouthattack(float MouthSpeed, float MouthReturn, float MouthDistance)
     {
         //Similar to the harpoon and the crabs punch arm can probarly borrow a bit of code from that 
-        mouth.FireMouth();
+        mouth.FireMouth(MouthSpeed, MouthReturn, MouthDistance);
     }
 
-    public void shockwave()
+    public void shockwave(float WaveDistance, float WaveDuration)
     {
-        wave.shackwave();
+        wave.shackwave(WaveDistance, WaveDuration);
     }
    
 }
