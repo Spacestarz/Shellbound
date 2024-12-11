@@ -39,8 +39,7 @@ public class Check_shockwave_colliders : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.G))
         {
-            Vector3 endScale = new Vector3(1 * Scale, 1 * Scale, 1);
-            transform.DOScale(endScale, 2f).OnComplete(ResetShockwave); 
+            shackwave();
         }
 
         if (OuterRing.playerPresent ^ innerring.playerPresent && playerController.grounded == true)  
@@ -54,5 +53,10 @@ public class Check_shockwave_colliders : MonoBehaviour
     private void ResetShockwave()
     {
         transform.localScale = Vector3.zero;
+    }
+    public void shackwave()
+    {
+        Vector3 endScale = new Vector3(1 * Scale, 1 * Scale, 1);
+        transform.DOScale(endScale, 2f).OnComplete(ResetShockwave);
     }
 }

@@ -1186,10 +1186,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouthRigidBody: {fileID: 598477969}
+  player: {fileID: 1897039136}
+  boss: {fileID: 1998195560}
   mouth: {fileID: 598477967}
   mouthObject: {fileID: 598477967}
   Anchor: {fileID: 1998195560}
-  mainCam: {fileID: 0}
+  mainCam: {fileID: 1617874817}
   fireRate: 20
   speedReturn: 1
   maxDistancefromAnchor: 15
@@ -1523,7 +1525,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &641352372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1850,6 +1852,7 @@ GameObject:
   m_Component:
   - component: {fileID: 705507995}
   - component: {fileID: 705507994}
+  - component: {fileID: 705507996}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1934,6 +1937,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &705507996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705507993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1 &709504524
 GameObject:
   m_ObjectHideFlags: 0
@@ -3833,8 +3859,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da67f76ac10ddb041871fe2d6d3f1e5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyToControl: {fileID: 641352371}
   anim: {fileID: 0}
+  enemyToControl: {fileID: 641352371}
 --- !u!114 &1380028096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5627,16 +5653,15 @@ GameObject:
   - component: {fileID: 1998195569}
   - component: {fileID: 1998195570}
   - component: {fileID: 1998195571}
-  - component: {fileID: 1998195573}
-  - component: {fileID: 1998195572}
   - component: {fileID: 1998195574}
+  - component: {fileID: 1998195575}
   m_Layer: 12
   m_Name: Goblin shark
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1998195561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5652,7 +5677,7 @@ MonoBehaviour:
   KnockbackStrenght: 20
   healthSystem: {fileID: 0}
   rbGoblinShark: {fileID: 1998195562}
-  player: {fileID: 0}
+  player: {fileID: 1897039136}
   Boss2: {fileID: 1998195560}
 --- !u!54 &1998195562
 Rigidbody:
@@ -5811,7 +5836,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashDistance: 10
-  player: {fileID: 0}
+  player: {fileID: 1897039136}
 --- !u!120 &1998195570
 LineRenderer:
   serializedVersion: 2
@@ -5938,36 +5963,6 @@ MonoBehaviour:
   Harponed: 0
   dragspeed: 5
   crack: {fileID: 0}
---- !u!114 &1998195572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1998195560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e401f44566889d4b8b2a085650624a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1998195573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1998195560}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29e0fe3cada8462468da1c54d9f1b412, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  phases:
-  - {fileID: 297186010}
-  - {fileID: 957544144}
-  - {fileID: 475482921}
-  PhaseSwitch: 0
-  activePhase: 0
 --- !u!114 &1998195574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5990,6 +5985,25 @@ MonoBehaviour:
   activePhase: 0
   phase2HPPercent: 0.7
   phase3HPPercent: 0.3
+--- !u!114 &1998195575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998195560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd2c6223a70199449af063f722675e62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  agent: {fileID: 0}
+  attack: {fileID: 0}
+  atta: 1
+  volnereble: 0
+  volnerebleTime: 5
+  phase: 1
 --- !u!1 &2064915106
 GameObject:
   m_ObjectHideFlags: 0

@@ -151,10 +151,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48064f2762f6f914783ca62e24458145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crowd: {fileID: 0}
-  enemy: {fileID: 1057958395}
-  attack: {fileID: 653001505}
   agent: {fileID: 0}
+  enemy: {fileID: 1057958395}
+  crowd: {fileID: 0}
+  attack: {fileID: 653001505}
   wavemount: 1
   i: 1
   ElastickAnim: 0
@@ -653,6 +653,7 @@ GameObject:
   m_Component:
   - component: {fileID: 175217742}
   - component: {fileID: 175217741}
+  - component: {fileID: 175217743}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -737,6 +738,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &175217743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175217740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1 &201542233
 GameObject:
   m_ObjectHideFlags: 0
@@ -1426,8 +1450,8 @@ MonoBehaviour:
   translator:
     autoReset: 1
     useCustomMixMode: 1
-    layerMixModes: 0100000000000000
-    layerBlendModes: 0100000003000000
+    layerMixModes: 010000000000000000000000
+    layerBlendModes: 010000000300000003000000
   updateTiming: 1
 --- !u!95 &266192557
 Animator:
@@ -1707,10 +1731,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4924f10494617849972c5224cc62727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crowd: {fileID: 0}
-  enemy: {fileID: 1800359120}
-  attack: {fileID: 1958218814}
   agent: {fileID: 0}
+  enemy: {fileID: 1800359120}
+  crowd: {fileID: 0}
+  attack: {fileID: 1958218814}
   wavemount: 1
   i: 1
   ElastickAnim: 0
@@ -2223,10 +2247,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48064f2762f6f914783ca62e24458145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crowd: {fileID: 0}
-  enemy: {fileID: 1800359120}
-  attack: {fileID: 1958218814}
   agent: {fileID: 0}
+  enemy: {fileID: 1800359120}
+  crowd: {fileID: 0}
+  attack: {fileID: 1958218814}
   wavemount: 1
   i: 1
   ElastickAnim: 0
@@ -2913,10 +2937,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0f75c98798e2c046b0b12120965b9b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crowd: {fileID: 0}
-  enemy: {fileID: 1800359120}
-  attack: {fileID: 1958218814}
   agent: {fileID: 0}
+  enemy: {fileID: 1800359120}
+  crowd: {fileID: 0}
+  attack: {fileID: 1958218814}
   wavemount: 1
   i: 1
   ElastickAnim: 0
@@ -3063,6 +3087,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e965577e4505444a82ce6b9f44218b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  enemy: {fileID: 0}
   player: {fileID: 0}
   goblinShark: {fileID: 0}
   fart: 5
@@ -3725,8 +3751,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e401f44566889d4b8b2a085650624a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phases:
-  - {fileID: 611649607}
 --- !u!4 &713784170
 Transform:
   m_ObjectHideFlags: 0
@@ -5338,6 +5362,8 @@ MonoBehaviour:
   PhaseSwitchSound: {fileID: 0}
   PhaseSwitch: 0
   activePhase: 0
+  phase2HPPercent: 0.7
+  phase3HPPercent: 0.3
 --- !u!195 &1057958391
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5555,10 +5581,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4924f10494617849972c5224cc62727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crowd: {fileID: 0}
-  enemy: {fileID: 1057958395}
-  attack: {fileID: 653001505}
   agent: {fileID: 0}
+  enemy: {fileID: 1057958395}
+  crowd: {fileID: 0}
+  attack: {fileID: 653001505}
   wavemount: 1
   i: 1
   ElastickAnim: 0
@@ -6200,10 +6226,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0f75c98798e2c046b0b12120965b9b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crowd: {fileID: 0}
-  enemy: {fileID: 1057958395}
-  attack: {fileID: 653001505}
   agent: {fileID: 0}
+  enemy: {fileID: 1057958395}
+  crowd: {fileID: 0}
+  attack: {fileID: 653001505}
   wavemount: 1
   i: 1
   ElastickAnim: 0
@@ -9805,6 +9831,8 @@ MonoBehaviour:
   PhaseSwitchSound: {fileID: 0}
   PhaseSwitch: 0
   activePhase: 0
+  phase2HPPercent: 0.7
+  phase3HPPercent: 0.3
 --- !u!114 &1800359120
 MonoBehaviour:
   m_ObjectHideFlags: 0
