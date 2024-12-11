@@ -351,10 +351,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
   enemy: {fileID: 641352380}
+  player: {fileID: 0}
+  i: 1
   crowd: {fileID: 0}
   attack: {fileID: 2084519821}
   wavemount: 1
-  i: 1
   ElastickAnim: 0
   WaveAnim: 0
   startpunchrange: 6
@@ -480,10 +481,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
   enemy: {fileID: 641352380}
+  player: {fileID: 0}
+  i: 1
   crowd: {fileID: 0}
   attack: {fileID: 2084519821}
   wavemount: 1
-  i: 1
   ElastickAnim: 0
   WaveAnim: 0
   startpunchrange: 6
@@ -563,6 +565,7 @@ MonoBehaviour:
   agent: {fileID: 1998195563}
   enemy: {fileID: 1998195575}
   player: {fileID: 1897039136}
+  i: 1
   goblinShark: {fileID: 1998195560}
   attacks: {fileID: 0}
   fart: 0
@@ -840,9 +843,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
   enemy: {fileID: 0}
-  player: {fileID: 0}
+  player: {fileID: 1897039136}
+  i: 1
   goblinShark: {fileID: 0}
   attacks: {fileID: 0}
+  kirbyd: 0
 --- !u!4 &475482922
 Transform:
   m_ObjectHideFlags: 0
@@ -2898,7 +2903,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
   enemy: {fileID: 0}
-  player: {fileID: 0}
+  player: {fileID: 1897039136}
+  i: 1
   goblinShark: {fileID: 0}
   attacks: {fileID: 0}
 --- !u!1 &963194225
@@ -4182,10 +4188,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
   enemy: {fileID: 641352380}
+  player: {fileID: 0}
+  i: 1
   crowd: {fileID: 0}
   attack: {fileID: 2084519821}
   wavemount: 1
-  i: 1
   ElastickAnim: 0
   WaveAnim: 0
   startpunchrange: 6
@@ -4707,7 +4714,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1713723198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4723,6 +4730,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   enemy: {fileID: 0}
   player: {fileID: 0}
+  i: 1
   goblinShark: {fileID: 0}
   attacks: {fileID: 0}
   fart: 0
@@ -6033,7 +6041,7 @@ MonoBehaviour:
   phase: {fileID: 0}
   PhaseSwitchSound: {fileID: 0}
   PhaseSwitch: 0
-  activePhase: 0
+  activePhase: 2
   phase2HPPercent: 0.7
   phase3HPPercent: 0.3
 --- !u!114 &1998195575
