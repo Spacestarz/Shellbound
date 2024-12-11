@@ -351,10 +351,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
   enemy: {fileID: 641352380}
+  player: {fileID: 0}
+  i: 1
   crowd: {fileID: 0}
   attack: {fileID: 2084519821}
   wavemount: 1
-  i: 1
   ElastickAnim: 0
   WaveAnim: 0
   startpunchrange: 6
@@ -480,10 +481,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
   enemy: {fileID: 641352380}
+  player: {fileID: 0}
+  i: 1
   crowd: {fileID: 0}
   attack: {fileID: 2084519821}
   wavemount: 1
-  i: 1
   ElastickAnim: 0
   WaveAnim: 0
   startpunchrange: 6
@@ -560,10 +562,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e965577e4505444a82ce6b9f44218b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
-  enemy: {fileID: 0}
-  player: {fileID: 0}
-  goblinShark: {fileID: 0}
+  agent: {fileID: 1998195563}
+  enemy: {fileID: 1998195575}
+  player: {fileID: 1897039136}
+  i: 1
+  goblinShark: {fileID: 1998195560}
+  attacks: {fileID: 0}
   fart: 0
 --- !u!1 &351906857
 GameObject:
@@ -839,8 +843,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
   enemy: {fileID: 0}
-  player: {fileID: 0}
+  player: {fileID: 1897039136}
+  i: 1
   goblinShark: {fileID: 0}
+  attacks: {fileID: 0}
+  kirbyd: 0
 --- !u!4 &475482922
 Transform:
   m_ObjectHideFlags: 0
@@ -2896,8 +2903,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
   enemy: {fileID: 0}
-  player: {fileID: 0}
+  player: {fileID: 1897039136}
+  i: 1
   goblinShark: {fileID: 0}
+  attacks: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2909,6 +2918,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2990,6 +3000,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!1 &1005425062
 GameObject:
   m_ObjectHideFlags: 0
@@ -4134,10 +4188,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
   enemy: {fileID: 641352380}
+  player: {fileID: 0}
+  i: 1
   crowd: {fileID: 0}
   attack: {fileID: 2084519821}
   wavemount: 1
-  i: 1
   ElastickAnim: 0
   WaveAnim: 0
   startpunchrange: 6
@@ -4659,7 +4714,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1713723198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4675,7 +4730,9 @@ MonoBehaviour:
   agent: {fileID: 0}
   enemy: {fileID: 0}
   player: {fileID: 0}
+  i: 1
   goblinShark: {fileID: 0}
+  attacks: {fileID: 0}
   fart: 0
 --- !u!4 &1713723199
 Transform:
@@ -4984,13 +5041,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866163aa682cf5b40a3a3f5a810744da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1897039136}
   OuterRing: {fileID: 1842980673}
   innerring: {fileID: 444894767}
-  healthSystem: {fileID: 0}
+  healthSystem: {fileID: 1897039138}
   Scale: 28
   damage: 1
-  playerController: {fileID: 0}
+  playerController: {fileID: 1897039141}
 --- !u!114 &1842980673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5655,6 +5712,8 @@ GameObject:
   - component: {fileID: 1998195571}
   - component: {fileID: 1998195574}
   - component: {fileID: 1998195575}
+  - component: {fileID: 1998195577}
+  - component: {fileID: 1998195576}
   m_Layer: 12
   m_Name: Goblin shark
   m_TagString: Enemy
@@ -5953,9 +6012,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 044710b50ac9b5d41be608ae9ca1e960, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 0
+  MaxHP: 100
   currentHP: 0
-  Player: {fileID: 0}
+  Player: {fileID: 1897039136}
   source: {fileID: 0}
   audioClip: {fileID: 0}
   uiScript: {fileID: 1565388506}
@@ -5982,7 +6041,7 @@ MonoBehaviour:
   phase: {fileID: 0}
   PhaseSwitchSound: {fileID: 0}
   PhaseSwitch: 0
-  activePhase: 0
+  activePhase: 2
   phase2HPPercent: 0.7
   phase3HPPercent: 0.3
 --- !u!114 &1998195575
@@ -6004,6 +6063,43 @@ MonoBehaviour:
   volnereble: 0
   volnerebleTime: 5
   phase: 1
+--- !u!114 &1998195576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998195560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1bcb049e53f463428f1188d0f3f8ec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  type: 0
+  hookBehavior: 0
+  sliceableObject: {fileID: 0}
+  pullSpeed: 5
+  isCaught: 0
+--- !u!114 &1998195577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998195560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a31a64441122e24da7444412add4561, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sliceBoard: {fileID: 0}
+  type: 0
+  testEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2064915106
 GameObject:
   m_ObjectHideFlags: 0

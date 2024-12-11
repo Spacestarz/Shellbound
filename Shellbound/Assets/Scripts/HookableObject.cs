@@ -109,4 +109,23 @@ public class HookableObject : MonoBehaviour
     {
         isCaught = false;
     }
+
+    public bool IsHookable()
+    {
+        if (GetComponent<Base_enemy>())
+        {
+            if (GetComponent<Base_enemy>().volnereble)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return true;
+        }
+    }
 }
