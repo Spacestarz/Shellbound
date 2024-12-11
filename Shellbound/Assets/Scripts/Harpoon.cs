@@ -31,7 +31,7 @@ public class Harpoon : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (fire.goingAway && other.GetComponent<HookableObject>())// && other.CompareTag("Enemy") || other.CompareTag("weakpoint") || other.CompareTag("TutorialHookThis"))
+        if (fire.goingAway && other.GetComponent<HookableObject>())
         {
             other.GetComponent<HookableObject>().GetHit();
         }
@@ -39,36 +39,6 @@ public class Harpoon : MonoBehaviour
         {
             fire.ReturnHarpoon();
         }
-    }
-
-
-    void HarpoonHit(Collider other)
-    {
-        other.GetComponent<HookableObject>().GetHit();
-
-        //if (other.CompareTag("Enemy") && !other.GetComponent<Base_enemy>().volnereble)
-        //{
-        //    fire.ReturnHarpoon();
-        //}
-        //else
-        //{
-        //    fire.goingAway = false;
-        //    collisionHIT = true;
-
-        //    SetVisibility(false);
-            
-        //}
-
-        //if (other.CompareTag("Enemy") && other.GetComponent<Base_enemy>().volnereble)
-        //{
-        //    caughtObject.GetComponent<Enemi_health>().DisableAI();
-        //    caughtObject.GetComponent<Base_enemy>().StopWeakTimer();
-        //}
-
-        //else if (other.CompareTag("weakpoint") && fire.goingAway)
-        //{
-        //    fire.ReturnHarpoon();
-        //}
     }
 
     public void SetVisibility(bool visibility)

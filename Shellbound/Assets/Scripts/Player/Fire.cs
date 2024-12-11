@@ -20,8 +20,7 @@ public class Fire : MonoBehaviour
     public bool fired = false;
     public bool goingAway = false;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         harpoon = harpoonObject.GetComponent<Harpoon>();
         harpoonRigidBody = harpoonObject.GetComponent<Rigidbody>();
@@ -30,6 +29,7 @@ public class Fire : MonoBehaviour
         harpoonRigidBody.constraints = RigidbodyConstraints.FreezeAll;
         harpoonRigidBody.useGravity = false;
     }
+
 
     void Update()
     {
@@ -40,6 +40,7 @@ public class Fire : MonoBehaviour
             ReturnHarpoon();
         }
     }
+
 
     public void FireHarpoon()
     {
@@ -59,6 +60,7 @@ public class Fire : MonoBehaviour
             harpoonRigidBody.velocity = mainCam.transform.forward * fireRate;
         }
     }
+
 
     public void ReturnHarpoon()
     {
@@ -95,6 +97,7 @@ public class Fire : MonoBehaviour
             StartCoroutine(nameof(MoveHarpoonBack));
         }
     }
+
 
     IEnumerator MoveHarpoonBack()
     {
