@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public abstract class Phase : BasePhaseScript
 {
@@ -9,7 +10,9 @@ public abstract class Phase : BasePhaseScript
     //place referances to attacks here
     public void Awake()
     {
-        attacks = GetComponentInParent<Boss2_attacks>();
-        enemy = GetComponentInParent<Base_enemy>();
+        goblinShark = transform.parent.parent.gameObject;
+        attacks =goblinShark.GetComponent<Boss2_attacks>();
+        enemy = goblinShark.GetComponent<Base_enemy>();
+        agent =goblinShark.GetComponent<NavMeshAgent>();
     }
 }

@@ -10,7 +10,7 @@ public abstract class base_enemi_attack : BasePhaseScript
     public Boss1_attacks attack;
     
     public int wavemount = 1;
-    public int i = 1;
+    
     [Header("anim bools")]
     public bool ElastickAnim = false;
     public bool WaveAnim = false;
