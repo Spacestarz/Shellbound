@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MantisAnimator : MonoBehaviour
+public class MantisAnimator : BaseAnimator
 {
     public GameObject enemyToControl;
     NavMeshAgent enemyAgent;
@@ -10,7 +10,7 @@ public class MantisAnimator : MonoBehaviour
     base_enemi_attack enemyAttack;
     Boss1_AI bossAI;
 
-    [HideInInspector] public Animator anim;
+    
 
     void Awake()
     {

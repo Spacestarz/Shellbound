@@ -7,7 +7,7 @@ using System.Linq;
 using System;
 using DG.Tweening;
 
-public class Boss2_attacks : MonoBehaviour
+public class Boss2_attacks : BossAttacksCommon
 {
     public int KnockbackStrenght; 
     public HealthSystem healthSystem;
@@ -21,6 +21,8 @@ public class Boss2_attacks : MonoBehaviour
     private bool timerIsRunning = false;
 
     private DashAttack_Boss2 callDashAttack;
+    MouthAttack mouth;
+    Check_shockwave_colliders wave;
 
     
     
@@ -32,6 +34,8 @@ public class Boss2_attacks : MonoBehaviour
     void Start()
     {
         callDashAttack = GetComponent<DashAttack_Boss2>();
+        mouth = GetComponentInChildren<MouthAttack>();
+        wave = GetComponentInChildren<Check_shockwave_colliders>();
 
         rbplayer = player.GetComponent<Rigidbody>();
         playerCollider = player.GetComponent<Collider>();
@@ -56,6 +60,12 @@ public class Boss2_attacks : MonoBehaviour
     public void Mouthattack()
     {
         //Similar to the harpoon and the crabs punch arm can probarly borrow a bit of code from that 
+        mouth.FireMouth();
+    }
+
+    public void shockwave()
+    {
+        wave.shackwave();
     }
    
 }

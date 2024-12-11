@@ -14,6 +14,8 @@ public class UI : MonoBehaviour
     private GameObject gameOverScreen;
     private GameObject gameoverBLACK;
 
+    private GameObject tutorialUI;
+
     private GameObject youwinScreen;
 
     public bool gameoverBOOL = false;
@@ -21,7 +23,18 @@ public class UI : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        // Check if its the tutorialscene
+        if (currentScene.name == "BeforeBoss1")
+        {
+            TutorialScene();
+            Debug.Log("This is the BeforeBoss1 scene.");
+        }
+
+
+
         player = GameObject.FindGameObjectWithTag("Player");
 
         youwinScreen = GameObject.Find("You win");
@@ -60,12 +73,14 @@ public class UI : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+
         /* //added to be able to defeat boss if you want to debug
         if (Input.GetKeyDown(KeyCode.X))
         {
             DefeatedBOSS();
         }
         */
+
         if ((Input.GetKeyDown(KeyCode.Space) && defeatedbossBOOL == true))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -91,5 +106,12 @@ public class UI : MonoBehaviour
         youwinScreen.SetActive(true);
 
         defeatedbossBOOL = true;
+    }
+
+    public void TutorialScene()
+    {
+
+        tutorialUI = GameObject.Find("Background panel");
+        Debug.Log("Tutorial method");
     }
 }
