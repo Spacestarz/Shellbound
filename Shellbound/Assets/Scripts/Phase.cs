@@ -10,5 +10,6 @@ public abstract class Phase : BasePhaseScript
     public void Awake()
     {
         attacks = GetComponentInParent<Boss2_attacks>();
+        enemy = GetComponentInParent<Base_enemy>();
     }
 }

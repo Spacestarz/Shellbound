@@ -17,6 +17,7 @@ public class Check_shockwave_colliders : MonoBehaviour
     public Outer_Ring OuterRing;
     public inner_ring innerring;
     public HealthSystem healthSystem;
+    Base_enemy enemy;
 
 
     [Header("Change scale of circle")]
@@ -31,6 +32,7 @@ public class Check_shockwave_colliders : MonoBehaviour
     {   
        // playerController = GetComponent<PlayerController>();
         transform.localScale = Vector3.zero;
+        enemy = GetComponentInParent<Base_enemy>();
     }
 
     // Update is called once per frame
@@ -53,6 +55,7 @@ public class Check_shockwave_colliders : MonoBehaviour
     private void ResetShockwave()
     {
         transform.localScale = Vector3.zero;
+        enemy.atta = true;
     }
     public void shackwave()
     {

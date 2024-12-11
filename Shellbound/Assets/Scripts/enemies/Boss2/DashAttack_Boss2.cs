@@ -17,12 +17,14 @@ public class DashAttack_Boss2 : MonoBehaviour
     public GameObject player;
     private Rigidbody rbPlayer;
     private LineRenderer lineRenderer;
+    Base_enemy enemy;
 
     private Vector3 endOfDash;
 
     // Start is called before the first frame update
     void Start()
     {
+        enemy = GetComponent<Base_enemy>();
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.positionCount = 2;
         cam = Camera.main;
@@ -44,7 +46,7 @@ public class DashAttack_Boss2 : MonoBehaviour
           0f,
          player.transform.position.z - transform.position.z).normalized;
 
-        transform.DOMove(transform.position + direction * dashDistance, dashduration);
+        transform.DOMove(transform.position + direction * dashDistance, dashduration).OnComplete(enemy.attacking);
 
         endOfDash = transform.position + direction * dashDistance;
         endOfDash = new Vector3(endOfDash.x, 0f, endOfDash.z);
