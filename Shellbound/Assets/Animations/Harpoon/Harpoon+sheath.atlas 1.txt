@@ -1,0 +1,12 @@
+Harpoon+sheath.png
+size:1321,2376
+filter:Linear,Linear
+pma:true
+proboscis
+bounds:1075,759,243,249
+offsets:0,88,276,337
+shell
+bounds:2,2,1071,1006
+offsets:69,0,1140,1063
+spear
+bounds:2,1010,1317,1364
