@@ -16,7 +16,6 @@ public class HookableObject : MonoBehaviour
         TakeDamage
     }
     
-    [SerializeField] private UnityEvent Event;
 
     private Vector3 caughtLocation = Vector3.zero;
     private Transform player;
@@ -27,9 +26,12 @@ public class HookableObject : MonoBehaviour
     public Type type;
     public HookBehavior hookBehavior;
     
+    
     [HideInInspector] public SliceableObject sliceableObject;
     public float pullSpeed = 5;
     public bool isCaught;
+    
+    [SerializeField] private UnityEvent Event;
 
 
     private void Awake()
@@ -48,7 +50,10 @@ public class HookableObject : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(caughtLocation, player.position, pullSpeed * Time.deltaTime);
             
-            GetComponent<Boss1_AI>().phase.resetpositon();
+            if(type == Type.Enemy && GetComponent<Boss1_AI>())
+            {
+                GetComponent<Boss1_AI>().phase.resetpositon();
+            }
         }
     }
 

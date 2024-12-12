@@ -461,6 +461,7 @@ MonoBehaviour:
   dashForce: 28
   dashDuration: 0.25
   dashCooldown: 0.5
+  dashing: 0
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
@@ -495,8 +496,8 @@ MonoBehaviour:
   Anchor: {fileID: 3478016606726200143}
   harpoonObject: {fileID: 0}
   mainCam: {fileID: 1979823557349656138}
-  fireRate: 40
-  speedReturn: 30
+  fireRate: 30
+  speedReturn: 40
   maxDistancefromAnchor: 15
   fired: 0
   goingAway: 0

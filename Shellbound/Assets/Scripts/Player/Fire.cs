@@ -42,6 +42,11 @@ public class Fire : MonoBehaviour
         }
     }
 
+    public void InvokeFire()
+    {
+        fired = true;
+        Invoke(nameof(FireHarpoon), 0.189f);
+    }
 
     public void FireHarpoon()
     {
@@ -53,7 +58,7 @@ public class Fire : MonoBehaviour
 
         harpoonRigidBody.constraints = RigidbodyConstraints.None;
 
-        fired = true;
+        //fired = true;
 
         if (harpoonObject.GetComponent<Harpoon>().collisionHIT == false)
         {

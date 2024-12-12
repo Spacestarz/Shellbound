@@ -7,7 +7,7 @@ public class CrosshairSpinner : MonoBehaviour
 
     bool isResetting;
 
-    float spinRate = 180;
+    float spinRate = 540;
     float maxSpinRate = 540;
     float accelerationRate = 5400;
 

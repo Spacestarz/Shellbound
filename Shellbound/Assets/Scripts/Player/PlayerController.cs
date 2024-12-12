@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") && !PlayerSlice.SliceMode() && !fire.fired)
         {
-            fire.FireHarpoon();
+            fire.InvokeFire();
         }
     }
 
@@ -179,9 +179,12 @@ public class PlayerController : MonoBehaviour
 
     public void GetKnockedBack()
     {
-        knockedBack = true;
-        rb.drag = 0;
-        Invoke(nameof(ResetKnockedBack), 0.2f);
+        if(!knockedBack)
+        {
+            rb.drag = 0;
+            Invoke(nameof(ResetKnockedBack), 0.2f);
+            knockedBack = true;
+        }
     }
 
     void ResetKnockedBack()

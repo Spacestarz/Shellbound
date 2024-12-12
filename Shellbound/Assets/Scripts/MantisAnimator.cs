@@ -52,5 +52,14 @@ public class MantisAnimator : BaseAnimator
         {
             anim.SetBool("PhaseSwitch", false);
         }
+
+        if(enemyAI.volnereble && !anim.GetBool("VulnBool"))
+        {
+            anim.SetBool("VulnBool", true);
+        }
+        else if(!enemyAI.volnereble && anim.GetBool("VulnBool"))
+        {
+            anim.SetBool("VulnBool", false);
+        }
     }
 }

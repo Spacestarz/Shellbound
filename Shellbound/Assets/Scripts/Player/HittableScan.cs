@@ -40,21 +40,6 @@ public class HittableScan : MonoBehaviour
         
         Debug.DrawRay(rayOrigin, ray.direction * fire.maxDistancefromAnchor, Color.yellow);
 
-        SetCrosshairSpin();
-    }
-    
-
-    void SetCrosshairSpin()
-    {
         crosshair.SetSpinning(isHookable);
-        //if(isHookable && !crosshair.isSpinning)
-        //{
-        //    crosshair.SetSpinning(true);
-        //}
-        //else if(!isHookable && crosshair.isSpinning)
-        //{
-        //    crosshair.SetSpinning(false);
-        //    crosshair.ResetRotation();
-        //}
     }
 }

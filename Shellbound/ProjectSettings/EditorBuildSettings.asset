@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/GameScenes/main menue.unity
     guid: 69ffc1c0ec4c2e14898186b2b4d8c8ae
   - enabled: 0
-    path: Assets/Scenes/BeforeBoss1.unity
+    path: Assets/Scenes/Tutorial.unity
     guid: bed8f183c8daf7b439c4f25b35050fcd
   - enabled: 0
     path: Assets/Scenes/AdamScene.unity

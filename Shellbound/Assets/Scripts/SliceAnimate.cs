@@ -11,7 +11,7 @@ public class SliceAnimate : MonoBehaviour
     {
         arrow = GetComponentInParent<SlicePattern>().spawnedArrow;
         transform.localEulerAngles = arrow.transform.localEulerAngles;
-        transform.Rotate(0, 0, 90);
+        transform.Rotate(0, 0, 0);
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         

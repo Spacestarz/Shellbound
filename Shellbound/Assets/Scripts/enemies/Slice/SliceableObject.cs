@@ -4,6 +4,7 @@ using UnityEngine.Events;
 public class SliceableObject : MonoBehaviour
 {
     public SlicePattern sliceBoard;
+    public int sliceAmount = 3;
 
     public enum Type
     {
@@ -17,6 +18,7 @@ public class SliceableObject : MonoBehaviour
     public void Awake()
     {
         sliceBoard = GetComponentInChildren<SlicePattern>();
+        sliceBoard.sliceAmount = sliceAmount;
     }
 
     public void SingleSlice()

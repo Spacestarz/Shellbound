@@ -97,6 +97,8 @@ public class Boss1_attacks : BossAttacksCommon
 
     private void BeVisible( GameObject obj)
     {
+        parent.GetComponentInChildren<MantisAnimator>().anim.SetBool("PunchBool", true);
+        
         var renderer = obj.GetComponent<Renderer>();
         if (renderer != null)
         {
@@ -119,7 +121,8 @@ public class Boss1_attacks : BossAttacksCommon
 
     private void BeInvisible(GameObject obj)
     {
-
+        parent.GetComponentInChildren<MantisAnimator>().anim.SetBool("PunchBool", false);
+        
         var renderer = obj.GetComponent<Renderer>();
         if (renderer != null)
         {

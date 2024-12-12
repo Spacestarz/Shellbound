@@ -3,20 +3,19 @@ using UnityEngine;
 public class Harpoon : MonoBehaviour
 {
     SpriteRenderer sr;
-    Rigidbody rb;
     MovingLine line;
 
     public static Harpoon instance;
     
     public HookableObject caughtObject;
-    public Fire fire;
+    Fire fire;
 
     public bool collisionHIT = false;
     public static bool hasCaught;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        fire = PlayerSlice.instance.GetComponent<Fire>();
         sr = GetComponentInChildren<SpriteRenderer>();
         line = GetComponentInChildren<MovingLine>();
         sr.enabled = false;

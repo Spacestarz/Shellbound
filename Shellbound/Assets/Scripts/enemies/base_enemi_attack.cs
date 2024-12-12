@@ -29,7 +29,7 @@ public abstract class base_enemi_attack : BasePhaseScript
     public float elastickrange = 12;
     public float elastickspeed = 4;
     public float elastickreturnspeed = 10;
-    public float elastickdelai = 1;
+    public float elastickdelai = 2;
     private void Start()
     {
         enemy = GetComponentInParent<Base_enemy>();

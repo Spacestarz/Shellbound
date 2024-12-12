@@ -61,7 +61,7 @@ public class Box_doorhandle : MonoBehaviour
     {
         Debug.Log("Kill me");
         gloveHome = true;
-        OnDestroy();  
+        Destroy(this); 
     }
 
     private void Movement()
