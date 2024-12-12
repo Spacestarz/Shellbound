@@ -8,9 +8,11 @@ public abstract class Phase : BasePhaseScript
     public GameObject goblinShark;
     public Boss2_attacks attacks;
     [Header("Dash")]
+    public float DashRange = 20;
     public float DashDistance = 10;
     public float DashDuration = 2;
     [Header("Mouth")]
+    public float MouthRange = 25;
     public float MouthSpeed = 20;
     public float MouthReturn = 1;
     public float MouthDistance = 15;

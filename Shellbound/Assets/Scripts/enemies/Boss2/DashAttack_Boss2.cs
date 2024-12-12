@@ -47,7 +47,7 @@ public class DashAttack_Boss2 : MonoBehaviour
           0f,
          player.transform.position.z - transform.position.z).normalized;
 
-        transform.DOMove(transform.position + direction * dashDistance, dashduration).OnComplete(enemy.attacking);
+        transform.DOMove(transform.position + direction * dashDistance, dashduration).OnComplete(enemy.attacking).OnKill(enemy.attacking);
 
         endOfDash = transform.position + direction * dashDistance;
         endOfDash = new Vector3(endOfDash.x, 0f, endOfDash.z);
@@ -70,6 +70,19 @@ public class DashAttack_Boss2 : MonoBehaviour
         lineRenderer.SetPosition(1, endOfDash);
          
     }
-       
+    private void OnCollisionEnter(Collision collision)
+    {
+        transform.DOKill();
+            Debug.Log("test");
+        if (collision.transform.CompareTag("Player"))
+        {
+            collision.transform.GetComponent<HealthSystem>().TakeDamage(1);
+        }
+        else 
+        {
+            enemy.weekTimer();
+        }
+    }
+
 
 }

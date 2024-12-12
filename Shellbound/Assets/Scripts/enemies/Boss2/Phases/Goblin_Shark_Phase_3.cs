@@ -12,7 +12,7 @@ public class Goblin_Shark_Phase_3 : Phase
         {
             //kurby goes here
         }
-        else if (enemy.Range(10) && enemy.atta && !enemy.volnereble && !PlayerSlice.SliceMode())
+        else if (enemy.Range(DashRange) && enemy.atta && !enemy.volnereble && !PlayerSlice.SliceMode())
         {
             enemy.atta = false;
             attacks.Dashattack(DashDistance, DashDuration);
