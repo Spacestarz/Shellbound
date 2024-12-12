@@ -42,12 +42,13 @@ public class Base_enemy : MonoBehaviour
     }
     public void attacking()
     {
-        atta = true;
+        StartCoroutine(canattack());
     }
     public IEnumerator weekTimer()
     {
         Debug.Log("week");
-        GetComponentInChildren<BaseAnimator>().anim.SetTrigger("Vulnerable");
+        try { GetComponentInChildren<BaseAnimator>().anim.SetTrigger("Vulnerable"); }
+        catch { }
         agent.SetDestination(transform.position);
         volnereble = true;
         yield return new WaitForSeconds(volnerebleTime);
@@ -62,5 +63,10 @@ public class Base_enemy : MonoBehaviour
     public void StopWeakTimer()
     {
         StopCoroutine(weekTimer());
+    }
+    public IEnumerator canattack()
+    {
+        yield return new WaitForSeconds(1);
+        atta = true;
     }
 }

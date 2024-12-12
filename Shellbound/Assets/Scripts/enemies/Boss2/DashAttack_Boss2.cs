@@ -53,7 +53,7 @@ public class DashAttack_Boss2 : MonoBehaviour
         endOfDash = new Vector3(endOfDash.x, 0f, endOfDash.z);
         DrawLine(transform.position, endOfDash);
 
-        Debug.Log("Dash attack");       
+        //Debug.Log("Dash attack");       
     }
 
     
@@ -73,14 +73,14 @@ public class DashAttack_Boss2 : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         transform.DOKill();
-            Debug.Log("test");
         if (collision.transform.CompareTag("Player"))
         {
             collision.transform.GetComponent<HealthSystem>().TakeDamage(1);
         }
         else 
         {
-            enemy.weekTimer();
+            //Debug.Log("test");
+            StartCoroutine(enemy.weekTimer());
         }
     }
 

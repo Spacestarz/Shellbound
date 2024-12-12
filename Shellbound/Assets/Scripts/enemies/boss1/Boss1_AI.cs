@@ -23,7 +23,6 @@ public class Boss1_AI : MonoBehaviour
     }
     public void Update()
     {
-        phase.phase();
         if (health.currentHP < health.MaxHP * phase3HPPercent && phase == phases[1] && !PhaseSwitch)
         {
             //phase = phases[2];
@@ -36,6 +35,7 @@ public class Boss1_AI : MonoBehaviour
             activePhase = 1;
             StartCoroutine(wait(4, activePhase));
         }
+        phase.phase();
     }
 
     IEnumerator wait(float time, int NewPhase)
@@ -46,7 +46,9 @@ public class Boss1_AI : MonoBehaviour
         health.source.PlayOneShot(PhaseSwitchSound);
         try { enemy.GetComponentInChildren<BaseAnimator>().anim.SetTrigger("NewPhase"); }
         catch { }
+        Debug.Log("new phase 1");
         yield return new WaitForSeconds(time);
+        Debug.Log("new phase 2");
         phase = phases[NewPhase];
         PhaseSwitch = false;
         enemy.atta = true;
