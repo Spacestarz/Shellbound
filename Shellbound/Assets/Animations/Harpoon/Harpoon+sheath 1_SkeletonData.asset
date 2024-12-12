@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d12f75f42568b04e943d596aa05a6f3, type: 3}
-  m_Name: Harpoon+sheath_SkeletonData
+  m_Name: Harpoon+sheath 1_SkeletonData
   m_EditorClassIdentifier: 
   atlasAssets:
   - {fileID: 11400000, guid: 897663961dcd58d4293fc3afbc1379a0, type: 2}
   scale: 0.01
-  skeletonJSON: {fileID: 4900000, guid: f31552c211b8b2546b9d6bf824161dcc, type: 3}
+  skeletonJSON: {fileID: 4900000, guid: 9b7024bc0115c9045823eba6c9f7ce16, type: 3}
   isUpgradingBlendModeMaterials: 0
   blendModeMaterials:
     requiresBlendModeMaterials: 0
@@ -28,4 +28,4 @@ MonoBehaviour:
   toAnimation: []
   duration: []
   defaultMix: 0.2
-  controller: {fileID: 9100000, guid: 71778449f0b31c2409671e9ac81ef139, type: 2}
+  controller: {fileID: 0}

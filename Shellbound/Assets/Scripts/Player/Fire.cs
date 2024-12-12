@@ -6,6 +6,7 @@ public class Fire : MonoBehaviour
     Rigidbody harpoonRigidBody;
     Harpoon harpoon;
     MovingLine harpoonLine;
+    WeaponAnimator harpoonUI;
 
     public GameObject Anchor;
     public GameObject harpoonObject;

@@ -8,12 +8,12 @@ public class Goblin_Shark_Phase_2 : Phase
     // Start is called before the first frame update
     public override void phase()
     {
-        if (enemy.Range(10) && enemy.atta && !enemy.volnereble && !PlayerSlice.SliceMode())
+        if (enemy.Range(DashRange) && enemy.atta && !enemy.volnereble && !PlayerSlice.SliceMode())
         {
             enemy.atta = false;
             attacks.Dashattack(DashDistance, DashDuration);
         }
-        else if (enemy.Range(28) && enemy.atta && !enemy.volnereble)
+        else if (enemy.Range(WaveDistance) && enemy.atta && !enemy.volnereble)
         {
             enemy.atta = false;
             if (i % 4 == 0)
