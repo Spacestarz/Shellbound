@@ -84,7 +84,7 @@ public class HookableObject : MonoBehaviour
 
     void GetCaught()
     {
-        if (GetComponent<Base_enemy>())
+        if (type == Type.Enemy)
         {
             if (GetComponent<Base_enemy>().volnereble)
             {
