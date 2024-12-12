@@ -39,10 +39,11 @@ public class DashAttack_Boss2 : MonoBehaviour
        //TODO clean empy updates etc
     }
 
-    public void DashAttack(float DashDistance, float DashDuration)
+    public IEnumerator DashAttack(float DashDistance, float DashDuration)
     {
         dashDistance = DashDistance;
         dashduration = DashDuration;
+        yield return new WaitForSeconds(2);
         Vector3 direction = new Vector3(player.transform.position.x - transform.position.x,
           0f,
          player.transform.position.z - transform.position.z).normalized;

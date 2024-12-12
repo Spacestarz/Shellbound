@@ -4,6 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
     public float maxSpeed;
+    public float KnockBackTime = 0.2f;
 
     public float groundDrag;
 
@@ -182,7 +183,7 @@ public class PlayerController : MonoBehaviour
         if(!knockedBack)
         {
             rb.drag = 0;
-            Invoke(nameof(ResetKnockedBack), 0.2f);
+            Invoke(nameof(ResetKnockedBack), KnockBackTime);
             knockedBack = true;
         }
     }

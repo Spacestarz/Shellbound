@@ -88,11 +88,12 @@ public class MouthAttack : MonoBehaviour
     }
     */
 
-    public void FireMouth(float MouthSpeed, float MouthReturn, float MouthDistance)
+    public IEnumerator FireMouth(float MouthSpeed, float MouthReturn, float MouthDistance)
     {
         fireRate = MouthSpeed;
         speedReturn = MouthReturn;
         maxDistancefromAnchor = MouthDistance;
+        yield return new WaitForSeconds(2);
         sr.enabled = true;
        // mouthObject.SetActive(true);
         //harpoon.SetVisibility(true);

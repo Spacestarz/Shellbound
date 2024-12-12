@@ -54,18 +54,18 @@ public class Boss2_attacks : BossAttacksCommon
 
     public void Dashattack(float DashDistance, float DashDuration)
     {
-        callDashAttack.DashAttack(DashDistance, DashDuration); 
+        StartCoroutine(callDashAttack.DashAttack(DashDistance, DashDuration)); 
     }
 
     public void Mouthattack(float MouthSpeed, float MouthReturn, float MouthDistance)
     {
         //Similar to the harpoon and the crabs punch arm can probarly borrow a bit of code from that 
-        mouth.FireMouth(MouthSpeed, MouthReturn, MouthDistance);
+        StartCoroutine(mouth.FireMouth(MouthSpeed, MouthReturn, MouthDistance));
     }
 
     public void shockwave(float WaveDistance, float WaveDuration)
     {
-        wave.shackwave(WaveDistance, WaveDuration);
+        StartCoroutine(wave.shackwave(WaveDistance, WaveDuration));
     }
    
 }

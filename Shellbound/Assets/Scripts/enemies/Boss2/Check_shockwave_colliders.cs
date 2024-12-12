@@ -18,6 +18,7 @@ public class Check_shockwave_colliders : MonoBehaviour
     public inner_ring innerring;
     public HealthSystem healthSystem;
     Base_enemy enemy;
+    bool damaged = false;
 
 
     [Header("Change scale of circle")]
@@ -26,6 +27,8 @@ public class Check_shockwave_colliders : MonoBehaviour
     [SerializeField] private int damage = 1;
     [Header("time to reach max size")]
     [SerializeField]private float duration = 2;
+
+    [SerializeField] float knockback = 100;
 
     public PlayerController playerController;
 
@@ -43,27 +46,38 @@ public class Check_shockwave_colliders : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.G))
         {
-            shackwave(Scale, duration);
+            StartCoroutine(shackwave(Scale, duration));
         }
 
-        if (OuterRing.playerPresent ^ innerring.playerPresent && playerController.grounded == true)  
+        if (OuterRing.playerPresent ^ innerring.playerPresent && playerController.grounded == true && !damaged)  
         {
             Debug.Log("TAKE DAMAGE BOYYY");
-
+            damaged = true;
             healthSystem.TakeDamage(damage);
+            //transform.LookAt(new Vector3(0,healthSystem.transform.position.y,healthSystem.transform.position.z));
+            Vector3 vec = (new Vector3(transform.position.x, healthSystem.transform.position.y,transform.position.z) - healthSystem.transform.position).normalized;
+            Debug.Log(transform.position + "|" + healthSystem.transform.position);
+            healthSystem.transform.GetComponent<PlayerController>().GetKnockedBack();
+            healthSystem.transform.GetComponent<Rigidbody>().AddForce(-vec * knockback);
+            Debug.DrawLine(healthSystem.transform.position,-healthSystem.transform.position + vec * 1000,Color.red,100);
         }
     }
 
     private void ResetShockwave()
     {
         transform.localScale = Vector3.zero;
-        enemy.atta = true;
+        enemy.start();
+        enemy.attacking();
+        damaged = false;
     }
-    public void shackwave(float WaveDistance, float WaveDuration)
+    public IEnumerator shackwave(float WaveDistance, float WaveDuration)
     {
+        enemy.stop();
+        yield return new WaitForSeconds(2);
         Scale = WaveDistance;
         duration = WaveDuration;
         Vector3 endScale = new Vector3(1 * Scale, 1 * Scale, 1);
         transform.DOScale(endScale, duration).OnComplete(ResetShockwave);
+        //add push back
     }
 }
