@@ -21,7 +21,6 @@ public class SliceAnimate : MonoBehaviour
     public void PlayAnimation()
     {
         spriteRenderer.enabled = true;
-        anim.SetTrigger("Slice Finished");
         StartCoroutine(DestroyAfterWait());
     }
 

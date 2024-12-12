@@ -9,6 +9,8 @@ public class Door_open : MonoBehaviour
     private Box_doorhandle gloveScript;
     private float duration = 1;
 
+    public float openAmount = 3;
+
     //private Vector3 MOVE;
     private GameObject glove;
 
@@ -16,41 +18,23 @@ public class Door_open : MonoBehaviour
     void Start()
     {
         startpos = transform.position;
-        endpos = transform.position + transform.up * 3;
-        gloveScript = GetComponentInChildren<Box_doorhandle>();      
-        
+        endpos = transform.position + transform.up * openAmount;
     }
 
     // Update is called once per frame
     void Update()
     {
-       
-        if (Input.GetKeyDown(KeyCode.F)) //|| gloveScript.stopPingPong == true && gloveScript.gloveHome == true &&
-           // gloveScript.firstDoorDone == false)
-        {
-            OpenDoor();
-           
-            //when glove is home make a little like door close and then the big door opens
-            gloveScript.gloveHome = false;
-                  
-        }
-        
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            CloseDoor();
-        }
+
     }
 
     public void OpenDoor()
     {
         transform.DOMove(endpos, duration);
-        Debug.Log("open");
     }
 
     public void CloseDoor()
     {
         transform.DOKill();
         transform.DOMove(startpos, duration);
-        Debug.Log("CLOSE FFS");
     }
 }

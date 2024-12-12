@@ -53,6 +53,7 @@ public class WeaponAnimator : BaseAnimator
         }
         else if (!playerFire.fired && harpoonIsFired)
         {
+            harpoonIsFired = false;
             ReturnToStill(ref harpoonIsFired);
             rect.DOAnchorPos(originalPos, 0.189f);
         }

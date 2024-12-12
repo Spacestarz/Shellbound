@@ -1,5 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Collections;           //DO NOT DELETE
+using System.Collections.Generic;   //NEEDED TO WORK
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;

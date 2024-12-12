@@ -17,7 +17,7 @@ public class HookableObject : MonoBehaviour
     }
     
 
-    private Vector3 caughtLocation = Vector3.zero;
+    private Vector3 flatPosition = Vector3.zero;
     private Transform player;
     private Fire fire;
 
@@ -44,11 +44,12 @@ public class HookableObject : MonoBehaviour
 
     void Update()
     {
-        caughtLocation = transform.position;
-        distance = Vector3.Distance(caughtLocation, player.position);
+        Vector3 playerFlatPos = new Vector3(player.position.x, transform.position.y, player.position.z);
+
+        distance = Vector3.Distance(transform.position, playerFlatPos);
         if (isCaught && distance > 5f)
         {
-            transform.position = Vector3.MoveTowards(caughtLocation, player.position, pullSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, playerFlatPos, pullSpeed * Time.deltaTime);
             
             if(type == Type.Enemy && GetComponent<Boss1_AI>())
             {

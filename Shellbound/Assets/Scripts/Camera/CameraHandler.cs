@@ -15,13 +15,6 @@ public class CameraHandler : MonoBehaviour
         orientation = Camera.main.GetComponent<RotateCamera>().orientation;
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            ShakeCamera();
-        }
-    }
 
     public void ShakeCamera()
     {
@@ -50,9 +43,7 @@ public class CameraHandler : MonoBehaviour
             dirToMove += orientation.up;
         }
 
-
         transform.DOMove(transform.position +  0.3f * dirToMove, 0.1f).OnComplete(ResetPosition);
-        //Camera.main.DOShakePosition(0.15f, new Vector3(direction.x, -direction.y) * 0.5f, 5, 25, false, ShakeRandomnessMode.Harmonic);
     }
 
     void ResetPosition()
@@ -60,15 +51,12 @@ public class CameraHandler : MonoBehaviour
         transform.DOLocalMove(defaultPosition, 0.1f);
     }
 
-    void ResetRotation()
-    {
-        transform.DOLocalRotate(defaultRotation, 0.2f);
-    }
 
     public void ChangeFOV(float duration)
     {
         Camera.main.DOFieldOfView(80, duration).OnComplete(ResetFOV);
     }
+
 
     void ResetFOV()
     {

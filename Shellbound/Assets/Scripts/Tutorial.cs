@@ -1,5 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
+using System.Collections.Generic; //unused using statements can be deleted (unless stated otherwise
 using UnityEngine;
 using TMPro;
 
@@ -8,7 +8,9 @@ public class Tutorial : MonoBehaviour
     private GameObject tutorialUI;
     public GameObject player;
     private PlayerController playerController;
-    private Vector3 startPOS; //Pos
+    private Vector3 startPOS; //startPos
+
+    public Door_open door;
 
     public TextMeshProUGUI movedTEXT;
 
@@ -16,51 +18,51 @@ public class Tutorial : MonoBehaviour
 
     public TextMeshProUGUI dashedTEXT;
 
-    public TextMeshProUGUI slicedTEXT; //camelCaseUnlessAbbreviationsAreUsed (forExampleUI)
+    public TextMeshProUGUI slicedTEXT; //camelCaseUnlessAbbreviationsAreUsed (forExample"UI")
 
     public TextMeshProUGUI hookedText;
 
-    private bool hasMoved = false; //bools default to false
+    private bool hasMoved = false;  //bools default to false
     private bool hasJumped = false;
     private bool hasDashed = false;
     private bool hasHooked;
     private bool hasSliced = false;
-    // Start is called before the first frame update  //line break
+    // Start is called before the first frame update  //line break here somewhere
     void Start()
-    {  
+    {
         playerController = player.GetComponent<PlayerController>();
 
         startPOS = player.transform.position;
         tutorialUI = GameObject.Find("TutorialUI");
-        tutorialUI.SetActive(true);   
-        
-        if (movedTEXT != null ) //if(movedTEXT)
+        tutorialUI.SetActive(true);
+
+        if (movedTEXT != null) //if(movedTEXT)
         {
             movedTEXT.text = "Move with WASD";
         }
 
-        if ( jumpedTEXT != null ) //inconsistent spacing on all these ifs
+        if (jumpedTEXT != null) //inconsistent spacing on all these ifs
         {
             jumpedTEXT.text = "Jump with space";
         }
 
-        if( dashedTEXT != null)
+        if (dashedTEXT != null)
         {
             dashedTEXT.text = "Dash with SHIFT";
         }
 
-        if ( slicedTEXT != null )
+        if (slicedTEXT != null)
         {
             slicedTEXT.text = "Slice that man's face";
         }
 
-        if(hookedText)
+        if (hookedText)
         {
             hookedText.text = "Hook that man's face";
         }
     }
 
-    // Update is called once per frame
+    // Update is called once per frame //You know what update does
     void Update()
     {
         if (Input.GetButtonDown("Jump") && !hasJumped)
@@ -68,13 +70,13 @@ public class Tutorial : MonoBehaviour
             hasJumped = true;
 
             //jumpedTEXT.text = "<s>Jump with space</s>";
-            jumpedTEXT.text = StrikeThrough(jumpedTEXT.text);
+            jumpedTEXT.text = StrikeThrough(jumpedTEXT.text); //This is just me wanting to style, :(
 
             TutorialCheckList();
         }
 
         if (CheckIfMoved() && !hasMoved)
-        {         
+        {
             hasMoved = true;
             movedTEXT.text = StrikeThrough(movedTEXT.text);
 
@@ -93,10 +95,10 @@ public class Tutorial : MonoBehaviour
     public void TutorialCheckList()
     {
         tutorialUI.SetActive(true);
-        if (hasJumped && hasDashed && hasMoved)
+        if (hasJumped && hasDashed && hasMoved && hasHooked && hasSliced)
         {
-            Debug.Log("Time to fight");
-        }   
+            door.OpenDoor();
+        }
     }
 
     public bool CheckIfMoved()
@@ -115,18 +117,20 @@ public class Tutorial : MonoBehaviour
     {
         hasHooked = true;
         hookedText.text = StrikeThrough(hookedText.text);
+
+        TutorialCheckList();
     }
 
     public void GetSliced()
     {
         hasSliced = true;
         slicedTEXT.text = StrikeThrough(slicedTEXT.text);
+
+        TutorialCheckList();
     }
 
     private string StrikeThrough(string str)
     {
-        str = "<s>" + str + "</s>";
-        return str;
+        return "<s>" + str + "</s>";
     }
-
 }

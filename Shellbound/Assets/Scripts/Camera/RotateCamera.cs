@@ -21,7 +21,6 @@ public class RotateCamera : MonoBehaviour
         isLocked = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
     }
 
     void Update()
@@ -46,6 +45,11 @@ public class RotateCamera : MonoBehaviour
     {
         xRotation = transform.rotation.eulerAngles.x;
         yRotation = transform.rotation.eulerAngles.y;
+        
+        if(xRotation >= 0)
+        {
+            xRotation += 360;
+        }
     }
 
     void GetMouseInput()
@@ -65,16 +69,19 @@ public class RotateCamera : MonoBehaviour
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
     }
 
+
     void ClampRotation(ref float axisRot)
     {
         if(axisRot < 0)
         {
             axisRot += 360;
         }
+
         axisRot -= 180;
         axisRot = Mathf.Clamp(axisRot, 155, 205);
         axisRot += 180;
     }
+
 
     public IEnumerator SetCameraLock(bool locked)
     {
