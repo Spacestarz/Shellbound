@@ -8,14 +8,13 @@ public class Harpoon : MonoBehaviour
     public static Harpoon instance;
     
     public HookableObject caughtObject;
-    Fire fire;
+    public Fire fire;
 
     public bool collisionHIT = false;
     public static bool hasCaught;
 
     private void Awake()
     {
-        fire = PlayerSlice.instance.GetComponent<Fire>();
         sr = GetComponentInChildren<SpriteRenderer>();
         line = GetComponentInChildren<MovingLine>();
         sr.enabled = false;

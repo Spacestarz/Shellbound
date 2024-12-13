@@ -43,11 +43,7 @@ public class Boss1_attacks : BossAttacksCommon
     }
     public void Update()
     {
-        if (Input.GetKey(KeyCode.Q))
-        {
-            //Melee();
-            shockwave(2, 10, 32);
-        }
+       
         if (!still)
         {
             transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
