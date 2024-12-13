@@ -55,6 +55,7 @@ public abstract class base_enemi_attack : BasePhaseScript
         }
         else if(amount > 1)
         {
+            amount = 2;
             enemy.GetComponentInChildren<MantisAnimator>().anim.SetTrigger("Double Shockwave");
         }
         WaveAnim = true;
