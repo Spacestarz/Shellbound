@@ -20,13 +20,9 @@ public class FadeToBlack : MonoBehaviour
     {
         fadeStarted = true;
         blackScreen.enabled = true;
-        blackScreen.DOColor(Color.black, 4f).OnComplete(InvokeNextScene);
+        blackScreen.DOColor(Color.black, 4f).OnComplete(NextScene);
     }
 
-    void InvokeNextScene()
-    {
-        Invoke(nameof(NextScene), 1f);
-    }
 
     void NextScene()
     {

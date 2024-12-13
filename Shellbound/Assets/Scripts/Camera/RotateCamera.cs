@@ -14,6 +14,7 @@ public class RotateCamera : MonoBehaviour
     public float xRotation;
     public float yRotation;
 
+
     void Awake()
     {
         UpdateRotation();
@@ -35,7 +36,6 @@ public class RotateCamera : MonoBehaviour
             this.DOKill();
             GetMouseInput();
         }
-        Debug.Log(xRotation);
     }
 
     public void LockOntoSliceBoard(SlicePattern sliceBoard)
@@ -47,8 +47,10 @@ public class RotateCamera : MonoBehaviour
     {
         xRotation = transform.rotation.eulerAngles.x;
         yRotation = transform.rotation.eulerAngles.y;
+
+        //ClampRotation(ref xRotation);
         
-        if(xRotation >= 0)
+        if(xRotation <= 0)
         {
             xRotation += 360;
         }
@@ -74,7 +76,7 @@ public class RotateCamera : MonoBehaviour
 
     void ClampRotation(ref float axisRot)
     {
-        if(axisRot < 0)
+        if (axisRot <= 0)
         {
             axisRot += 360;
         }
@@ -89,6 +91,7 @@ public class RotateCamera : MonoBehaviour
     {
         this.DOKill();
         yield return new WaitForSecondsRealtime(0.2f);
+        ClampRotation(ref xRotation);
         isLocked = locked;
         yield break;
     }
