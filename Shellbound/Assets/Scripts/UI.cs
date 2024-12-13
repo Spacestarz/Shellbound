@@ -74,12 +74,6 @@ public class UI : MonoBehaviour
             DefeatedBOSS();
         }
         */
-
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
     }
 
 

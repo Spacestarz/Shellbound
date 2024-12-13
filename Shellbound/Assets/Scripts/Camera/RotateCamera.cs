@@ -48,12 +48,13 @@ public class RotateCamera : MonoBehaviour
         xRotation = transform.rotation.eulerAngles.x;
         yRotation = transform.rotation.eulerAngles.y;
 
-        //ClampRotation(ref xRotation);
         
         if(xRotation <= 0)
         {
             xRotation += 360;
         }
+
+        ClampRotation(ref xRotation);
     }
 
     void GetMouseInput()

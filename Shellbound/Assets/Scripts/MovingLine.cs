@@ -4,7 +4,7 @@ public class MovingLine : MonoBehaviour
 {
     LineRenderer lineRenderer;
     
-    public GameObject projectile;
+    GameObject projectile;
     public GameObject anchor;
 
     Harpoon harpoon;
@@ -12,6 +12,7 @@ public class MovingLine : MonoBehaviour
 
     void Awake()
     {
+        projectile = gameObject;
         if (gameObject.CompareTag("Harpoon"))
         {
             harpoon = projectile.GetComponent<Harpoon>();
