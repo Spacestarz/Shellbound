@@ -9,15 +9,17 @@ public class MouthAttack : MonoBehaviour
 
     public Rigidbody mouthRigidBody;
     public GameObject player;
-    public GameObject boss;
+    //public GameObject boss;
     public GameObject mouth;
 
-    public GameObject mouthObject;
+    //public GameObject MouthAnchor;
     public GameObject Anchor;
     public GameObject mainCam;
     public float fireRate = 20;
     public float speedReturn = 1;
     float dist;
+    Base_enemy enemy;
+    Boss2_attacks attacks;
 
     public float maxDistancefromAnchor = 15f; //test this to see whats best
 
@@ -38,6 +40,8 @@ public class MouthAttack : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         sr.enabled = false;
+        enemy = GetComponentInParent<Base_enemy>();
+        attacks = GetComponentInParent<Boss2_attacks>();
     }
 
     // Update is called once per frame
@@ -65,16 +69,18 @@ public class MouthAttack : MonoBehaviour
         mouthRigidBody.velocity = Vector3.zero;
         while (dist >= 1)
         {
-            mouthObject.transform.position = Vector3.Lerp(mouthObject.transform.position, Anchor.transform.position, speedReturn * Time.deltaTime);
+            mouth.transform.position = Vector3.Lerp(mouth.transform.position, Anchor.transform.position, speedReturn * Time.deltaTime);
             yield return null;
         }
 
-        mouthObject.transform.position = Anchor.transform.position;
+        mouth.transform.position = Anchor.transform.position;
         mouthRigidBody.constraints = RigidbodyConstraints.FreezeAll;
 
         //mouthObject.transform.position = Vector3.Lerp(mouthObject.transform.position, Anchor.transform.position, speedReturn * Time.deltaTime);
         //Debug.Log("Mouth is home");
         collisionHIT = false;
+        attacks.BeInvisible(gameObject);
+        enemy.start();
         yield return null;
     }
 
@@ -93,13 +99,16 @@ public class MouthAttack : MonoBehaviour
         fireRate = MouthSpeed;
         speedReturn = MouthReturn;
         maxDistancefromAnchor = MouthDistance;
+        enemy.stop();
         yield return new WaitForSeconds(2);
+        attacks.BeVisible(gameObject);
+        Anchor.transform.LookAt(player.transform);
         sr.enabled = true;
        // mouthObject.SetActive(true);
         //harpoon.SetVisibility(true);
         goingAway = true;
 
-        mouthObject.transform.position = Anchor.transform.position;
+        mouth.transform.position = Anchor.transform.position;
 
         mouthRigidBody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY; ;
         
@@ -110,7 +119,7 @@ public class MouthAttack : MonoBehaviour
         if (collisionHIT == false)
         {
             //It move the direction of the main cameras z axis
-            mouthRigidBody.velocity = -mainCam.transform.forward * fireRate;
+            mouthRigidBody.velocity = transform.forward * fireRate;
             
         }
         

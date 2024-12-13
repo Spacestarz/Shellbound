@@ -16,7 +16,7 @@ public class Boss1_attacks : BossAttacksCommon
     public GameObject claw;
     //public GameObject wave;
     float dis;
-    public bool velo = false;
+    
     //public float firespeed = 4;
     float returnspeed = 10;
     public bool still = false;
@@ -64,6 +64,7 @@ public class Boss1_attacks : BossAttacksCommon
                 claw.transform.position = transform.position;
                 clawrig.constraints = RigidbodyConstraints.FreezeAll;
 
+                parent.GetComponentInChildren<MantisAnimator>().anim.SetBool("PunchBool", false);
                 BeInvisible(claw);
                 velo = false;
                 parent.start();
@@ -79,7 +80,8 @@ public class Boss1_attacks : BossAttacksCommon
         transform.LookAt(target);
         elastickrange = range;
         returnspeed = returns;
-        
+
+        parent.GetComponentInChildren<MantisAnimator>().anim.SetBool("PunchBool", true);
         BeVisible(claw);
         //parent.stop();
         still = true;
@@ -91,53 +93,7 @@ public class Boss1_attacks : BossAttacksCommon
 
     }
 
-    private void BeVisible( GameObject obj)
-    {
-        parent.GetComponentInChildren<MantisAnimator>().anim.SetBool("PunchBool", true);
-        
-        var renderer = obj.GetComponent<Renderer>();
-        if (renderer != null)
-        {
-            renderer.enabled = true;
-        }
-
-        var spriteRenderer = obj.GetComponentInChildren<SpriteRenderer>();
-        if (spriteRenderer != null)
-        {
-            spriteRenderer.enabled = true;
-        }
-
-        var line = obj.GetComponent<MovingLine>();
-        if(line != null)
-        {
-            line.SetVisible(true);
-        }
-        obj.GetComponent<Collider>().enabled = true;
-    }
-
-    private void BeInvisible(GameObject obj)
-    {
-        parent.GetComponentInChildren<MantisAnimator>().anim.SetBool("PunchBool", false);
-        
-        var renderer = obj.GetComponent<Renderer>();
-        if (renderer != null)
-        {
-            renderer.enabled = false;
-        }
-
-        var spriteRenderer = obj.GetComponentInChildren<SpriteRenderer>();
-        if (spriteRenderer != null)
-        {
-            spriteRenderer.enabled = false;
-        }
-
-        var line = obj.GetComponent<MovingLine>();
-        if (line != null)
-        {
-            line.SetVisible(false);
-        }
-        obj.GetComponent<Collider>().enabled = false;
-    }
+    
     /*public IEnumerator shockwave(float duration, float scale, float range, GameObject wave)
     {
         parent.stop();
