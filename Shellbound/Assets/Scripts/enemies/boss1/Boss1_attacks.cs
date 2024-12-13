@@ -76,7 +76,7 @@ public class Boss1_attacks : BossAttacksCommon
     }
     public void Elastick(float range, float firespeed, float returns)
     {
-        sorce.PlayOneShot(elastickstartsound);
+        sorce.PlayOneShot(elastickstartsound, 0.5f);
         transform.LookAt(target);
         elastickrange = range;
         returnspeed = returns;

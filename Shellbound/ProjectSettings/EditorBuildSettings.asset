@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Albin playtest.unity
     guid: a78d4a5e1b597a0429420be7baa78516
+  - enabled: 1
+    path: Assets/Scenes/AlbinBoss2Scene.unity
+    guid: 327e912469f0642459c244bca18fb713
   m_configObjects: {}
