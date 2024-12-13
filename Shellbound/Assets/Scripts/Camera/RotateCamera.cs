@@ -28,12 +28,14 @@ public class RotateCamera : MonoBehaviour
         if (Harpoon.hasCaught)
         {
             LockOntoSliceBoard(Harpoon.instance.caughtObject.sliceableObject.sliceBoard);
+            ClampRotation(ref xRotation);
         }
         else if (!Harpoon.hasCaught && !isLocked)
         {
             this.DOKill();
             GetMouseInput();
         }
+        Debug.Log(xRotation);
     }
 
     public void LockOntoSliceBoard(SlicePattern sliceBoard)
