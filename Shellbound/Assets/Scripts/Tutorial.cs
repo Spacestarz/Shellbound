@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic; //unused using statements can be deleted (unless stated otherwise
+
 using UnityEngine;
 using TMPro;
 
@@ -8,7 +7,7 @@ public class Tutorial : MonoBehaviour
     private GameObject tutorialUI;
     public GameObject player;
     private PlayerController playerController;
-    private Vector3 startPOS; //startPos
+    private Vector3 startPOS; //startPos //just a me thing i will get better
 
     public Door_open door;
 
@@ -18,16 +17,18 @@ public class Tutorial : MonoBehaviour
 
     public TextMeshProUGUI dashedTEXT;
 
-    public TextMeshProUGUI slicedTEXT; //camelCaseUnlessAbbreviationsAreUsed (forExample"UI")
+    public TextMeshProUGUI slicedTEXT; //camelCaseUnlessAbbreviationsAreUsed (forExample"UI") //just a me thing want it to see very clearly that its a text
 
     public TextMeshProUGUI hookedText;
 
-    private bool hasMoved = false;  //bools default to false
+    private bool hasMoved = false;  //bools default to false //just a me thing
     private bool hasJumped = false;
     private bool hasDashed = false;
     private bool hasHooked;
     private bool hasSliced = false;
+
     // Start is called before the first frame update  //line break here somewhere
+
     void Start()
     {
         playerController = player.GetComponent<PlayerController>();
@@ -41,7 +42,7 @@ public class Tutorial : MonoBehaviour
             movedTEXT.text = "Move with WASD";
         }
 
-        if (jumpedTEXT != null) //inconsistent spacing on all these ifs
+        if (jumpedTEXT != null) 
         {
             jumpedTEXT.text = "Jump with space";
         }
@@ -62,7 +63,7 @@ public class Tutorial : MonoBehaviour
         }
     }
 
-    // Update is called once per frame //You know what update does
+    // Update is called once per frame //You know what update does //its in as default i am lazy 
     void Update()
     {
         if (Input.GetButtonDown("Jump") && !hasJumped)
