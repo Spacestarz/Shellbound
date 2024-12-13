@@ -1387,7 +1387,6 @@ GameObject:
   - component: {fileID: 598477970}
   - component: {fileID: 598477969}
   - component: {fileID: 598477971}
-  - component: {fileID: 598477973}
   - component: {fileID: 598477972}
   m_Layer: 0
   m_Name: Mouth
@@ -1525,27 +1524,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouthRigidBody: {fileID: 598477969}
   player: {fileID: 1521153421}
+  boss: {fileID: 1998195560}
   mouth: {fileID: 598477967}
-  Anchor: {fileID: 1777228713}
+  mouthObject: {fileID: 598477967}
+  Anchor: {fileID: 1998195560}
   mainCam: {fileID: 393304533}
   fireRate: 20
   speedReturn: 1
   maxDistancefromAnchor: 15
   fired: 0
   goingAway: 0
---- !u!114 &598477973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 598477967}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8879d98a1558d945a0ba27a2155dac9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attack: {fileID: 0}
 --- !u!1 &611043673
 GameObject:
   m_ObjectHideFlags: 0
@@ -2675,7 +2663,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   caughtObject: {fileID: 0}
-  fire: {fileID: 1521153430}
   collisionHIT: 0
 --- !u!54 &743654602
 Rigidbody:
@@ -3441,15 +3428,15 @@ MonoBehaviour:
   i: 1
   goblinShark: {fileID: 0}
   attacks: {fileID: 0}
-  DashRange: 40
-  DashDistance: 50
+  DashRange: 20
+  DashDistance: 10
   DashDuration: 2
   MouthRange: 25
-  MouthSpeed: 40
+  MouthSpeed: 20
   MouthReturn: 1
-  MouthDistance: 30
+  MouthDistance: 15
   WaveDistance: 20
-  WaveDuration: 1.5
+  WaveDuration: 2
   kurbyrange: 0
 --- !u!1 &963194225
 GameObject:
@@ -5101,17 +5088,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f28603b6f4de99f4faf71c10c2983571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1521153430 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7276528945462405297, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
-  m_PrefabInstance: {fileID: 1211878305}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1521153421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69267e964b734eb44b1c5ce601137562, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1536682484
 GameObject:
   m_ObjectHideFlags: 0
@@ -5686,7 +5662,7 @@ Transform:
   m_GameObject: {fileID: 1777228713}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.61, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.33333334, y: 0.5714285, z: 0.33333334}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6279,13 +6255,13 @@ GameObject:
   - component: {fileID: 1998195562}
   - component: {fileID: 1998195561}
   - component: {fileID: 1998195569}
+  - component: {fileID: 1998195570}
   - component: {fileID: 1998195571}
   - component: {fileID: 1998195574}
   - component: {fileID: 1998195575}
   - component: {fileID: 1998195577}
   - component: {fileID: 1998195576}
   - component: {fileID: 1998195578}
-  - component: {fileID: 1998195570}
   m_Layer: 12
   m_Name: Goblin shark
   m_TagString: Enemy
@@ -6305,7 +6281,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77c3460c71b8d724c96a7882240938d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velo: 0
   KnockbackStrenght: 20
   healthSystem: {fileID: 1521153424}
   rbGoblinShark: {fileID: 1998195562}
@@ -7061,11 +7036,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fd826a4314c1284f92206053a96c6a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velo: 0
   pushForce: 1000
   target: {fileID: 0}
   wave: {fileID: 5627876896858272488, guid: c5231bb911209024b8a2f83c0b6f50a1, type: 3}
   claw: {fileID: 0}
+  velo: 0
   still: 0
   parent: {fileID: 0}
   cooling: 0

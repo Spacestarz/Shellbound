@@ -20,9 +20,12 @@ public class FadeToBlack : MonoBehaviour
     {
         fadeStarted = true;
         blackScreen.enabled = true;
-        blackScreen.DOColor(Color.black, 4f);
+        blackScreen.DOColor(Color.black, 2.5f).OnComplete(NextScene);
     }
 
 
-
+    void NextScene()
+    {
+        GameObject.FindWithTag("GameController").GetComponent<SceneController>().NextLevel();
+    }
 }

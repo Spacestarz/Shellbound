@@ -8,13 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScenes/main menue.unity
     guid: 69ffc1c0ec4c2e14898186b2b4d8c8ae
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: bed8f183c8daf7b439c4f25b35050fcd
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/AdamScene.unity
     guid: b27773d77630abc41bcf19b44b4fbb5c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Albin playtest.unity
     guid: a78d4a5e1b597a0429420be7baa78516
+  - enabled: 1
+    path: Assets/Scenes/AlbinBoss2Scene.unity
+    guid: 327e912469f0642459c244bca18fb713
   m_configObjects: {}

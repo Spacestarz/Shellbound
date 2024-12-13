@@ -14,6 +14,7 @@ public class RotateCamera : MonoBehaviour
     public float xRotation;
     public float yRotation;
 
+
     void Awake()
     {
         UpdateRotation();
@@ -28,6 +29,7 @@ public class RotateCamera : MonoBehaviour
         if (Harpoon.hasCaught)
         {
             LockOntoSliceBoard(Harpoon.instance.caughtObject.sliceableObject.sliceBoard);
+            ClampRotation(ref xRotation);
         }
         else if (!Harpoon.hasCaught && !isLocked)
         {
@@ -45,11 +47,14 @@ public class RotateCamera : MonoBehaviour
     {
         xRotation = transform.rotation.eulerAngles.x;
         yRotation = transform.rotation.eulerAngles.y;
+
         
-        if(xRotation >= 0)
+        if(xRotation <= 0)
         {
             xRotation += 360;
         }
+
+        ClampRotation(ref xRotation);
     }
 
     void GetMouseInput()
@@ -72,7 +77,7 @@ public class RotateCamera : MonoBehaviour
 
     void ClampRotation(ref float axisRot)
     {
-        if(axisRot < 0)
+        if (axisRot <= 0)
         {
             axisRot += 360;
         }
@@ -87,6 +92,7 @@ public class RotateCamera : MonoBehaviour
     {
         this.DOKill();
         yield return new WaitForSecondsRealtime(0.2f);
+        ClampRotation(ref xRotation);
         isLocked = locked;
         yield break;
     }

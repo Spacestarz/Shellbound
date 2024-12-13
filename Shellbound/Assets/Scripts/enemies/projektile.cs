@@ -6,10 +6,10 @@ public class projektile : MonoBehaviour
 {
     // Start is called before the first frame update
     int damage = 1;
-    public Boss1_attacks attack;
+    public BossAttacksCommon attack;
     private void Awake()
     {
-        attack = GetComponentInParent<Boss1_attacks>();
+        attack = GetComponentInParent<BossAttacksCommon>();
     }
     private void OnTriggerEnter(Collider other)
     {

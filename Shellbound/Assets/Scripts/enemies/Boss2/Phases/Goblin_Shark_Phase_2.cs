@@ -14,19 +14,10 @@ public class Goblin_Shark_Phase_2 : Phase
             if (i % 4 == 0)
             {
                 attacks.shockwave(WaveDistance, WaveDuration);
-                //attack.Elastick(elastickrange, elastickspeed, elastickreturnspeed);
-                //StartCoroutine(elestickdelay(elastickdelai));
             }
             else
             {
-                //attack.parent.stop();
-                //attack.still = true;
-                //attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
-                //StartCoroutine(cooldown(shockwavespeed));
-                //amount = Random.Range(1, 2);
                 StartCoroutine(bite(amount));
-
-
             }
             i++;
             resetpositon();
