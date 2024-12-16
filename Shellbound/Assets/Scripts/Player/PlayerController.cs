@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
     PlayerSlice slice;
     Fire fire;
+    public GameObject dart;
 
     private void Start()
     {
@@ -97,6 +98,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && !PlayerSlice.SliceMode() && !fire.fired)
         {
             fire.InvokeFire();
+        }
+        if (Input.GetKeyDown(KeyCode.Mouse1) && !PlayerSlice.SliceMode())
+        {
+            Instantiate(dart, transform.position, transform.rotation);
         }
     }
 
