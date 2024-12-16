@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
     PlayerSlice slice;
     Fire fire;
     public GameObject dart;
+    public bool harpoontime = false;
+    public bool shot = false;
 
     private void Start()
     {
@@ -95,13 +97,18 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Fire1") && !PlayerSlice.SliceMode() && !fire.fired)
+        if (Input.GetButtonDown("Fire1") && !PlayerSlice.SliceMode() && !fire.fired && harpoontime)
         {
             fire.InvokeFire();
         }
-        if (Input.GetKeyDown(KeyCode.Mouse1) && !PlayerSlice.SliceMode())
+        else if (Input.GetButtonDown("Fire1") && !PlayerSlice.SliceMode() && !shot && !harpoontime)
         {
-            Instantiate(dart, transform.position, transform.rotation);
+            shot = true;
+            Instantiate(dart,Camera.main.transform.position,Camera.main.transform.rotation);
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad0))
+        {
+            harpoontime = !harpoontime;
         }
     }
 
