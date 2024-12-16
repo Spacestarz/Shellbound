@@ -51,7 +51,7 @@ public class KirbyAttack : MonoBehaviour
     {
         //TODO player move towards boss position
 
-        //extra vector i playercontroller som addar mer 
+        //extra vector i playercontroller that adds more
         //normalize vector directtion play with the strenght!
     }
 
