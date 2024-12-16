@@ -4,14 +4,12 @@ using DG.Tweening;
 public class CameraHandler : MonoBehaviour
 {
     Vector3 defaultPosition;
-    Vector3 defaultRotation;
     Transform orientation;
 
     void Awake()
     {
         Application.targetFrameRate = 120;
         defaultPosition = transform.localPosition;
-        defaultRotation = transform.localEulerAngles;
         orientation = Camera.main.GetComponent<RotateCamera>().orientation;
     }
 

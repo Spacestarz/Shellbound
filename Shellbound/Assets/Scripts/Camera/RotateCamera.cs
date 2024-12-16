@@ -45,16 +45,13 @@ public class RotateCamera : MonoBehaviour
 
     private void UpdateRotation()
     {
-        xRotation = transform.rotation.eulerAngles.x;
-        yRotation = transform.rotation.eulerAngles.y;
+        xRotation = transform.localEulerAngles.x;
+        yRotation = transform.localEulerAngles.y;
 
-        
         if(xRotation <= 0)
         {
             xRotation += 360;
         }
-
-        ClampRotation(ref xRotation);
     }
 
     void GetMouseInput()
@@ -82,6 +79,7 @@ public class RotateCamera : MonoBehaviour
             axisRot += 360;
         }
 
+        
         axisRot -= 180;
         axisRot = Mathf.Clamp(axisRot, 155, 205);
         axisRot += 180;

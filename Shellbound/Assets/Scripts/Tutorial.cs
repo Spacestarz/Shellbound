@@ -52,15 +52,16 @@ public class Tutorial : MonoBehaviour
             dashedTEXT.text = "Dash with SHIFT";
         }
 
-        if (slicedTEXT != null)
-        {
-            slicedTEXT.text = "Slice that man's face";
-        }
-
         if (hookedText)
         {
-            hookedText.text = "Hook that man's face";
+            hookedText.text = "Harpoon the painting!";
         }
+
+        if (slicedTEXT != null)
+        {
+            slicedTEXT.text = "Slice that man's face!";
+        }
+
     }
 
     // Update is called once per frame //You know what update does //its in as default i am lazy 
