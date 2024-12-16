@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using UnityEngine;
 
@@ -52,10 +53,12 @@ public class AttackIndicator : MonoBehaviour
 
         if (BossInCircle == true)
         {
+            
             enemi_Health.TakeDamage(damage);
+
             if (3 % 3 == 0)
             {
-                Debug.Log("Week now hihi");
+                Debug.Log("Weak now hihi");
             }
         }
     }
