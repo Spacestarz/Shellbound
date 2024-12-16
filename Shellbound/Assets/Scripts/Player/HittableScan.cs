@@ -8,7 +8,6 @@ public class HittableScan : MonoBehaviour
     
     public LayerMask layerMask;
     public CrosshairSpinner crosshair;
-
     
     bool isHookable;
 
@@ -31,7 +30,7 @@ public class HittableScan : MonoBehaviour
 
         if (Physics.Raycast(rayOrigin, ray.direction, out hit, fire.maxDistancefromAnchor, ~layerMask) && hit.collider.GetComponent<HookableObject>())
         {
-            isHookable = hit.collider.GetComponent<HookableObject>().IsHookable();
+            isHookable = hit.collider.GetComponent<HookableObject>().IsHookable();          
         }
         else if(isHookable)
         {

@@ -13,6 +13,8 @@ public class Harpoon : MonoBehaviour
     public bool collisionHIT = false;
     public static bool hasCaught;
 
+    public ParticleSystem HitVFX;
+
     private void Awake()
     {
         sr = GetComponentInChildren<SpriteRenderer>();
@@ -32,9 +34,15 @@ public class Harpoon : MonoBehaviour
         if (fire.goingAway && other.GetComponent<HookableObject>())
         {
             other.GetComponent<HookableObject>().GetHit();
+            HitVFX.Stop();
+            HitVFX.Play();
+            Debug.Log("VFX HIT");
         }
         else if (fire.goingAway)
         {
+            HitVFX.Stop();
+            HitVFX.Play();
+            Debug.Log("test vfx");
             fire.ReturnHarpoon();
         }
     }
