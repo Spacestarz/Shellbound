@@ -7,17 +7,17 @@ using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour
 {
-    public Slider PlayerSliderobject;
-    public Slider EnemySliderObject;
-    GameObject player;
-    public GameObject Enemy;
+    //public Slider PlayerSliderobject;       //Line breaks to separate these variable declarations would be helpful
+    //public Slider EnemySliderObject;        //Right now it all kinda blends together and it's hard to see what
+    GameObject player;                      //Goes together with what
+    public GameObject Enemy;    //enemy*
     private GameObject gameOverScreen;
     private GameObject gameoverBLACK;
 
-    private GameObject youwinScreen;
+    private GameObject youwinScreen; //youWinScreen*
 
-    public bool gameoverBOOL = false;
-    public bool defeatedbossBOOL = false;
+    public bool gameoverBOOL = false;       //gameIsOver
+    public bool defeatedbossBOOL = false;   //bossIsDefeated(?)
   
     // Start is called before the first frame update
     void Start()
@@ -27,10 +27,10 @@ public class UI : MonoBehaviour
 
       youwinScreen = GameObject.Find("You win");
 
-      if (PlayerSliderobject != null)
-          PlayerSliderobject.maxValue = player.GetComponent<HealthSystem>().MaxHP;
-       if (EnemySliderObject != null)
-      EnemySliderObject.maxValue = Enemy.GetComponent<HealthSystem>().MaxHP;
+      //if (PlayerSliderobject != null)
+      //    PlayerSliderobject.maxValue = player.GetComponent<HealthSystem>().MaxHP;
+      // if (EnemySliderObject != null)
+      //EnemySliderObject.maxValue = Enemy.GetComponent<HealthSystem>().MaxHP;
       gameOverScreen = GameObject.Find("Game_Over ");
       gameoverBLACK = GameObject.Find("Background panel");
       youwinScreen.SetActive(false);
@@ -39,23 +39,22 @@ public class UI : MonoBehaviour
     
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (PlayerSliderobject != null)
-        {
-            PlayerSliderobject.value = player.GetComponent<HealthSystem>().currentHP;
+        //if (PlayerSliderobject != null)
+        //{
+        //    PlayerSliderobject.value = player.GetComponent<HealthSystem>().currentHP;
 
-            if (PlayerSliderobject.value == 0)
-            {
-                PlayerSliderobject.gameObject.SetActive(false);
-            }
-        }
+        //    if (PlayerSliderobject.value == 0)
+        //    {
+        //        PlayerSliderobject.gameObject.SetActive(false);
+        //    }
+        //}
 
-        if (EnemySliderObject != null)
-        {
-            EnemySliderObject.value = Enemy.GetComponent<HealthSystem>().currentHP;
-        }
+        //if (EnemySliderObject != null)
+        //{
+        //    EnemySliderObject.value = Enemy.GetComponent<HealthSystem>().currentHP;
+        //}
 
         if ((Input.GetKeyDown(KeyCode.Space) && defeatedbossBOOL == true))
         {

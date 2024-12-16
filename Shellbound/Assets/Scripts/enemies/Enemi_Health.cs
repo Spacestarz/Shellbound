@@ -5,18 +5,9 @@ public class Enemi_health : HealthSystem
     [HideInInspector] public bool Harponed = false;
     Base_enemy enemi;
     public float dragspeed = 5;
-    Transform monster;
-    Transform player;
-    Transform harpon;
-    float Distance;
+
     public AudioClip crack;
 
-    private void Awake()
-    {
-        monster = transform;
-        player = GameObject.Find("Player").transform;
-        harpon = GameObject.Find("PlayerHarpoon").transform;
-    }
     public void DisableAI()
     {
         if (GetComponent<Base_enemy>() != null)

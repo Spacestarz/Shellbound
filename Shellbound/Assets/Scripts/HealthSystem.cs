@@ -1,11 +1,17 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthSystem : MonoBehaviour
 {
-    public float MaxHP;
+    public bool hasHealthBar = true;
+    public Slider healthBar;
+
+    public float MaxHP; //maxHP
     public float currentHP;
-    public GameObject Player;
+
+    public GameObject Player; //player*
+
     public AudioSource source;
     public AudioClip audioClip;
 
@@ -13,11 +19,16 @@ public class HealthSystem : MonoBehaviour
     public SpriteRenderer enemySprite;
 
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {      
         currentHP = MaxHP;
         source = GetComponent<AudioSource>();
+
+        if(healthBar)
+        {
+            healthBar.maxValue = MaxHP;
+            healthBar.value = MaxHP;
+        }
     }
 
     public void TakeDamage(int damageTaken)
@@ -41,6 +52,11 @@ public class HealthSystem : MonoBehaviour
             }
 
             Destroy(gameObject);
+        }
+
+        if(hasHealthBar)
+        {
+            healthBar.value = currentHP;
         }
 
     }

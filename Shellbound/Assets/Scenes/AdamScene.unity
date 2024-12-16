@@ -4772,7 +4772,7 @@ MonoBehaviour:
   Player: {fileID: 0}
   source: {fileID: 0}
   audioClip: {fileID: 8300000, guid: cb2ec8cfff8bec140a2e6d29135b4407, type: 3}
-  uiScript: {fileID: 1987324686}
+  uiScript: {fileID: 0}
   enemySprite: {fileID: 2132976302}
   Harponed: 0
   dragspeed: 25
@@ -5235,55 +5235,6 @@ Transform:
   - {fileID: 665235476}
   m_Father: {fileID: 1800359123}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1987324685
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1987324687}
-  - component: {fileID: 1987324686}
-  m_Layer: 0
-  m_Name: UI SCRIPT
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1987324686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1987324685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d29364eb4e614342985e4d34cf33e43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerSliderobject: {fileID: 1616492117}
-  EnemySliderObject: {fileID: 443304980}
-  Enemy: {fileID: 1800359112}
-  gameoverBOOL: 0
-  defeatedbossBOOL: 0
---- !u!4 &1987324687
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1987324685}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 184.40637, y: 125.291855, z: 1.7232189}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2008695744
 GameObject:
   m_ObjectHideFlags: 0
@@ -5404,6 +5355,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2030428304}
+  - component: {fileID: 2030428305}
   m_Layer: 0
   m_Name: UI-----------------------------------------------
   m_TagString: Untagged
@@ -5429,6 +5381,23 @@ Transform:
   - {fileID: 1322653777}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2030428305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030428303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d29364eb4e614342985e4d34cf33e43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerSliderobject: {fileID: 1616492117}
+  EnemySliderObject: {fileID: 443304980}
+  Enemy: {fileID: 1800359112}
+  gameoverBOOL: 0
+  defeatedbossBOOL: 0
 --- !u!1 &2079400807
 GameObject:
   m_ObjectHideFlags: 0
@@ -5806,10 +5775,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 317020497871510609, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.13052607
+      objectReference: {fileID: 0}
+    - target: {fileID: 317020497871510609, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 317020497871510609, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.99144495
+      objectReference: {fileID: 0}
+    - target: {fileID: 317020497871510609, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -195
+      objectReference: {fileID: 0}
     - target: {fileID: 345157075243984301, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
       propertyPath: uiScript
       value: 
-      objectReference: {fileID: 1987324686}
+      objectReference: {fileID: 0}
     - target: {fileID: 2049575555081000770, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19.12
@@ -5880,5 +5865,4 @@ SceneRoots:
   - {fileID: 152013315}
   - {fileID: 258128960}
   - {fileID: 2030428304}
-  - {fileID: 1987324687}
   - {fileID: 1953586568}
