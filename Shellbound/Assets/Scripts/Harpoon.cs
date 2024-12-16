@@ -13,10 +13,16 @@ public class Harpoon : MonoBehaviour
     public bool collisionHIT = false;
     public static bool hasCaught;
 
-    public ParticleSystem HitVFX;
+    public ParticleSystem HitVFXPrefab;
+    private ParticleSystem HitVfxNew;
+    public GameObject Boss;
 
     private void Awake()
     {
+        Boss = GameObject.Find("MantisShrimp");
+        ParticleSystem HitVfxNew = Instantiate(HitVFXPrefab, Boss.transform.position, Quaternion.identity);
+        HitVfxNew.transform.SetParent(Boss.transform);
+
         sr = GetComponentInChildren<SpriteRenderer>();
         line = GetComponentInChildren<MovingLine>();
         sr.enabled = false;
@@ -27,22 +33,19 @@ public class Harpoon : MonoBehaviour
             instance = this;
         }
     }
-
+   
 
     public void OnTriggerEnter(Collider other)
     {
         if (fire.goingAway && other.GetComponent<HookableObject>())
         {
             other.GetComponent<HookableObject>().GetHit();
-            HitVFX.Stop();
-            HitVFX.Play();
-            Debug.Log("VFX HIT");
+            VfxPlay();
+           
         }
         else if (fire.goingAway)
         {
-            HitVFX.Stop();
-            HitVFX.Play();
-            Debug.Log("test vfx");
+            
             fire.ReturnHarpoon();
         }
     }
@@ -62,5 +65,11 @@ public class Harpoon : MonoBehaviour
         PlayerSlice.SetCaughtObject(instance.caughtObject);
         hasCaught = true;
 
+    }
+
+    public void VfxPlay()
+    {
+        HitVfxNew.Play();
+        Debug.Log("VFX HIT");
     }
 }
