@@ -13,6 +13,7 @@ public class Fire : MonoBehaviour
     public GameObject mainCam;
     public float fireRate = 2;
     public float speedReturn = 1;
+    public ParticleSystem fire;
 
     float dist;
     public float maxDistancefromAnchor = 15f; //test this to see whats best
@@ -50,6 +51,8 @@ public class Fire : MonoBehaviour
 
     public void FireHarpoon()
     {
+        fire.Play();
+        //fire.Stop();
         harpoonObject.SetActive(true);
         harpoon.SetVisibility(true);
         goingAway = true;
