@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public abstract class BasePhaseScript : MonoBehaviour
 {
     public abstract void phase();
+    public bool stunable = false;
     public NavMeshAgent agent;
     public Base_enemy enemy;
     public GameObject player;

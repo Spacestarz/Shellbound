@@ -59,16 +59,24 @@ public abstract class base_enemi_attack : BasePhaseScript
             enemy.GetComponentInChildren<MantisAnimator>().anim.SetTrigger("Double Shockwave");
         }
         WaveAnim = true;
-        
         yield return new WaitForSeconds(2.9f);
-        for (int j = 0; j < amount; j++)
+        stunable = true;
+        if (!enemy.volnereble)
         {
-            WaveAnim = false;
-            attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
-            yield return new WaitForSeconds(1.0f);
-            WaveAnim = true;
+
+            for (int j = 0; j < amount; j++)
+            {
+                if (!enemy.volnereble)
+                { 
+                    WaveAnim = false;
+                    attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
+                    yield return new WaitForSeconds(1.0f);
+                    WaveAnim = true;
+                }
+            }
         }
         WaveAnim = false;
+        stunable = false;
         //attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
         StartCoroutine(cooldown(shockwavespeed));
     }

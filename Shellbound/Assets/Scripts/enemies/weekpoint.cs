@@ -17,7 +17,7 @@ public class weekpoint : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (attack.WaveAnim)
+        if (AI.phase.stunable)
         {
             Debug.Log("shuld be week");
             enemy.wekend();
