@@ -4612,7 +4612,7 @@ GameObject:
   - component: {fileID: 1800359113}
   - component: {fileID: 1800359124}
   m_Layer: 12
-  m_Name: enemy_test (1)
+  m_Name: MantisShrimp
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5136,11 +5136,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fd826a4314c1284f92206053a96c6a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  velo: 0
   pushForce: 1000
   target: {fileID: 0}
   wave: {fileID: 5627876896858272488, guid: c5231bb911209024b8a2f83c0b6f50a1, type: 3}
   claw: {fileID: 0}
-  velo: 0
   still: 0
   parent: {fileID: 0}
   cooling: 0
