@@ -11,10 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: bed8f183c8daf7b439c4f25b35050fcd
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/AdamScene.unity
     guid: b27773d77630abc41bcf19b44b4fbb5c
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Albin playtest.unity
     guid: a78d4a5e1b597a0429420be7baa78516
   - enabled: 1
