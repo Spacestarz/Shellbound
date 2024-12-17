@@ -1,5 +1,6 @@
 using DG.Tweening;
 using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class AttackIndicator : MonoBehaviour
@@ -25,12 +26,19 @@ public class AttackIndicator : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Vector3 maxSize;
     private Base_enemy base_EnemyScript;
-    private int BeenHit;
+
+    private GameObject crowdAttackObject; //here for hit monster crowd
+    private Crowd_attacks crowd_AttacksScript; //here for hit monster crowd
+
+    //how many hits the boss takes (crowdattack) before weak.
+    private int TotalBeforeWEAK = 3;
 
     void Awake()
     {
         player = GameObject.Find("Player");
         Boss = GameObject.Find("MantisShrimp");
+        crowdAttackObject = GameObject.Find("CrowdAttack"); //here for hit monster crowd
+        crowd_AttacksScript = crowdAttackObject.GetComponent<Crowd_attacks>(); //here for hit monster crowd
         base_EnemyScript = Boss.GetComponent<Base_enemy>();
         healthSystem = player.GetComponent<HealthSystem>();
         enemi_Health = Boss.GetComponent<Enemi_health>();
@@ -57,14 +65,11 @@ public class AttackIndicator : MonoBehaviour
         if (BossInCircle == true)
         {
             enemi_Health.TakeDamage(damage);
-            BeenHit +=1;
-            Debug.Log("been hit" + " " + BeenHit);
+            crowd_AttacksScript.BeenHit++;
 
-            if (BeenHit >= 2)
-            {                            
-              base_EnemyScript.wekend();
-              Debug.Log("Has been hit 3 time Goodnight");  
-              //BeenHit = 0;
+            if (crowd_AttacksScript.BeenHit >= TotalBeforeWEAK)
+            {
+                base_EnemyScript.wekend();
             }
            
         }

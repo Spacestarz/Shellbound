@@ -11,6 +11,7 @@ public class Crowd_attacks : MonoBehaviour
     private float randomSpawnTime;
 
     public Boss1_AI Boss1_AI;
+    public int BeenHit;
    
     /*
     //random range i float
@@ -63,7 +64,6 @@ public class Crowd_attacks : MonoBehaviour
     private void SpawnCircle()
     {
         preFabCirclePosition = new Vector3(player.transform.position.x, (float)0.04, player.transform.position.z);
-        preFabCircle.transform.position = preFabCirclePosition;
 
         Instantiate(preFabCircle, preFabCirclePosition, Quaternion.Euler(-90, 0, 0)); //the rotation need to be in -90 degree
     }
