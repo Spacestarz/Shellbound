@@ -84,6 +84,7 @@ public abstract class base_enemi_attack : BasePhaseScript
     {
         ElastickAnim = true;
         enemy.atta = false;
+        stunable = true;
         enemy.GetComponentInChildren<MantisAnimator>().anim.SetTrigger("Punch 0");
         yield return new WaitForSeconds(time);
         ElastickAnim = false;

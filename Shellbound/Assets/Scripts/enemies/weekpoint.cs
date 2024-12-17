@@ -12,12 +12,12 @@ public class weekpoint : MonoBehaviour
     {
         enemy = GetComponentInParent<Base_enemy>();
         AI = GetComponentInParent<Boss1_AI>();
-        attack = transform.parent.parent.GetComponentInChildren<base_enemi_attack>();
+        //attack = transform.parent.parent.GetComponentInChildren<base_enemi_attack>();
     }
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (AI.phase.stunable)
+        if (AI.phase.stunable && collision.CompareTag("Dart"))
         {
             Debug.Log("shuld be week");
             enemy.wekend();

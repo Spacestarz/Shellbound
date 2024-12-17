@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7628780839779667836}
   m_Layer: 0
   m_Name: dart
-  m_TagString: Untagged
+  m_TagString: Dart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,7 +120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e2d9fbdd8f16c144b4b8b3b146109cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  controller: {fileID: 0}
+  speed: 5
+  destroytime: 3
 --- !u!54 &7628780839779667836
 Rigidbody:
   m_ObjectHideFlags: 0

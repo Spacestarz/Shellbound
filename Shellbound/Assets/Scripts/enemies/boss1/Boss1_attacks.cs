@@ -24,6 +24,7 @@ public class Boss1_attacks : BossAttacksCommon
     float elastickrange = 12;
     bool isfiered = false;
     public bool cooling = false;
+        Boss1_AI AI;
     [Header("sound")]
     public AudioSource sorce;
     public AudioClip wavesound;
@@ -40,6 +41,7 @@ public class Boss1_attacks : BossAttacksCommon
         clawrig.constraints = RigidbodyConstraints.FreezeAll;
         clawrig.useGravity = false;
         sorce = GetComponentInParent<AudioSource>();
+        AI = GetComponentInParent<Boss1_AI>();
     }
     public void Update()
     {
@@ -71,6 +73,7 @@ public class Boss1_attacks : BossAttacksCommon
                 transform.LookAt(target);
                 still = false;
                 parent.attacking();
+                AI.phase.stunable = false;
             }
         }
     }

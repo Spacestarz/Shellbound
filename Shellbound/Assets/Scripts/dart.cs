@@ -25,11 +25,18 @@ public class dart : MonoBehaviour
     private IEnumerator destroy()
     {
         yield return new WaitForSeconds(destroytime);
-        controller.shot = false;
-        Destroy(this.gameObject);
+        Destroy();
     }
     public void Destroy()
     {
-        Destroy(this.gameObject);
+        controller.shot = false;
+        Destroy(gameObject);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.CompareTag("Player"))
+        {
+            Destroy();
+        }
     }
 }

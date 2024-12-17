@@ -12,6 +12,7 @@ public class UI : MonoBehaviour
     GameObject player;                      //Goes together with what
     public GameObject Enemy;    //enemy*
     private GameObject gameOverScreen;
+    private GameObject gameWonScreen;
     private GameObject gameoverBLACK;
 
 
@@ -30,8 +31,10 @@ public class UI : MonoBehaviour
       //EnemySliderObject.maxValue = Enemy.GetComponent<HealthSystem>().MaxHP;
       gameOverScreen = GameObject.Find("Game_Over ");
       gameoverBLACK = GameObject.Find("Background panel");
+      gameWonScreen = GameObject.Find("You win");
       gameoverBLACK.SetActive(false);
       gameOverScreen.SetActive(false);
+      gameWonScreen.SetActive(false);
     
     }
 
@@ -84,6 +87,7 @@ public class UI : MonoBehaviour
     {
         player.GetComponent<PlayerController>().enabled = false;
         gameoverBLACK.SetActive(true);
+        gameWonScreen.SetActive(true);
 
         defeatedbossBOOL = true;
     }
