@@ -34,8 +34,6 @@ public class UI : MonoBehaviour
       gameWonScreen = GameObject.Find("You win");
       gameoverBLACK.SetActive(false);
       gameOverScreen.SetActive(false);
-      gameWonScreen.SetActive(false);
-    
     }
 
     void Update()
