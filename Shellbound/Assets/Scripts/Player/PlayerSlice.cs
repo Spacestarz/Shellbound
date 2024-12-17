@@ -5,6 +5,8 @@ public class PlayerSlice : MonoBehaviour
     static bool sliceMode;
     static Camera mainCam;
 
+    static PlayerController controller;
+
     public static PlayerSlice instance;
     public HookableObject caughtObject;
     public static SlicePattern currentSlicePattern;
@@ -37,6 +39,7 @@ public class PlayerSlice : MonoBehaviour
         {
             instance = this;
         }
+        controller = GetComponent<PlayerController>();
     }
 
     private void LateUpdate()
@@ -67,7 +70,9 @@ public class PlayerSlice : MonoBehaviour
         {
             currentSlicePattern.DestroyArrow();
             currentSlicePattern.ResetPattern();
-            
+
+            controller.harpoontime = false;
+
             instance.GetComponent<Fire>().ReturnHarpoon();
         }
 

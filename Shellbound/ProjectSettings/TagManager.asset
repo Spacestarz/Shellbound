@@ -13,6 +13,7 @@ TagManager:
   - Outer Spere
   - Inner spere
   - Ground
+  - Dart
   layers:
   - Default
   - TransparentFX
