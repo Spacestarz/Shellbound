@@ -14,7 +14,6 @@ public class UI : MonoBehaviour
     private GameObject gameOverScreen;
     private GameObject gameoverBLACK;
 
-    private GameObject youwinScreen; //youWinScreen*
 
     public bool gameoverBOOL = false;       //gameIsOver
     public bool defeatedbossBOOL = false;   //bossIsDefeated(?)
@@ -25,15 +24,12 @@ public class UI : MonoBehaviour
        
       player = GameObject.FindGameObjectWithTag("Player");
 
-      youwinScreen = GameObject.Find("You win");
-
       //if (PlayerSliderobject != null)
       //    PlayerSliderobject.maxValue = player.GetComponent<HealthSystem>().MaxHP;
       // if (EnemySliderObject != null)
       //EnemySliderObject.maxValue = Enemy.GetComponent<HealthSystem>().MaxHP;
       gameOverScreen = GameObject.Find("Game_Over ");
       gameoverBLACK = GameObject.Find("Background panel");
-      youwinScreen.SetActive(false);
       gameoverBLACK.SetActive(false);
       gameOverScreen.SetActive(false);
     
@@ -88,7 +84,6 @@ public class UI : MonoBehaviour
     {
         player.GetComponent<PlayerController>().enabled = false;
         gameoverBLACK.SetActive(true);
-        youwinScreen.SetActive(true);
 
         defeatedbossBOOL = true;
     }

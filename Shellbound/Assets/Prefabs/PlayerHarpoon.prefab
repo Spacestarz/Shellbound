@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   caughtObject: {fileID: 0}
-  fire: {fileID: 0}
+  fire: {fileID: 7276528945462405297, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
   collisionHIT: 0
   HitVFXPrefab: {fileID: 8826482487032156673}
   Boss: {fileID: 0}
