@@ -24,11 +24,14 @@ public class AttackIndicator : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private Vector3 maxSize;
+    private Base_enemy base_EnemyScript;
+    private int BeenHit;
 
     void Awake()
     {
         player = GameObject.Find("Player");
         Boss = GameObject.Find("MantisShrimp");
+        base_EnemyScript = Boss.GetComponent<Base_enemy>();
         healthSystem = player.GetComponent<HealthSystem>();
         enemi_Health = Boss.GetComponent<Enemi_health>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -53,13 +56,17 @@ public class AttackIndicator : MonoBehaviour
 
         if (BossInCircle == true)
         {
-            
             enemi_Health.TakeDamage(damage);
+            BeenHit +=1;
+            Debug.Log("been hit" + " " + BeenHit);
 
-            if (3 % 3 == 0)
-            {
-                Debug.Log("Weak now hihi");
+            if (BeenHit >= 2)
+            {                            
+              base_EnemyScript.wekend();
+              Debug.Log("Has been hit 3 time Goodnight");  
+              //BeenHit = 0;
             }
+           
         }
     }
 
