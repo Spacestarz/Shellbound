@@ -40,8 +40,18 @@ public class PlayerController : MonoBehaviour
     public bool harpoontime = false;
     public bool shot = false;
 
+
+
+    public ParticleSystem HitVFXPrefab;
+    private ParticleSystem HitVfxNew;
+    public GameObject Boss;
+
     private void Start()
     {
+        Boss = GameObject.Find("MantisShrimp");
+        HitVfxNew = Instantiate(HitVFXPrefab, Boss.transform.position, Quaternion.identity);
+        HitVfxNew.transform.SetParent(Boss.transform);
+
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
@@ -205,4 +215,12 @@ public class PlayerController : MonoBehaviour
         knockedBack = false;
         rb.drag = groundDrag;
     }
+
+    public void HitVfxPlay()
+    {
+        HitVfxNew.Play();
+    }
+    
+        
 }
+

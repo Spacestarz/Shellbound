@@ -34,9 +34,12 @@ public class HookableObject : MonoBehaviour
     [SerializeField] private UnityEvent Event;
 
 
+    private PlayerController playerController; 
+
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
+        playerController = player.GetComponent<PlayerController>(); 
         fire = player.GetComponent<Fire>();
         sliceableObject = GetComponent<SliceableObject>();
     }
@@ -96,7 +99,9 @@ public class HookableObject : MonoBehaviour
             {
                 GetComponent<Enemi_health>().DisableAI();
                 GetComponent<Base_enemy>().StopWeakTimer();
-                
+
+                //insert play hitVFX
+                playerController.HitVfxPlay(); 
                 Harpoon.SetCaughtObject(this);
                 isCaught = true;
                 fire.goingAway = false;
