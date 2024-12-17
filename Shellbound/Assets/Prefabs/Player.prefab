@@ -470,6 +470,9 @@ MonoBehaviour:
     m_Bits: 1024
   grounded: 0
   orientation: {fileID: 4744199865910598526}
+  dart: {fileID: 8027550816766089578, guid: 4aa3a871c4256614f9a6d6394f9de2f5, type: 3}
+  harpoontime: 0
+  shot: 0
 --- !u!114 &1098707224179054970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -516,6 +519,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b2f8dc9852bda74aaa91398c240e7cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasHealthBar: 1
+  healthBar: {fileID: 0}
   MaxHP: 10
   currentHP: 0
   Player: {fileID: 2553824470831661199}
