@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 752052735915149740}
   m_Layer: 11
   m_Name: PlayerHarpoon
-  m_TagString: Untagged
+  m_TagString: Harpoon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -151,9 +151,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   caughtObject: {fileID: 0}
-  fire: {fileID: 7276528945462405297, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
+  fire: {fileID: 0}
   collisionHIT: 0
-  HitVFXPrefab: {fileID: 8826482487032156673}
   Boss: {fileID: 0}
 --- !u!114 &925237921399434096
 MonoBehaviour:
@@ -533,10 +532,5 @@ PrefabInstance:
 --- !u!4 &3852625635278342983 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3634518413781445751, guid: 294c2802df2e9cb4693c6f582a02f175, type: 3}
-  m_PrefabInstance: {fileID: 506410487674267440}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &8826482487032156673 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 9041775225042728241, guid: 294c2802df2e9cb4693c6f582a02f175, type: 3}
   m_PrefabInstance: {fileID: 506410487674267440}
   m_PrefabAsset: {fileID: 0}
