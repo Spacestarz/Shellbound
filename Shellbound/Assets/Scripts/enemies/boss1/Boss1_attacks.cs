@@ -30,6 +30,10 @@ public class Boss1_attacks : BossAttacksCommon
     public AudioClip wavesound;
     public AudioClip elastickstartsound;
     public AudioClip jabsound;
+
+
+
+    public UrchinSpawner UrchinSpawnerScript;
     private void Awake()
     {
         target = GameObject.Find("Player").transform;
@@ -146,6 +150,9 @@ public class Boss1_attacks : BossAttacksCommon
         //Debug.Log(wave.transform.rotation);
         StartCoroutine(Instantiate(wave,lokation, Quaternion.Euler(new Vector3(transform.rotation.x, transform.rotation.y, 90))).GetComponent<Wave>().shockwave(duration, scale, range, target));
         Camera.main.GetComponent<CameraHandler>().ShakeCamera();
+
+        //spawning urchins
+        UrchinSpawnerScript.SpawnUrchins();
         
     }
     public IEnumerator Cool(float attackCooling, float attackRange)

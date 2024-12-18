@@ -1627,7 +1627,12 @@ MonoBehaviour:
   IsCheering: 0
   IsBooing: 0
   cheerAudioSource: {fileID: 617462321}
-  cheerClip: {fileID: 8300000, guid: b1aa8fc0c58dcf648a19918985d178e7, type: 3}
+  cheerSound:
+  - {fileID: 8300000, guid: 6879692e47ecb8e488ba44319f42b44f, type: 3}
+  - {fileID: 8300000, guid: 8f30fcdc4d0ee4742aa52ba52ff2b6d7, type: 3}
+  - {fileID: 8300000, guid: 4086aa0e6eb8fcd4a89004e53bad878f, type: 3}
+  - {fileID: 8300000, guid: 142e32cfe765b244085b13693e22e7fe, type: 3}
+  - {fileID: 8300000, guid: b1aa8fc0c58dcf648a19918985d178e7, type: 3}
 --- !u!4 &617462320
 Transform:
   m_ObjectHideFlags: 0
@@ -3162,6 +3167,53 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2553824470831661199, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
   m_PrefabInstance: {fileID: 6035875059548108457}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1077651912
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1077651914}
+  - component: {fileID: 1077651913}
+  m_Layer: 0
+  m_Name: UrchinSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1077651913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077651912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d1f69b7a5e022c44a026ff071a71352, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  urchinPreFab: {fileID: 3373935243921306136, guid: df709e09e0149a645a27db8adf5e1c5b, type: 3}
+  HeightofY: 13
+  CircleArea: 5
+--- !u!4 &1077651914
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077651912}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.21, y: 13.86, z: -5.93}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1177538289
 GameObject:
   m_ObjectHideFlags: 0
@@ -5495,6 +5547,7 @@ MonoBehaviour:
   wavesound: {fileID: 8300000, guid: 53b12810830021d44ab20ababf5be8ff, type: 3}
   elastickstartsound: {fileID: 8300000, guid: e9cf99480170fa74d8c8844b2d56c990, type: 3}
   jabsound: {fileID: 8300000, guid: bf529620e0b848a4e8ff490a73d420fd, type: 3}
+  UrchinSpawnerScript: {fileID: 1077651913}
 --- !u!135 &1958218815
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6262,3 +6315,4 @@ SceneRoots:
   - {fileID: 1953586568}
   - {fileID: 401250645}
   - {fileID: 617462320}
+  - {fileID: 1077651914}
