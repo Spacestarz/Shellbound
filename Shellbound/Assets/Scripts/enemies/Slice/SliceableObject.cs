@@ -40,7 +40,10 @@ public class SliceableObject : MonoBehaviour
 
     public void FinalSlice()
     {
-        ShrimpCrowdScript.Cheer(); 
+        if(ShrimpCrowdScript)
+        {
+            ShrimpCrowdScript.Cheer(); 
+        }
 
         switch (type)
         {
