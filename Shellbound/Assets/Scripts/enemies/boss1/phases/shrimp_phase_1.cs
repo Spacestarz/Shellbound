@@ -6,15 +6,10 @@ public class shrimp_phase_1 : base_enemi_attack
 {
     public override void phase()
     {
-        /*if (enemy.Range(startpunchrange) && !enemy.volnereble && !PlayerSlice.SliceMode())
+        if (enemy.Range(startpunchrange) && !enemy.volnereble && !PlayerSlice.SliceMode())
         {
             resetpositon();
-            transform.LookAt(new Vector3(attack.target.position.x, transform.position.y, attack.target.position.z));
-            if (!attack.cooling)
-            {
-                StartCoroutine(attack.Cool(punchspeed, punchrange));
-            }
-        }*/
+        }
         if (enemy.Range(startelastickrange) && enemy.atta && !enemy.volnereble && !PlayerSlice.SliceMode())
         {
             StartCoroutine(elestickdelay(elastickdelai));
@@ -22,7 +17,7 @@ public class shrimp_phase_1 : base_enemi_attack
             //enemy.atta = false;
             //resetpositon();
         }
-        else if (!enemy.volnereble && !PlayerSlice.SliceMode())
+        else if (!enemy.Range(startpunchrange) && !enemy.volnereble && !PlayerSlice.SliceMode())
         {
             enemy.agent.SetDestination(enemy.target.position);
         }
