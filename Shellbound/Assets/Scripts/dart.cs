@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class dart : MonoBehaviour
 {
-    public PlayerController controller;
+    public FireDart fireDart;
     public float speed = 2;
     public float destroytime = 3;
     Rigidbody rig;
+
     // Start is called before the first frame update
     private void Awake()
     {
+        fireDart = Camera.main.transform.GetComponentInParent<FireDart>();
         rig = GetComponent<Rigidbody>();
         fire();
-        controller = Camera.main.transform.GetComponentInParent<PlayerController>();
     }
     private void fire()
     {
@@ -29,7 +30,7 @@ public class dart : MonoBehaviour
     }
     public void Destroy()
     {
-        controller.shot = false;
+        fireDart.shot = false;
         Destroy(gameObject);
     }
     private void OnTriggerEnter(Collider other)

@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public float dashForce;
     public float dashDuration;
     public float dashCooldown;
-   public bool dashing;
+    public bool dashing;
     bool readyToDash;
 
     bool knockedBack;
@@ -31,16 +31,16 @@ public class PlayerController : MonoBehaviour
     float verticalInput;
 
     Vector3 moveDirection;
-    Vector3 flatVelo;
 
     Rigidbody rb;
     PlayerSlice slice;
-    Fire fire;
+    Fire fireHarpoon;
+    FireDart fireDart;
+
     public GameObject dart;
     public bool harpoontime = false;
     public bool shot = false;
     public bool alweyspoon = false;
-
 
 
     public ParticleSystem HitVFXPrefab;
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip harpoonSound;
     public AudioClip dartSound;
 
-    private void Start()
+    private void Awake()
     {
         Boss = GameObject.Find("MantisShrimp");
         HitVfxNew = Instantiate(HitVFXPrefab, Boss.transform.position, Quaternion.identity);
@@ -62,7 +62,8 @@ public class PlayerController : MonoBehaviour
         rb.freezeRotation = true;
 
         slice = GetComponent<PlayerSlice>();
-        fire = GetComponent<Fire>();
+        fireHarpoon = GetComponent<Fire>();
+        fireDart = GetComponent<FireDart>();
 
         dashing = false;
 
@@ -115,17 +116,16 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Fire1") && !PlayerSlice.SliceMode() && !fire.fired && (harpoontime || alweyspoon))
+        if (Input.GetButtonDown("Fire1") && !PlayerSlice.SliceMode() && !fireHarpoon.fired && (harpoontime || alweyspoon))
         {
             sorce.PlayOneShot(harpoonSound);
-            fire.InvokeFire();
+            fireHarpoon.InvokeFire();
         }
-        else if (Input.GetButtonDown("Fire1") && !PlayerSlice.SliceMode() && !shot && !harpoontime)
+        else if (Input.GetButtonDown("Fire1") && !PlayerSlice.SliceMode() && !fireDart.shot && !harpoontime)
         {
-            sorce.PlayOneShot(dartSound);
-            shot = true;
-            Instantiate(dart,Camera.main.transform.position,Camera.main.transform.rotation);
+            fireDart.RequestFire();
         }
+
         if (Input.GetKeyDown(KeyCode.Keypad0))
         {
             harpoontime = !harpoontime;
@@ -233,4 +233,3 @@ public class PlayerController : MonoBehaviour
     
         
 }
-

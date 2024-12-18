@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
-  speed: 10
+  speed: 20
   destroytime: 2
 --- !u!54 &7628780839779667836
 Rigidbody:

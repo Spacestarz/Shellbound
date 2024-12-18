@@ -6,7 +6,7 @@ using UnityEngine;
 public class AttackIndicator : MonoBehaviour
 {
     [Header("Destroytimer of circle")]
-    public float destroyTimer = 5;
+    public float destroyTimer = 3;
     private float destroyTime = 0;
 
     private Vector3 preFabCirclePosition;
