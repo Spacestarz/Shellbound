@@ -32,8 +32,8 @@ public class AttackIndicator : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.color = new Color(0, 0, 0, 0);
 
-        maxSize = transform.localScale;
-        transform.localScale = Vector3.zero;
+        //maxSize = transform.localScale;
+        //transform.localScale = Vector3.zero;
 
         StartCoroutine(DestroyCount());
         //Invoke("IsPlayerHere", destroyTimer);
@@ -64,16 +64,15 @@ public class AttackIndicator : MonoBehaviour
             destroyTime += Time.deltaTime;
             if(destroyTime <= destroyTimer * 0.5)
             {
-                spriteRenderer.color = Color.Lerp(new Color(0, 0, 0, 0), new Color(1, 1, 1, 0.7f), destroyTime / (destroyTimer * 0.50f));
+                spriteRenderer.color = Color.Lerp(new Color(0, 0, 0, 0.2f), new Color(1, 1, 1, 0.7f), destroyTime / (destroyTimer * 0.50f));
                 secondColor = spriteRenderer.color;
             }
             else
             {
-                Debug.Log("Red");
                 spriteRenderer.color = Color.Lerp(secondColor, Color.red, secondDestroyTime / (destroyTimer * 0.50f));
                 secondDestroyTime += Time.deltaTime;
             }
-            transform.localScale = Vector3.Lerp(Vector3.zero, maxSize, destroyTime /destroyTimer);
+            //transform.localScale = Vector3.Lerp(Vector3.zero, maxSize, destroyTime /destroyTimer);
             yield return null;
         }
         IsPlayerHere();
