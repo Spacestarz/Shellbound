@@ -11,7 +11,6 @@ public class Crowd_attacks : MonoBehaviour
     private float randomSpawnTime;
 
     public Boss1_AI Boss1_AI;
-    public int BeenHit;
    
     /*
     //random range i float

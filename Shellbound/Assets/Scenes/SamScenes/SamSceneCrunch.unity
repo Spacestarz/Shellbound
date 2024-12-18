@@ -5188,6 +5188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preFabCircle: {fileID: 4632664452930522911, guid: fa9814bea5ae5f74193d83d671388883, type: 3}
   Boss1_AI: {fileID: 1800359119}
+  BeenHit: 0
 --- !u!4 &1953586568
 Transform:
   m_ObjectHideFlags: 0

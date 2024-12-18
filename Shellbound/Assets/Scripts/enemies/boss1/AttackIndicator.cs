@@ -64,14 +64,9 @@ public class AttackIndicator : MonoBehaviour
 
         if (BossInCircle == true)
         {
-            enemi_Health.TakeDamage(damage);
-            crowd_AttacksScript.BeenHit++;
-
-            if (crowd_AttacksScript.BeenHit >= TotalBeforeWEAK)
-            {
-                base_EnemyScript.wekend();
-            }
-           
+            //Insert sounds like klank so the player knows the boss has been hit but it dident do anything
+            // KLONK
+               
         }
     }
 
