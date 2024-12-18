@@ -35,11 +35,14 @@ public class HealthSystem : MonoBehaviour
     {
         currentHP -= damageTaken;
        
-        source.PlayOneShot(audioClip, 0.2f);
 
         if (gameObject.CompareTag("Player") && currentHP <= 0)
         {
-            PlayerDead();   
+            source.PlayOneShot(audioClip, 0.2f);
+            if(currentHP <= 0)
+            {
+                PlayerDead();   
+            }
         }
 
         if (gameObject.CompareTag("Enemy") && currentHP <= 0)

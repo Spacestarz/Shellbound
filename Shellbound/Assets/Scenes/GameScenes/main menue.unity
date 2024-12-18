@@ -353,7 +353,8 @@ MonoBehaviour:
     G40X -- https://freesound.org/s/770176/ -- License: Creative Commons 0\n\n05695
     harpoon deploy swoosh.wav by Robinhood76 -- https://freesound.org/s/268561/ --
     License: Attribution NonCommercial 4.0\n\n29_Disparo_Arpon.wav by ChristianAnd
-    -- https://freesound.org/s/468854/ -- License: Creative Commons 0"
+    -- https://freesound.org/s/468854/ -- License: Creative Commons 0\n\nBaseballHitAndCrowdCheer.mp3
+    by AmishRob -- https://freesound.org/s/214989/ -- License: Attribution 4.0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

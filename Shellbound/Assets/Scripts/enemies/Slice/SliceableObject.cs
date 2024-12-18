@@ -5,6 +5,7 @@ public class SliceableObject : MonoBehaviour
 {
     public SlicePattern sliceBoard;
     public int sliceAmount = 3;
+    public AudioClip slicefinish;
 
     public enum Type
     {
@@ -40,6 +41,7 @@ public class SliceableObject : MonoBehaviour
         {
             case Type.Enemy:
                 GetComponent<HealthSystem>().TakeDamage(5);
+                GetComponent<Enemi_health>().source.PlayOneShot(slicefinish);
                 break;
             case Type.Trigger:
                 testEvent.Invoke();
