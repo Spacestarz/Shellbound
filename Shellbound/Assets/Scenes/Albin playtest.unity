@@ -490,6 +490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sliceBoard: {fileID: 0}
   sliceAmount: 3
+  slicefinish: {fileID: 0}
   type: 0
   testEvent:
     m_PersistentCalls:
@@ -8989,6 +8990,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sliceBoard: {fileID: 0}
   sliceAmount: 3
+  slicefinish: {fileID: 0}
   type: 0
   testEvent:
     m_PersistentCalls:
@@ -10645,10 +10647,6 @@ PrefabInstance:
     - target: {fileID: 3373935243921306136, guid: df709e09e0149a645a27db8adf5e1c5b, type: 3}
       propertyPath: m_Name
       value: urchin
-      objectReference: {fileID: 0}
-    - target: {fileID: 4808719970996533751, guid: df709e09e0149a645a27db8adf5e1c5b, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8368826265888885447, guid: df709e09e0149a645a27db8adf5e1c5b, type: 3}
       propertyPath: m_LocalPosition.x
