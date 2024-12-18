@@ -5,13 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
+    public static SceneController instance;
+
     private void Awake()
     {
-        GameObject[] obj = GameObject.FindGameObjectsWithTag("GameController");
-        if(obj.Length > 1)
+        if (instance != null && instance != this)
         {
-            Destroy(gameObject);
+            Destroy(this);
         }
+        else
+        {
+            instance = this;
+        }
+
+        //GameObject[] obj = GameObject.FindGameObjectsWithTag("GameController");
+        //if(obj.Length > 1)
+        //{
+        //    Destroy(gameObject);
+        //}
         DontDestroyOnLoad(gameObject);
     }
     private void Update()
