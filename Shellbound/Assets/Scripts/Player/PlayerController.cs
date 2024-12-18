@@ -49,8 +49,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("audio")]
     AudioSource sorce;
-    public AudioClip harpoonSound;
-    public AudioClip dartSound;
+    [SerializeField] AudioClip dashSound;
 
     private void Awake()
     {
@@ -118,7 +117,6 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") && !PlayerSlice.SliceMode() && !fireHarpoon.fired && (harpoontime || alweyspoon))
         {
-            sorce.PlayOneShot(harpoonSound);
             fireHarpoon.InvokeFire();
         }
         else if (Input.GetButtonDown("Fire1") && !PlayerSlice.SliceMode() && !fireDart.shot && !harpoontime)
@@ -187,6 +185,7 @@ public class PlayerController : MonoBehaviour
 
     private void Dash()
     {
+        sorce.PlayOneShot(dashSound);
         dashing = true;
         Camera.main.GetComponent<CameraHandler>().ChangeFOV(dashDuration);
     }
