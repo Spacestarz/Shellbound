@@ -11,4 +11,11 @@ public class urchin : MonoBehaviour
             collision.gameObject.GetComponent<HealthSystem>().TakeDamage(1);
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Dart") || other.CompareTag("Harpoon"))
+        {
+            GetComponent<HealthSystem>().TakeDamage(1);
+        }
+    }
 }

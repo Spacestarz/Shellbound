@@ -15,12 +15,6 @@ public class ShrimpCrowd : MonoBehaviour
     public AudioSource cheerAudioSource;  
     public List<AudioClip> cheerSound;
 
-    // cheer / boo when player complete a full 3 slice
-
-    /*
-     * have a scrimp script where they cheer and this is the central hub to see if the bool is still true
-     * 
-     * */
     public void Update()
     {
 
@@ -33,7 +27,6 @@ public class ShrimpCrowd : MonoBehaviour
     public void Cheer()
     {       
        IsCheering = true;
-       Debug.Log("cheering is" + IsCheering);
        cheerAudioSource.PlayOneShot(cheerSound[Random.Range(0,cheerSound.Count)]);
 
     }

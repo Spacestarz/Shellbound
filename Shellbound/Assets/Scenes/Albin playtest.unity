@@ -1586,6 +1586,7 @@ GameObject:
   - component: {fileID: 277224848}
   - component: {fileID: 277224847}
   - component: {fileID: 277224846}
+  - component: {fileID: 277224852}
   m_Layer: 0
   m_Name: crowd
   m_TagString: Untagged
@@ -1795,6 +1796,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &277224852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 277224845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d1f69b7a5e022c44a026ff071a71352, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  urchinPreFab: {fileID: 3373935243921306136, guid: df709e09e0149a645a27db8adf5e1c5b, type: 3}
+  HeightofY: 2
+  CircleArea: 13
 --- !u!1 &277641582
 GameObject:
   m_ObjectHideFlags: 0
@@ -4158,6 +4174,7 @@ MonoBehaviour:
   wavesound: {fileID: 8300000, guid: 53b12810830021d44ab20ababf5be8ff, type: 3}
   elastickstartsound: {fileID: 8300000, guid: e9cf99480170fa74d8c8844b2d56c990, type: 3}
   jabsound: {fileID: 8300000, guid: bf529620e0b848a4e8ff490a73d420fd, type: 3}
+  UrchinSpawnerScript: {fileID: 0}
 --- !u!135 &704071710
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -8613,6 +8630,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 345157075243984301, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
+      propertyPath: MaxHP
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 345157075243984301, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
       propertyPath: uiScript
       value: 
       objectReference: {fileID: 1987324686}
@@ -9761,6 +9782,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MantisShrimp
       objectReference: {fileID: 0}
+    - target: {fileID: 8552221987041293120, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+      propertyPath: UrchinSpawnerScript
+      value: 
+      objectReference: {fileID: 277224852}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9810,6 +9835,7 @@ MonoBehaviour:
   wavesound: {fileID: 8300000, guid: 27e952a573b731641806b48b546c74bf, type: 3}
   elastickstartsound: {fileID: 8300000, guid: 4d596353b1360194ab159310c6dd7b47, type: 3}
   jabsound: {fileID: 8300000, guid: bf529620e0b848a4e8ff490a73d420fd, type: 3}
+  UrchinSpawnerScript: {fileID: 0}
 --- !u!135 &1958218815
 SphereCollider:
   m_ObjectHideFlags: 0
