@@ -35,6 +35,7 @@ public class MainMenueSpecials : MonoBehaviour
             CreditText.transform.DOMoveX(25, 2).OnPlay(show).OnComplete(setfalse);
         }
     }
+
     void hide()
     {
         CreditText.SetActive(false);
