@@ -29,6 +29,7 @@ public class shrimp_phase_3 : base_enemi_attack
             {
                 //attack.parent.stop();
                 attack.still = true;
+                StopCoroutine(dublewave(wavemount));
                 wavemount = Random.Range(1, 4);
                 StartCoroutine(dublewave(wavemount));
             }
