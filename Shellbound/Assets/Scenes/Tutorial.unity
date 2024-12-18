@@ -4305,6 +4305,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2072930579}
     - target: {fileID: 6436071372013053310, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
+      propertyPath: alweyspoon
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6436071372013053310, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
       propertyPath: harpoontime
       value: 1
       objectReference: {fileID: 0}
