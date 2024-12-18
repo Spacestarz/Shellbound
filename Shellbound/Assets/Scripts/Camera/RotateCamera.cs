@@ -56,8 +56,8 @@ public class RotateCamera : MonoBehaviour
 
     void GetMouseInput()
     {
-        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensitivityX;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensitivityY;
+        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensitivityX;//SettingsManager.horizontalSensitivity;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensitivityY;//SettingsManager.verticalSensitivity;
 
         xRotation -= mouseY;
         yRotation += mouseX;

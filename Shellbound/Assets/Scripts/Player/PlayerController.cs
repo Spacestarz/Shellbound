@@ -47,6 +47,11 @@ public class PlayerController : MonoBehaviour
     private ParticleSystem HitVfxNew;
     public GameObject Boss;
 
+    [Header("audio")]
+    AudioSource sorce;
+    public AudioClip harpoonSound;
+    public AudioClip dartSound;
+
     private void Start()
     {
         Boss = GameObject.Find("MantisShrimp");
@@ -63,6 +68,8 @@ public class PlayerController : MonoBehaviour
 
         readyToJump = true;
         readyToDash = true;
+
+        sorce = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -110,10 +117,12 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") && !PlayerSlice.SliceMode() && !fire.fired && (harpoontime || alweyspoon))
         {
+            sorce.PlayOneShot(harpoonSound);
             fire.InvokeFire();
         }
         else if (Input.GetButtonDown("Fire1") && !PlayerSlice.SliceMode() && !shot && !harpoontime)
         {
+            sorce.PlayOneShot(dartSound);
             shot = true;
             Instantiate(dart,Camera.main.transform.position,Camera.main.transform.rotation);
         }

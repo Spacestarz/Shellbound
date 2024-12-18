@@ -22,6 +22,8 @@ public class Fire : MonoBehaviour
     public bool fired = false;
     public bool goingAway = false;
 
+
+
     void Awake()
     {
         harpoon = harpoonObject.GetComponent<Harpoon>();

@@ -26,6 +26,7 @@ public class FadeToBlack : MonoBehaviour
 
     void NextScene()
     {
-        GameObject.FindWithTag("GameController").GetComponent<SceneController>().NextLevel();
+        SceneController[] obj = FindObjectsByType<SceneController>(FindObjectsSortMode.None);
+        obj[0].NextLevel();
     }
 }

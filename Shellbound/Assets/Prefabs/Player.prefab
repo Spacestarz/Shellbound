@@ -473,8 +473,11 @@ MonoBehaviour:
   dart: {fileID: 8027550816766089578, guid: 4aa3a871c4256614f9a6d6394f9de2f5, type: 3}
   harpoontime: 0
   shot: 0
+  alweyspoon: 0
   HitVFXPrefab: {fileID: 9041775225042728241, guid: 294c2802df2e9cb4693c6f582a02f175, type: 3}
   Boss: {fileID: 0}
+  harpoonSound: {fileID: 8300000, guid: 122765056b46c314788872f58bae1de1, type: 3}
+  dartSound: {fileID: 8300000, guid: 3bbc67b5e1f68524d8a9238d65bd8728, type: 3}
 --- !u!114 &1098707224179054970
 MonoBehaviour:
   m_ObjectHideFlags: 0
