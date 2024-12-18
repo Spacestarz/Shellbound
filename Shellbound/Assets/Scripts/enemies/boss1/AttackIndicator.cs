@@ -62,14 +62,15 @@ public class AttackIndicator : MonoBehaviour
         while (destroyTime <= destroyTimer)
         {
             destroyTime += Time.deltaTime;
-            if(destroyTime <= destroyTimer * 0.9)
+            if(destroyTime <= destroyTimer * 0.5)
             {
-                spriteRenderer.color = Color.Lerp(new Color(0, 0, 0, 0), new Color(0, 0, 0, 0.7f), destroyTime / (destroyTimer * 0.95f));
+                spriteRenderer.color = Color.Lerp(new Color(0, 0, 0, 0), new Color(1, 1, 1, 0.7f), destroyTime / (destroyTimer * 0.50f));
                 secondColor = spriteRenderer.color;
             }
             else
             {
-                spriteRenderer.color = Color.Lerp(secondColor, Color.red, secondDestroyTime / (destroyTimer * 0.05f));
+                Debug.Log("Red");
+                spriteRenderer.color = Color.Lerp(secondColor, Color.red, secondDestroyTime / (destroyTimer * 0.50f));
                 secondDestroyTime += Time.deltaTime;
             }
             transform.localScale = Vector3.Lerp(Vector3.zero, maxSize, destroyTime /destroyTimer);
