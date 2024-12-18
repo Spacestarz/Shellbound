@@ -1527,6 +1527,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sliceBoard: {fileID: 0}
   sliceAmount: 3
+  slicefinish: {fileID: 8300000, guid: 445c96962ec2a3444b9f5bba41ffd88a, type: 3}
+  ShrimpCrowdScript: {fileID: 0}
   type: 0
   testEvent:
     m_PersistentCalls:
