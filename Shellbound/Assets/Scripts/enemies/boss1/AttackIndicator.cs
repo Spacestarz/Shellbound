@@ -11,14 +11,10 @@ public class AttackIndicator : MonoBehaviour
 
     private Vector3 preFabCirclePosition;
     private HealthSystem healthSystem;
-    private Enemi_health enemi_Health;
-
     private GameObject player;
-    private GameObject Boss;
     private int damage = 1;
 
     private bool playerInCircle = false;
-    private bool BossInCircle = false;
     
 
     public GameObject preFabCircle;
@@ -27,21 +23,12 @@ public class AttackIndicator : MonoBehaviour
     private Vector3 maxSize;
     private Base_enemy base_EnemyScript;
 
-    private GameObject crowdAttackObject; //here for hit monster crowd
-    private Crowd_attacks crowd_AttacksScript; //here for hit monster crowd
-
-    //how many hits the boss takes (crowdattack) before weak.
-    private int TotalBeforeWEAK = 3;
 
     void Awake()
     {
         player = GameObject.Find("Player");
-        Boss = GameObject.Find("MantisShrimp");
-        crowdAttackObject = GameObject.Find("CrowdAttack"); //here for hit monster crowd
-        crowd_AttacksScript = crowdAttackObject.GetComponent<Crowd_attacks>(); //here for hit monster crowd
-        base_EnemyScript = Boss.GetComponent<Base_enemy>();
         healthSystem = player.GetComponent<HealthSystem>();
-        enemi_Health = Boss.GetComponent<Enemi_health>();
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.color = new Color(0, 0, 0, 0);
 
@@ -60,13 +47,6 @@ public class AttackIndicator : MonoBehaviour
         if (playerInCircle == true)
         {
             healthSystem.TakeDamage(damage);
-        }
-
-        if (BossInCircle == true)
-        {
-            //Insert sounds like klank so the player knows the boss has been hit but it dident do anything
-            // KLONK
-               
         }
     }
 
@@ -102,11 +82,6 @@ public class AttackIndicator : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
-        {         
-            BossInCircle = true;
-        }
-
         if (other.CompareTag("Player"))
         {
             playerInCircle = true;
@@ -115,11 +90,6 @@ public class AttackIndicator : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Enemy"))
-        {
-            BossInCircle = false;
-        }
-
         if (other.CompareTag("Player"))
         {
             playerInCircle = false;
