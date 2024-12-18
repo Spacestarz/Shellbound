@@ -344,7 +344,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Programers:\nAlbin Kron\nAdam Wijk\nSam Romell\n\nArtists:\nMio Rol\xE9n\nKai
+  m_text: "Programmers:\nAlbin Kron\nAdam Wijk\nSam Romell\n\nArtists:\nMio Rol\xE9n\nKai
     Klein\nFelicia Almqvist\n\nSound credits:\n\ncustom_short_explosion_impact_sound
     by Artninja -- https://freesound.org/s/750822/ -- License: Attribution 4.0\n\n\nSmashed
     Egg by pandartb3d -- https://freesound.org/s/627927/ -- License: Creative Commons
@@ -1856,7 +1856,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 1000, y: 0}
+  m_AnchoredPosition: {x: 1000, y: -184}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &843158553
