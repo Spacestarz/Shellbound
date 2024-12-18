@@ -19,7 +19,8 @@ public class CrowdMove : MonoBehaviour
 
     
     void Update()
-    {
+    {      
+
         if (ShrimpCrowd.IsCheering)
         {
             Debug.Log("cheer");

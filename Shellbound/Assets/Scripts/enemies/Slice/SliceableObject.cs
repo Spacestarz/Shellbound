@@ -7,6 +7,9 @@ public class SliceableObject : MonoBehaviour
     public int sliceAmount = 3;
     public AudioClip slicefinish;
 
+    
+    public ShrimpCrowd ShrimpCrowdScript;
+
     public enum Type
     {
         Enemy,
@@ -37,6 +40,8 @@ public class SliceableObject : MonoBehaviour
 
     public void FinalSlice()
     {
+        ShrimpCrowdScript.Cheer(); 
+
         switch (type)
         {
             case Type.Enemy:
