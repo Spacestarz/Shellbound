@@ -40,14 +40,14 @@ public class SliceableObject : MonoBehaviour
 
     public void FinalSlice()
     {
-        if(ShrimpCrowdScript)
-        {
-            ShrimpCrowdScript.Cheer(); 
-        }
 
         switch (type)
         {
             case Type.Enemy:
+                if(ShrimpCrowdScript)
+                {
+                    ShrimpCrowdScript.Cheer(); 
+                }
                 GetComponent<HealthSystem>().TakeDamage(5);
                 GetComponent<Enemi_health>().source.PlayOneShot(slicefinish);
                 break;
