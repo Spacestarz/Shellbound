@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     public GameObject dart;
     public bool harpoontime = false;
     public bool shot = false;
+    public bool alweyspoon = false;
 
 
 
@@ -107,7 +108,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Fire1") && !PlayerSlice.SliceMode() && !fire.fired && harpoontime)
+        if (Input.GetButtonDown("Fire1") && !PlayerSlice.SliceMode() && !fire.fired && (harpoontime || alweyspoon))
         {
             fire.InvokeFire();
         }
