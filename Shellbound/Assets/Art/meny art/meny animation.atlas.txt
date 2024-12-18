@@ -1,0 +1,13 @@
+meny animation.png
+size:2884,2166
+filter:Linear,Linear
+pma:true
+Lager 1
+bounds:1924,339,1825,958
+rotate:90
+light
+bounds:2,2,1399,1080
+offsets:128,1,1537,1082
+Övertoningsfyllning 1
+bounds:2,1084,1920,1080
+offsets:1,1,1922,1082
