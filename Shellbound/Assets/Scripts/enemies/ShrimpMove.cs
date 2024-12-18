@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CrowdMove : MonoBehaviour
+public class ShrimpMove : MonoBehaviour
 {
     private float startY;
     [SerializeField] float speed = 6f;
     [SerializeField] float height = 2f;
 
-    public ShrimpCrowd ShrimpCrowd;
+    public ShrimpCrowd CrowdHandler;
     
     
    
@@ -21,7 +21,7 @@ public class CrowdMove : MonoBehaviour
     void Update()
     {      
 
-        if (ShrimpCrowd.IsCheering)
+        if (CrowdHandler.IsCheering)
         {
             Debug.Log("cheer");
             float newY = startY + Mathf.PingPong(Time.time * speed, height);
@@ -29,7 +29,7 @@ public class CrowdMove : MonoBehaviour
             transform.position = new Vector3(transform.position.x, newY, transform.position.z);
         }
 
-        if (ShrimpCrowd.IsBooing)
+        if (CrowdHandler.IsBooing)
         {
             //boo sound
         }
