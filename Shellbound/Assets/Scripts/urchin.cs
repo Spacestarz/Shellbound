@@ -7,6 +7,11 @@ public class urchin : MonoBehaviour
     AudioSource sorce;
     [SerializeField] AudioClip death;
     [SerializeField] AudioClip landing;
+
+    private void Awake()
+    {
+        sorce = GetComponent<AudioSource>();
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))

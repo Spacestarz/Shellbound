@@ -34,7 +34,10 @@ public class HookableObject : MonoBehaviour
     [SerializeField] private UnityEvent Event;
 
 
-    private PlayerController playerController; 
+    private PlayerController playerController;
+
+    AudioSource sorce;
+    [SerializeField] AudioClip bonk;
 
     private void Awake()
     {
@@ -42,6 +45,7 @@ public class HookableObject : MonoBehaviour
         playerController = player.GetComponent<PlayerController>(); 
         fire = player.GetComponent<Fire>();
         sliceableObject = GetComponent<SliceableObject>();
+        sorce = GetComponent<AudioSource>();
     }
 
 
@@ -109,6 +113,7 @@ public class HookableObject : MonoBehaviour
             else
             {
                 fire.ReturnHarpoon();
+                sorce.PlayOneShot(bonk);
             }
         }
         else

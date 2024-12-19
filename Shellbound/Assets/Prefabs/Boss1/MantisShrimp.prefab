@@ -349,6 +349,7 @@ MonoBehaviour:
   enemy: {fileID: 3320482521892690881}
   player: {fileID: 0}
   i: 1
+  UrchinSpawnerScript: {fileID: 0}
   crowd: {fileID: 0}
   attack: {fileID: 8552221987041293120}
   wavemount: 1
@@ -1082,6 +1083,7 @@ MonoBehaviour:
   enemy: {fileID: 3320482521892690881}
   player: {fileID: 0}
   i: 1
+  UrchinSpawnerScript: {fileID: 0}
   crowd: {fileID: 0}
   attack: {fileID: 8552221987041293120}
   wavemount: 1
@@ -1554,6 +1556,7 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls: []
+  bonk: {fileID: 8300000, guid: 90ec2b4dbbcce7844b7e7b05cae5f9c9, type: 3}
 --- !u!1 &8520814827923826946
 GameObject:
   m_ObjectHideFlags: 0
@@ -1843,6 +1846,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  bonk: {fileID: 0}
 --- !u!114 &1763871955343342009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1905,6 +1909,7 @@ MonoBehaviour:
   enemy: {fileID: 3320482521892690881}
   player: {fileID: 0}
   i: 1
+  UrchinSpawnerScript: {fileID: 0}
   crowd: {fileID: 0}
   attack: {fileID: 8552221987041293120}
   wavemount: 1
