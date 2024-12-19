@@ -512,7 +512,7 @@ MonoBehaviour:
   maxDistancefromAnchor: 15
   fired: 0
   goingAway: 0
-  harpoonSound: {fileID: 0}
+  harpoonSound: {fileID: 8300000, guid: d0da429c9fa607743972973b61bff5a7, type: 3}
 --- !u!114 &345157075243984301
 MonoBehaviour:
   m_ObjectHideFlags: 0

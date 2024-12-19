@@ -44,7 +44,7 @@ public class SliceableObject : MonoBehaviour
         {
             case Type.Enemy:
                 GetComponent<HealthSystem>().TakeDamage(5);
-                GetComponent<Enemi_health>().source.PlayOneShot(slicefinish);
+                GetComponent<Enemi_health>().source.PlayOneShot(slicefinish, 0.7f);
                 if(ShrimpCrowdScript)
                 {
                     ShrimpCrowdScript.Cheer(); 
