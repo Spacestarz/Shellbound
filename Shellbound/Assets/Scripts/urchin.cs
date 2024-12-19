@@ -22,7 +22,10 @@ public class urchin : MonoBehaviour
         {
             collision.gameObject.GetComponent<HealthSystem>().TakeDamage(1);
         }   
-        sorce.PlayOneShot(landing);
+        else if (collision.gameObject.CompareTag("Ground"))
+        {
+            sorce.PlayOneShot(landing);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
