@@ -15,6 +15,10 @@ public class MainMenueSpecials : MonoBehaviour
     GameObject manager;
     bool twening = false;
     bool goLeftNext = true;
+
+    AudioSource sorce;
+    public AudioClip start;
+    public AudioClip end;
     private void Awake()
     {
         StartButon = GameObject.Find("start");
@@ -25,19 +29,22 @@ public class MainMenueSpecials : MonoBehaviour
         QuitButon.GetComponent<Button>().onClick.AddListener(delegate { manager.GetComponent<SceneController>().quit(); });
 
         creditRect = CreditText.GetComponent<RectTransform>();
+        sorce = GetComponent<AudioSource>();
     }
     public void credits()
     {
         if (goLeftNext)//(CreditText.activeSelf == false && !twening)
         {
             goLeftNext = false;
+            sorce.PlayOneShot(start);
             creditRect.DOKill();
             CreditText.SetActive(true);
-            creditRect.DOAnchorPosX(440, 2).OnComplete(setfalse);
+            creditRect.DOAnchorPosX(375, 2).OnComplete(setfalse);
         }
         else if (!goLeftNext)//(CreditText.activeSelf == true)// && !twening)
         {
             goLeftNext = true;
+            sorce.PlayOneShot(end);
             creditRect.DOKill();
             creditRect.DOAnchorPosX(752, 2).OnPlay(show).OnComplete(setfalse).OnComplete(hide);
         }
