@@ -19,9 +19,10 @@ public class HealthSystem : MonoBehaviour
     public UI uiScript;
     public SpriteRenderer enemySprite;
 
-
+    public BossTimer BossTimerScript;
     void Awake()
-    {      
+    { 
+       
         currentHP = MaxHP;
         source = GetComponent<AudioSource>();
 
@@ -48,7 +49,13 @@ public class HealthSystem : MonoBehaviour
 
         if (gameObject.CompareTag("Enemy") && currentHP <= 0)
         {
-            if(GetComponent<HookableObject>().isCaught)
+            GameObject mantisShrimp = GameObject.Find("MantisShrimp");
+            if ( mantisShrimp != null )
+            {
+                Bossdead();
+            }
+
+            if (GetComponent<HookableObject>().isCaught)
             {
                 PlayerSlice.SetSliceMode(false);
                 Camera.main.GetComponent<RotateCamera>().DOKill();
@@ -56,6 +63,7 @@ public class HealthSystem : MonoBehaviour
             }
 
             Invoke(nameof(dead),deathTime);
+         
         }
 
         if(hasHealthBar)
@@ -65,13 +73,14 @@ public class HealthSystem : MonoBehaviour
 
     }
     void dead()
-    {
+    {   
         Destroy(gameObject);
     }
 
     public void Bossdead()
     {
-       uiScript.DefeatedBOSS();
+        BossTimerScript.StopTimer();
+        uiScript.DefeatedBOSS();
     }
 
     public void PlayerDead()

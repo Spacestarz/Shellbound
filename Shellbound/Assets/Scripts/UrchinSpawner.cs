@@ -40,7 +40,5 @@ public class UrchinSpawner : MonoBehaviour
             Vector3 randomPositionInCircle = new Vector3(Player.transform.position.x + RandomPoint.x, HeightofY, Player.transform.position.z + RandomPoint.y);
             newUrchin = Instantiate(urchinPreFab, randomPositionInCircle, Quaternion.identity);
         }
-
     }
-
 }
