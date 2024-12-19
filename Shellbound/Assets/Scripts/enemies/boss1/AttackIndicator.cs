@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Runtime.CompilerServices;
+using TreeEditor;
 using UnityEngine;
 
 public class AttackIndicator : MonoBehaviour
@@ -18,6 +19,7 @@ public class AttackIndicator : MonoBehaviour
     
 
     public GameObject preFabCircle;
+    GameObject spike;
 
     private SpriteRenderer spriteRenderer;
     private Vector3 maxSize;
@@ -29,13 +31,15 @@ public class AttackIndicator : MonoBehaviour
         player = GameObject.Find("Player");
         healthSystem = player.GetComponent<HealthSystem>();
 
+        spike = transform.GetChild(0).gameObject;
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.color = new Color(0, 0, 0, 0);
 
         //maxSize = transform.localScale;
         //transform.localScale = Vector3.zero;
 
-        StartCoroutine(DestroyCount());
+        StartCoroutine(WarningCount());
         //Invoke("IsPlayerHere", destroyTimer);
         //Invoke("DestroyObject", destroyTimer);
 
@@ -55,7 +59,7 @@ public class AttackIndicator : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private IEnumerator DestroyCount()
+    private IEnumerator WarningCount()
     {
         Color secondColor = spriteRenderer.color;
         float secondDestroyTime = 0;
@@ -76,9 +80,29 @@ public class AttackIndicator : MonoBehaviour
             yield return null;
         }
         IsPlayerHere();
-        DestroyObject();
+        DeploySpike();
         yield break;
     }
+
+
+    private void DeploySpike()
+    {
+        spriteRenderer.DOColor(new Color(0,0,0,0), 0.2f);
+        spike.transform.DOLocalMoveZ(0.2f, 0.15f).OnComplete(InvokeReturnSpike);
+    }
+
+
+    private void InvokeReturnSpike()
+    {
+        Invoke(nameof(ReturnSpike), 0.5f);
+    }
+
+
+    private void ReturnSpike()
+    {
+        spike.transform.DOLocalMoveZ(-0.21f, 0.5f).OnComplete(DestroyObject);
+    }
+
 
     public void OnTriggerEnter(Collider other)
     {
@@ -87,6 +111,7 @@ public class AttackIndicator : MonoBehaviour
             playerInCircle = true;
         }
     }
+
 
     private void OnTriggerExit(Collider other)
     {

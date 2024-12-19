@@ -6,7 +6,7 @@ public class Crowd_attacks : MonoBehaviour
 {
     private GameObject player;
     public GameObject preFabCircle;
-    private Vector3 preFabCirclePosition;
+    private Vector3 unitCircleCenter;
 
     private float randomSpawnTime;
 
@@ -62,9 +62,14 @@ public class Crowd_attacks : MonoBehaviour
 
     private void SpawnCircle()
     {
-        preFabCirclePosition = new Vector3(player.transform.position.x, (float)0.04, player.transform.position.z);
+        unitCircleCenter = new Vector3(player.transform.position.x, 0.04f, player.transform.position.z);
 
-        Instantiate(preFabCircle, preFabCirclePosition, Quaternion.Euler(-90, 0, 0)); //the rotation need to be in -90 degree
+        Vector3 circleArea = Random.insideUnitSphere * 3f;
+
+        Vector3 spawnPosition = new Vector3(circleArea.x, 0, circleArea.z);
+        spawnPosition += unitCircleCenter;
+
+        Instantiate(preFabCircle, spawnPosition, Quaternion.Euler(-90, 0, 0)); //the rotation need to be in -90 degree
     }
 }
 
