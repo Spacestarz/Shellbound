@@ -1,0 +1,16 @@
+harpoon.png
+size:2329,1696
+filter:Linear,Linear
+pma:true
+Dart_Bolt
+bounds:1321,2,619,632
+rotate:90
+proboscis
+bounds:2,79,243,249
+offsets:0,88,276,337
+shell
+bounds:1321,623,1071,1006
+offsets:69,0,1140,1063
+rotate:90
+spear
+bounds:2,330,1317,1364
