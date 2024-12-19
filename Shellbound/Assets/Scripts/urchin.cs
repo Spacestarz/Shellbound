@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class urchin : MonoBehaviour
 {
+    AudioSource sorce;
+    [SerializeField] AudioClip death;
+    [SerializeField] AudioClip landing;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -16,6 +19,11 @@ public class urchin : MonoBehaviour
         if (other.CompareTag("Dart") || other.CompareTag("Harpoon"))
         {
             GetComponent<HealthSystem>().TakeDamage(1);
+            sorce.PlayOneShot(death);
+        }
+        else
+        {
+            sorce.PlayOneShot(landing);
         }
     }
 }
