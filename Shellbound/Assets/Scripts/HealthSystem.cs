@@ -9,6 +9,7 @@ public class HealthSystem : MonoBehaviour
 
     public float MaxHP; //maxHP
     public float currentHP;
+    public float deathTime = 1;
 
     public GameObject Player; //player*
 
@@ -54,7 +55,7 @@ public class HealthSystem : MonoBehaviour
                 Camera.main.GetComponent<RotateCamera>().isLocked = false;
             }
 
-            Invoke(nameof(dead),1);
+            Invoke(nameof(dead),deathTime);
         }
 
         if(hasHealthBar)

@@ -77,7 +77,7 @@ public class Base_enemy : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Dart"))
+        if (other.CompareTag("Dart") && !volnereble)
         {
             sorce.PlayOneShot(bonk);
         }
