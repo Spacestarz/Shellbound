@@ -8,13 +8,24 @@ public class ShrimpMove : MonoBehaviour
     [SerializeField] float speed = 6f;
     [SerializeField] float height = 2f;
 
+    [Header("Delays between")]
+    [SerializeField] float minOffset;
+    [SerializeField] float maxOffset;
+    /*
+    //TODO 
+    //make a random chance that they go up or down
+    one vector a bit higher or lower
+    
+    */
+    private float timeOffset;
     public ShrimpCrowd CrowdHandler;
-    
-    
-   
+         
     void Start()
     {
-        startY = transform.position.y;    
+        startY = transform.position.y;
+        timeOffset = Random.Range(minOffset, maxOffset);
+
+        //Debug.Log($"{gameObject.name} timeOffset: {timeOffset}");
     }
 
     
@@ -22,10 +33,8 @@ public class ShrimpMove : MonoBehaviour
     {      
 
         if (CrowdHandler.IsCheering)
-        {
-            Debug.Log("cheer");
-            float newY = startY + Mathf.PingPong(Time.time * speed, height);
-            
+        {         
+            float newY = startY + Mathf.PingPong((Time.time + timeOffset) * speed, height);         
             transform.position = new Vector3(transform.position.x, newY, transform.position.z);
         }
 

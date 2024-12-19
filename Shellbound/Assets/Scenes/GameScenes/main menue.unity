@@ -360,7 +360,9 @@ MonoBehaviour:
     -- https://freesound.org/s/99634/ -- License: Attribution 3.0\n\ncheer 01.wav
     by tim.kahn -- https://freesound.org/s/337000/ -- License: Attribution 4.0\n\nSword
     Contact (with swipe) by ultraaxvii -- https://freesound.org/s/591155/ -- License:
-    Creative Commons 0"
+    Creative Commons 0\n\nBonk.wav by Harrisando -- https://freesound.org/s/466202/
+    -- License: Creative Commons 0\n\nd0 Meatslap on Glass  1 by dav0r -- https://freesound.org/s/223967/
+    -- License: Creative Commons 0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

@@ -349,6 +349,7 @@ MonoBehaviour:
   enemy: {fileID: 3320482521892690881}
   player: {fileID: 0}
   i: 1
+  UrchinSpawnerScript: {fileID: 0}
   crowd: {fileID: 0}
   attack: {fileID: 8552221987041293120}
   wavemount: 1
@@ -1032,6 +1033,7 @@ MonoBehaviour:
   wavesound: {fileID: 8300000, guid: 53b12810830021d44ab20ababf5be8ff, type: 3}
   elastickstartsound: {fileID: 8300000, guid: e9cf99480170fa74d8c8844b2d56c990, type: 3}
   jabsound: {fileID: 8300000, guid: bf529620e0b848a4e8ff490a73d420fd, type: 3}
+  UrchinSpawnerScript: {fileID: 0}
 --- !u!1 &6133518959946061554
 GameObject:
   m_ObjectHideFlags: 0
@@ -1081,6 +1083,7 @@ MonoBehaviour:
   enemy: {fileID: 3320482521892690881}
   player: {fileID: 0}
   i: 1
+  UrchinSpawnerScript: {fileID: 0}
   crowd: {fileID: 0}
   attack: {fileID: 8552221987041293120}
   wavemount: 1
@@ -1428,7 +1431,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6b14284634af10c42bf7677335b648b1, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1553,6 +1556,7 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls: []
+  bonk: {fileID: 8300000, guid: 90ec2b4dbbcce7844b7e7b05cae5f9c9, type: 3}
 --- !u!1 &8520814827923826946
 GameObject:
   m_ObjectHideFlags: 0
@@ -1842,6 +1846,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  bonk: {fileID: 0}
 --- !u!114 &1763871955343342009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1904,6 +1909,7 @@ MonoBehaviour:
   enemy: {fileID: 3320482521892690881}
   player: {fileID: 0}
   i: 1
+  UrchinSpawnerScript: {fileID: 0}
   crowd: {fileID: 0}
   attack: {fileID: 8552221987041293120}
   wavemount: 1

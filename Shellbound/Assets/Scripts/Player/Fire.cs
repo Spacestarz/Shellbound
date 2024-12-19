@@ -22,6 +22,9 @@ public class Fire : MonoBehaviour
     public bool fired = false;
     public bool goingAway = false;
 
+    AudioSource source;
+    public AudioClip harpoonSound;
+
 
 
     void Awake()
@@ -32,6 +35,8 @@ public class Fire : MonoBehaviour
 
         harpoonRigidBody.constraints = RigidbodyConstraints.FreezeAll;
         harpoonRigidBody.useGravity = false;
+
+        source = GetComponent<AudioSource>();
     }
 
 
@@ -53,6 +58,7 @@ public class Fire : MonoBehaviour
 
     public void FireHarpoon()
     {
+        source.PlayOneShot(harpoonSound);
         fire.Play();
         //fire.Stop();
         harpoonObject.SetActive(true);

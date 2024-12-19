@@ -277,7 +277,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -477,8 +477,7 @@ MonoBehaviour:
   alweyspoon: 0
   HitVFXPrefab: {fileID: 9041775225042728241, guid: 294c2802df2e9cb4693c6f582a02f175, type: 3}
   Boss: {fileID: 0}
-  harpoonSound: {fileID: 8300000, guid: 122765056b46c314788872f58bae1de1, type: 3}
-  dartSound: {fileID: 8300000, guid: 3bbc67b5e1f68524d8a9238d65bd8728, type: 3}
+  dashSound: {fileID: 8300000, guid: 38f858460c70c284f924b91b01405f09, type: 3}
 --- !u!114 &1098707224179054970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -513,6 +512,7 @@ MonoBehaviour:
   maxDistancefromAnchor: 15
   fired: 0
   goingAway: 0
+  harpoonSound: {fileID: 8300000, guid: d0da429c9fa607743972973b61bff5a7, type: 3}
 --- !u!114 &345157075243984301
 MonoBehaviour:
   m_ObjectHideFlags: 0

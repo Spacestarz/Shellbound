@@ -10,14 +10,13 @@ public class ShrimpCrowd : MonoBehaviour
   
     public bool IsCheering;
     public bool IsBooing;
-
+    
 
     public AudioSource cheerAudioSource;  
     public List<AudioClip> cheerSound;
 
     public void Update()
     {
-
         if (!cheerAudioSource.isPlaying)
         {
             IsCheering = false;

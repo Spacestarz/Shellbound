@@ -3708,6 +3708,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3141599794306074533, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
+      propertyPath: m_Volume
+      value: 0.276
+      objectReference: {fileID: 0}
     - target: {fileID: 4756260631127342793, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
       propertyPath: crosshair
       value: 
@@ -11392,7 +11396,16 @@ PrefabInstance:
       propertyPath: HitVFXPrefab
       value: 
       objectReference: {fileID: 9041775225042728241, guid: 294c2802df2e9cb4693c6f582a02f175, type: 3}
-    m_RemovedComponents: []
+    - target: {fileID: 9205826686327406135, guid: 6be6b1e227bedf94fa4e8196cfb6bb68, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d0da429c9fa607743972973b61bff5a7, type: 3}
+    - target: {fileID: 9205826686327406135, guid: 6be6b1e227bedf94fa4e8196cfb6bb68, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9205826686327406135, guid: 6be6b1e227bedf94fa4e8196cfb6bb68, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -24210,6 +24223,10 @@ PrefabInstance:
       propertyPath: MaxDistance
       value: 407.51944
       objectReference: {fileID: 0}
+    - target: {fileID: 7583729944465845015, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8247093586164526804, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: m_Name
       value: MantisShrimp
@@ -27507,7 +27524,7 @@ Transform:
   m_GameObject: {fileID: 1941805601}
   serializedVersion: 2
   m_LocalRotation: {x: 0.1588657, y: -0.68902975, z: 0.6890294, w: 0.15886538}
-  m_LocalPosition: {x: 13.765361, y: -9.61, z: 15.780813}
+  m_LocalPosition: {x: 13.765361, y: -9.566932, z: 15.780813}
   m_LocalScale: {x: 0.5, y: 1, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -35,7 +35,7 @@ public class FireDart : MonoBehaviour
 
     void Fire()
     {
-        source.PlayOneShot(dartSound);
+        source.PlayOneShot(dartSound, 0.7f);
         shot = true;
         Instantiate(dart, Camera.main.transform.position, Camera.main.transform.rotation);
     }
