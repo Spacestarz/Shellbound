@@ -4,6 +4,8 @@ using UnityEngine.AI;
 
 public abstract class base_enemi_attack : BasePhaseScript
 {
+    public UrchinSpawner UrchinSpawnerScript;
+
     //public abstract void phase();
     public Crowd_attacks crowd;
     
@@ -68,8 +70,14 @@ public abstract class base_enemi_attack : BasePhaseScript
             {
                 if (!enemy.volnereble)
                 { 
+                   
                     WaveAnim = false;
                     attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
+                    if (j == 0)
+                    {
+                       //spawning urchins
+                       UrchinSpawnerScript.SpawnUrchins();
+                    }
                     yield return new WaitForSeconds(1.0f);
                     WaveAnim = true;
                 }
