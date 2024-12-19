@@ -16,12 +16,16 @@ public class Base_enemy : MonoBehaviour
     public float volnerebleTime = 5;
     public int phase = 1;
 
+    AudioSource sorce;
+    [SerializeField] AudioClip bonk;
+
     // Start is called before the first frame update
     public void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.Find("Player").transform;
         attack = GetComponentInChildren<BossAttacksCommon>();
+        sorce = GetComponent<AudioSource>();
         //Debug.Log(player);
     }
 
@@ -70,5 +74,12 @@ public class Base_enemy : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         atta = true;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Dart"))
+        {
+            sorce.PlayOneShot(bonk);
+        }
     }
 }
