@@ -21,11 +21,6 @@ public class ShrimpCrowd : MonoBehaviour
         {
             IsCheering = false;
         }
-
-        if(Input.GetKeyDown(KeyCode.F))
-        {
-            Cheer();
-        }
     }
 
     public void Cheer()
