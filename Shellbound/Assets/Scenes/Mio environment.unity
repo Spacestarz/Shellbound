@@ -2187,6 +2187,7 @@ MonoBehaviour:
   maxDistancefromAnchor: 15
   fired: 0
   goingAway: 0
+  harpoonSound: {fileID: 0}
 --- !u!114 &295450716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2233,8 +2234,7 @@ MonoBehaviour:
   alweyspoon: 0
   HitVFXPrefab: {fileID: 0}
   Boss: {fileID: 0}
-  harpoonSound: {fileID: 0}
-  dartSound: {fileID: 0}
+  dashSound: {fileID: 0}
 --- !u!54 &295450718
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3609,7 +3609,7 @@ Transform:
   m_GameObject: {fileID: 487754756}
   serializedVersion: 2
   m_LocalRotation: {x: 0.48151982, y: 0.51782113, z: -0.517821, w: 0.48151994}
-  m_LocalPosition: {x: -39.21, y: 1.31, z: 26.54}
+  m_LocalPosition: {x: -39.21, y: 1.14, z: 26.54}
   m_LocalScale: {x: 0.5, y: 1, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
