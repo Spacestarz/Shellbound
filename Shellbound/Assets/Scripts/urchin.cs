@@ -22,6 +22,7 @@ public class urchin : MonoBehaviour
         {
             collision.gameObject.GetComponent<HealthSystem>().TakeDamage(1);
         }   
+        sorce.PlayOneShot(landing);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -31,14 +32,14 @@ public class urchin : MonoBehaviour
             sorce.PlayOneShot(death);
             GetComponent<HealthSystem>().TakeDamage(1);   
         }
-        else
-        {
-            sorce.PlayOneShot(landing);
-        }
 
         if (other.gameObject.CompareTag("Wave"))
         {
             rb.AddForce(transform.up * strenght, ForceMode.Impulse);
         }
+    }
+    private void OnDestroy()
+    {
+        
     }
 }
