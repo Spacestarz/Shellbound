@@ -476,6 +476,7 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls: []
+  bonk: {fileID: 0}
 --- !u!114 &112504529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -722,6 +723,7 @@ MonoBehaviour:
   volnereble: 0
   volnerebleTime: 5
   phase: 1
+  bonk: {fileID: 0}
 --- !u!195 &112504537
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2169,6 +2171,7 @@ MonoBehaviour:
   enemy: {fileID: 1800359120}
   player: {fileID: 0}
   i: 1
+  UrchinSpawnerScript: {fileID: 0}
   crowd: {fileID: 0}
   attack: {fileID: 1958218814}
   wavemount: 1
@@ -2687,6 +2690,7 @@ MonoBehaviour:
   enemy: {fileID: 1800359120}
   player: {fileID: 0}
   i: 1
+  UrchinSpawnerScript: {fileID: 0}
   crowd: {fileID: 0}
   attack: {fileID: 1958218814}
   wavemount: 1
@@ -3498,6 +3502,7 @@ MonoBehaviour:
   enemy: {fileID: 1800359120}
   player: {fileID: 0}
   i: 1
+  UrchinSpawnerScript: {fileID: 0}
   crowd: {fileID: 0}
   attack: {fileID: 1958218814}
   wavemount: 1
@@ -4030,6 +4035,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  bonk: {fileID: 0}
 --- !u!1 &669240072
 GameObject:
   m_ObjectHideFlags: 0
@@ -6305,6 +6311,7 @@ MonoBehaviour:
   enemy: {fileID: 112504536}
   player: {fileID: 0}
   i: 1
+  UrchinSpawnerScript: {fileID: 0}
   crowd: {fileID: 0}
   attack: {fileID: 704071709}
   wavemount: 1
@@ -7976,6 +7983,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  bonk: {fileID: 0}
 --- !u!120 &1595888509
 LineRenderer:
   serializedVersion: 2
@@ -8948,6 +8956,7 @@ MonoBehaviour:
   enemy: {fileID: 112504536}
   player: {fileID: 0}
   i: 1
+  UrchinSpawnerScript: {fileID: 0}
   crowd: {fileID: 0}
   attack: {fileID: 704071709}
   wavemount: 1
@@ -9472,6 +9481,7 @@ MonoBehaviour:
   volnereble: 0
   volnerebleTime: 5
   phase: 1
+  bonk: {fileID: 0}
 --- !u!195 &1800359121
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -9547,6 +9557,7 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls: []
+  bonk: {fileID: 0}
 --- !u!1 &1816708122
 GameObject:
   m_ObjectHideFlags: 0
@@ -9778,11 +9789,31 @@ PrefabInstance:
       propertyPath: ShrimpCrowdScript
       value: 
       objectReference: {fileID: 277224847}
+    - target: {fileID: 2553186928622490487, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+      propertyPath: crowd
+      value: 
+      objectReference: {fileID: 1830281276}
+    - target: {fileID: 2553186928622490487, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+      propertyPath: UrchinSpawnerScript
+      value: 
+      objectReference: {fileID: 277224852}
+    - target: {fileID: 3320482521892690881, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+      propertyPath: bonk
+      value: 
+      objectReference: {fileID: 8300000, guid: 90ec2b4dbbcce7844b7e7b05cae5f9c9, type: 3}
     - target: {fileID: 8247093586164526804, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: m_Name
       value: MantisShrimp
       objectReference: {fileID: 0}
     - target: {fileID: 8552221987041293120, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+      propertyPath: UrchinSpawnerScript
+      value: 
+      objectReference: {fileID: 277224852}
+    - target: {fileID: 8857780231382754137, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+      propertyPath: crowd
+      value: 
+      objectReference: {fileID: 1830281276}
+    - target: {fileID: 8857780231382754137, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: UrchinSpawnerScript
       value: 
       objectReference: {fileID: 277224852}
@@ -9957,6 +9988,7 @@ MonoBehaviour:
   enemy: {fileID: 112504536}
   player: {fileID: 0}
   i: 1
+  UrchinSpawnerScript: {fileID: 0}
   crowd: {fileID: 0}
   attack: {fileID: 704071709}
   wavemount: 1
