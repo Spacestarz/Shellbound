@@ -4180,7 +4180,6 @@ MonoBehaviour:
   wavesound: {fileID: 8300000, guid: 53b12810830021d44ab20ababf5be8ff, type: 3}
   elastickstartsound: {fileID: 8300000, guid: e9cf99480170fa74d8c8844b2d56c990, type: 3}
   jabsound: {fileID: 8300000, guid: bf529620e0b848a4e8ff490a73d420fd, type: 3}
-  UrchinSpawnerScript: {fileID: 0}
 --- !u!135 &704071710
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -9866,7 +9865,6 @@ MonoBehaviour:
   wavesound: {fileID: 8300000, guid: 27e952a573b731641806b48b546c74bf, type: 3}
   elastickstartsound: {fileID: 8300000, guid: 4d596353b1360194ab159310c6dd7b47, type: 3}
   jabsound: {fileID: 8300000, guid: bf529620e0b848a4e8ff490a73d420fd, type: 3}
-  UrchinSpawnerScript: {fileID: 0}
 --- !u!135 &1958218815
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -10936,6 +10934,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2413092762522782845, guid: df709e09e0149a645a27db8adf5e1c5b, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3373935243921306136, guid: df709e09e0149a645a27db8adf5e1c5b, type: 3}
       propertyPath: m_Name
       value: urchin
