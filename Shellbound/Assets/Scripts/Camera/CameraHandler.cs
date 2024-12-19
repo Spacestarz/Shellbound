@@ -10,7 +10,10 @@ public class CameraHandler : MonoBehaviour
     {
         Application.targetFrameRate = 120;
         defaultPosition = transform.localPosition;
-        orientation = Camera.main.GetComponent<RotateCamera>().orientation;
+        if(Camera.main.GetComponent<RotateCamera>())
+        {
+            orientation = Camera.main.GetComponent<RotateCamera>().orientation;
+        }
     }
 
 

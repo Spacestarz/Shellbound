@@ -7,10 +7,14 @@ using DG.Tweening;
 public class MainMenueSpecials : MonoBehaviour
 {
     public GameObject CreditText;
+    RectTransform creditRect;
+    float creditDefaultPos;
+
     public GameObject StartButon;
     GameObject QuitButon;
     GameObject manager;
     bool twening = false;
+    bool goLeftNext = true;
     private void Awake()
     {
         StartButon = GameObject.Find("start");
@@ -19,20 +23,23 @@ public class MainMenueSpecials : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         StartButon.GetComponent<Button>().onClick.AddListener(delegate { manager.GetComponent<SceneController>().NextLevel(); });
         QuitButon.GetComponent<Button>().onClick.AddListener(delegate { manager.GetComponent<SceneController>().quit(); });
+
+        creditRect = CreditText.GetComponent<RectTransform>();
     }
     public void credits()
     {
-        if (CreditText.activeSelf == true && !twening)
+        if (goLeftNext)//(CreditText.activeSelf == false && !twening)
         {
-            twening = true;
-            CreditText.transform.DOMoveX(50,2).OnComplete(hide);
-           //CreditText.SetActive(false);
+            goLeftNext = false;
+            creditRect.DOKill();
+            CreditText.SetActive(true);
+            creditRect.DOAnchorPosX(440, 2).OnComplete(setfalse);
         }
-        else if (CreditText.activeSelf == false && !twening)
+        else if (!goLeftNext)//(CreditText.activeSelf == true)// && !twening)
         {
-            twening = true;
-            //CreditText.SetActive(true);
-            CreditText.transform.DOMoveX(25, 2).OnPlay(show).OnComplete(setfalse);
+            goLeftNext = true;
+            creditRect.DOKill();
+            creditRect.DOAnchorPosX(752, 2).OnPlay(show).OnComplete(setfalse).OnComplete(hide);
         }
     }
 
@@ -49,5 +56,4 @@ public class MainMenueSpecials : MonoBehaviour
     {
         twening = false;
     }
-
 }

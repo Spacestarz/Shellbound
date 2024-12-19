@@ -16488,6 +16488,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1100686352}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: -91.684}
+--- !u!1 &1274785507
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1274785509}
+  - component: {fileID: 1274785508}
+  m_Layer: 0
+  m_Name: UrchinSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1274785508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274785507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d1f69b7a5e022c44a026ff071a71352, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  urchinPreFab: {fileID: 3373935243921306136, guid: df709e09e0149a645a27db8adf5e1c5b, type: 3}
+  HeightofY: 13
+  CircleArea: 5
+--- !u!4 &1274785509
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274785507}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.21, y: 13.86, z: -5.93}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1279839334
 GameObject:
   m_ObjectHideFlags: 0
@@ -30324,3 +30371,4 @@ SceneRoots:
   - {fileID: 1609160486}
   - {fileID: 462631052}
   - {fileID: 74636546}
+  - {fileID: 1274785509}
