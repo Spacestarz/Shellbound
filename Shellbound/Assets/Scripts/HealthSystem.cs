@@ -54,7 +54,7 @@ public class HealthSystem : MonoBehaviour
                 Camera.main.GetComponent<RotateCamera>().isLocked = false;
             }
 
-            Destroy(gameObject);
+            Invoke(nameof(dead),1);
         }
 
         if(hasHealthBar)
@@ -62,6 +62,10 @@ public class HealthSystem : MonoBehaviour
             healthBar.value = currentHP;
         }
 
+    }
+    void dead()
+    {
+        Destroy(gameObject);
     }
 
     public void Bossdead()
