@@ -26,7 +26,7 @@ public class UrchinSpawner : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.F))
         {
             SpawnUrchins();
-        }
+        }      
     }
 
     public void SpawnUrchins()

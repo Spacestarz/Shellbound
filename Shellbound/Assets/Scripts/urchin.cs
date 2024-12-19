@@ -8,8 +8,12 @@ public class urchin : MonoBehaviour
     [SerializeField] AudioClip death;
     [SerializeField] AudioClip landing;
 
+    private Rigidbody rb;
+    private int strenght = 10;
+
     private void Awake()
     {
+        rb = GetComponent<Rigidbody>();
         sorce = GetComponent<AudioSource>();
     }
     private void OnCollisionEnter(Collision collision)
@@ -17,18 +21,24 @@ public class urchin : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<HealthSystem>().TakeDamage(1);
-        }
+        }   
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Dart") || other.CompareTag("Harpoon"))
         {
-            GetComponent<HealthSystem>().TakeDamage(1);
             sorce.PlayOneShot(death);
+            GetComponent<HealthSystem>().TakeDamage(1);   
         }
         else
         {
             sorce.PlayOneShot(landing);
+        }
+
+        if (other.gameObject.CompareTag("Wave"))
+        {
+            rb.AddForce(transform.up * strenght, ForceMode.Impulse);
         }
     }
 }
