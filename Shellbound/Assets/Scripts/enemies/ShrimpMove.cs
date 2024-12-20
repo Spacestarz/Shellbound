@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShrimpMove : MonoBehaviour
 {
-    private float startY;
+    public float startY;
     [SerializeField] float speed = 6f;
     [SerializeField] float height = 2f;
 

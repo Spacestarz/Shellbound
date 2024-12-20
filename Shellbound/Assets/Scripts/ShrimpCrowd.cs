@@ -10,20 +10,27 @@ public class ShrimpCrowd : MonoBehaviour
   
     public bool IsCheering;
     public bool IsBooing;
-    
+
+    private ShrimpMove ShrimpMoveScript;
 
     AudioSource cheerAudioSource;  
     public List<AudioClip> cheerSound;
 
     private void Awake()
     {
+        ShrimpMoveScript = GetComponentInChildren<ShrimpMove>();
         cheerAudioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
-    {
+    {      
         if (!cheerAudioSource.isPlaying)
         {
+            if (ShrimpMoveScript.startY != transform.position.y)
+            {
+                transform.DOMoveY(ShrimpMoveScript.startY, 5);
+            }
+
             IsCheering = false;
         }
     }
