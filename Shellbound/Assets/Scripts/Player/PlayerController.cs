@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour
     AudioSource sorce;
     [SerializeField] AudioClip dashSound;
 
+    WeaponAnimator weaponAnimator;
+
     private void Awake()
     {
         Boss = GameObject.Find("MantisShrimp");
@@ -70,6 +72,7 @@ public class PlayerController : MonoBehaviour
         readyToDash = true;
 
         sorce = GetComponent<AudioSource>();
+        weaponAnimator = FindObjectOfType<WeaponAnimator>();
     }
 
     private void Update()
