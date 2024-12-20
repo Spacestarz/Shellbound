@@ -79,7 +79,7 @@ public class Base_enemy : MonoBehaviour
     {
         if (other.CompareTag("Dart") && !volnereble)
         {
-            sorce.PlayOneShot(bonk);
+            sorce.PlayOneShot(bonk, 0.5f);
         }
     }
 }

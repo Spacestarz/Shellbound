@@ -59716,9 +59716,17 @@ PrefabInstance:
       propertyPath: BossTimerScript
       value: 
       objectReference: {fileID: 1402174448}
+    - target: {fileID: 1487934291915505079, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3108138511786946589, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387076345772054346, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7583729944465845015, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: MaxDistance
