@@ -7,12 +7,14 @@ public class urchin : MonoBehaviour
     AudioSource sorce;
     [SerializeField] AudioClip death;
     [SerializeField] AudioClip landing;
+    private Enemi_health enemiHealthScript;
 
     private Rigidbody rb;
     private int strenght = 10;
 
     private void Awake()
     {
+       enemiHealthScript = GetComponent<Enemi_health>();
         rb = GetComponent<Rigidbody>();
         sorce = GetComponent<AudioSource>();
     }
@@ -21,6 +23,8 @@ public class urchin : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<HealthSystem>().TakeDamage(1);
+            sorce.PlayOneShot(death);
+            enemiHealthScript.TakeDamage(1);
         }   
         else if (collision.gameObject.CompareTag("Ground"))
         {
