@@ -21,6 +21,7 @@ public class SliceableObject : MonoBehaviour
 
     public void Awake()
     {
+        ShrimpCrowdScript = FindAnyObjectByType<ShrimpCrowd>();
         sliceBoard = GetComponentInChildren<SlicePattern>();
         sliceBoard.sliceAmount = sliceAmount;
     }

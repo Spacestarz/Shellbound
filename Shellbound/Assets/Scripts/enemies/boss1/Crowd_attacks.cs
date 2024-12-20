@@ -69,7 +69,8 @@ public class Crowd_attacks : MonoBehaviour
         Vector3 spawnPosition = new Vector3(circleArea.x, 0, circleArea.z);
         spawnPosition += unitCircleCenter;
 
-        Instantiate(preFabCircle, spawnPosition, Quaternion.Euler(-90, 0, 0)); //the rotation need to be in -90 degree
+        Instantiate(preFabCircle, spawnPosition, Quaternion.identity);//Euler(0, 0, 0)); //the rotation need to be in -90 degree
+                                                                             //Only because the prefab was 90
     }
 }
 

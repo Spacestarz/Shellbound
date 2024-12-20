@@ -12,10 +12,15 @@ public class ShrimpCrowd : MonoBehaviour
     public bool IsBooing;
     
 
-    public AudioSource cheerAudioSource;  
+    AudioSource cheerAudioSource;  
     public List<AudioClip> cheerSound;
 
-    public void Update()
+    private void Awake()
+    {
+        cheerAudioSource = GetComponent<AudioSource>();
+    }
+
+    private void Update()
     {
         if (!cheerAudioSource.isPlaying)
         {

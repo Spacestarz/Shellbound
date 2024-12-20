@@ -32,8 +32,9 @@ public abstract class base_enemi_attack : BasePhaseScript
     public float elastickspeed = 4;
     public float elastickreturnspeed = 10;
     public float elastickdelai = 2;
-    private void Start()
+    private void Awake()
     {
+        UrchinSpawnerScript = FindObjectOfType<UrchinSpawner>();
         enemy = GetComponentInParent<Base_enemy>();
         //attak = GetComponentInParent<Boss1_attacks>();
         agent = GetComponentInParent<NavMeshAgent>();
