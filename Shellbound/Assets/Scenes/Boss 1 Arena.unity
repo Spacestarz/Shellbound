@@ -46762,6 +46762,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1377346016}
   - component: {fileID: 1377346015}
+  - component: {fileID: 1377346017}
   m_Layer: 0
   m_Name: Red Vignette
   m_TagString: Untagged
@@ -46784,7 +46785,7 @@ MonoBehaviour:
   m_IsGlobal: 1
   priority: 0
   blendDistance: 0
-  weight: 0.83
+  weight: 0
   sharedProfile: {fileID: 11400000, guid: 696aae36c4d5abb409414479b4579a42, type: 2}
 --- !u!4 &1377346016
 Transform:
@@ -46795,12 +46796,24 @@ Transform:
   m_GameObject: {fileID: 1377346014}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.891322, y: -6.6899166, z: 37.338444}
+  m_LocalPosition: {x: 12.891321, y: -6.6899166, z: 37.338444}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1377346017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377346014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89c2bc037093c72419fffaa5a07d7bed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1378053710
 GameObject:
   m_ObjectHideFlags: 0
@@ -59307,12 +59320,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1609361478}
   m_Layer: 5
-  m_Name: playerhealth
+  m_Name: playerhealth << IMPLEMENT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1609361478
 RectTransform:
   m_ObjectHideFlags: 0
@@ -77188,10 +77201,10 @@ SceneRoots:
   - {fileID: 1627752901}
   - {fileID: 419814026}
   - {fileID: 683663067}
+  - {fileID: 1377346016}
   - {fileID: 111880979}
   - {fileID: 2142511472}
   - {fileID: 312372745}
-  - {fileID: 1377346016}
   - {fileID: 1989345223}
   - {fileID: 74636546}
   - {fileID: 1578269101}

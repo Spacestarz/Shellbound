@@ -17,10 +17,10 @@ public class CameraHandler : MonoBehaviour
     }
 
 
-    public void ShakeCamera()
+    public void ShakeCamera(float duration, Vector3 strength)
     {
         this.DOKill();
-        Camera.main.DOShakePosition(0.4f, new Vector3(0.2f, 1, 0), 10, 45, true, ShakeRandomnessMode.Harmonic).OnComplete(ResetPosition);
+        Camera.main.DOShakePosition(duration, new Vector3(0.2f, 1, 0), 10, 45, true, ShakeRandomnessMode.Harmonic).OnComplete(ResetPosition);
     }
 
     public void ShakeCameraSlice(Vector3 direction)

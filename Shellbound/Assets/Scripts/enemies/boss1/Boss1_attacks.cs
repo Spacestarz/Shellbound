@@ -152,7 +152,7 @@ public class Boss1_attacks : BossAttacksCommon
         lokation.y = lokation.y - 1.5f;
         //Debug.Log(wave.transform.rotation);
         StartCoroutine(Instantiate(wave,lokation, Quaternion.Euler(new Vector3(transform.rotation.x, transform.rotation.y, 90))).GetComponent<Wave>().shockwave(duration, scale, range, target));
-        Camera.main.GetComponent<CameraHandler>().ShakeCamera();
+        Camera.main.GetComponent<CameraHandler>().ShakeCamera(0.4f, new Vector3(0.2f, 1, 0));
 
        
         
