@@ -16,6 +16,7 @@ public class Boss1_attacks : BossAttacksCommon
     public GameObject claw;
     //public GameObject wave;
     float dis;
+    bool IsPunching = false;
     
     //public float firespeed = 4;
     float returnspeed = 10;
@@ -60,18 +61,19 @@ public class Boss1_attacks : BossAttacksCommon
             //Debug.Log(dis);
             velo = true;
         }
-        if (velo == true)
+        if (velo == true || parent.volnereble)
         {
 
             claw.transform.position = Vector3.MoveTowards(claw.transform.position, transform.position, returnspeed * Time.deltaTime);
 
-            if (dis < 1)
+            if (dis < 1 && IsPunching)
             {
                 claw.transform.position = transform.position;
                 clawrig.constraints = RigidbodyConstraints.FreezeAll;
 
                 parent.GetComponentInChildren<MantisAnimator>().anim.SetBool("PunchBool", false);
                 BeInvisible(claw);
+                IsPunching = false;
                 velo = false;
                 parent.start();
                 transform.LookAt(target);
@@ -91,6 +93,7 @@ public class Boss1_attacks : BossAttacksCommon
         parent.GetComponentInChildren<MantisAnimator>().anim.SetBool("PunchBool", true);
         BeVisible(claw);
         //parent.stop();
+        IsPunching = true;
         still = true;
         //claw.transform.position = transform.position;
 
