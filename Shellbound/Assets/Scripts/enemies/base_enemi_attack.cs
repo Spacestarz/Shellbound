@@ -97,6 +97,14 @@ public abstract class base_enemi_attack : BasePhaseScript
         enemy.GetComponentInChildren<MantisAnimator>().anim.SetTrigger("Punch 0");
         yield return new WaitForSeconds(time);
         ElastickAnim = false;
-        attack.Elastick(elastickrange, elastickspeed, elastickreturnspeed);
+        if (!enemy.volnereble && !PlayerSlice.SliceMode())
+        {
+            attack.Elastick(elastickrange, elastickspeed, elastickreturnspeed);
+        }
+        else
+        {
+            enemy.atta = true;
+            stunable = false;
+        }
     }
 }
