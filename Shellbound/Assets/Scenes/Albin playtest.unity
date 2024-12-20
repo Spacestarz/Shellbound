@@ -632,11 +632,13 @@ MonoBehaviour:
   healthBar: {fileID: 443304980}
   MaxHP: 40
   currentHP: 0
+  deathTime: 1
   Player: {fileID: 0}
   source: {fileID: 0}
   audioClip: {fileID: 8300000, guid: cb2ec8cfff8bec140a2e6d29135b4407, type: 3}
   uiScript: {fileID: 0}
   enemySprite: {fileID: 1467694119}
+  BossTimerScript: {fileID: 0}
   Harponed: 0
   dragspeed: 25
   crack: {fileID: 8300000, guid: 6b14284634af10c42bf7677335b648b1, type: 3}
@@ -1706,7 +1708,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsCheering: 0
   IsBooing: 0
-  cheerAudioSource: {fileID: 1720421990}
   cheerSound:
   - {fileID: 8300000, guid: 142e32cfe765b244085b13693e22e7fe, type: 3}
   - {fileID: 8300000, guid: 6879692e47ecb8e488ba44319f42b44f, type: 3}
@@ -8916,11 +8917,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!82 &1720421990 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 8425674669466881349, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
-  m_PrefabInstance: {fileID: 1647939588}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1734037931
 GameObject:
   m_ObjectHideFlags: 0
@@ -9389,11 +9385,13 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   MaxHP: 40
   currentHP: 0
+  deathTime: 1
   Player: {fileID: 0}
   source: {fileID: 0}
   audioClip: {fileID: 8300000, guid: cb2ec8cfff8bec140a2e6d29135b4407, type: 3}
   uiScript: {fileID: 1987324686}
   enemySprite: {fileID: 2132976302}
+  BossTimerScript: {fileID: 0}
   Harponed: 0
   dragspeed: 25
   crack: {fileID: 8300000, guid: 6b14284634af10c42bf7677335b648b1, type: 3}
@@ -9781,6 +9779,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1369424104670791186, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+      propertyPath: MaxHP
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1369424104670791186, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 443304980}
@@ -9796,18 +9798,10 @@ PrefabInstance:
       propertyPath: UrchinSpawnerScript
       value: 
       objectReference: {fileID: 277224852}
-    - target: {fileID: 3320482521892690881, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
-      propertyPath: bonk
-      value: 
-      objectReference: {fileID: 8300000, guid: 90ec2b4dbbcce7844b7e7b05cae5f9c9, type: 3}
     - target: {fileID: 8247093586164526804, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: m_Name
       value: MantisShrimp
       objectReference: {fileID: 0}
-    - target: {fileID: 8552221987041293120, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
-      propertyPath: UrchinSpawnerScript
-      value: 
-      objectReference: {fileID: 277224852}
     - target: {fileID: 8857780231382754137, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: crowd
       value: 
@@ -10934,10 +10928,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2413092762522782845, guid: df709e09e0149a645a27db8adf5e1c5b, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3373935243921306136, guid: df709e09e0149a645a27db8adf5e1c5b, type: 3}
       propertyPath: m_Name
       value: urchin

@@ -65,7 +65,9 @@ public class HealthSystem : MonoBehaviour
 
             if(gameObject != mantisShrimp)
             {
-                gameObject.SetActive(false);
+                //gameObject.SetActive(false);
+                gameObject.GetComponent<Collider>().enabled = false;
+                //gameObject.GetComponent<SpriteRenderer>().enabled = false;
                 Invoke(nameof(dead),deathTime);
             }
          

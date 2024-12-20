@@ -527,13 +527,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasHealthBar: 1
   healthBar: {fileID: 0}
-  MaxHP: 1000
+  MaxHP: 10
   currentHP: 0
+  deathTime: 1
   Player: {fileID: 2553824470831661199}
   source: {fileID: 0}
   audioClip: {fileID: 8300000, guid: cb2ec8cfff8bec140a2e6d29135b4407, type: 3}
   uiScript: {fileID: 0}
   enemySprite: {fileID: 0}
+  BossTimerScript: {fileID: 0}
 --- !u!114 &4756260631127342793
 MonoBehaviour:
   m_ObjectHideFlags: 0
