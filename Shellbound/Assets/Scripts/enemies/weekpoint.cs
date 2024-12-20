@@ -47,7 +47,6 @@ public class weekpoint : MonoBehaviour
     {
         if (AI.phase.stunable && collision.CompareTag("Dart"))
         {
-            Debug.Log("shuld be week");
             enemy.wekend();
         }
     }

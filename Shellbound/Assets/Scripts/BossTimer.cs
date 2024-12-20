@@ -54,14 +54,12 @@ public class BossTimer : MonoBehaviour
     {
         TimerRunning = false;
        // timerText.text = "Your time to kill this boss was" + " " + timer.ToString("F0");
-        Debug.Log("your time was" + " " + timer.ToString("F0"));
 
         if (timer < bestTime)
         {
             bestTime = timer;
             PlayerPrefs.SetFloat("Best Timer", bestTime);
             PlayerPrefs.Save();
-            Debug.Log("New Best Timer: " + bestTime.ToString("F0"));
 
         }       
         //save string in const variable
