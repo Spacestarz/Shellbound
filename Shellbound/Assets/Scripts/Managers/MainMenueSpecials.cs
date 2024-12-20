@@ -9,8 +9,10 @@ public class MainMenueSpecials : MonoBehaviour
 {
     public GameObject CreditText;
     public GameObject setings;
+    public GameObject score;
     RectTransform creditRect;
     RectTransform settingsRect;
+    RectTransform scoreRect;
     public RectTransform logoRect;
     public RectTransform menueRect;
     public GameObject presText;
@@ -24,7 +26,9 @@ public class MainMenueSpecials : MonoBehaviour
     //bool twening = false;
     bool creditsgoLeftNext = true;
     bool setingsgoRigthNext = true;
+    bool scoreGoLefthNext = true;
     bool clicked = true;
+    bool leftIsOcupied = false;
 
     AudioSource sorce;
     public AudioClip start;
@@ -43,6 +47,7 @@ public class MainMenueSpecials : MonoBehaviour
 
         creditRect = CreditText.GetComponent<RectTransform>();
         settingsRect = setings.GetComponent<RectTransform>();
+        scoreRect = score.GetComponent<RectTransform>();
         //logoRect = logo.GetComponent<RectTransform>();
         //menueRect = menue.GetComponent<RectTransform>();
 
@@ -62,10 +67,12 @@ public class MainMenueSpecials : MonoBehaviour
         if (creditsgoLeftNext)//(CreditText.activeSelf == false && !twening)
         {
             creditsgoLeftNext = false;
+            scoreGoLefthNext = true;
             sorce.PlayOneShot(start);
+            scoreRect.DOKill();
+            scoreRect.DOAnchorPosX(752, 2).OnPlay(() => { show(score); }).OnComplete(() => { hide(score); });
             creditRect.DOKill();
-            show(CreditText);
-            creditRect.DOAnchorPosX(375, 2);
+            creditRect.DOAnchorPosX(375, 2).OnPlay(()=> { show(CreditText); });
         }
         else if (!creditsgoLeftNext)//(CreditText.activeSelf == true)// && !twening)
         {
@@ -73,6 +80,26 @@ public class MainMenueSpecials : MonoBehaviour
             sorce.PlayOneShot(end);
             creditRect.DOKill();
             creditRect.DOAnchorPosX(752, 2).OnPlay(() => { show(CreditText); }).OnComplete(() => { hide(CreditText); });
+        }
+    }
+    public void Score()
+    {
+        if (scoreGoLefthNext)//(CreditText.activeSelf == false && !twening)
+        {
+            scoreGoLefthNext = false;
+            creditsgoLeftNext = true;
+            sorce.PlayOneShot(start);
+            creditRect.DOKill();
+            creditRect.DOAnchorPosX(752, 2).OnPlay(() => { show(CreditText); }).OnComplete(() => { hide(CreditText); });
+            scoreRect.DOKill();
+            scoreRect.DOAnchorPosX(375, 2).OnPlay(() => { show(score); });
+        }
+        else if (!scoreGoLefthNext)//(CreditText.activeSelf == true)// && !twening)
+        {
+            scoreGoLefthNext = true;
+            sorce.PlayOneShot(end);
+            scoreRect.DOKill();
+            scoreRect.DOAnchorPosX(752, 2).OnPlay(() => { show(score); }).OnComplete(() => { hide(score); });
         }
     }
     public void settings()
