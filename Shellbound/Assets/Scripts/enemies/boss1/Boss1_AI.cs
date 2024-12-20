@@ -46,9 +46,7 @@ public class Boss1_AI : MonoBehaviour
         health.source.PlayOneShot(PhaseSwitchSound, 0.5f);
         try { enemy.GetComponentInChildren<BaseAnimator>().anim.SetTrigger("NewPhase"); }
         catch { }
-        Debug.Log("new phase 1");
         yield return new WaitForSeconds(time);
-        Debug.Log("new phase 2");
         phase = phases[NewPhase];
         PhaseSwitch = false;
         enemy.atta = true;

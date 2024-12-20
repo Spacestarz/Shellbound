@@ -31,7 +31,6 @@ public class ShrimpMove : MonoBehaviour
     
     void Update()
     {      
-
         if (CrowdHandler.IsCheering)
         {         
             float newY = startY + Mathf.PingPong((Time.time + timeOffset) * speed, height);         

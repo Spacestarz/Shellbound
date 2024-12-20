@@ -6,17 +6,17 @@ public class Billboarding : MonoBehaviour
     public bool rotateYAxis = false;
     public bool rotateZAxis = true;
 
-    float defaultXAxis = 0;
-    float defaultYAxis = 0;
-    float defaultZAxis = 0;
+    float defaultXAxis;
+    float defaultYAxis;
+    float defaultZAxis;
 
     Vector3 cameraDir;
 
     private void Awake()
     {
-        defaultXAxis = Quaternion.identity.eulerAngles.x;
-        defaultYAxis = Quaternion.identity.eulerAngles.y;
-        defaultZAxis = Quaternion.identity.eulerAngles.z;
+        defaultXAxis = transform.eulerAngles.x;
+        defaultYAxis = transform.eulerAngles.y;
+        defaultZAxis = transform.eulerAngles.z;
     }
 
     void LateUpdate()

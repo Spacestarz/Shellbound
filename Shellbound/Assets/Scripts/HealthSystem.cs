@@ -49,8 +49,9 @@ public class HealthSystem : MonoBehaviour
 
         if (gameObject.CompareTag("Enemy") && currentHP <= 0)
         {
+            //TODO sam will fix im tired rn RIP
             GameObject mantisShrimp = GameObject.Find("MantisShrimp");
-            if ( mantisShrimp != null )
+            if (gameObject.name == "MantisShrimp")
             {
                 Bossdead();
             }
@@ -62,7 +63,11 @@ public class HealthSystem : MonoBehaviour
                 Camera.main.GetComponent<RotateCamera>().isLocked = false;
             }
 
-            Invoke(nameof(dead),deathTime);
+            if(gameObject != mantisShrimp)
+            {
+                gameObject.SetActive(false);
+                Invoke(nameof(dead),deathTime);
+            }
          
         }
 
@@ -80,6 +85,7 @@ public class HealthSystem : MonoBehaviour
     public void Bossdead()
     {
         BossTimerScript.StopTimer();
+        Invoke(nameof(dead), deathTime);
         uiScript.DefeatedBOSS();
     }
 

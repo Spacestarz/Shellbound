@@ -23,7 +23,6 @@ public class AttackIndicator : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private Vector3 maxSize;
-    private Base_enemy base_EnemyScript;
 
 
     void Awake()
@@ -33,7 +32,7 @@ public class AttackIndicator : MonoBehaviour
 
         spike = transform.GetChild(0).gameObject;
 
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         spriteRenderer.color = new Color(0, 0, 0, 0);
 
         //maxSize = transform.localScale;
@@ -87,8 +86,7 @@ public class AttackIndicator : MonoBehaviour
 
     private void DeploySpike()
     {
-        spriteRenderer.DOColor(new Color(0,0,0,0), 0.2f);
-        spike.transform.DOLocalMoveZ(0.2f, 0.15f).OnComplete(InvokeReturnSpike);
+        spike.transform.DOLocalMoveY(0.255f, 0.15f).OnComplete(InvokeReturnSpike);
     }
 
 
@@ -100,7 +98,8 @@ public class AttackIndicator : MonoBehaviour
 
     private void ReturnSpike()
     {
-        spike.transform.DOLocalMoveZ(-0.21f, 0.5f).OnComplete(DestroyObject);
+        spriteRenderer.DOColor(new Color(0, 0, 0, 0), 0.2f);
+        spike.transform.DOLocalMoveY(-0.285f, 0.5f).OnComplete(DestroyObject);
     }
 
 

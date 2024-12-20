@@ -181,7 +181,7 @@ public class PlayerSlice : MonoBehaviour
             }
         }
 
-        if (currentSlicePattern != null)
+        if (currentSlicePattern != null && currentSlicePattern.spawnedArrow != null)
         {
             currentSlicePattern.spawnedArrow.TurnRed(successfulTicks, requiredTicks);
         }
