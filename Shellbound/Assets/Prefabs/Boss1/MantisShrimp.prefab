@@ -1033,7 +1033,6 @@ MonoBehaviour:
   wavesound: {fileID: 8300000, guid: 53b12810830021d44ab20ababf5be8ff, type: 3}
   elastickstartsound: {fileID: 8300000, guid: e9cf99480170fa74d8c8844b2d56c990, type: 3}
   jabsound: {fileID: 8300000, guid: bf529620e0b848a4e8ff490a73d420fd, type: 3}
-  UrchinSpawnerScript: {fileID: 0}
 --- !u!1 &6133518959946061554
 GameObject:
   m_ObjectHideFlags: 0
@@ -1309,6 +1308,7 @@ MonoBehaviour:
   volnereble: 0
   volnerebleTime: 5
   phase: 1
+  bonk: {fileID: 8300000, guid: 90ec2b4dbbcce7844b7e7b05cae5f9c9, type: 3}
 --- !u!114 &6122194824155020048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1389,11 +1389,13 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   MaxHP: 40
   currentHP: 0
+  deathTime: 1
   Player: {fileID: 0}
   source: {fileID: 0}
   audioClip: {fileID: 8300000, guid: cb2ec8cfff8bec140a2e6d29135b4407, type: 3}
   uiScript: {fileID: 0}
   enemySprite: {fileID: 1134752133269990394}
+  BossTimerScript: {fileID: 0}
   Harponed: 0
   dragspeed: 25
   crack: {fileID: 8300000, guid: 6b14284634af10c42bf7677335b648b1, type: 3}

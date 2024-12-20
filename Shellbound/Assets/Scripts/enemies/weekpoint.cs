@@ -27,7 +27,6 @@ public class weekpoint : MonoBehaviour
         {
             if(AI.phase.stunable && !isVisible)
             {
-                Debug.Log("Stunable");
                 isVisible = true;
 
                 meshRenderer.enabled = true;
@@ -35,7 +34,6 @@ public class weekpoint : MonoBehaviour
             }
             else if(!AI.phase.stunable && isVisible)
             {
-                Debug.Log("Unstun");
                 isVisible = false;
 
                 meshRenderer.enabled = false;
@@ -49,7 +47,6 @@ public class weekpoint : MonoBehaviour
     {
         if (AI.phase.stunable && collision.CompareTag("Dart"))
         {
-            Debug.Log("shuld be week");
             enemy.wekend();
         }
     }

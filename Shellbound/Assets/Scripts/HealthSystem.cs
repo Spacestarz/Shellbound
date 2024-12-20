@@ -63,8 +63,13 @@ public class HealthSystem : MonoBehaviour
                 Camera.main.GetComponent<RotateCamera>().isLocked = false;
             }
 
-            gameObject.SetActive(false);
-            Invoke(nameof(dead),deathTime);
+            if(gameObject != mantisShrimp)
+            {
+                //gameObject.SetActive(false);
+                gameObject.GetComponent<Collider>().enabled = false;
+                //gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                Invoke(nameof(dead),deathTime);
+            }
          
         }
 

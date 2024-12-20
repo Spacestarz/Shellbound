@@ -78,8 +78,14 @@ public class SlicePattern : MonoBehaviour
             parentSlice.FinalSlice();
             fire.ReturnHarpoon();
             PlayerSlice.SetSliceMode(false);
-            StartCoroutine(Camera.main.GetComponent<RotateCamera>().SetCameraLock(false));
-            
+            try
+            {
+                StartCoroutine(Camera.main.GetComponent<RotateCamera>().SetCameraLock(false));
+            }
+            catch
+            {
+
+            }
             ResetPattern();
         }
     }
