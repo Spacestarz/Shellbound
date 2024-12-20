@@ -15,6 +15,7 @@ public class Base_enemy : MonoBehaviour
     public bool volnereble = false;
     public float volnerebleTime = 5;
     public int phase = 1;
+   
 
     AudioSource sorce;
     [SerializeField] AudioClip bonk;

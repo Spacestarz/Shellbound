@@ -49,8 +49,9 @@ public class HealthSystem : MonoBehaviour
 
         if (gameObject.CompareTag("Enemy") && currentHP <= 0)
         {
+            //TODO sam will fix im tired rn RIP
             GameObject mantisShrimp = GameObject.Find("MantisShrimp");
-            if ( mantisShrimp != null )
+            if (gameObject.name == "MantisShrimp")
             {
                 Bossdead();
             }
