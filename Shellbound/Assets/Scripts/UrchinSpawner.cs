@@ -9,6 +9,8 @@ public class UrchinSpawner : MonoBehaviour
     private GameObject Player;
     private GameObject Boss;
     private GameObject newUrchin;
+    private Boss1_AI bossAiScript;
+    private int HowManyUrchinSpawn;
 
     [SerializeField] float HeightofY = 2;
     [SerializeField] float CircleArea = 13;
@@ -17,6 +19,7 @@ public class UrchinSpawner : MonoBehaviour
     {
         Player = GameObject.Find("Player");
         Boss = GameObject.Find("MantisShrimp");
+        bossAiScript = Boss.GetComponent<Boss1_AI>();
        
     }
 
@@ -25,15 +28,32 @@ public class UrchinSpawner : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.F))
         {
-            SpawnUrchins();
+            WhichPhaseForUrchin();
         }      
     }
 
-    public void SpawnUrchins()
+    public void WhichPhaseForUrchin()
     {
-        int HowManyUrchinSpawn = UnityEngine.Random.Range(3, 5);
+        if (bossAiScript.activePhase == 1)
+        {
+            Debug.Log("1-2 urchin should spawn;");
+            int HowManyUrchinSpawn = UnityEngine.Random.Range(1, 3);
+            SpawnUrchins(HowManyUrchinSpawn);
+        }
 
-        for (int i = 0; i < HowManyUrchinSpawn; i++)
+        else if (bossAiScript.activePhase == 2)
+        {
+            Debug.Log("3-5 urchin should spawn;");
+            int HowManyUrchinSpawn = UnityEngine.Random.Range(3, 5);
+            SpawnUrchins(HowManyUrchinSpawn);
+        }
+
+       
+    }
+
+    public void SpawnUrchins(int urchinAmount)
+    { 
+        for (int i = 0; i < urchinAmount; i++)
         {
             Vector3 RandomPoint = UnityEngine.Random.insideUnitCircle * CircleArea;
 

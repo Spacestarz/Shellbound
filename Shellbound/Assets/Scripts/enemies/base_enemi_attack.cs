@@ -77,7 +77,7 @@ public abstract class base_enemi_attack : BasePhaseScript
                     if (j == 0)
                     {
                        //spawning urchins
-                       UrchinSpawnerScript.SpawnUrchins();
+                       UrchinSpawnerScript.WhichPhaseForUrchin();
                     }
                     yield return new WaitForSeconds(1.0f);
                     WaveAnim = true;

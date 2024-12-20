@@ -1356,7 +1356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   urchinPreFab: {fileID: 3373935243921306136, guid: df709e09e0149a645a27db8adf5e1c5b, type: 3}
   HeightofY: 13
-  CircleArea: 5
+  CircleArea: 10
 --- !u!4 &1077651914
 Transform:
   m_ObjectHideFlags: 0

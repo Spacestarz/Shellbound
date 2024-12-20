@@ -36,7 +36,7 @@ public class Crowd_attacks : MonoBehaviour
     {
         while (Boss1_AI.activePhase == 0)
         {
-            randomSpawnTime = Random.Range(1f, 3f);
+            randomSpawnTime = Random.Range(4f, 6f);
             yield return new WaitForSeconds(randomSpawnTime);
 
             SpawnCircle();
