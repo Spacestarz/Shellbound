@@ -23,7 +23,6 @@ public class DamageVignette : MonoBehaviour
 
     public static void ShowVignette()
     {
-        Debug.Log("Yeah");
         DOTween.To(() => currentWeight, x => currentWeight = x, 1, 0.1f)
             .OnUpdate(SetWeight).OnComplete(FadeVignette);
     }

@@ -36,14 +36,12 @@ public class UrchinSpawner : MonoBehaviour
     {
         if (bossAiScript.activePhase == 1)
         {
-            Debug.Log("1-2 urchin should spawn;");
             int HowManyUrchinSpawn = UnityEngine.Random.Range(1, 3);
             SpawnUrchins(HowManyUrchinSpawn);
         }
 
         else if (bossAiScript.activePhase == 2)
         {
-            Debug.Log("3-5 urchin should spawn;");
             int HowManyUrchinSpawn = UnityEngine.Random.Range(3, 5);
             SpawnUrchins(HowManyUrchinSpawn);
         }

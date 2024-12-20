@@ -28757,6 +28757,10 @@ PrefabInstance:
       propertyPath: HitVFXPrefab
       value: 
       objectReference: {fileID: 9041775225042728241, guid: 294c2802df2e9cb4693c6f582a02f175, type: 3}
+    - target: {fileID: 9205826686327406135, guid: 6be6b1e227bedf94fa4e8196cfb6bb68, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

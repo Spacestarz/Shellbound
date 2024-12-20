@@ -33,11 +33,9 @@ public class BossTimer : MonoBehaviour
         if (bestTime == float.MaxValue)
         {
            // timerText.text = "No high score yet!";
-           Debug.Log("no high score yet");
         }
         else
         {
-            Debug.Log("you best time is" + bestTime.ToString("F0"));
             //timerText.text = ("you best time is" + bestTime.ToString("F0")); 
         }
     }

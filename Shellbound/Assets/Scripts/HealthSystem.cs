@@ -35,20 +35,35 @@ public class HealthSystem : MonoBehaviour
 
     public void TakeDamage(int damageTaken)
     {
-        currentHP -= damageTaken;
-       
-
-        if (gameObject.CompareTag("Player"))
+        if(gameObject.CompareTag("Player") && !PlayerSlice.SliceMode())
         {
+            currentHP -= damageTaken;
+
             source.PlayOneShot(audioClip, 0.3f);
             Camera.main.GetComponent<CameraHandler>().ShakeCamera(0.2f, new Vector3(1f, 0.2f, 0));
             DamageVignette.ShowVignette();
 
-            if(currentHP <= 0)
+            if (currentHP <= 0)
             {
-                PlayerDead();   
+                PlayerDead();
             }
         }
+        else if(!gameObject.CompareTag("Player"))
+        {
+            currentHP -= damageTaken;
+        }
+
+        //if (gameObject.CompareTag("Player"))
+        //{
+        //    source.PlayOneShot(audioClip, 0.3f);
+        //    Camera.main.GetComponent<CameraHandler>().ShakeCamera(0.2f, new Vector3(1f, 0.2f, 0));
+        //    DamageVignette.ShowVignette();
+
+        //    if(currentHP <= 0)
+        //    {
+        //        PlayerDead();   
+        //    }
+        //}
 
         if (gameObject.CompareTag("Enemy") && currentHP <= 0)
         {
