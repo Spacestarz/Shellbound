@@ -81,8 +81,8 @@ public class UI : MonoBehaviour
 
     public void DefeatedBOSS()
     {
-        player.GetComponent<PlayerController>().enabled = false;
-        gameoverBLACK.SetActive(true);
+        //player.GetComponent<PlayerController>().enabled = false;
+        //gameoverBLACK.SetActive(true);
 
         defeatedbossBOOL = true;
     }

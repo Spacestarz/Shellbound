@@ -51,7 +51,6 @@ public class Base_enemy : MonoBehaviour
     }
     public IEnumerator weekTimer()
     {
-        Debug.Log("week");
         try { GetComponentInChildren<BaseAnimator>().anim.SetTrigger("Vulnerable"); }
         catch { }
         agent.SetDestination(transform.position);
