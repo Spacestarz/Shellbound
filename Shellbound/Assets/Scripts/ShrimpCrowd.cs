@@ -25,13 +25,9 @@ public class ShrimpCrowd : MonoBehaviour
     private void Update()
     {      
         if (!cheerAudioSource.isPlaying)
-        {
-            if (ShrimpMoveScript.startY != transform.position.y)
-            {
-                transform.DOMoveY(ShrimpMoveScript.startY, 5);
-            }
-
+        {         
             IsCheering = false;
+            ShrimpMoveScript.ReturnToStartPos();
         }
     }
 

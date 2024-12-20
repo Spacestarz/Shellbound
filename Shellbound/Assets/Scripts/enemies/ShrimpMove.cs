@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,7 +26,6 @@ public class ShrimpMove : MonoBehaviour
         startY = transform.position.y;
         timeOffset = Random.Range(minOffset, maxOffset);
         CrowdHandler = FindAnyObjectByType<ShrimpCrowd>();
-
         //Debug.Log($"{gameObject.name} timeOffset: {timeOffset}");
     }
 
@@ -41,6 +41,14 @@ public class ShrimpMove : MonoBehaviour
         if (CrowdHandler.IsBooing)
         {
             //boo sound
+        }
+    }
+
+    public void ReturnToStartPos()
+    {
+        if (startY != transform.position.y)
+        {
+            transform.DOMoveY(startY, 5);
         }
     }
 }
