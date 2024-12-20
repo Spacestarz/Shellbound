@@ -9,8 +9,8 @@ public class ShrimpMove : MonoBehaviour
     [SerializeField] float height = 2f;
 
     [Header("Delays between")]
-    [SerializeField] float minOffset;
-    [SerializeField] float maxOffset;
+    float minOffset = 0;
+    float maxOffset = 0.700f;
     /*
     //TODO 
     //make a random chance that they go up or down
@@ -24,6 +24,7 @@ public class ShrimpMove : MonoBehaviour
     {
         startY = transform.position.y;
         timeOffset = Random.Range(minOffset, maxOffset);
+        CrowdHandler = FindAnyObjectByType<ShrimpCrowd>();
 
         //Debug.Log($"{gameObject.name} timeOffset: {timeOffset}");
     }

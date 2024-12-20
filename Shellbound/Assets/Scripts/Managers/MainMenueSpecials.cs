@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
+using Spine.Unity;
 
 public class MainMenueSpecials : MonoBehaviour
 {
@@ -34,6 +35,8 @@ public class MainMenueSpecials : MonoBehaviour
     public AudioClip start;
     public AudioClip end;
     public AudioClip roar;
+
+    public SkeletonAnimation anim;
 
 
     private void Awake()
@@ -126,6 +129,13 @@ public class MainMenueSpecials : MonoBehaviour
         presText.GetComponent<TextMeshProUGUI>().DOFade(0, 2).OnComplete(() => { hide(presText); });
         logoRect.DOAnchorPosY(-75, 2);
         menueRect.DOAnchorPosY(0, 2);
+        anim.AnimationState.SetAnimation(0, "Silly guy fade in", false);
+        Invoke(nameof(SetFinalAnimation), 5.333f);
+    }
+
+    void SetFinalAnimation()
+    {
+        anim.AnimationState.SetAnimation(0, "Silly guy moving", true);
     }
 
     void hide(GameObject screen)

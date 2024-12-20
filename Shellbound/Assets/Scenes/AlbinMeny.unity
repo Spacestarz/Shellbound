@@ -3279,6 +3279,7 @@ MonoBehaviour:
   start: {fileID: 8300000, guid: 7432a04928f3ce1409f9ceb6eba67d1a, type: 3}
   end: {fileID: 8300000, guid: 39146b362e8dc4b4fab722f4b14f3dc8, type: 3}
   roar: {fileID: 8300000, guid: fcf58295a68c843478b0bac0056d25b3, type: 3}
+  anim: {fileID: 1588549666}
 --- !u!4 &1325524143
 Transform:
   m_ObjectHideFlags: 0
@@ -4281,7 +4282,7 @@ MonoBehaviour:
   physicsMovementRelativeTo: {fileID: 0}
   updateTiming: 1
   unscaledTime: 0
-  _animationName: Silly guy moving
+  _animationName: title screen (No silly guy)
   loop: 1
   timeScale: 1
 --- !u!23 &1588549667

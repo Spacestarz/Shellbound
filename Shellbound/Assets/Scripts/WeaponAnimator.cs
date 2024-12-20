@@ -55,7 +55,6 @@ public class WeaponAnimator : BaseAnimator
         }
         else
         {
-            Debug.Log("dary");
             CheckDartFired();
         }
     }

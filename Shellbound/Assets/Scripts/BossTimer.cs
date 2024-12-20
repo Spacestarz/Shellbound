@@ -28,7 +28,7 @@ public class BossTimer : MonoBehaviour
     {
         TimerRunning = true;
         bestTime = PlayerPrefs.GetFloat(bestTimerString, float.MaxValue);
-        timerText.text = "You best time is" + bestTime.ToString("F0");
+        //timerText.text = "You best time is" + bestTime.ToString("F0");
 
         if (bestTime == float.MaxValue)
         {
@@ -61,7 +61,7 @@ public class BossTimer : MonoBehaviour
     {
         TimerRunning = false;
        
-        timerText.text = "Your time to kill this boss was" + " " + timer.ToString("F0");
+        //timerText.text = "Your time to kill this boss was" + " " + timer.ToString("F0");
         Debug.Log("your time was" + " " + timer.ToString("F0"));
 
         if (timer < bestTime)
