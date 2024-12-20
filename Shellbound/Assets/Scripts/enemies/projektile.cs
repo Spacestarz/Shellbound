@@ -19,7 +19,14 @@ public class projektile : MonoBehaviour
         }
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<HealthSystem>().TakeDamage(damage);
+            if(!CompareTag("Wave"))
+            {
+                other.GetComponent<HealthSystem>().TakeDamage(damage);
+            }
+            else if(other.GetComponent<PlayerController>().grounded)
+            {
+                other.GetComponent<HealthSystem>().TakeDamage(damage);
+            }
         }
     }
 }
