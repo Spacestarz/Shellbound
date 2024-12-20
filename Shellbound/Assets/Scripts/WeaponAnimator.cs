@@ -175,13 +175,11 @@ public class WeaponAnimator : BaseAnimator
 
     public void SwitchToHarpoon()
     {
-        Debug.Log("Switch to Harp");
         skeletonGraphic.AnimationState.SetAnimation(0, "Switch Dart bolt to Hook", false);
     }
 
     public void SwitchToDart()
     {
-        Debug.Log("Switch to Dart");
         skeletonGraphic.AnimationState.SetAnimation(0, "Switch Hook to Dart bolt", false);
     }
 }

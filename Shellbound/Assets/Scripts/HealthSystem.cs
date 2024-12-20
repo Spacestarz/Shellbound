@@ -38,9 +38,12 @@ public class HealthSystem : MonoBehaviour
         currentHP -= damageTaken;
        
 
-        if (gameObject.CompareTag("Player") && currentHP <= 0)
+        if (gameObject.CompareTag("Player"))
         {
-            source.PlayOneShot(audioClip, 0.2f);
+            source.PlayOneShot(audioClip, 0.3f);
+            Camera.main.GetComponent<CameraHandler>().ShakeCamera(0.2f, new Vector3(1f, 0.2f, 0));
+            DamageVignette.ShowVignette();
+
             if(currentHP <= 0)
             {
                 PlayerDead();   
