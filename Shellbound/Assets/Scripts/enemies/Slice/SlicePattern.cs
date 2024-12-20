@@ -33,7 +33,10 @@ public class SlicePattern : MonoBehaviour
 
     public void DestroyArrow()
     {
-        Destroy(spawnedArrow.gameObject);
+        if(spawnedArrow)
+        {
+            Destroy(spawnedArrow.gameObject);
+        }
 
         totalSliced++;
     }
@@ -148,7 +151,10 @@ public class SlicePattern : MonoBehaviour
 
     public void FailPattern()
     {
-        Destroy(spawnedSliceAnimation.gameObject);
+        if(spawnedSliceAnimation)
+        {
+            Destroy(spawnedSliceAnimation.gameObject);
+        }
         fire.ReturnHarpoon();
         ResetPattern();
         StartCoroutine(Camera.main.GetComponent<RotateCamera>().SetCameraLock(false));

@@ -63,6 +63,7 @@ public class HealthSystem : MonoBehaviour
                 Camera.main.GetComponent<RotateCamera>().isLocked = false;
             }
 
+            gameObject.SetActive(false);
             Invoke(nameof(dead),deathTime);
          
         }
@@ -81,6 +82,7 @@ public class HealthSystem : MonoBehaviour
     public void Bossdead()
     {
         BossTimerScript.StopTimer();
+        Invoke(nameof(dead), deathTime);
         uiScript.DefeatedBOSS();
     }
 
