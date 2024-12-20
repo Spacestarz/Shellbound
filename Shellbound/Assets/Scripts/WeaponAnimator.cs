@@ -50,7 +50,6 @@ public class WeaponAnimator : BaseAnimator
 
         if(harpoonIsActive)
         {
-            Debug.Log("Harpy");
             CheckHarpoonFired();
         }
         else
