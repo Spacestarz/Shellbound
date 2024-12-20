@@ -45,6 +45,7 @@ public class MainMenueSpecials : MonoBehaviour
         QuitButon = GameObject.Find("quit");
         manager = GameObject.Find("manager");
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         StartButon.GetComponent<Button>().onClick.AddListener(delegate { manager.GetComponent<SceneController>().NextLevel(); });
         QuitButon.GetComponent<Button>().onClick.AddListener(delegate { manager.GetComponent<SceneController>().quit(); });
 
