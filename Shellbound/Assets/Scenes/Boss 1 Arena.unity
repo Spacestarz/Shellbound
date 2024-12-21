@@ -59701,10 +59701,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1369424104670791186, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
-      propertyPath: MaxHP
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 1369424104670791186, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: uiScript
       value: 
       objectReference: {fileID: 1645081101}
@@ -59716,29 +59712,9 @@ PrefabInstance:
       propertyPath: BossTimerScript
       value: 
       objectReference: {fileID: 1402174448}
-    - target: {fileID: 1487934291915505079, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3108138511786946589, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
-      propertyPath: m_Name
-      value: Weakpoint
-      objectReference: {fileID: 0}
-    - target: {fileID: 4387076345772054346, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7583729944465845015, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
-      propertyPath: MaxDistance
-      value: 407.51944
-      objectReference: {fileID: 0}
     - target: {fileID: 8247093586164526804, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: m_Name
       value: MantisShrimp
-      objectReference: {fileID: 0}
-    - target: {fileID: 8415066639051055448, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8747580143145899000, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: m_Layer
