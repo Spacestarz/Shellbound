@@ -118,12 +118,12 @@ public class WeaponAnimator : BaseAnimator
         }
         else
         {
-            if (flatVelo.magnitude > 0.1 && !playerIsWalking && !harpoonIsFired)
+            if (flatVelo.magnitude > 0.1 && !playerIsWalking && !dartIsFired)
             {
                 playerIsWalking = true;
                 skeletonGraphic.AnimationState.SetAnimation(0, "Dart bolt walking bob", true);
             }
-            else if (flatVelo.magnitude < 0.1 && playerIsWalking && !harpoonIsFired)
+            else if (flatVelo.magnitude < 0.1 && playerIsWalking && !dartIsFired)
             {
                 playerIsWalking = false;
                 ReturnToStill(ref playerIsWalking);
