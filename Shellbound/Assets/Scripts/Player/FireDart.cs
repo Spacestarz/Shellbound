@@ -1,5 +1,3 @@
-using Spine;
-using System.Diagnostics.Tracing;
 using UnityEngine;
 
 public class FireDart : MonoBehaviour
@@ -38,5 +36,11 @@ public class FireDart : MonoBehaviour
         source.PlayOneShot(dartSound, 0.7f);
         shot = true;
         Instantiate(dart, Camera.main.transform.position, Camera.main.transform.rotation);
+    }
+
+    void FireRayCast()
+    {
+        source.PlayOneShot(dartSound, 0.5f);
+
     }
 }

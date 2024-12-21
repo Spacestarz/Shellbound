@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,12 +18,16 @@ public class HealthSystem : MonoBehaviour
     public AudioClip audioClip;
 
     public UI uiScript;
-    public SpriteRenderer enemySprite;
 
     public BossTimer BossTimerScript;
+
+    bool playerInvulnerable;
+    readonly float playerInvulnTime = 0.75f;
+
+    DamageFlash damageFlash;
+
     void Awake()
     { 
-       
         currentHP = MaxHP;
         source = GetComponent<AudioSource>();
 
@@ -31,43 +36,41 @@ public class HealthSystem : MonoBehaviour
             healthBar.maxValue = MaxHP;
             healthBar.value = MaxHP;
         }
+
+        damageFlash = GetComponentInChildren<DamageFlash>();
     }
 
     public void TakeDamage(int damageTaken)
     {
-        if(gameObject.CompareTag("Player") && !PlayerSlice.SliceMode())
+        if(gameObject.CompareTag("Player") && !PlayerSlice.SliceMode() && !playerInvulnerable)
         {
             currentHP -= damageTaken;
 
             source.PlayOneShot(audioClip, 0.3f);
+
             Camera.main.GetComponent<CameraHandler>().ShakeCamera(0.2f, new Vector3(1f, 0.2f, 0));
             DamageVignette.ShowVignette();
+
+            StartCoroutine(PlayerInvulnerability());
 
             if (currentHP <= 0)
             {
                 PlayerDead();
             }
         }
-        else if(!gameObject.CompareTag("Player"))
+        else if(!gameObject.CompareTag("Player") && damageFlash)
+        {
+            currentHP -= damageTaken;
+            damageFlash.FlashRed();
+        }
+        else
         {
             currentHP -= damageTaken;
         }
 
-        //if (gameObject.CompareTag("Player"))
-        //{
-        //    source.PlayOneShot(audioClip, 0.3f);
-        //    Camera.main.GetComponent<CameraHandler>().ShakeCamera(0.2f, new Vector3(1f, 0.2f, 0));
-        //    DamageVignette.ShowVignette();
-
-        //    if(currentHP <= 0)
-        //    {
-        //        PlayerDead();   
-        //    }
-        //}
 
         if (gameObject.CompareTag("Enemy") && currentHP <= 0)
         {
-            
             GameObject mantisShrimp = GameObject.Find("MantisShrimp");
             if (gameObject.name == "MantisShrimp")
             {
@@ -113,5 +116,13 @@ public class HealthSystem : MonoBehaviour
     {
         //Game over screen for player
         uiScript.GameOver();
+    }
+
+
+    IEnumerator PlayerInvulnerability()
+    {
+        playerInvulnerable = true;
+        yield return new WaitForSeconds(playerInvulnTime);
+        playerInvulnerable = false;
     }
 }

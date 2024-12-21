@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 5692959015762427215}
   - component: {fileID: 7449188073329792250}
   - component: {fileID: 793653904417308207}
+  - component: {fileID: 7331935935531000125}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,6 +101,19 @@ MonoBehaviour:
   rotateXAxis: 1
   rotateYAxis: 0
   rotateZAxis: 1
+--- !u!114 &7331935935531000125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1090122947499520880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 408f055c0965b0543ac8aa76b182515b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
 --- !u!1 &3373935243921306136
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,7 +204,6 @@ MonoBehaviour:
   source: {fileID: 0}
   audioClip: {fileID: 0}
   uiScript: {fileID: 0}
-  enemySprite: {fileID: 0}
   BossTimerScript: {fileID: 0}
   Harponed: 0
   dragspeed: 5

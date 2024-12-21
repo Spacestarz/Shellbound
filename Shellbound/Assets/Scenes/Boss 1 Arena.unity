@@ -22195,6 +22195,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 574646586}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &599202255 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1138034167963580102, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+  m_PrefabInstance: {fileID: 1627752901}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &599202258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599202255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 408f055c0965b0543ac8aa76b182515b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
 --- !u!1 &600576907
 GameObject:
   m_ObjectHideFlags: 0
@@ -59721,6 +59739,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3108138511786946589, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+      propertyPath: m_Name
+      value: Weakpoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 3108138511786946589, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -59736,11 +59758,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: MantisShrimp
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1134752133269990394, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
     m_RemovedGameObjects:
     - {fileID: 120284636544823944, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1138034167963580102, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 599202258}
   m_SourcePrefab: {fileID: 100100000, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
 --- !u!4 &1630551816 stripped
 Transform:
@@ -59993,6 +60019,18 @@ PrefabInstance:
       propertyPath: playerRb
       value: 
       objectReference: {fileID: 3729866778512121055, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
+    - target: {fileID: 1099651559334280479, guid: 27e66a3e828e9854ba605a17c5a75199, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099651559334280479, guid: 27e66a3e828e9854ba605a17c5a75199, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099651559334280479, guid: 27e66a3e828e9854ba605a17c5a75199, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1340073919257602575, guid: 27e66a3e828e9854ba605a17c5a75199, type: 3}
       propertyPath: m_text
       value: "restart by pressing \nBACKSPACE"
