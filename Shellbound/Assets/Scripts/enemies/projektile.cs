@@ -13,7 +13,7 @@ public class projektile : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (transform.CompareTag("weakpoint") && !other.CompareTag("Enemy"))
+        if (transform.CompareTag("weakpoint") && !other.CompareTag("Enemy") && !other.CompareTag("weakpoint"))
         {
             attack.velo = true;
         }

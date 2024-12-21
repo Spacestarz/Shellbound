@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class dart : MonoBehaviour
@@ -30,7 +29,7 @@ public class dart : MonoBehaviour
     }
     public void Destroy()
     {
-        fireDart.shot = false;
+        fireDart.hasShot = false;
         Destroy(gameObject);
     }
     private void OnTriggerEnter(Collider other)

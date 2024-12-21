@@ -113,7 +113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 408f055c0965b0543ac8aa76b182515b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
 --- !u!1 &3373935243921306136
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,7 +130,7 @@ GameObject:
   - component: {fileID: 6279139326421551457}
   - component: {fileID: 2413092762522782845}
   - component: {fileID: 1112311276256701693}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: urchin
   m_TagString: Enemy
   m_Icon: {fileID: 0}

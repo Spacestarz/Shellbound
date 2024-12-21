@@ -1,11 +1,17 @@
+using System.Collections;
+using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
+using UnityEditor.XR;
 using UnityEngine;
 
 public class FireDart : MonoBehaviour
 {
     bool fireRequested;
-    [HideInInspector] public bool shot;
-
+    [HideInInspector] public bool hasShot;
+    
     public GameObject dart;
+
+    float cooldownLength = 1.25f;
 
     [Header("audio")]
     AudioSource source;
@@ -21,7 +27,8 @@ public class FireDart : MonoBehaviour
     {
         if(fireRequested)
         {
-            Fire();
+            FireRayCast();
+            //Fire();
             fireRequested = false;
         }
     }
@@ -34,13 +41,73 @@ public class FireDart : MonoBehaviour
     void Fire()
     {
         source.PlayOneShot(dartSound, 0.7f);
-        shot = true;
+        hasShot = true;
         Instantiate(dart, Camera.main.transform.position, Camera.main.transform.rotation);
     }
 
     void FireRayCast()
     {
+        var enemyMask = LayerMask.GetMask("Enemy");
+        var weakpointMask = LayerMask.GetMask("WeakPoint");
+        var combinedMask = enemyMask | weakpointMask;
+
+        StartCoroutine(Cooldown());
+
         source.PlayOneShot(dartSound, 0.5f);
 
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        RaycastHit[] hits = Physics.RaycastAll(ray, Mathf.Infinity, combinedMask);
+        CheckHits(hits);
+    }
+
+
+    IEnumerator Cooldown()
+    {
+        hasShot = true;
+        yield return new WaitForSeconds(cooldownLength);
+        hasShot = false;
+    }
+
+    void CheckHits(RaycastHit[] hits)
+    {
+        System.Array.Sort(hits, (x, y) => x.distance.CompareTo(y.distance));
+
+        GameObject firstHit;
+        GameObject secondHit;
+
+        if (hits.Length > 0)
+        {
+            firstHit = hits[0].collider.gameObject;
+            
+            if (firstHit.CompareTag("Enemy"))
+            {
+                if (firstHit.name == "MantisShrimp" && hits.Length > 1)
+                {
+                    secondHit = hits[1].collider.gameObject;
+
+                    if (firstHit.GetComponent<Boss1_AI>().phase.stunable && secondHit.CompareTag("weakpoint"))
+                    {
+                        firstHit.GetComponent<Base_enemy>().wekend();
+                    }
+                    else
+                    {
+                        firstHit.GetComponent<Base_enemy>().PlayBonk();
+                    }
+                }
+                else if(firstHit.name == "MantisShrimp")
+                {
+                    firstHit.GetComponent<Base_enemy>().PlayBonk();
+                }
+                else
+                {
+                    firstHit.GetComponent<Enemi_health>().TakeDamage(1);
+                }
+            }
+            else if(firstHit.CompareTag("weakpoint"))
+            {
+                firstHit.GetComponentInParent<Base_enemy>().wekend();
+            }
+        }
     }
 }

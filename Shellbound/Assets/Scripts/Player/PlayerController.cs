@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour
         {
             fireHarpoon.InvokeFire();
         }
-        else if (Input.GetButtonDown("Fire1") && !PlayerSlice.SliceMode() && !fireDart.shot && !harpoontime)
+        else if (Input.GetButtonDown("Fire1") && !PlayerSlice.SliceMode() && !fireDart.hasShot && !harpoontime)
         {
             fireDart.RequestFire();
         }

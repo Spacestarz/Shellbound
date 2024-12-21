@@ -82,4 +82,9 @@ public class Base_enemy : MonoBehaviour
             sorce.PlayOneShot(bonk, 0.5f);
         }
     }
+
+    public void PlayBonk()
+    {
+        sorce.PlayOneShot(bonk, 0.5f);
+    }
 }

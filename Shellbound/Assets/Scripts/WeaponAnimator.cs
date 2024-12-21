@@ -82,7 +82,7 @@ public class WeaponAnimator : BaseAnimator
 
     void CheckDartFired()
     {
-        if (dartFire.shot && !dartIsFired)
+        if (dartFire.hasShot && !dartIsFired)
         {
             dartIsFired = true;
 
@@ -93,7 +93,7 @@ public class WeaponAnimator : BaseAnimator
             //Invoke(nameof(HasShot), 0.189f);
             //rect.DOAnchorPos(middlePos, 0.189f);
         }
-        else if (!dartFire.shot && dartIsFired)
+        else if (!dartFire.hasShot && dartIsFired)
         {
             dartIsFired = false;
             ReturnToStill(ref harpoonIsFired);
@@ -149,13 +149,20 @@ public class WeaponAnimator : BaseAnimator
             skeletonGraphic.AnimationState.GetCurrent(0).TimeScale = 3.0f;
         }
 
-        if(rect.anchoredPosition != (Vector2)originalPos)
+        CheckIfReturn();
+    }
+
+
+    void CheckIfReturn()
+    {
+        if (rect.anchoredPosition != (Vector2)originalPos)
         {
             rect.DOAnchorPos(originalPos, 0.189f);
         }
     }
 
-    public void CheckIfTimeToSwitch()
+
+    void CheckIfTimeToSwitch()
     {
         harpoonIsActive = controller.harpoontime;
         if(harpoonIsActive != harpoonWasActive)
@@ -163,10 +170,12 @@ public class WeaponAnimator : BaseAnimator
             if(controller.harpoontime)
             {
                 SwitchToHarpoon();
+                CheckIfReturn();
             }
             else if(!controller.harpoontime && !PlayerSlice.instance.caughtObject)
             {
                 SwitchToDart();
+                CheckIfReturn();
             }
         }
         harpoonWasActive = harpoonIsActive;

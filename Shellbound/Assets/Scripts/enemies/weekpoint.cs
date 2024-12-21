@@ -10,7 +10,7 @@ public class weekpoint : MonoBehaviour
     MeshRenderer meshRenderer;
     Collider _collider;
 
-    bool isVisible;
+    public bool isVisible;
     // Start is called before the first frame update
     void Start()
     {
