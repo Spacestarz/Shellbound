@@ -63,4 +63,22 @@ public class CameraHandler : MonoBehaviour
     {
         Camera.main.DOFieldOfView(60, 0.4f);
     }
+
+    public void WeakBossRoar()
+    {
+        this.DOKill();
+        Camera.main.DOShakePosition(2f, new Vector3(0.2f, 0.2f, 0.2f), 30, 45, true, ShakeRandomnessMode.Harmonic);
+    }
+
+    public void IntroBossRoar(IntroManager calledFrom)
+    {
+        Invoke(nameof(IntroZoomOut), 1.25f);
+        calledFrom.InvokeRestoreUIElements();
+        Camera.main.DOShakePosition(2f, new Vector3(1,1,1), 40, 90, true, ShakeRandomnessMode.Harmonic).OnComplete(ResetPosition).OnComplete(calledFrom.ResetSpatialBlend);
+    }
+
+    void IntroZoomOut()
+    {
+        Camera.main.DOFieldOfView(60, 1.4f);
+    }
 }

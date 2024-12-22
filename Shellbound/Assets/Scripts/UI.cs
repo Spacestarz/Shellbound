@@ -34,7 +34,7 @@ public class UI : MonoBehaviour
         youWin = GameObject.Find("You Win");
         
         gameoverBLACK = GameObject.Find("Background panel");
-        gameoverBLACK.SetActive(false);
+        //gameoverBLACK.SetActive(false);
         gameOverScreen.SetActive(false);
 
         youWin.SetActive(false);
@@ -81,6 +81,7 @@ public class UI : MonoBehaviour
     {
         player.GetComponent<PlayerController>().enabled = false;
         gameoverBLACK.SetActive(true);
+        gameoverBLACK.GetComponent<Image>().color = new Color(0, 0, 0, 0.945f);
         gameOverScreen.SetActive(true);
         gameoverBOOL = true;
     }

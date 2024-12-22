@@ -23,10 +23,14 @@ public class AttackIndicator : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Vector3 maxSize;
 
+    private AudioSource audioSource;
+    public AudioClip[] clips;
 
     void Awake()
     {
-        player = GameObject.Find("Player");
+        audioSource = GetComponent<AudioSource>();
+
+        player = PlayerSlice.instance.gameObject;//GameObject.Find("Player");
         healthSystem = player.GetComponent<HealthSystem>();
 
         spike = transform.GetChild(0).gameObject;
@@ -86,6 +90,7 @@ public class AttackIndicator : MonoBehaviour
     private void DeploySpike()
     {
         spike.transform.DOLocalMoveY(0.255f, 0.15f).OnComplete(InvokeReturnSpike);
+        PlaySound();
     }
 
 
@@ -117,5 +122,12 @@ public class AttackIndicator : MonoBehaviour
         {
             playerInCircle = false;
         }
+    }
+
+    private void PlaySound()
+    {
+        int i = Random.Range(0, clips.Length);
+        audioSource.pitch = Random.Range(0.9f, 1.1f);
+        audioSource.PlayOneShot(clips[i]);
     }
 }
