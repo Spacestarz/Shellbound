@@ -32,12 +32,16 @@ public abstract class base_enemi_attack : BasePhaseScript
     public float elastickspeed = 4;
     public float elastickreturnspeed = 10;
     public float elastickdelai = 2;
+
+    public AudioClip cueFist;
+    public AudioClip cueWave;
     private void Awake()
     {
         UrchinSpawnerScript = FindObjectOfType<UrchinSpawner>();
         enemy = GetComponentInParent<Base_enemy>();
         //attak = GetComponentInParent<Boss1_attacks>();
         agent = GetComponentInParent<NavMeshAgent>();
+        
     }
     
  
@@ -62,6 +66,7 @@ public abstract class base_enemi_attack : BasePhaseScript
             enemy.GetComponentInChildren<MantisAnimator>().anim.SetTrigger("Double Shockwave");
         }
         WaveAnim = true;
+        SoundcueHandler.PlayWaveCue();
         yield return new WaitForSeconds(2.9f);
         stunable = true;
         if (!enemy.volnereble)
@@ -70,8 +75,7 @@ public abstract class base_enemi_attack : BasePhaseScript
             for (int j = 0; j < amount; j++)
             {
                 if (!enemy.volnereble)
-                { 
-                   
+                {
                     WaveAnim = false;
                     attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
                     if (j == 0)
@@ -92,6 +96,7 @@ public abstract class base_enemi_attack : BasePhaseScript
     public IEnumerator elestickdelay(float time)
     {
         ElastickAnim = true;
+        SoundcueHandler.PlayFistCue();
         enemy.atta = false;
         stunable = true;
         enemy.GetComponentInChildren<MantisAnimator>().anim.SetTrigger("Punch 0");

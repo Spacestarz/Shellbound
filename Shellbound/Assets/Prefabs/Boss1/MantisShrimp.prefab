@@ -283,6 +283,8 @@ MonoBehaviour:
   elastickspeed: 20
   elastickreturnspeed: 40
   elastickdelai: 1
+  cueFist: {fileID: 0}
+  cueWave: {fileID: 0}
 --- !u!1 &1677357844922818625
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,6 +833,7 @@ GameObject:
   - component: {fileID: 5895869919160325364}
   - component: {fileID: 9110182987169601974}
   - component: {fileID: 8552221987041293120}
+  - component: {fileID: 422192929008893598}
   m_Layer: 12
   m_Name: attacker
   m_TagString: Enemy
@@ -949,6 +952,20 @@ MonoBehaviour:
   wavesound: {fileID: 8300000, guid: 53b12810830021d44ab20ababf5be8ff, type: 3}
   elastickstartsound: {fileID: 8300000, guid: e9cf99480170fa74d8c8844b2d56c990, type: 3}
   jabsound: {fileID: 8300000, guid: bf529620e0b848a4e8ff490a73d420fd, type: 3}
+--- !u!114 &422192929008893598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5231498906644391986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e7345fd3b766b7488b6f33de0de833d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveCue: {fileID: 8300000, guid: 26c7d2a699f0fcf4b9f85d455cd840b5, type: 3}
+  fistCue: {fileID: 8300000, guid: 9792843a99740d748bd9815ca0b1d706, type: 3}
 --- !u!1 &6133518959946061554
 GameObject:
   m_ObjectHideFlags: 0
@@ -1017,6 +1034,8 @@ MonoBehaviour:
   elastickspeed: 30
   elastickreturnspeed: 60
   elastickdelai: 1
+  cueFist: {fileID: 0}
+  cueWave: {fileID: 0}
   wave1: {fileID: 0}
 --- !u!1 &6342079252982987713
 GameObject:
@@ -1308,7 +1327,9 @@ MonoBehaviour:
   deathTime: 1
   Player: {fileID: 0}
   source: {fileID: 0}
-  audioClip: {fileID: 8300000, guid: cb2ec8cfff8bec140a2e6d29135b4407, type: 3}
+  playerTakeDamage: {fileID: 0}
+  bossTakeDamage: []
+  bossDeath: {fileID: 0}
   uiScript: {fileID: 0}
   BossTimerScript: {fileID: 0}
   Harponed: 0
@@ -1846,6 +1867,8 @@ MonoBehaviour:
   elastickspeed: 40
   elastickreturnspeed: 80
   elastickdelai: 1
+  cueFist: {fileID: 0}
+  cueWave: {fileID: 0}
   wave1: {fileID: 0}
   wave2: {fileID: 0}
 --- !u!1001 &201278290168034848

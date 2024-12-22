@@ -14936,7 +14936,7 @@ PrefabInstance:
     - target: {fileID: 345157075243984301, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
       propertyPath: bossDeath
       value: 
-      objectReference: {fileID: 8300000, guid: e7ab363e448ea264e9872fcf3281ce95, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 345157075243984301, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
       propertyPath: healthBar
       value: 
@@ -59725,6 +59725,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1645081101}
     - target: {fileID: 1369424104670791186, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+      propertyPath: bossDeath
+      value: 
+      objectReference: {fileID: 8300000, guid: e7ab363e448ea264e9872fcf3281ce95, type: 3}
+    - target: {fileID: 1369424104670791186, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1645081098}
@@ -59732,6 +59736,10 @@ PrefabInstance:
       propertyPath: BossTimerScript
       value: 
       objectReference: {fileID: 1402174448}
+    - target: {fileID: 7583729944465845015, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8247093586164526804, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: m_Name
       value: MantisShrimp
