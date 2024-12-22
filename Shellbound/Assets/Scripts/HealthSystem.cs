@@ -14,8 +14,11 @@ public class HealthSystem : MonoBehaviour
 
     public GameObject Player; //player*
 
-    public AudioSource source;
-    public AudioClip audioClip;
+    [HideInInspector] public AudioSource source;
+    public AudioClip playerTakeDamage;
+    public AudioClip[] bossTakeDamage;
+    public AudioClip bossDeath;
+
 
     public UI uiScript;
 
@@ -46,9 +49,9 @@ public class HealthSystem : MonoBehaviour
         {
             currentHP -= damageTaken;
 
-            source.PlayOneShot(audioClip, 0.3f);
+            source.PlayOneShot(playerTakeDamage, 0.3f);
 
-            Camera.main.GetComponent<CameraHandler>().ShakeCamera(0.2f, new Vector3(1f, 0.2f, 0));
+            Camera.main.GetComponent<CameraHandler>().ShakeCamera(0.3f, new Vector3(1f, 0.2f, 0));
             DamageVignette.ShowVignette();
 
             StartCoroutine(PlayerInvulnerability());
@@ -107,8 +110,9 @@ public class HealthSystem : MonoBehaviour
 
     public void Bossdead()
     {
+        source.PlayOneShot(bossDeath);
         BossTimerScript.StopTimer();
-        Invoke(nameof(dead), deathTime);
+        Invoke(nameof(dead), 5);
         uiScript.DefeatedBOSS();
     }
 

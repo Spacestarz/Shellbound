@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class UrchinSpawner : MonoBehaviour
@@ -53,7 +52,15 @@ public class UrchinSpawner : MonoBehaviour
     { 
         for (int i = 0; i < urchinAmount; i++)
         {
-            Vector3 RandomPoint = UnityEngine.Random.insideUnitCircle * CircleArea;
+            //var unitCircleCenter = new Vector3(Player.transform.position.x, HeightofY, Player.transform.position.z);
+
+            //Vector3 spawnRange = Random.insideUnitSphere * CircleArea;
+
+            //Vector3 spawnPosition = new Vector3(spawnRange.x, 0, spawnRange.z);
+            //spawnPosition += unitCircleCenter;
+
+
+            Vector3 RandomPoint = Random.insideUnitCircle * CircleArea;
 
             Vector3 randomPositionInCircle = new Vector3(Player.transform.position.x + RandomPoint.x, HeightofY, Player.transform.position.z + RandomPoint.y);
             newUrchin = Instantiate(urchinPreFab, randomPositionInCircle, Quaternion.identity);

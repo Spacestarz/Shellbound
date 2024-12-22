@@ -201,7 +201,9 @@ MonoBehaviour:
   deathTime: 1
   Player: {fileID: 0}
   source: {fileID: 0}
-  audioClip: {fileID: 0}
+  playerTakeDamage: {fileID: 0}
+  bossTakeDamage: []
+  bossDeath: {fileID: 0}
   uiScript: {fileID: 0}
   BossTimerScript: {fileID: 0}
   Harponed: 0
@@ -320,7 +322,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

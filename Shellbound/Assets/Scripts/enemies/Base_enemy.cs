@@ -63,6 +63,7 @@ public class Base_enemy : MonoBehaviour
     }
     public void wekend()
     {
+        StopWeakTimer(); //To really really make sure only one of these coroutines is running at a time.
         StartCoroutine(weekTimer());
     }
 

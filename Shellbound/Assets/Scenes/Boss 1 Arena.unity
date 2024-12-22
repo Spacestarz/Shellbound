@@ -14917,14 +14917,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 317020497871510609, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.92387956
+      objectReference: {fileID: 0}
+    - target: {fileID: 317020497871510609, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.38268343
+      objectReference: {fileID: 0}
+    - target: {fileID: 317020497871510609, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 345157075243984301, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
       propertyPath: uiScript
       value: 
       objectReference: {fileID: 1645081101}
     - target: {fileID: 345157075243984301, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
+      propertyPath: bossDeath
+      value: 
+      objectReference: {fileID: 8300000, guid: e7ab363e448ea264e9872fcf3281ce95, type: 3}
+    - target: {fileID: 345157075243984301, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1645081099}
+    - target: {fileID: 345157075243984301, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
+      propertyPath: playerTakeDamage
+      value: 
+      objectReference: {fileID: 8300000, guid: cb2ec8cfff8bec140a2e6d29135b4407, type: 3}
     - target: {fileID: 2049575555081000770, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20.680286
@@ -45811,7 +45831,7 @@ GameObject:
   - component: {fileID: 1317505013}
   m_Layer: 10
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48365,7 +48385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   urchinPreFab: {fileID: 3373935243921306136, guid: df709e09e0149a645a27db8adf5e1c5b, type: 3}
   HeightofY: 13
-  CircleArea: 5
+  CircleArea: 13
 --- !u!4 &1475011903
 Transform:
   m_ObjectHideFlags: 0

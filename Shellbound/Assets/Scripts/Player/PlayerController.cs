@@ -118,11 +118,11 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Fire1") && !PlayerSlice.SliceMode() && !fireHarpoon.fired && (harpoontime || alweyspoon))
+        if (Input.GetButtonDown("Fire1") && !PlayerSlice.SliceMode() && !fireHarpoon.fired && (harpoontime || alweyspoon) && !WeaponAnimator.isSwitching)
         {
             fireHarpoon.InvokeFire();
         }
-        else if (Input.GetButtonDown("Fire1") && !PlayerSlice.SliceMode() && !fireDart.hasShot && !harpoontime)
+        else if (Input.GetButtonDown("Fire1") && !PlayerSlice.SliceMode() && !fireDart.hasShot && !harpoontime && !WeaponAnimator.isSwitching)
         {
             fireDart.RequestFire();
         }
