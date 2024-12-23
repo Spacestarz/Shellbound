@@ -30,6 +30,9 @@ public class WeaponAnimator : BaseAnimator
 
     Vector3 flatVelo;
 
+    Spine.AnimationState animState;
+    Spine.AnimationState lastState;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -43,6 +46,7 @@ public class WeaponAnimator : BaseAnimator
         originalPos = rect.anchoredPosition;
         middlePos = new Vector3(-0, -208, 0);
     }
+
 
     void Update()
     {
@@ -69,7 +73,7 @@ public class WeaponAnimator : BaseAnimator
         if (fire.fired && !harpoonIsFired)
         {
             harpoonIsFired = true;
-            
+
             skeletonGraphic.AnimationState.SetAnimation(0, "Hook shot", false);
             skeletonGraphic.AnimationState.GetCurrent(0).TimeScale = 3.0f;
             
@@ -80,7 +84,10 @@ public class WeaponAnimator : BaseAnimator
         else if (!fire.fired && harpoonIsFired)
         {
             harpoonIsFired = false;
-            ReturnToStill(ref harpoonIsFired);
+            if(!isSwitching)
+            {
+                ReturnToStill(ref harpoonIsFired);
+            }
             CheckAnchorPos();
         }
     }
@@ -90,30 +97,31 @@ public class WeaponAnimator : BaseAnimator
     {
         if (dartFire.hasShot && !dartIsFired)
         {
+
             dartIsFired = true;
-
-            //skeletonGraphic.AnimationState.SetAnimation(0, "no Hook or Dart bolt", false);
-            //skeletonGraphic.AnimationState.SetAnimation(0, "Dart bolt shot", false);
-            //skeletonGraphic.AnimationState.GetCurrent(0).TimeScale = 3.0f;
-
-            //Invoke(nameof(HasShot), 0.189f);
-            //rect.DOAnchorPos(middlePos, 0.189f);
+            skeletonGraphic.AnimationState.SetAnimation(0, "Dart bolt shot", false);
         }
         else if (!dartFire.hasShot && dartIsFired)
         {
             dartIsFired = false;
-            ReturnToStill(ref harpoonIsFired);
+            if(!isSwitching)
+            {
+                ReturnToStill(ref dartIsFired);
+            }
             CheckAnchorPos();
         }
     }
 
+
     void CheckPlayerWalking()
     {
+        CheckAnchorPos();
         if (harpoonIsActive && !isSwitching)
         {
             if (flatVelo.magnitude > 0.1 && !playerIsWalking && !harpoonIsFired)
             {
                 playerIsWalking = true;
+
                 skeletonGraphic.AnimationState.SetAnimation(0, "Hook walking bob", true);
             }
             else if (flatVelo.magnitude < 0.1 && playerIsWalking && !harpoonIsFired)
@@ -137,10 +145,12 @@ public class WeaponAnimator : BaseAnimator
         }
     }
 
+
     void HasShot()
     {
         skeletonGraphic.AnimationState.SetAnimation(0, "no Hook or Dart bolt", true);
     }
+
 
     void ReturnToStill(ref bool animBool)
     {
@@ -181,7 +191,7 @@ public class WeaponAnimator : BaseAnimator
                 SwitchToHarpoon();
                 CheckAnchorPos();
             }
-            else if(!controller.harpoontime && !PlayerSlice.instance.caughtObject)
+            else if(!controller.harpoontime && !PlayerSlice.SliceMode())
             {
                 SwitchToDart();
                 CheckAnchorPos();
@@ -190,15 +200,18 @@ public class WeaponAnimator : BaseAnimator
         harpoonWasActive = harpoonIsActive;
     }
 
-    public void SwitchToHarpoon()
+
+    void SwitchToHarpoon()
     {
         skeletonGraphic.AnimationState.SetAnimation(0, "Switch Dart bolt to Hook", false);
     }
 
-    public void SwitchToDart()
+
+    void SwitchToDart()
     {
         skeletonGraphic.AnimationState.SetAnimation(0, "Switch Hook to Dart bolt", false);
     }
+
 
     IEnumerator SwitchTimer()
     {

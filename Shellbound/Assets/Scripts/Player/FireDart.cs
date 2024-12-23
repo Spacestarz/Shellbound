@@ -25,7 +25,6 @@ public class FireDart : MonoBehaviour
         if(fireRequested)
         {
             FireRayCast();
-            //Fire();
             fireRequested = false;
         }
     }

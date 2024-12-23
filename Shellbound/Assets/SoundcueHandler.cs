@@ -28,6 +28,6 @@ public class SoundcueHandler : MonoBehaviour
 
     public static void PlayFistCue()
     {
-        instance.source.PlayOneShot(instance.fistCue);
+        instance.source.PlayOneShot(instance.fistCue, 0.6f);
     }
 }

@@ -112,6 +112,7 @@ public class HealthSystem : MonoBehaviour
     {
         source.PlayOneShot(bossDeath);
         GetComponent<Enemi_health>().DisableAI();
+        GetComponent<Boss1_AI>().enabled = false;
         BossTimerScript.StopTimer();
         Invoke(nameof(dead), 5);
         uiScript.DefeatedBOSS();
