@@ -52,7 +52,7 @@ public class IntroManager : MonoBehaviour
         Camera.main.GetComponent<RotateCamera>().IntroStareAtFloor();
         
         Invoke(nameof(BlackFadeOut), 0.5f);
-        Invoke(nameof(LookUp), 2);
+        Invoke(nameof(LookUp), 4);
     }
 
     private void StoreUIPositions()
@@ -78,6 +78,7 @@ public class IntroManager : MonoBehaviour
 
     private void BlackFadeOut()
     {
+        Camera.main.GetComponent<CameraHandler>().isDisorientedFOV = true;
         blackPanel.DOColor(Color.clear, 3f);
     }
 

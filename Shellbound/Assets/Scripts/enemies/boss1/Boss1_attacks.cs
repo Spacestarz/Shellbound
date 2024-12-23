@@ -25,7 +25,7 @@ public class Boss1_attacks : BossAttacksCommon
     float elastickrange = 12;
     bool isfiered = false;
     public bool cooling = false;
-        Boss1_AI AI;
+    Boss1_AI AI;
     [Header("sound")]
     public AudioSource sorce;
     public AudioClip wavesound;
@@ -50,7 +50,6 @@ public class Boss1_attacks : BossAttacksCommon
     }
     public void Update()
     {
-       
         if (!still)
         {
             transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));

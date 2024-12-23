@@ -111,6 +111,8 @@ public class RotateCamera : MonoBehaviour
 
     void InvokeOvershoot()
     {
+        GetComponent<CameraHandler>().isDisorientedFOV = false;
+        GetComponent<CameraHandler>().ResetFOV();
         Invoke(nameof(IntroLookUpOvershoot), 0.5f);
     }
 

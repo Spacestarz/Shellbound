@@ -126,11 +126,6 @@ public class PlayerController : MonoBehaviour
         {
             fireDart.RequestFire();
         }
-
-        if (Input.GetKeyDown(KeyCode.Keypad0))
-        {
-            harpoontime = !harpoontime;
-        }
     }
 
     private void HandleDrag()

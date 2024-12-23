@@ -6,6 +6,8 @@ public class CameraHandler : MonoBehaviour
     Vector3 defaultPosition;
     Transform orientation;
 
+    public bool isDisorientedFOV;
+
     void Awake()
     {
         Application.targetFrameRate = 120;
@@ -16,6 +18,19 @@ public class CameraHandler : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if(isDisorientedFOV)
+        {
+            PulseFOV();
+        }
+
+    }
+
+    void PulseFOV()
+    {
+        Camera.main.fieldOfView = 60 + Mathf.Sin(Time.time * 4) * 2;
+    }
 
     public void ShakeCamera(float duration, Vector3 strength)
     {
@@ -59,7 +74,7 @@ public class CameraHandler : MonoBehaviour
     }
 
 
-    void ResetFOV()
+    public void ResetFOV()
     {
         Camera.main.DOFieldOfView(60, 0.4f);
     }
