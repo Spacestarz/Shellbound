@@ -48,7 +48,7 @@ public class WeaponAnimator : BaseAnimator
     {
         flatVelo = new Vector3(playerRb.velocity.x, 0, playerRb.velocity.z);
 
-        CheckAnchorPos(false);
+        CheckAnchorPos();
         CheckIfTimeToSwitch();
 
         CheckPlayerWalking();
@@ -81,7 +81,7 @@ public class WeaponAnimator : BaseAnimator
         {
             harpoonIsFired = false;
             ReturnToStill(ref harpoonIsFired);
-            CheckAnchorPos(true);
+            CheckAnchorPos();
         }
     }
 
@@ -103,7 +103,7 @@ public class WeaponAnimator : BaseAnimator
         {
             dartIsFired = false;
             ReturnToStill(ref harpoonIsFired);
-            CheckAnchorPos(true);
+            CheckAnchorPos();
         }
     }
 
@@ -156,14 +156,12 @@ public class WeaponAnimator : BaseAnimator
             skeletonGraphic.AnimationState.GetCurrent(0).TimeScale = 3.0f;
         }
 
-        CheckAnchorPos(true);
+        CheckAnchorPos();
     }
 
 
-    void CheckAnchorPos(bool debug)
+    void CheckAnchorPos()
     {
-        if(debug)
-            Debug.Log("Check Anchor Pos");
         if (!PlayerSlice.SliceMode() && !weaponInMiddle && rect.anchoredPosition != (Vector2)originalPos)
         {
             rect.DOAnchorPos(originalPos, 0.189f);
@@ -181,12 +179,12 @@ public class WeaponAnimator : BaseAnimator
             if(controller.harpoontime)
             {
                 SwitchToHarpoon();
-                CheckAnchorPos(true);
+                CheckAnchorPos();
             }
             else if(!controller.harpoontime && !PlayerSlice.instance.caughtObject)
             {
                 SwitchToDart();
-                CheckAnchorPos(true);
+                CheckAnchorPos();
             }
         }
         harpoonWasActive = harpoonIsActive;
