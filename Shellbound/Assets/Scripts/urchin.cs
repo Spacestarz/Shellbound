@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class urchin : MonoBehaviour
 {   //       ↑
-    //       U should be capitalized
+    //      "U" should be capitalized
     //    source*
     //      ↓
     AudioSource sorce;
