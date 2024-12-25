@@ -254,8 +254,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Programmers:\r\nAlbin Kron\r\nAdam Wijk\r\nSam Romell\r\n\r\nArtists:\r\nMio
-    Rol\xE9n\r\nKai Klein\r\nFelicia Almqvist\r\n\nMusic:\nAdam Wijk\n\r\nSound credits:\r\n\r\ncustom_short_explosion_impact_sound
+  m_text: "Programmers:\r\nAlbin Kron\r\nSam Romell\r\n\rAdam Wijk\r\n\nArtists:\r\nFelicia
+    Almqvist\r\nKai Klein\r\nMio Rol\xE9n\r\n\nMusic:\nAdam Wijk\n\r\nSound credits:\r\n\r\ncustom_short_explosion_impact_sound
     by Artninja -- \nhttps://freesound.org/s/750822/ -- License: Attribution 4.0\r\n\r\n\r\nSmashed
     Egg by pandartb3d -- \nhttps://freesound.org/s/627927/ -- License: Creative Commons
     0\r\n\r\n\r\nWater Swirl, Small, 20.wav by InspectorJ -- \nhttps://freesound.org/s/398715/
