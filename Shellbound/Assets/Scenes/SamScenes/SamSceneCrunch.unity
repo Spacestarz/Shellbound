@@ -1663,6 +1663,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1207348615310772699, guid: 27e66a3e828e9854ba605a17c5a75199, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1485574681232340283, guid: 27e66a3e828e9854ba605a17c5a75199, type: 3}
       propertyPath: Enemy
       value: 
