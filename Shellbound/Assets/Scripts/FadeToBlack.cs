@@ -19,9 +19,10 @@ public class FadeToBlack : MonoBehaviour
     {
         if(!fadeStarted)
         {
+            float duration = FindAnyObjectByType<MainMenuMusic>().startSound.length;
             fadeStarted = true;
             blackScreen.enabled = true;
-            blackScreen.DOColor(Color.black, 1.5f).OnComplete(NextScene);
+            blackScreen.DOColor(Color.black, duration).OnComplete(NextScene);
         }
     }
 

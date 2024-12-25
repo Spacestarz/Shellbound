@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/AdamMenu.unity
+    guid: 8e98de041ceb3fc4eabcce24ae78c925
+  - enabled: 0
     path: Assets/Scenes/AlbinMeny.unity
     guid: 8dfcfebb04e5dab44a2b6975f0d4fe0e
   - enabled: 0

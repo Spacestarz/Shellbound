@@ -9,7 +9,7 @@ public class MainMenuMusic : MonoBehaviour
     [SerializeField] AudioClip waitingMusic;
     public AudioClip introMusic;
     [SerializeField] AudioClip mainMusic;
-    [SerializeField] AudioClip startSound;
+    public AudioClip startSound;
 
 
     private void Awake()
