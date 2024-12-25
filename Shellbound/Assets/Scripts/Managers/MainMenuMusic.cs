@@ -16,8 +16,8 @@ public class MainMenuMusic : MonoBehaviour
     {
         source = GetComponent<AudioSource>();
         source.clip = waitingMusic;
-        source.Play();
         source.volume = 0.5f;
+        source.Play();
     }
 
 
