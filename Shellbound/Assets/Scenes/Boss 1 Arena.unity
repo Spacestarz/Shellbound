@@ -47407,6 +47407,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1397288380}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!82 &1398601959 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8327442849045030410, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+  m_PrefabInstance: {fileID: 1627752901}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1402174446
 GameObject:
   m_ObjectHideFlags: 0
@@ -59829,6 +59834,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 422192929008893598, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+      propertyPath: source
+      value: 
+      objectReference: {fileID: 1398601959}
     - target: {fileID: 1083793417526186232, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 19.312086
@@ -59889,10 +59898,6 @@ PrefabInstance:
       propertyPath: BossTimerScript
       value: 
       objectReference: {fileID: 1402174448}
-    - target: {fileID: 6122194824155020048, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7583729944465845015, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: MaxDistance
       value: 100
@@ -59912,10 +59917,6 @@ PrefabInstance:
     - target: {fileID: 8247093586164526804, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: m_Name
       value: MantisShrimp
-      objectReference: {fileID: 0}
-    - target: {fileID: 8747580143145899000, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
-      propertyPath: m_Layer
-      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

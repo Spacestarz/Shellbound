@@ -122,7 +122,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8368826265888885447}
-  - component: {fileID: 2750760548677535114}
   - component: {fileID: 4336361308194140856}
   - component: {fileID: 2467125223515108448}
   - component: {fileID: 1635938660564998359}
@@ -153,14 +152,6 @@ Transform:
   - {fileID: 5692959015762427215}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &2750760548677535114
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3373935243921306136}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &4336361308194140856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,6 +214,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   death: {fileID: 8300000, guid: 696f8d84c7971af4b8a960e4cec9376d, type: 3}
   landing: {fileID: 8300000, guid: e183181537f063545a282fd8dd80dc62, type: 3}
+  sprites:
+  - {fileID: 21300000, guid: e7479321e918ee944aa3b8cb60313495, type: 3}
+  - {fileID: 21300000, guid: d4f155a32cbbfee429f04bd99cbad4fd, type: 3}
 --- !u!208 &1503553404256723477
 NavMeshObstacle:
   m_ObjectHideFlags: 0

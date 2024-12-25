@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundcueHandler : MonoBehaviour
 {
-    AudioSource source;
+    public AudioSource source;
     public AudioClip waveCue;
     public AudioClip fistCue;
 
@@ -18,16 +16,28 @@ public class SoundcueHandler : MonoBehaviour
             instance = this;
         }
 
-        instance.source = instance.GetComponentInParent<AudioSource>();
+        //instance.source = instance.GetComponent<AudioSource>();
     }
 
     public static void PlayWaveCue()
     {
-        instance.source.PlayOneShot(instance.waveCue);
+        instance.StopPlaying();
+        instance.source.clip = instance.waveCue;
+        instance.source.volume = 1;
+        instance.source.Play();
     }
 
     public static void PlayFistCue()
     {
-        instance.source.PlayOneShot(instance.fistCue, 0.6f);
+        instance.StopPlaying();
+
+        instance.source.clip = instance.fistCue;
+        instance.source.volume = 0.3f;
+        instance.source.Play();
+    }
+
+    public void StopPlaying()
+    {
+        instance.source.Stop();
     }
 }

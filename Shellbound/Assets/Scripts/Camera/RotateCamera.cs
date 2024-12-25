@@ -45,7 +45,7 @@ public class RotateCamera : MonoBehaviour
         transform.DOLookAt(sliceBoard.transform.position, 0.5f).OnComplete(UpdateRotation);
     }
 
-    private void UpdateRotation()
+    public void UpdateRotation()
     {
         xRotation = transform.localEulerAngles.x;
         yRotation = transform.localEulerAngles.y;
@@ -171,6 +171,12 @@ public class RotateCamera : MonoBehaviour
     void IntroZoomIn()
     {
         Camera.main.DOFieldOfView(10, 0.15f);
+    }
+
+    public void IntroSetRotation()
+    {
+        xRotation = 360.08f;
+        yRotation = transform.localEulerAngles.y;
     }
 #endregion
 }

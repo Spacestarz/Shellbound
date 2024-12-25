@@ -24,7 +24,7 @@ public class Base_enemy : MonoBehaviour
     public void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        target = GameObject.Find("Player").transform;
+        target = PlayerSlice.instance.transform;//GameObject.Find("Player").transform;
         attack = GetComponentInChildren<BossAttacksCommon>();
         sorce = GetComponent<AudioSource>();
         //Debug.Log(player);
@@ -63,6 +63,7 @@ public class Base_enemy : MonoBehaviour
     }
     public void wekend()
     {
+        GetComponentInChildren<SoundcueHandler>().StopPlaying();
         StopWeakTimer(); //To really really make sure only one of these coroutines is running at a time.
         StartCoroutine(weekTimer());
     }
@@ -80,12 +81,12 @@ public class Base_enemy : MonoBehaviour
     {
         if (other.CompareTag("Dart") && !volnereble)
         {
-            sorce.PlayOneShot(bonk, 0.5f);
+            PlayBonk();
         }
     }
 
     public void PlayBonk()
     {
-        sorce.PlayOneShot(bonk, 0.5f);
+        sorce.PlayOneShot(bonk, 0.15f);
     }
 }

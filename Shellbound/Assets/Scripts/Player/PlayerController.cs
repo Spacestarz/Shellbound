@@ -188,7 +188,7 @@ public class PlayerController : MonoBehaviour
 
     private void Dash()
     {
-        sorce.PlayOneShot(dashSound, 0.7f);
+        sorce.PlayOneShot(dashSound, 0.5f);
         dashing = true;
         Camera.main.GetComponent<CameraHandler>().ChangeFOV(dashDuration);
     }

@@ -164,10 +164,15 @@ public class IntroManager : MonoBehaviour
     public void StartGame()
     {
         Camera.main.transform.parent.GetComponent<PlayerController>().enabled = true;
-        Camera.main.GetComponent<RotateCamera>().isLocked = false;
         weaponAnimator.enabled = true;
         crowdAttack.gameObject.SetActive(true);
+        Invoke(nameof(CamUnlock), 0.5f);
+        crowdAttack.Awake();
         boss.GetComponent<Boss1_AI>().enabled = true;
     }
 
+    void CamUnlock()
+    {
+        Camera.main.GetComponent<RotateCamera>().isLocked = false;
+    }
 }

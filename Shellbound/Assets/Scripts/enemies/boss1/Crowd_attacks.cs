@@ -30,7 +30,7 @@ public class Crowd_attacks : MonoBehaviour
         //Empty, only here to make
         //enableable in inspector
     }
-    void Awake()
+    public void Awake()
     {
         player = GameObject.Find("Player");
    

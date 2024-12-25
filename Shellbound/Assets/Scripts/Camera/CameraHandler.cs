@@ -94,6 +94,11 @@ public class CameraHandler : MonoBehaviour
 
     void IntroZoomOut()
     {
-        Camera.main.DOFieldOfView(60, 1.4f);
+        Camera.main.DOFieldOfView(60, 1.4f).OnComplete(UpdateRotation);
+    }
+
+    void UpdateRotation()
+    {
+        Camera.main.GetComponent<RotateCamera>().IntroSetRotation();
     }
 }
