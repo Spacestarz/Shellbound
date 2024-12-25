@@ -30,6 +30,7 @@ public class MainMenueSpecials : MonoBehaviour
     bool scoreGoLefthNext = true;
     bool clicked = true;
     bool leftIsOcupied = false;
+    bool startButtonPressed;
 
     AudioSource sorce;
     public AudioClip start;
@@ -46,8 +47,8 @@ public class MainMenueSpecials : MonoBehaviour
         manager = GameObject.Find("manager");
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        StartButon.GetComponent<Button>().onClick.AddListener(delegate { manager.GetComponent<SceneController>().NextLevel(); });
-        QuitButon.GetComponent<Button>().onClick.AddListener(delegate { manager.GetComponent<SceneController>().quit(); });
+        //StartButon.GetComponent<Button>().onClick.AddListener(delegate { StartGame();/*manager.GetComponent<SceneController>().NextLevel();*/ });
+        //QuitButon.GetComponent<Button>().onClick.AddListener(delegate { manager.GetComponent<SceneController>().quit(); });
 
         creditRect = CreditText.GetComponent<RectTransform>();
         settingsRect = setings.GetComponent<RectTransform>();
@@ -126,10 +127,14 @@ public class MainMenueSpecials : MonoBehaviour
     }
     void PresedEnyKey()
     {
+        MainMenuMusic mainMenuMusic = FindAnyObjectByType<MainMenuMusic>();
+        float tweenLength = mainMenuMusic.introMusic.length;
+        mainMenuMusic.PlayIntro();
+
         sorce.PlayOneShot(roar,0.5f);
-        presText.GetComponent<TextMeshProUGUI>().DOFade(0, 2).OnComplete(() => { hide(presText); });
-        logoRect.DOAnchorPosY(-75, 2);
-        menueRect.DOAnchorPosY(0, 2);
+        presText.GetComponent<TextMeshProUGUI>().DOFade(0, tweenLength).OnComplete(() => { hide(presText); });
+        logoRect.DOAnchorPosY(-75, tweenLength);
+        menueRect.DOAnchorPosY(0, tweenLength);
         anim.AnimationState.SetAnimation(0, "Silly guy fade in", false);
         Invoke(nameof(SetFinalAnimation), 5.333f);
     }
@@ -146,5 +151,15 @@ public class MainMenueSpecials : MonoBehaviour
     void show(GameObject screen)
     {
         screen.SetActive(true);
+    }
+
+    public void StartGame()
+    {
+        if(!startButtonPressed)
+        {
+            startButtonPressed = true;
+            FindAnyObjectByType<MainMenuMusic>().PlayStartSound();
+            FindAnyObjectByType<FadeToBlack>().StartFade();
+        }
     }
 }

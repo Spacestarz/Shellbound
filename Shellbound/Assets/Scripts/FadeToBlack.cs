@@ -7,26 +7,27 @@ public class FadeToBlack : MonoBehaviour
     public Image blackScreen;
     bool fadeStarted;
 
-    private void OnTriggerEnter(Collider other)
+    SceneController sceneController;
+
+    private void Awake()
     {
-        if(other.CompareTag("Player") && !fadeStarted)
-        {
-            StartFade();
-        }
+        sceneController = FindAnyObjectByType<SceneController>();
+        blackScreen.enabled = false;
     }
-    
-    
-    void StartFade()
+
+    public void StartFade()
     {
-        fadeStarted = true;
-        blackScreen.enabled = true;
-        blackScreen.DOColor(Color.black, 2.5f).OnComplete(NextScene);
+        if(!fadeStarted)
+        {
+            fadeStarted = true;
+            blackScreen.enabled = true;
+            blackScreen.DOColor(Color.black, 1.5f).OnComplete(NextScene);
+        }
     }
 
 
     void NextScene()
     {
-        SceneController[] obj = FindObjectsByType<SceneController>(FindObjectsSortMode.None);
-        obj[0].NextLevel();
+       sceneController.NextLevel();
     }
 }
