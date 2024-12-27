@@ -31,16 +31,16 @@ public class BossTimer : MonoBehaviour
     {
         TimerRunning = true;
         bestTime = PlayerPrefs.GetFloat(bestTimerString, float.MaxValue);
-        timerText.text = "You best time is" + bestTime.ToString("F0");
+        //timerText.text = "You best time is" + bestTime.ToString("F0");
 
         if (bestTime == float.MaxValue)
         {
-            timerText.text = "No high score yet!";
+            //timerText.text = "No high score yet!";
             
         }
         else
         {
-            timerText.text = ("you best time is" + bestTime.ToString("F0")); 
+            //timerText.text = ("you best time is" + bestTime.ToString("F0")); 
         }
     }
 

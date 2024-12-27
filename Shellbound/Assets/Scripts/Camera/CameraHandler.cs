@@ -79,6 +79,7 @@ public class CameraHandler : MonoBehaviour
         Camera.main.DOFieldOfView(60, 0.4f);
     }
 
+#region Intro
     public void WeakBossRoar()
     {
         this.DOKill();
@@ -94,11 +95,13 @@ public class CameraHandler : MonoBehaviour
 
     void IntroZoomOut()
     {
-        Camera.main.DOFieldOfView(60, 1.4f).OnComplete(UpdateRotation);
+        Camera.main.DOFieldOfView(60, 1.4f).OnComplete(IntroUpdateRotation);
     }
 
-    void UpdateRotation()
+    void IntroUpdateRotation()
     {
         Camera.main.GetComponent<RotateCamera>().IntroSetRotation();
     }
+#endregion
+
 }

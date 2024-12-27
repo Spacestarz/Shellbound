@@ -63,6 +63,7 @@ public class PlayerSlice : MonoBehaviour
             instance.GetComponent<PlayerController>().NullifyMovement();
             currentSlicePattern = instance.caughtObject.sliceableObject.sliceBoard;
             currentSlicePattern.NextSliceArrow();
+            instance.GetComponent<HealthSystem>().playerInvulnerable = true;
 
             mainCam.GetComponent<RotateCamera>().isLocked = true;
         }
@@ -72,6 +73,7 @@ public class PlayerSlice : MonoBehaviour
             currentSlicePattern.ResetPattern();
 
             controller.harpoontime = false;
+            instance.GetComponent<HealthSystem>().playerInvulnerable = true;
 
             instance.GetComponent<Fire>().ReturnHarpoon();
         }
