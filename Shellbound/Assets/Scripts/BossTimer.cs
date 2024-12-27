@@ -20,7 +20,6 @@ public class BossTimer : MonoBehaviour
 
     private List<float> bestTimesList = new List<float>();
 
-    public HealthSystem healthSystem;
 
     /*
      * Make so we can have top 5 high scores
@@ -69,7 +68,7 @@ public class BossTimer : MonoBehaviour
 
         PlayerPrefs.SetFloat(bestTimerString, timer);
         PlayerPrefs.Save();
-        Debug.Log("New Best Timer: " + bestTime.ToString("F0"));
+        Debug.Log("your Best Timer: " + bestTime.ToString("F0"));
 
         SaveNewTime("player name", timer); //need to make so player can write their name
 

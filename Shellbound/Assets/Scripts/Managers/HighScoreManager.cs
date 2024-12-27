@@ -26,4 +26,14 @@ public class HighScoreManager : MonoBehaviour
     {
         
     }
+
+    public void SaveTheScores ()
+    {
+
+    }
+
+    public void LoadTheScores ()
+    {
+
+    }
 }
