@@ -33,7 +33,7 @@ public class RotateCamera : MonoBehaviour
             LockOntoSliceBoard(Harpoon.instance.caughtObject.sliceableObject.sliceBoard);
             ClampRotation(ref xRotation);
         }
-        else if (!Harpoon.hasCaught && !isLocked)
+        else if ((!Harpoon.hasCaught && !isLocked) || !OutroManager.outroRunning)
         {
             this.DOKill();
             GetMouseInput();
@@ -97,7 +97,7 @@ public class RotateCamera : MonoBehaviour
         yield break;
     }
 
-    //  INTRO THINGS=====================================================
+    //INTRO THINGS=====================================================
 #region
     public void IntroStareAtFloor()
     {

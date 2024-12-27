@@ -30,14 +30,6 @@ public class ShrimpMove : MonoBehaviour
         timeOffset = Random.Range(minOffset, maxOffset);
         CrowdHandler = FindAnyObjectByType<ShrimpCrowd>();
 
-        if (CrowdHandler != null )
-        {
-            Debug.Log("got the shrimp script");
-        }
-        else
-        {
-            Debug.Log("Where is mother");
-        }
         //Debug.Log($"{gameObject.name} timeOffset: {timeOffset}");
     }
 
@@ -80,7 +72,6 @@ public class ShrimpMove : MonoBehaviour
 
     public void ReturnToStartPos()
     {
-        Debug.Log("returning");
         transform.DOLocalMoveY(startY, 0.5f).OnComplete(() => isHome = true);
         // Debug.Log($"[ReturnToStartPos] Object: {gameObject.name}, CurrentY: {transform.position.y}, StartY: {startY}");
         // Debug.Log("Moving to startPOS" + startY);

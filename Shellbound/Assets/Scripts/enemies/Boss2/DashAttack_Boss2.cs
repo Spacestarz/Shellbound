@@ -9,7 +9,6 @@ public class DashAttack_Boss2 : MonoBehaviour
 {
     private Rigidbody rb;
     public float dashDistance = 10f;
-    private float speed = 2;
     private Vector3 directiondash;
     private float dashduration = 2;
     private Camera cam;

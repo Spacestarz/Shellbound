@@ -18,8 +18,6 @@ public class Boss2_attacks : BossAttacksCommon
     public GameObject Boss2;
 
    
-    private bool timerIsRunning = false;
-
     private DashAttack_Boss2 callDashAttack;
     MouthAttack mouth;
     Check_shockwave_colliders wave;

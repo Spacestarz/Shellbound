@@ -4,54 +4,61 @@ using UnityEngine.UI;
 
 public class OutroManager : MonoBehaviour
 {
-    HealthSystem caller;
-
     public static OutroManager instance;
-    public static bool outroRunning;
 
     [SerializeField] Image whiteScreen;
 
+    public static bool outroRunning;
+
     void Start()
     {
-        if (instance == null || instance != this)
+        if (instance != null && instance != this)
         {
-            Destroy(instance);
+            Destroy(this);
+            return;
+        }
+        else
+        {
             instance = this;
         }
     }
 
-
-    public static void StartOutro(bool victory, HealthSystem _caller)
+    public static void StartOutro(bool victory)
     {
         if (victory)
         {
-            instance.caller = _caller;
+            MusicManager.instance.StopPlaying();
+            Camera.main.GetComponent<RotateCamera>().isLocked = true;
             Vector3 shakeStrength = new(1.25f, 3.75f, 0);
             Camera.main.GetComponent<CameraHandler>().ShakeCamera(4, shakeStrength);
-            instance.Invoke(nameof(VictoryWhiteFadeIn), 3);
+            instance.Invoke(nameof(VictoryWhiteFadeIn), 3f);
 
             outroRunning = true;
         }
     }
 
-    #region Victory
+#region Victory
     void VictoryWhiteFadeIn()
     {
         Debug.Log("FADE");
         instance.whiteScreen.color = Color.clear;
         instance.whiteScreen.gameObject.SetActive(true);
-        instance.whiteScreen.DOColor(Color.white, 0.5f).OnComplete(InvokeFadeOut);
+        instance.whiteScreen.DOColor(Color.white, 0.75f).OnComplete(InvokeFadeOut);
     }
 
     void InvokeFadeOut()
     {
-        Invoke(nameof(VictoryFadeOut), 0.75f);
-        instance.caller.dead();
+        Invoke(nameof(VictoryFadeOut), 1.2f);
     }
 
     void VictoryFadeOut()
     {
         instance.whiteScreen.DOColor(Color.clear, 1.25f);
     }
-    #endregion
+
+    void EnableMovement()
+    {
+
+    }
+#endregion
 }

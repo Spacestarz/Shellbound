@@ -29,7 +29,6 @@ public class MainMenueSpecials : MonoBehaviour
     bool setingsgoRigthNext = true;
     bool scoreGoLefthNext = true;
     bool clicked = true;
-    bool leftIsOcupied = false;
     bool startButtonPressed;
 
     AudioSource sorce;

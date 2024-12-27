@@ -5,7 +5,6 @@ public class Door_open : MonoBehaviour
 {
     public Vector3 startpos;
     private Vector3 endpos;
-    private float speed = 10f;
     private Box_doorhandle gloveScript;
     private float duration = 1;
 
