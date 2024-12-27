@@ -1,0 +1,157 @@
+Mantis shrimp.png
+size:2047,3952
+filter:Linear,Linear
+pma:true
+Arm Front L
+bounds:1742,3317,299,348
+Arm Front R
+bounds:486,3100,288,408
+rotate:90
+Backfinn 1
+bounds:2,2811,381,404
+offsets:1,0,382,404
+rotate:90
+Backfinn 2
+bounds:2,3194,482,277
+offsets:1,0,483,277
+Backfinn 3
+bounds:544,3390,530,198
+Backfinn 4
+bounds:2,3473,540,147
+Backfinn 5
+bounds:371,3622,503,149
+offsets:0,1,503,150
+Better Glove Hit L
+bounds:2,1086,601,492
+Better Glove Hit R
+bounds:605,768,601,492
+Better Glove L
+bounds:2,2271,404,538
+Better Glove R
+bounds:1564,2116,406,580
+Body 1
+bounds:598,53,683,757
+offsets:1,0,684,757
+rotate:90
+Body 2
+bounds:1357,2,688,734
+Body 3
+bounds:2,385,699,594
+rotate:90
+Body 4
+bounds:1208,738,714,522
+Body 5
+bounds:696,1324,656,417
+rotate:90
+Body 6
+bounds:1165,1730,735,384
+Body 7
+bounds:408,1982,755,368
+Body 8
+bounds:873,2352,689,344
+Body 9
+bounds:1443,3117,373,293
+rotate:90
+Chain
+bounds:1115,1262,466,656
+rotate:90
+Eye L
+bounds:1148,3864,86,140
+offsets:0,1,88,141
+rotate:90
+Eye R
+bounds:1737,3853,97,108
+offsets:3,0,100,108
+rotate:90
+EyeClosed L
+bounds:279,3890,60,84
+rotate:90
+EyeClosed R
+bounds:200,3899,51,77
+rotate:90
+EyeSad L
+bounds:365,3890,60,75
+offsets:1,0,62,75
+rotate:90
+EyeSad R
+bounds:121,3903,47,77
+offsets:0,0,49,77
+rotate:90
+EyehighlightL
+bounds:50,3929,21,31
+offsets:1,2,24,36
+rotate:90
+EyehighlightR
+bounds:83,3923,27,36
+offsets:2,3,31,42
+rotate:90
+Head
+bounds:408,2611,463,487
+Iris L
+bounds:25,3934,16,23
+rotate:90
+Iris R
+bounds:2,3938,12,21
+rotate:90
+Layer 1
+bounds:2,3628,154,367
+offsets:0,0,155,367
+rotate:90
+Leg 1 (A) L
+bounds:449,3773,94,446
+rotate:90
+Leg 1 (A) R
+bounds:897,3758,104,443
+rotate:90
+Leg 1 (B) L
+bounds:1533,3695,216,156
+Leg 1 (B) R
+bounds:1751,3667,216,159
+Leg 2 (A) L
+bounds:1290,3864,86,445
+rotate:90
+Leg 2 (A) R
+bounds:2,3784,86,445
+rotate:90
+Leg 2 (B) L
+bounds:876,3590,212,166
+Leg 2 (B) R
+bounds:1090,3587,212,169
+Leg 3 (A) L
+bounds:807,3869,81,339
+rotate:90
+Leg 3 (A) R
+bounds:442,3872,78,363
+rotate:90
+Leg 3 (B) L
+bounds:1847,3828,167,122
+offsets:0,1,167,124
+Leg 3 (B) R
+bounds:1342,3724,189,138
+Leg 4 L
+bounds:1304,3522,200,216
+rotate:90
+Leg 4 R
+bounds:1522,3492,201,218
+rotate:90
+Lower Jaw
+bounds:1266,2698,417,426
+rotate:90
+Mouth Inside
+bounds:1738,2944,305,371
+Upper Shell
+bounds:2,1580,692,400
+Upper Shell 2
+bounds:896,2899,341,368
+rotate:90
+weakpointX
+bounds:1076,3242,365,278
+offsets:114,148,598,520
+
+Mantis shrimp_2.png
+size:1675,2401
+filter:Linear,Linear
+pma:true
+Moustache
+bounds:2,2,2397,1671
+rotate:90

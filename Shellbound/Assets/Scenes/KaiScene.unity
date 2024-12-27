@@ -385,6 +385,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2121538510823333022, guid: 8caa76f3f74b36640ad266ee97363a82, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3684927143196876319, guid: 8caa76f3f74b36640ad266ee97363a82, type: 3}
       propertyPath: m_Name
       value: harpoonshootfx
@@ -541,6 +545,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3634518413781445751, guid: 294c2802df2e9cb4693c6f582a02f175, type: 3}
       propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9041775225042728241, guid: 294c2802df2e9cb4693c6f582a02f175, type: 3}
+      propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9161642700590426478, guid: 294c2802df2e9cb4693c6f582a02f175, type: 3}
