@@ -16,7 +16,7 @@ public class Enemi_health : HealthSystem
             Harponed = true;
             enemi = GetComponent<Base_enemy>();
             enemi.stop();
-            enemi.enabled = false;
+            //enemi.enabled = false;
             source.PlayOneShot(crack);
         }
 
@@ -27,7 +27,7 @@ public class Enemi_health : HealthSystem
         {
             Harponed = false;
             enemi = GetComponent<Base_enemy>();
-            enemi.enabled = true;
+            //enemi.enabled = true;
             enemi.start();
         }
     }
