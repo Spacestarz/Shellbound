@@ -24,7 +24,7 @@ public class HealthSystem : MonoBehaviour
 
     public BossTimer BossTimerScript;
 
-    bool playerInvulnerable;
+    [HideInInspector] public bool playerInvulnerable;
     readonly float playerInvulnTime = 0.75f;
 
     DamageFlash damageFlash;
@@ -45,7 +45,7 @@ public class HealthSystem : MonoBehaviour
 
     public void TakeDamage(int damageTaken)
     {
-        if(gameObject.CompareTag("Player") && !PlayerSlice.SliceMode() && !playerInvulnerable)
+        if(gameObject.CompareTag("Player") && !playerInvulnerable)
         {
             currentHP -= damageTaken;
 
@@ -103,7 +103,7 @@ public class HealthSystem : MonoBehaviour
         }
 
     }
-    void dead()
+    public void dead()
     {   
         Destroy(gameObject);
     }
@@ -113,9 +113,10 @@ public class HealthSystem : MonoBehaviour
         source.PlayOneShot(bossDeath);
         GetComponent<Enemi_health>().DisableAI();
         GetComponent<Boss1_AI>().enabled = false;
-        BossTimerScript.StopTimer();
-        Invoke(nameof(dead), 5);
-        uiScript.DefeatedBOSS();
+        //BossTimerScript.StopTimer();
+        //Invoke(nameof(dead), 5);
+        OutroManager.StartOutro(true, this);
+        //uiScript.DefeatedBOSS();
     }
 
     public void PlayerDead()

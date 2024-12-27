@@ -12,16 +12,18 @@ public class ShrimpCrowd : MonoBehaviour
     public bool IsBooing;
     public bool timeToReturn;
    
-    private ShrimpMove ShrimpMoveScript;
 
-    public AudioSource cheerAudioSource;
+    [HideInInspector] public AudioSource cheerAudioSource;
     public List<AudioClip> cheerSound;
+
+    public float currentAudioLength;
 
     private void Awake()
     {
         DOTween.SetTweensCapacity(5000, 10);
-        ShrimpMoveScript = GetComponentInChildren<ShrimpMove>();
+
         cheerAudioSource = GetComponent<AudioSource>();
+        cheerAudioSource.volume = 0.5f;
     }
 
     private void Update()
@@ -33,8 +35,18 @@ public class ShrimpCrowd : MonoBehaviour
     {
         IsCheering = true;
         timeToReturn = true;
-        cheerAudioSource.pitch = Random.Range(0.9f, 1.1f);
-        cheerAudioSource.PlayOneShot(cheerSound[Random.Range(0, cheerSound.Count)], 0.5f);
+
+        cheerAudioSource.Stop();
+        cheerAudioSource.pitch = Random.Range(0.85f, 1.15f);
+        cheerAudioSource.clip = cheerSound[Random.Range(0, cheerSound.Count)];
+        cheerAudioSource.Play();
+
+        Invoke(nameof(StopCheer), cheerAudioSource.clip.length);
+    }
+
+    void StopCheer()
+    {
+        IsCheering = false;
     }
 
     public void Boo()

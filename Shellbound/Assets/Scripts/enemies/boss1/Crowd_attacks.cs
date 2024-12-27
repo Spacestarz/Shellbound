@@ -39,28 +39,31 @@ public class Crowd_attacks : MonoBehaviour
     
     IEnumerator Spawn()
     {
-        while (Boss1_AI.activePhase == 0)
+        if(!OutroManager.outroRunning)
         {
-            randomSpawnTime = Random.Range(4f, 6f);
-            yield return new WaitForSeconds(randomSpawnTime);
+            while (Boss1_AI.activePhase == 0)
+            {
+                randomSpawnTime = Random.Range(4f, 6f);
+                yield return new WaitForSeconds(randomSpawnTime);
 
-            SpawnCircle();
-        }  
+                SpawnCircle();
+            }  
         
-        while (Boss1_AI.activePhase == 1)
-        {
-            randomSpawnTime = Random.Range(1f, 2f);
-            yield return new WaitForSeconds(randomSpawnTime);
+            while (Boss1_AI.activePhase == 1)
+            {
+                randomSpawnTime = Random.Range(1f, 2f);
+                yield return new WaitForSeconds(randomSpawnTime);
 
-            SpawnCircle();
-        }
+                SpawnCircle();
+            }
 
-        while (Boss1_AI.activePhase == 2)
-        {
-            randomSpawnTime = Random.Range(3f, 6f);
-            yield return new WaitForSeconds(randomSpawnTime);
+            while (Boss1_AI.activePhase == 2)
+            {
+                randomSpawnTime = Random.Range(3f, 6f);
+                yield return new WaitForSeconds(randomSpawnTime);
 
-            SpawnCircle();
+                SpawnCircle();
+            }
         }
 
     }
