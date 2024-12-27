@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
 
     Vector3 moveDirection;
 
-    Rigidbody rb;
+    [HideInInspector] public Rigidbody rb;
     PlayerSlice slice;
     Fire fireHarpoon;
     FireDart fireDart;
@@ -232,6 +232,4 @@ public class PlayerController : MonoBehaviour
     {
         HitVfxNew.Play();
     }
-    
-        
 }

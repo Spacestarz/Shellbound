@@ -9,6 +9,7 @@ public class ShrimpMove : MonoBehaviour
     [SerializeField] float speed = 6f;
     [SerializeField] float height = 2f;
     private bool isHome;
+    private bool startedCheering;
 
     [Header("Delays between")]
     float minOffset = 0;
@@ -43,30 +44,32 @@ public class ShrimpMove : MonoBehaviour
     
     void Update()
     {
-        if (!CrowdHandler.cheerAudioSource.isPlaying && CrowdHandler.IsCheering && CrowdHandler.timeToReturn == true)
-        {
-            Debug.Log("returning " + "" + CrowdHandler.timeToReturn);
-            CrowdHandler.IsCheering = false;
-            ReturnToStartPos();
-        }
+        //if (!CrowdHandler.cheerAudioSource.isPlaying && CrowdHandler.IsCheering && CrowdHandler.timeToReturn == true)
+        //{
+        //    Debug.Log("returning " + "" + CrowdHandler.timeToReturn);
+        //    CrowdHandler.IsCheering = false;
+        //    ReturnToStartPos();
+        //}
 
-        if (CrowdHandler.timeToReturn == true && isHome == false)
-        {
-            ReturnToStartPos();
-          
-        }
-       /*
-       if (timeToReturn)
-        {
-            ReturnToStartPos();
-            Debug.Log("Returning");
-        }
-       */
+        //if (CrowdHandler.timeToReturn == true && isHome == false)
+        //{
+        //    ReturnToStartPos();
+
+        //}
+        /*
+        if (timeToReturn)
+         {
+             ReturnToStartPos();
+             Debug.Log("Returning");
+         }
+        */
 
         if (CrowdHandler.IsCheering)
-        {         
-            float newY = startY + Mathf.PingPong((Time.time + timeOffset) * speed, height);         
+        {
+            float newY = startY + Mathf.PingPong((Time.time + timeOffset) * speed, height);
             transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+
+            Invoke(nameof(ReturnToStartPos), CrowdHandler.cheerAudioSource.clip.length);
         }
 
         if (CrowdHandler.IsBooing)
@@ -76,15 +79,16 @@ public class ShrimpMove : MonoBehaviour
     }
 
     public void ReturnToStartPos()
-    {       
-        if (startY != transform.position.y && isHome == false)
-        {
-            Debug.Log("returning");
-           // Debug.Log($"[ReturnToStartPos] Object: {gameObject.name}, CurrentY: {transform.position.y}, StartY: {startY}");
-           // Debug.Log("Moving to startPOS" + startY);
-            //transform.DOMoveY(startY, 3).onComplete.(timeToReturn=false);
-            transform.DOMoveY(startY, 1).OnComplete(() => isHome = true);
-            Debug.Log("is home is" + "" +isHome);
-        }
+    {
+        Debug.Log("returning");
+        transform.DOLocalMoveY(startY, 0.5f).OnComplete(() => isHome = true);
+        // Debug.Log($"[ReturnToStartPos] Object: {gameObject.name}, CurrentY: {transform.position.y}, StartY: {startY}");
+        // Debug.Log("Moving to startPOS" + startY);
+        //transform.DOMoveY(startY, 3).onComplete.(timeToReturn=false);
+        //Debug.Log("is home is" + "" +isHome);
+        
+        //if (startY != transform.position.y && isHome == false)
+        //{
+        //}
     }
 }
