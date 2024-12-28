@@ -8,7 +8,7 @@ public class OutroManager : MonoBehaviour
 
     [SerializeField] Image whiteScreen;
 
-    public static bool outroRunning;
+    public static bool isRunning;
 
     void Start()
     {
@@ -27,20 +27,24 @@ public class OutroManager : MonoBehaviour
     {
         if (victory)
         {
+            isRunning = true;
+            
             MusicManager.instance.StopPlaying();
+
             Camera.main.GetComponent<RotateCamera>().isLocked = true;
-            Vector3 shakeStrength = new(1.25f, 3.75f, 0);
+            Camera.main.GetComponentInParent<PlayerController>().enabled = false;
+            
+            Vector3 shakeStrength = new(1.25f, 2.75f, 0);
             Camera.main.GetComponent<CameraHandler>().ShakeCamera(4, shakeStrength);
+            
             instance.Invoke(nameof(VictoryWhiteFadeIn), 3f);
 
-            outroRunning = true;
         }
     }
 
 #region Victory
     void VictoryWhiteFadeIn()
     {
-        Debug.Log("FADE");
         instance.whiteScreen.color = Color.clear;
         instance.whiteScreen.gameObject.SetActive(true);
         instance.whiteScreen.DOColor(Color.white, 0.75f).OnComplete(InvokeFadeOut);
@@ -53,12 +57,14 @@ public class OutroManager : MonoBehaviour
 
     void VictoryFadeOut()
     {
-        instance.whiteScreen.DOColor(Color.clear, 1.25f);
+        instance.whiteScreen.DOColor(Color.clear, 1.25f).OnComplete(EnableMovement);
     }
 
     void EnableMovement()
     {
-
+        isRunning = false;
+        Camera.main.GetComponentInParent<PlayerController>().enabled = true;
+        Camera.main.GetComponent<RotateCamera>().isLocked = false;
     }
-#endregion
+    #endregion
 }

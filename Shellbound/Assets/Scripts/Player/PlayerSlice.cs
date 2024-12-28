@@ -143,7 +143,7 @@ public class PlayerSlice : MonoBehaviour
             SliceTick();
         }
 
-        if (sliceTime >= sliceTimeLimit)
+        if (sliceTime >= sliceTimeLimit && instance.caughtObject.GetComponent<SliceableObject>().type != SliceableObject.Type.Sushi)
         {
             FailSlice();
         }

@@ -19,6 +19,7 @@ public class HealthSystem : MonoBehaviour
     public AudioClip[] bossTakeDamage;
     public AudioClip bossDeath;
 
+    [SerializeField] GameObject bossSushi;
 
     public UI uiScript;
 
@@ -45,7 +46,7 @@ public class HealthSystem : MonoBehaviour
 
     public void TakeDamage(int damageTaken)
     {
-        if(gameObject.CompareTag("Player") && !playerInvulnerable)
+        if(gameObject.CompareTag("Player") && !playerInvulnerable && OutroManager.isRunning)
         {
             currentHP -= damageTaken;
 

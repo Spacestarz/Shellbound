@@ -39,7 +39,7 @@ public class Crowd_attacks : MonoBehaviour
     
     IEnumerator Spawn()
     {
-        if(!OutroManager.outroRunning)
+        if(!OutroManager.isRunning)
         {
             while (Boss1_AI.activePhase == 0)
             {

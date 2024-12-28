@@ -33,7 +33,7 @@ public class RotateCamera : MonoBehaviour
             LockOntoSliceBoard(Harpoon.instance.caughtObject.sliceableObject.sliceBoard);
             ClampRotation(ref xRotation);
         }
-        else if ((!Harpoon.hasCaught && !isLocked) || !OutroManager.outroRunning)
+        else if (!Harpoon.hasCaught && !isLocked && !OutroManager.isRunning)
         {
             this.DOKill();
             GetMouseInput();

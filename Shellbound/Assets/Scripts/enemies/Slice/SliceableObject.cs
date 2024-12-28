@@ -13,7 +13,8 @@ public class SliceableObject : MonoBehaviour
     public enum Type
     {
         Enemy,
-        Trigger
+        Trigger,
+        Sushi
     }
 
     public Type type;
@@ -34,6 +35,9 @@ public class SliceableObject : MonoBehaviour
                 GetComponent<HealthSystem>().TakeDamage(1);
                 break;
             case Type.Trigger:
+                break;
+            case Type.Sushi:
+                testEvent.Invoke();
                 break;
         }
         

@@ -4,15 +4,15 @@ using UnityEngine;
 public class SlicePattern : MonoBehaviour
 {
     Fire fire;
-    
-    public int totalSliced = 0;
-    public int sliceAmount = 3;
+
+    [HideInInspector] public int totalSliced = 0;
+    [HideInInspector] public int sliceAmount = 3;
 
     public List<SliceTarget> arrows;
     public List<SliceTarget> possibleArrows;
 
     SliceTarget currentArrow;
-    public SliceTarget spawnedArrow;
+    [HideInInspector] public SliceTarget spawnedArrow;
 
     SliceableObject parentSlice;
 
