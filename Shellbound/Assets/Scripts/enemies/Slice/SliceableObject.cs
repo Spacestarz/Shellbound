@@ -1,3 +1,4 @@
+using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -18,7 +19,7 @@ public class SliceableObject : MonoBehaviour
     }
 
     public Type type;
-    [SerializeField] private UnityEvent testEvent;
+    [SerializeField] private UnityEvent<int> testEvent;
 
     public void Awake()
     {
@@ -37,7 +38,7 @@ public class SliceableObject : MonoBehaviour
             case Type.Trigger:
                 break;
             case Type.Sushi:
-                testEvent.Invoke();
+                testEvent.Invoke(sliceBoard.totalSliced);
                 break;
         }
         
@@ -56,7 +57,7 @@ public class SliceableObject : MonoBehaviour
                 }
                 break;
             case Type.Trigger:
-                testEvent.Invoke();
+                testEvent.Invoke(0);
                 break;
         }
     }

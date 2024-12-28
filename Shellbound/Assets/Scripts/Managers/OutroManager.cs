@@ -6,9 +6,11 @@ public class OutroManager : MonoBehaviour
 {
     public static OutroManager instance;
 
-    [SerializeField] Image whiteScreen;
+    public Image whiteScreen;
 
     public static bool isRunning;
+
+    public Crowd_attacks spikeAttack;
 
     void Start()
     {
@@ -21,10 +23,15 @@ public class OutroManager : MonoBehaviour
         {
             instance = this;
         }
+
+        spikeAttack = FindAnyObjectByType<Crowd_attacks>();
     }
 
     public static void StartOutro(bool victory)
     {
+        instance.spikeAttack.gameObject.SetActive(false);
+        UrchinSpawner.RemoveAllFromList();
+
         if (victory)
         {
             isRunning = true;
@@ -52,6 +59,7 @@ public class OutroManager : MonoBehaviour
 
     void InvokeFadeOut()
     {
+        
         Invoke(nameof(VictoryFadeOut), 1.2f);
     }
 

@@ -26,7 +26,7 @@ public class PlayerSlice : MonoBehaviour
 
     static int successfulTicks = 0;
     static int failedTicks = 0;
-    static readonly int requiredTicks = 10;
+    static int requiredTicks = 10;
 
 
     private void Awake()
@@ -73,7 +73,7 @@ public class PlayerSlice : MonoBehaviour
             currentSlicePattern.ResetPattern();
 
             controller.harpoontime = false;
-            instance.GetComponent<HealthSystem>().playerInvulnerable = true;
+            instance.GetComponent<HealthSystem>().playerInvulnerable = false;
 
             instance.GetComponent<Fire>().ReturnHarpoon();
         }
@@ -223,5 +223,10 @@ public class PlayerSlice : MonoBehaviour
         }
 
         SetSliceMode(false);
+    }
+
+    public static void OutroLowerRequiredTickAmount(int setAmount)
+    {
+        requiredTicks = setAmount;
     }
 }

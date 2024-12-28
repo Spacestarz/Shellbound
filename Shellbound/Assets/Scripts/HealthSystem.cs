@@ -46,8 +46,9 @@ public class HealthSystem : MonoBehaviour
 
     public void TakeDamage(int damageTaken)
     {
-        if(gameObject.CompareTag("Player") && !playerInvulnerable && OutroManager.isRunning)
+        if(gameObject.CompareTag("Player") && !playerInvulnerable && !OutroManager.isRunning)
         {
+            Debug.Log("Wow");
             currentHP -= damageTaken;
 
             source.PlayOneShot(playerTakeDamage, 0.3f);
@@ -67,7 +68,7 @@ public class HealthSystem : MonoBehaviour
             currentHP -= damageTaken;
             damageFlash.FlashRed();
         }
-        else
+        else if(!gameObject.CompareTag("Player"))
         {
             currentHP -= damageTaken;
         }
@@ -78,7 +79,7 @@ public class HealthSystem : MonoBehaviour
             GameObject mantisShrimp = GameObject.Find("MantisShrimp");
             if (gameObject.name == "MantisShrimp")
             {
-                Bossdead();
+                BossDie();
             }
 
             if (GetComponent<HookableObject>().isCaught)
@@ -90,10 +91,13 @@ public class HealthSystem : MonoBehaviour
 
             if(gameObject != mantisShrimp)
             {
-                //gameObject.SetActive(false);
                 gameObject.GetComponent<Collider>().enabled = false;
-                //gameObject.GetComponent<SpriteRenderer>().enabled = false;
-                Invoke(nameof(dead),deathTime);
+                Invoke(nameof(Die),deathTime);
+
+                if(gameObject.name.Contains("urchin"))
+                {
+                    UrchinSpawner.RemoveFromList(gameObject);
+                }
             }
          
         }
@@ -104,21 +108,30 @@ public class HealthSystem : MonoBehaviour
         }
 
     }
-    public void dead()
-    {   
+    public void Die()
+    {
         Destroy(gameObject);
     }
 
-    public void Bossdead()
+    public void BossDie()
     {
         source.spatialBlend = 0;
         source.PlayOneShot(bossDeath);
+
         GetComponent<Enemi_health>().DisableAI();
         GetComponent<Boss1_AI>().enabled = false;
         //BossTimerScript.StopTimer();
-        Invoke(nameof(dead), bossDeath.length);
+
+        Invoke(nameof(BossSpawnSushi), bossDeath.length);
+        Invoke(nameof(Die), bossDeath.length);
         OutroManager.StartOutro(true);
-        //uiScript.DefeatedBOSS();
+    }
+
+    public void BossSpawnSushi()
+    {
+        Vector3 pos = transform.position;
+        bossSushi.SetActive(true);
+        bossSushi.transform.position = new Vector3(pos.x, bossSushi.transform.position.y, pos.z);
     }
 
     public void PlayerDead()

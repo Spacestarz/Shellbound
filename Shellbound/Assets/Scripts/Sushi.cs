@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Sushi : MonoBehaviour
@@ -8,14 +9,19 @@ public class Sushi : MonoBehaviour
     float bobHeight = 0.5f;
 
     bool hasMoved;
+    bool fadeStarted;
 
     HookableObject hookableObj;
+    AudioSource source;
+    float startVolume;
 
     void Awake()
     {
         startY = transform.position.y;
 
         hookableObj = GetComponent<HookableObject>();
+        source = GetComponent<AudioSource>();
+        startVolume = source.volume;
     }
 
     void Update()
@@ -41,6 +47,59 @@ public class Sushi : MonoBehaviour
     {
         hasMoved = true;
         transform.DOMoveY(1, 0.2f);
+    }
+
+    public void OutroSlice(int sliceCount)
+    {
+        if(!OutroManager.instance.whiteScreen.gameObject.activeSelf)
+        {
+            OutroManager.instance.whiteScreen.color = Color.clear;
+            OutroManager.instance.whiteScreen.gameObject.SetActive(true);
+        }
+
+        Color startColor = new(1, 1, 1, 0);
+        Color goalColor = new(1, 1, 1, 0.8f);
+
+        float colorLerpRate = ((float)sliceCount - 5) / 50;
+        float pitchLerpRate = ((float)sliceCount - 10) / 50;
+        float volumeLerpRate = ((float)sliceCount - 10) / 50;
+
+        if (sliceCount > 4 && OutroManager.instance.whiteScreen.color != goalColor && !fadeStarted)
+        {
+            OutroManager.instance.whiteScreen.color = Color.Lerp(startColor, goalColor, colorLerpRate);
+
+            GetComponentInChildren<SlicePattern>().outroSlice = true;
+
+            if(sliceCount > 9)
+            {
+                source.pitch = Mathf.Lerp(1, 4, pitchLerpRate);
+            }
+            if(sliceCount == 9)
+            {
+                PlayerSlice.OutroLowerRequiredTickAmount(5);
+            }
+
+            if (sliceCount > 13 && !fadeStarted)
+            {
+                source.volume = Mathf.Lerp(startVolume, startVolume * 0.5f, volumeLerpRate);
+            }
+
+            if (sliceCount == 13)
+            {
+                PlayerSlice.OutroLowerRequiredTickAmount(3);
+            }
+
+            if (sliceCount == 13)
+            {
+                PlayerSlice.OutroLowerRequiredTickAmount(3);
+            }
+        }
+        else if(OutroManager.instance.whiteScreen.color == goalColor && !fadeStarted)
+        {
+            fadeStarted = true;
+            OutroManager.instance.whiteScreen.DOColor(Color.white, 0.75f);
+            source.DOFade(0, 0.75f);
+        }
     }
 
 }

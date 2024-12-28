@@ -44267,6 +44267,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2744861990394294566, guid: 78c75aabc3cfd91409322ee8915a0363, type: 3}
+      propertyPath: sliceStart
+      value: 
+      objectReference: {fileID: 8300000, guid: 6b14284634af10c42bf7677335b648b1, type: 3}
+    - target: {fileID: 2744861990394294566, guid: 78c75aabc3cfd91409322ee8915a0363, type: 3}
+      propertyPath: sliceFinish
+      value: 
+      objectReference: {fileID: 8300000, guid: 6b14284634af10c42bf7677335b648b1, type: 3}
+    - target: {fileID: 2744861990394294566, guid: 78c75aabc3cfd91409322ee8915a0363, type: 3}
+      propertyPath: outroArrows.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2744861990394294566, guid: 78c75aabc3cfd91409322ee8915a0363, type: 3}
+      propertyPath: outroArrows.Array.data[0]
+      value: 
+      objectReference: {fileID: 6031990953434119768, guid: c0f5bc33b43a64546a5c3e574907612e, type: 3}
+    - target: {fileID: 2744861990394294566, guid: 78c75aabc3cfd91409322ee8915a0363, type: 3}
+      propertyPath: outroArrows.Array.data[1]
+      value: 
+      objectReference: {fileID: 2257760662191509782, guid: 8abd623f614d7cb4a920cfd4aefacb46, type: 3}
     - target: {fileID: 6844417035811356987, guid: 78c75aabc3cfd91409322ee8915a0363, type: 3}
       propertyPath: m_Name
       value: SliceBoard
@@ -48686,6 +48706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   urchinPreFab: {fileID: 3373935243921306136, guid: df709e09e0149a645a27db8adf5e1c5b, type: 3}
+  spawnedUrchins: []
   HeightofY: 13
   CircleArea: 13
 --- !u!4 &1475011903
@@ -60039,6 +60060,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: e7ab363e448ea264e9872fcf3281ce95, type: 3}
     - target: {fileID: 1369424104670791186, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+      propertyPath: bossSushi
+      value: 
+      objectReference: {fileID: 3373935243701253517}
+    - target: {fileID: 1369424104670791186, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1645081098}
@@ -60621,6 +60646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whiteScreen: {fileID: 1704639754}
+  spikeAttack: {fileID: 0}
 --- !u!1001 &1652335493
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -77792,7 +77818,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5692959015999519450
 Transform:
   m_ObjectHideFlags: 0
@@ -77903,12 +77929,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sliceBoard: {fileID: 0}
   sliceAmount: 200
-  slicefinish: {fileID: 0}
+  slicefinish: {fileID: 8300000, guid: 6b14284634af10c42bf7677335b648b1, type: 3}
   ShrimpCrowdScript: {fileID: 0}
   type: 2
   testEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8368826265660443987}
+        m_TargetAssemblyTypeName: Sushi, Assembly-CSharp
+        m_MethodName: OutroSlice
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8368826265660443989
 MonoBehaviour:
   m_ObjectHideFlags: 0

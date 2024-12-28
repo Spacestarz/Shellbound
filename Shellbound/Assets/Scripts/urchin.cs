@@ -1,11 +1,11 @@
-﻿using Spine.Unity.Examples;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class urchin : MonoBehaviour
 {   //       ↑
     //      "U" should be capitalized
-    //    source*
-    //      ↓
+
+    //      source*
+    //      ↓    ↓
     AudioSource sorce;
     [SerializeField] AudioClip death;
     [SerializeField] AudioClip landing;
@@ -55,5 +55,10 @@ public class urchin : MonoBehaviour
             rb.AddForce(transform.up * strenght, ForceMode.Impulse);
             sr.sprite = sprites[0];
         }
+    }
+
+    public void Destroy()
+    {
+        Destroy(gameObject);
     }
 }

@@ -10,6 +10,7 @@ public class SlicePattern : MonoBehaviour
 
     public List<SliceTarget> arrows;
     public List<SliceTarget> possibleArrows;
+    public List<SliceTarget> outroArrows;
 
     SliceTarget currentArrow;
     [HideInInspector] public SliceTarget spawnedArrow;
@@ -22,6 +23,8 @@ public class SlicePattern : MonoBehaviour
 
     public SliceAnimate sliceAnimation;
     public SliceAnimate spawnedSliceAnimation;
+
+    [HideInInspector] public bool outroSlice;
 
 
     private void Awake()
@@ -48,45 +51,54 @@ public class SlicePattern : MonoBehaviour
             DestroyArrow();
         }
 
-        if (totalSliced < sliceAmount)
+        if(!outroSlice)
         {
-            int i;
-
-            if (currentArrow == null)
+            if (totalSliced < sliceAmount)
             {
-                i = Random.Range(0, arrows.Count - 1);
-                currentArrow = arrows[i];
-                FindPossibleArrows(i);
+                int i;
+
+                if (currentArrow == null)
+                {
+                    i = Random.Range(0, arrows.Count - 1);
+                    currentArrow = arrows[i];
+                    FindPossibleArrows(i);
+                }
+                else
+                {
+                    int currentArrowIndex = arrows.IndexOf(currentArrow);
+                    FindPossibleArrows(currentArrowIndex);
+                
+                    i = Random.Range(0, possibleArrows.Count - 1);
+                    currentArrow = possibleArrows[i];
+                }
+
+                PlayerSlice.SetTargetDirection(currentArrow.direction);
+                spawnedArrow = Instantiate(currentArrow, transform);
+            
+                spawnedSliceAnimation = Instantiate(sliceAnimation, transform);
             }
             else
             {
-                int currentArrowIndex = arrows.IndexOf(currentArrow);
-                FindPossibleArrows(currentArrowIndex);
-                
-                i = Random.Range(0, possibleArrows.Count - 1);
-                currentArrow = possibleArrows[i];
-            }
-            
+                parentSlice.FinalSlice();
+                fire.ReturnHarpoon();
+                PlayerSlice.SetSliceMode(false);
+                try
+                {
+                    StartCoroutine(Camera.main.GetComponent<RotateCamera>().SetCameraLock(false));
+                }
+                catch{}
 
-            PlayerSlice.SetTargetDirection(currentArrow.direction);
-            spawnedArrow = Instantiate(currentArrow, transform);
-            
-            spawnedSliceAnimation = Instantiate(sliceAnimation, transform);
+                ResetPattern();
+            }
         }
         else
         {
-            parentSlice.FinalSlice();
-            fire.ReturnHarpoon();
-            PlayerSlice.SetSliceMode(false);
-            try
-            {
-                StartCoroutine(Camera.main.GetComponent<RotateCamera>().SetCameraLock(false));
-            }
-            catch
-            {
+            currentArrow = outroArrows[totalSliced % 2];
 
-            }
-            ResetPattern();
+            PlayerSlice.SetTargetDirection(currentArrow.direction);
+            spawnedArrow = Instantiate(currentArrow, transform);
+
+            spawnedSliceAnimation = Instantiate(sliceAnimation, transform);
         }
     }
 

@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class UrchinSpawner : MonoBehaviour
 {
+    public static UrchinSpawner instance;
+
     public GameObject urchinPreFab;
     private GameObject Player;
     private GameObject Boss;
     private GameObject newUrchin;
     private Boss1_AI bossAiScript;
-    private int HowManyUrchinSpawn;
+
+    [SerializeField] private List<GameObject> spawnedUrchins;
 
     [SerializeField] float HeightofY = 2;
     [SerializeField] float CircleArea = 13;
@@ -19,6 +22,11 @@ public class UrchinSpawner : MonoBehaviour
         Player = GameObject.Find("Player");
         Boss = GameObject.Find("MantisShrimp");
         bossAiScript = Boss.GetComponent<Boss1_AI>();
+
+        if(instance == null)
+        {
+            instance = this;
+        }
        
     }
 
@@ -35,13 +43,13 @@ public class UrchinSpawner : MonoBehaviour
     {
         if (bossAiScript.activePhase == 1)
         {
-            int HowManyUrchinSpawn = UnityEngine.Random.Range(1, 3);
+            int HowManyUrchinSpawn = Random.Range(1, 3); //urchinAmount
             SpawnUrchins(HowManyUrchinSpawn);
         }
 
         else if (bossAiScript.activePhase == 2)
         {
-            int HowManyUrchinSpawn = UnityEngine.Random.Range(3, 5);
+            int HowManyUrchinSpawn = Random.Range(3, 5);
             SpawnUrchins(HowManyUrchinSpawn);
         }
 
@@ -52,18 +60,26 @@ public class UrchinSpawner : MonoBehaviour
     { 
         for (int i = 0; i < urchinAmount; i++)
         {
-            //var unitCircleCenter = new Vector3(Player.transform.position.x, HeightofY, Player.transform.position.z);
-
-            //Vector3 spawnRange = Random.insideUnitSphere * CircleArea;
-
-            //Vector3 spawnPosition = new Vector3(spawnRange.x, 0, spawnRange.z);
-            //spawnPosition += unitCircleCenter;
-
-
+                  //randomPoint
             Vector3 RandomPoint = Random.insideUnitCircle * CircleArea;
 
             Vector3 randomPositionInCircle = new Vector3(Player.transform.position.x + RandomPoint.x, HeightofY, Player.transform.position.z + RandomPoint.y);
             newUrchin = Instantiate(urchinPreFab, randomPositionInCircle, Quaternion.identity);
+            spawnedUrchins.Add(newUrchin);
         }
+    }
+
+    public static void RemoveFromList(GameObject go)
+    {
+        instance.spawnedUrchins.Remove(go);
+    }
+
+    public static void RemoveAllFromList()
+    {
+        foreach(var urchin in instance.spawnedUrchins)
+        {
+            Destroy(urchin);
+        }
+        instance.spawnedUrchins.Clear();
     }
 }
