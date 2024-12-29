@@ -11,13 +11,13 @@ public class Base_enemy : MonoBehaviour
     //public float attackRange = 5;
     public BossAttacksCommon attack;
     //public float attackCooling = 5;
-    public bool atta = true;
+    public bool atta = true;    //unclear variable name
     public bool volnereble = false;
     public float volnerebleTime = 5;
     public int phase = 1;
    
 
-    AudioSource sorce;
+    AudioSource sorce; //source*
     [SerializeField] AudioClip bonk;
 
     // Start is called before the first frame update
@@ -43,13 +43,17 @@ public class Base_enemy : MonoBehaviour
     }
     public void start()
     {
-        GetComponent<NavMeshAgent>().isStopped = false;
+        try
+        {
+            GetComponent<NavMeshAgent>().isStopped = false;
+        }
+        catch { }
     }
     public void attacking()
     {
         StartCoroutine(canattack());
     }
-    public IEnumerator weekTimer()
+    public IEnumerator weekTimer() //weak*
     {
         try { GetComponentInChildren<BaseAnimator>().anim.SetTrigger("Vulnerable"); }
         catch { }
@@ -61,7 +65,7 @@ public class Base_enemy : MonoBehaviour
         target.GetComponent<PlayerController>().harpoonTime = false;
         transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
     }
-    public void wekend()
+    public void wekend() //weakened*
     {
         GetComponentInChildren<SoundcueHandler>().StopPlaying();
         StopWeakTimer(); //To really really make sure only one of these coroutines is running at a time.
@@ -77,16 +81,10 @@ public class Base_enemy : MonoBehaviour
         yield return new WaitForSeconds(1);
         atta = true;
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Dart") && !volnereble)
-        {
-            PlayBonk();
-        }
-    }
 
     public void PlayBonk()
     {
+        GetComponentInChildren<BaseAnimator>().anim.SetTrigger("Block");
         sorce.PlayOneShot(bonk, 0.15f);
     }
 }

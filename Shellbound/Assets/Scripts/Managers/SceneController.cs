@@ -62,6 +62,11 @@ public class SceneController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = true;
+
+        if(GameObject.Find("MusicManager"))
+        {
+            Destroy(GameObject.Find("MusicManager"));
+        }
         SceneManager.LoadScene(0);
     }
     public void NextLevel()

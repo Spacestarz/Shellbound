@@ -14,27 +14,29 @@ public abstract class base_enemi_attack : BasePhaseScript
     public int wavemount = 1;
     
     [Header("anim bools")]
-    public bool ElastickAnim = false;
-    public bool WaveAnim = false;
+    public bool ElastickAnim = false; //elasticAnim*
+    public bool WaveAnim = false; //waveAnim*
     [Header("punch")]
-    public float startpunchrange = 7;
-    public float punchrange = 5;
+    public float startpunchrange = 7; //startPunchRange*
+    public float punchrange = 5;    //etc.
     public float punchspeed = 4;
     [Header("shockwave")]
     public float startshockwaverange = 8;
     public float shockwaverange = 15;
     public float shockwavespeed = 3;
-    public float shockwavezise = 3;
+    public float shockwavezise = 3; //shockwaveSize*
     public float shockwavetimer = 0.7f;
-    [Header("elastick")]
+    [Header("elastick")] //elastic*
     public float startelastickrange = 12;
     public float elastickrange = 12;
     public float elastickspeed = 4;
     public float elastickreturnspeed = 10;
-    public float elastickdelai = 2;
+    public float elastickdelai = 2; //elasticDelay*
 
     public AudioClip cueFist;
     public AudioClip cueWave;
+
+
     private void Awake()
     {
         UrchinSpawnerScript = FindObjectOfType<UrchinSpawner>();
@@ -53,9 +55,12 @@ public abstract class base_enemi_attack : BasePhaseScript
         attack.parent.start();
         attack.still = false;
         yield return null;
-    }
-    public IEnumerator dublewave(int amount)
+    } //Line break
+    public IEnumerator dublewave(int amount) //DoubleWave*
     {
+        float firstWaveDelay = 2.9f;
+        float secondWaveDelay = 1.0f;
+
         if(amount == 1)
         {
             enemy.GetComponentInChildren<MantisAnimator>().anim.SetTrigger("Shockwave");
@@ -64,14 +69,15 @@ public abstract class base_enemi_attack : BasePhaseScript
         {
             amount = 2;
             enemy.GetComponentInChildren<MantisAnimator>().anim.SetTrigger("Double Shockwave");
-        }
+            firstWaveDelay = 2.0f;
+            secondWaveDelay = 0.85f;
+        } //Line break
         WaveAnim = true;
         SoundcueHandler.PlayWaveCue();
-        yield return new WaitForSeconds(2.9f);
-        stunable = true;
-        if (!enemy.volnereble)
+        yield return new WaitForSeconds(firstWaveDelay);
+        stunable = true;    //Line break
+        if (!enemy.volnereble) 
         {
-
             for (int j = 0; j < amount; j++)
             {
                 if (!enemy.volnereble)
@@ -83,16 +89,16 @@ public abstract class base_enemi_attack : BasePhaseScript
                        //spawning urchins
                        UrchinSpawnerScript.WhichPhaseForUrchin();
                     }
-                    yield return new WaitForSeconds(1.0f);
+                    yield return new WaitForSeconds(secondWaveDelay);
                     WaveAnim = true;
                 }
             }
-        }
+        } //Line break
         WaveAnim = false;
         stunable = false;
         //attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
         StartCoroutine(cooldown(shockwavespeed));
-    }
+    } //Line break
     public IEnumerator elestickdelay(float time)
     {
         ElastickAnim = true;

@@ -18,9 +18,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Boss 1 Arena.unity
     guid: 39dbab0f30b838c4fa5ad830a2df4121
   - enabled: 1
-    path: Assets/Scenes/Boss 1 Arena - Copy.unity
+    path: Assets/Scenes/scenes ment to be in game/MainScene.unity
     guid: e983e8b3243a74c46b57802073eb64dc
   - enabled: 1
     path: Assets/Scenes/scenes ment to be in game/VictoryScreen.unity
     guid: 08e4c74a53dd091459ac8344c758cc8c
+  - enabled: 1
+    path: Assets/Scenes/scenes ment to be in game/GameOverScreen.unity
+    guid: 12c4cf4ca63786a41ae6a290de7005e5
   m_configObjects: {}

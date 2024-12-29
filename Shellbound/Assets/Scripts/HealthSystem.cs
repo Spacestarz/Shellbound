@@ -48,7 +48,6 @@ public class HealthSystem : MonoBehaviour
     {
         if(gameObject.CompareTag("Player") && !playerInvulnerable && !OutroManager.isRunning)
         {
-            Debug.Log("Wow");
             currentHP -= damageTaken;
 
             source.PlayOneShot(playerTakeDamage, 0.3f);
@@ -79,6 +78,7 @@ public class HealthSystem : MonoBehaviour
             GameObject mantisShrimp = GameObject.Find("MantisShrimp");
             if (gameObject.name == "MantisShrimp")
             {
+                GetComponentInChildren<MantisAnimator>().anim.SetTrigger("Die");
                 BossDie();
             }
 
@@ -137,7 +137,7 @@ public class HealthSystem : MonoBehaviour
     public void PlayerDead()
     {
         //Game over screen for player
-        uiScript.GameOver();
+        OutroManager.StartOutro(false);
     }
 
 

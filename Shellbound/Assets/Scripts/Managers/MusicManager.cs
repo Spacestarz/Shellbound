@@ -4,7 +4,10 @@ public class MusicManager : MonoBehaviour
 {
     public static MusicManager instance;
 
-    AudioSource source;
+    [HideInInspector] public float startVolume;
+    [HideInInspector] public AudioSource musicSource;
+    public AudioSource soundFXSource;
+
     [SerializeField] AudioClip[] songs;
 
     int currentSongIndex;
@@ -21,30 +24,31 @@ public class MusicManager : MonoBehaviour
         }
 
         currentSongIndex = 0;
-        source = GetComponent<AudioSource>();
+        musicSource = GetComponent<AudioSource>();
+        startVolume = musicSource.volume;
 
-        source.clip = songs[currentSongIndex];
-        source.Play();
+        musicSource.clip = songs[currentSongIndex];
+        musicSource.Play();
 
         DontDestroyOnLoad(gameObject);
     }
 
-    void NextSong()
+    public void NextSong()
     {
         currentSongIndex++;
-        instance.source.clip = songs[currentSongIndex];
-        source.Play();
+        instance.musicSource.clip = songs[currentSongIndex];
+        musicSource.Play();
     }
 
-    void SetSong(int songIndex)
+    public void SetSong(int songIndex)
     {
         currentSongIndex = songIndex;
-        instance.source.clip = songs[currentSongIndex];
-        source.Play();
+        instance.musicSource.clip = songs[currentSongIndex];
+        musicSource.Play();
     }
 
     public void StopPlaying()
     {
-        instance.source.Stop();
+        instance.musicSource.Stop();
     }
 }

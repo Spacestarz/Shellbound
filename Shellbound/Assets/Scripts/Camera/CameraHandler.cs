@@ -40,26 +40,29 @@ public class CameraHandler : MonoBehaviour
 
     public void ShakeCameraSlice(Vector3 direction)
     {
-        Vector3 dirToMove = Vector3.zero;
-        if(direction.x < 0)
+        if(!OutroManager.sushiIsHooked)
         {
-            dirToMove -= orientation.right;
-        }
-        else if(direction.x > 0)
-        {
-            dirToMove += orientation.right;
-        }
+            Vector3 dirToMove = Vector3.zero;
+            if(direction.x < 0)
+            {
+                dirToMove -= orientation.right;
+            }
+            else if(direction.x > 0)
+            {
+                dirToMove += orientation.right;
+            }
 
-        if(direction.y < 0)
-        {
-            dirToMove -= orientation.up;
-        }
-        else if (direction.y > 0)
-        {
-            dirToMove += orientation.up;
-        }
+            if(direction.y < 0)
+            {
+                dirToMove -= orientation.up;
+            }
+            else if (direction.y > 0)
+            {
+                dirToMove += orientation.up;
+            }
 
-        transform.DOMove(transform.position +  0.3f * dirToMove, 0.1f).OnComplete(ResetPosition);
+            transform.DOMove(transform.position +  0.3f * dirToMove, 0.1f).OnComplete(ResetPosition);
+        }
     }
 
     void ResetPosition()

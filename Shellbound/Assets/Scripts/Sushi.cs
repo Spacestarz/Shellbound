@@ -14,6 +14,8 @@ public class Sushi : MonoBehaviour
     AudioSource source;
     float startVolume;
 
+    float shakeStr;
+
     void Awake()
     {
         startY = transform.position.y;
@@ -21,15 +23,17 @@ public class Sushi : MonoBehaviour
         hookableObj = GetComponent<HookableObject>();
         source = GetComponent<AudioSource>();
         startVolume = source.volume;
+
+        shakeStr = 0.025f;
     }
 
     void Update()
     {
-        if(!hookableObj.isCaught)
+        if (!hookableObj.isCaught)
         {
             BobUpAndDown();
         }
-        else if(transform.position.y !=  startY && !hasMoved)
+        else if (transform.position.y != startY && !hasMoved)
         {
             MoveUp();
         }
@@ -71,7 +75,8 @@ public class Sushi : MonoBehaviour
 
             if (sliceCount > 9)
             {
-                Camera.main.GetComponent<CameraHandler>().ShakeCamera(1.3f, new(1, 1, 1));
+                Camera.main.GetComponent<CameraHandler>().ShakeCamera(1.3f, new(shakeStr, shakeStr, shakeStr));
+                shakeStr += 0.025f;
                 source.pitch = Mathf.Lerp(1, 4, pitchLerpRate);
             }
             if (sliceCount == 9)
@@ -99,14 +104,16 @@ public class Sushi : MonoBehaviour
         else if (OutroManager.instance.whiteScreen.color == goalColor && !fadeStarted)
         {
             fadeStarted = true;
-            OutroManager.instance.whiteScreen.DOColor(Color.white, 0.75f);
-            source.DOFade(0, 1.25f).OnComplete(SwitchScene);
+            MusicManager.instance.SetSong(1);
+            OutroManager.instance.whiteScreen.DOColor(Color.white, MusicManager.instance.musicSource.clip.length);
+            source.DOFade(0, MusicManager.instance.musicSource.clip.length).OnComplete(SwitchScene);
         }
     }
 
     void SwitchScene()
     {
         DOTween.KillAll();
+        MusicManager.instance.SetSong(2);
         SceneController.instance.LoadScene("VictoryScreen");
     }
 

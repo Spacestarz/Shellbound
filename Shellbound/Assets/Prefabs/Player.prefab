@@ -146,6 +146,8 @@ MonoBehaviour:
   orientation: {fileID: 4744199865910598526}
   xRotation: 0
   yRotation: 0
+  introPole1: {fileID: 0}
+  introPole2: {fileID: 0}
 --- !u!114 &3178025802879972107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,6 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ab76d79daa65fa4e9eaeb4af27f2aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDisorientedFOV: 0
 --- !u!82 &3141599794306074533
 AudioSource:
   m_ObjectHideFlags: 0
@@ -471,10 +474,10 @@ MonoBehaviour:
     m_Bits: 1024
   grounded: 0
   orientation: {fileID: 4744199865910598526}
+  rb: {fileID: 0}
   dart: {fileID: 8027550816766089578, guid: 4aa3a871c4256614f9a6d6394f9de2f5, type: 3}
-  harpoontime: 0
+  harpoonTime: 0
   shot: 0
-  alweyspoon: 0
   HitVFXPrefab: {fileID: 9041775225042728241, guid: 294c2802df2e9cb4693c6f582a02f175, type: 3}
   Boss: {fileID: 0}
   dashSound: {fileID: 8300000, guid: 38f858460c70c284f924b91b01405f09, type: 3}
@@ -532,10 +535,13 @@ MonoBehaviour:
   deathTime: 1
   Player: {fileID: 2553824470831661199}
   source: {fileID: 0}
-  audioClip: {fileID: 8300000, guid: cb2ec8cfff8bec140a2e6d29135b4407, type: 3}
+  playerTakeDamage: {fileID: 0}
+  bossTakeDamage: []
+  bossDeath: {fileID: 0}
+  bossSushi: {fileID: 0}
   uiScript: {fileID: 0}
-  enemySprite: {fileID: 0}
   BossTimerScript: {fileID: 0}
+  playerInvulnerable: 0
 --- !u!114 &4756260631127342793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -660,7 +666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a9bff55e9cc3340b11337f64603379, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shot: 0
+  hasShot: 0
   dart: {fileID: 8027550816766089578, guid: 4aa3a871c4256614f9a6d6394f9de2f5, type: 3}
   dartSound: {fileID: 8300000, guid: 3bbc67b5e1f68524d8a9238d65bd8728, type: 3}
 --- !u!1 &3478016606726200143

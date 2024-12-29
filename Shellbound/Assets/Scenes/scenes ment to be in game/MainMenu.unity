@@ -473,7 +473,7 @@ GameObject:
   - component: {fileID: 219656260}
   - component: {fileID: 219656261}
   m_Layer: 0
-  m_Name: MusicManager
+  m_Name: MainMenuMusicManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2280,7 +2280,6 @@ MonoBehaviour:
   TimerRunning: 0
   timerText: {fileID: 1268686064}
   highscorelistText: {fileID: 642437433}
-  healthSystem: {fileID: 0}
 --- !u!114 &712453908
 MonoBehaviour:
   m_ObjectHideFlags: 0
