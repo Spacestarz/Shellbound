@@ -1,4 +1,3 @@
-using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,7 +8,7 @@ public class SliceableObject : MonoBehaviour
     public AudioClip slicefinish;
 
     
-    public ShrimpCrowd ShrimpCrowdScript;
+    ShrimpCrowd ShrimpCrowdScript;
 
     public enum Type
     {

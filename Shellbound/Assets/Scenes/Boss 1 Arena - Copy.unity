@@ -60049,7 +60049,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1369424104670791186, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: MaxHP
-      value: 1
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 1369424104670791186, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: uiScript
@@ -60071,6 +60071,10 @@ PrefabInstance:
       propertyPath: BossTimerScript
       value: 
       objectReference: {fileID: 1402174448}
+    - target: {fileID: 2042037885802278829, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+      propertyPath: pullSpeed
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 7583729944465845015, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: MaxDistance
       value: 100
@@ -60349,7 +60353,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1030750874749208575, guid: 27e66a3e828e9854ba605a17c5a75199, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1030750874749208575, guid: 27e66a3e828e9854ba605a17c5a75199, type: 3}
       propertyPath: enemyHPBar
@@ -60646,7 +60650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whiteScreen: {fileID: 1704639754}
-  spikeAttack: {fileID: 0}
+  spikeAttack: {fileID: 74636545}
 --- !u!1001 &1652335493
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -77930,7 +77934,6 @@ MonoBehaviour:
   sliceBoard: {fileID: 0}
   sliceAmount: 200
   slicefinish: {fileID: 8300000, guid: 6b14284634af10c42bf7677335b648b1, type: 3}
-  ShrimpCrowdScript: {fileID: 0}
   type: 2
   testEvent:
     m_PersistentCalls:

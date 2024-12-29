@@ -88,7 +88,6 @@ public class IntroManager : MonoBehaviour
     }
 
 
-
     public static void SpawnFirstSpike()
     {
         var spike = Instantiate(instance.spike, new(20, 0f, 16), Quaternion.identity);
@@ -163,10 +162,9 @@ public class IntroManager : MonoBehaviour
 
     public void StartGame()
     {
-        Camera.main.transform.parent.GetComponent<PlayerController>().enabled = true;
+        Invoke(nameof(CamUnlock), 0.5f);
         weaponAnimator.enabled = true;
         crowdAttack.gameObject.SetActive(true);
-        Invoke(nameof(CamUnlock), 0.5f);
         crowdAttack.Awake();
         boss.GetComponent<Boss1_AI>().enabled = true;
     }
@@ -174,5 +172,6 @@ public class IntroManager : MonoBehaviour
     void CamUnlock()
     {
         Camera.main.GetComponent<RotateCamera>().isLocked = false;
+        Camera.main.transform.parent.GetComponent<PlayerController>().enabled = true;
     }
 }

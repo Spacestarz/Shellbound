@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class SlicePattern : MonoBehaviour
@@ -26,6 +27,11 @@ public class SlicePattern : MonoBehaviour
 
     [HideInInspector] public bool outroSlice;
 
+    public bool hasGoneUp;
+    public bool hasGoneDown;
+    public bool hasGoneLeft;
+    public bool hasGoneRight;
+
 
     private void Awake()
     {
@@ -36,7 +42,7 @@ public class SlicePattern : MonoBehaviour
 
     public void DestroyArrow()
     {
-        if(spawnedArrow)
+        if (spawnedArrow)
         {
             Destroy(spawnedArrow.gameObject);
         }
@@ -51,7 +57,7 @@ public class SlicePattern : MonoBehaviour
             DestroyArrow();
         }
 
-        if(!outroSlice)
+        if (!outroSlice)
         {
             if (totalSliced < sliceAmount)
             {
@@ -59,22 +65,28 @@ public class SlicePattern : MonoBehaviour
 
                 if (currentArrow == null)
                 {
-                    i = Random.Range(0, arrows.Count - 1);
+                    i = SetNextArrow();
+                    Debug.Log(i);
                     currentArrow = arrows[i];
-                    FindPossibleArrows(i);
+                    //i = Random.Range(0, arrows.Count - 1);
+                    //currentArrow = arrows[i];
+                    //FindPossibleArrows(i);
                 }
                 else
                 {
-                    int currentArrowIndex = arrows.IndexOf(currentArrow);
-                    FindPossibleArrows(currentArrowIndex);
-                
-                    i = Random.Range(0, possibleArrows.Count - 1);
-                    currentArrow = possibleArrows[i];
+                    i = SetNextArrow();
+                    Debug.Log(i);
+                    currentArrow = arrows[i];
+                    //int currentArrowIndex = arrows.IndexOf(currentArrow);
+                    //FindPossibleArrows(currentArrowIndex);
+
+                    //i = Random.Range(0, possibleArrows.Count - 1);
+                    //currentArrow = possibleArrows[i];
                 }
 
                 PlayerSlice.SetTargetDirection(currentArrow.direction);
                 spawnedArrow = Instantiate(currentArrow, transform);
-            
+
                 spawnedSliceAnimation = Instantiate(sliceAnimation, transform);
             }
             else
@@ -86,7 +98,7 @@ public class SlicePattern : MonoBehaviour
                 {
                     StartCoroutine(Camera.main.GetComponent<RotateCamera>().SetCameraLock(false));
                 }
-                catch{}
+                catch { }
 
                 ResetPattern();
             }
@@ -102,74 +114,19 @@ public class SlicePattern : MonoBehaviour
         }
     }
 
-    void MoveToEnd(int i)
-    {
-        SliceTarget value = arrows[i];
-        arrows.RemoveAt(i);
-        arrows.Add(value);
-    }
-
-    void FindPossibleArrows(int i)
-    {
-        possibleArrows.Clear();
-
-        switch(i)
-        {
-            case 0:
-                SetPossibleArrows(1, 2, 3, 6, 7);
-                break;
-            case 1:
-                SetPossibleArrows(0, 2, 3, 4, 5);
-                break;
-            case 2:
-                SetPossibleArrows(0, 1, 3, 5, 7);
-                break;
-            case 3:
-                SetPossibleArrows(0, 1, 2, 4, 6);
-                break;
-            case 4:
-                SetPossibleArrows(1, 3, 7);
-                break;
-            case 5:
-                SetPossibleArrows(1, 2, 6);
-                break;
-            case 6:
-                SetPossibleArrows(0, 3, 5);
-                break;
-            case 7:
-                SetPossibleArrows(0, 2, 4);
-                break;
-        }
-    }
-
-    void SetPossibleArrows(int a, int b, int c, int d, int e)
-    {
-        int[] ints = {a, b, c, d, e};
-
-        foreach (int i in ints)
-        {
-            possibleArrows.Add(arrows[i]);
-        }
-    }
-
-    void SetPossibleArrows(int a, int b, int c)
-    {
-        int[] ints = {a, b, c};
-        
-        foreach (int i in ints)
-        {
-            possibleArrows.Add(arrows[i]);
-        }
-    }
-
     public void ResetPattern()
     {
+        hasGoneUp = false;
+        hasGoneDown = false;
+        hasGoneLeft = false;
+        hasGoneRight = false;
+
         totalSliced = 0;
     }
 
     public void FailPattern()
     {
-        if(spawnedSliceAnimation)
+        if (spawnedSliceAnimation)
         {
             Destroy(spawnedSliceAnimation.gameObject);
         }
@@ -188,5 +145,152 @@ public class SlicePattern : MonoBehaviour
         {
             audioSource.PlayOneShot(sliceFinish);
         }
+    }
+
+
+    private int SetNextArrow()
+    {
+        List<int> availableGroups = new() { 0, 1, 2, 3 };
+        List<int> availableDirs = new() { 0, 1, 2 };
+
+        ExcludeGroups(ref availableGroups);
+        int groupIndex = Random.Range(0, availableGroups.Count);
+        int group = availableGroups[groupIndex];
+
+        availableDirs = ExcludeDirs(availableDirs, group);
+        int dirIndex = Random.Range(0, availableDirs.Count);
+        int dir = availableDirs[dirIndex];
+
+        if (dir == 1)
+        {
+            switch (group)
+            {
+                case 0: //Up
+                    hasGoneUp = true;
+                    hasGoneDown = false;
+                    break;
+                case 1: //Down
+                    hasGoneUp = false;
+                    hasGoneDown = true;
+                    break;
+                case 2: //Left
+                    hasGoneLeft = true;
+                    hasGoneRight = false;
+                    break;
+                case 3: //Right
+                    hasGoneRight = true;
+                    hasGoneLeft = false;
+                    break;
+            }
+            return group;
+        }
+        else if ((group == 0 || group == 2) && dir == 0) //UpLeft
+        {
+            hasGoneUp = true;
+            hasGoneLeft = true;
+
+            hasGoneDown = false;
+            hasGoneRight = false;
+
+            return 4;
+        }
+        else if ((group == 0 && dir == 2) || group == 3 && dir == 0) //UpRight
+        {
+            hasGoneUp = true;
+            hasGoneRight = true;
+
+            hasGoneDown = false;
+            hasGoneLeft = false;
+
+            return 5;
+        }
+        else if ((group == 1 && dir == 0) || group == 2 && dir == 2) //DownLeft
+        {
+            hasGoneDown = true;
+            hasGoneLeft = true;
+
+            hasGoneUp = false;
+            hasGoneRight = false;
+
+            return 6;
+        }
+        else if ((group == 1 && dir == 2) || group == 3 && dir == 2) //DownRight
+        {
+            hasGoneDown = true;
+            hasGoneRight = true;
+
+            hasGoneUp = false;
+            hasGoneLeft = false;
+
+            return 7;
+        }
+        else
+        {
+            //In case something goes terribly wrong
+            return Random.Range(0, 8);
+        }
+    }
+
+    private void ExcludeGroups(ref List<int> availableGroups)
+    {
+        if (hasGoneUp)
+        {
+            availableGroups.Remove(0);
+            //int i = availableGroups.IndexOf(0);
+            //availableGroups.RemoveAt(i);
+        }
+        if (hasGoneDown)
+        {
+            availableGroups.Remove(1);
+            //int i = availableGroups.IndexOf(1);
+            //availableGroups.RemoveAt(i);
+        }
+        if (hasGoneLeft)
+        {
+            availableGroups.Remove(2);
+            //int i = availableGroups.IndexOf(2);
+            //availableGroups.RemoveAt(i);
+        }
+        if (hasGoneRight)
+        {
+            availableGroups.Remove(3);
+            //int i = availableGroups.IndexOf(3);
+            //availableGroups.RemoveAt(i);
+        }
+    }
+
+
+    private List<int> ExcludeDirs(List<int> availableDirs, int chosenGroup)
+    {
+        if (chosenGroup < 2)
+        {
+            if (hasGoneLeft)
+            {
+                RemoveDir(ref availableDirs, 0);
+            }
+            if (hasGoneRight)
+            {
+                RemoveDir(ref availableDirs, 2);
+            }
+        }
+        else
+        {
+            if (hasGoneUp)
+            {
+                RemoveDir(ref availableDirs, 0);
+            }
+            if (hasGoneDown)
+            {
+                RemoveDir(ref availableDirs, 2);
+            }
+        }
+
+        return availableDirs;
+    }
+
+
+    private void RemoveDir(ref List<int> availableDirs, int i)
+    {
+        availableDirs.Remove(i);
     }
 }

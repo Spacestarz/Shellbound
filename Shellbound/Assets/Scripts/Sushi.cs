@@ -1,6 +1,5 @@
-using DG.Tweening;
-using Unity.Mathematics;
 using UnityEngine;
+using DG.Tweening;
 
 public class Sushi : MonoBehaviour
 {
@@ -51,7 +50,7 @@ public class Sushi : MonoBehaviour
 
     public void OutroSlice(int sliceCount)
     {
-        if(!OutroManager.instance.whiteScreen.gameObject.activeSelf)
+        if (!OutroManager.instance.whiteScreen.gameObject.activeSelf)
         {
             OutroManager.instance.whiteScreen.color = Color.clear;
             OutroManager.instance.whiteScreen.gameObject.SetActive(true);
@@ -62,7 +61,7 @@ public class Sushi : MonoBehaviour
 
         float colorLerpRate = ((float)sliceCount - 5) / 50;
         float pitchLerpRate = ((float)sliceCount - 10) / 50;
-        float volumeLerpRate = ((float)sliceCount - 10) / 50;
+        float volumeLerpRate = ((float)sliceCount - 10) / 75;
 
         if (sliceCount > 4 && OutroManager.instance.whiteScreen.color != goalColor && !fadeStarted)
         {
@@ -70,11 +69,12 @@ public class Sushi : MonoBehaviour
 
             GetComponentInChildren<SlicePattern>().outroSlice = true;
 
-            if(sliceCount > 9)
+            if (sliceCount > 9)
             {
+                Camera.main.GetComponent<CameraHandler>().ShakeCamera(1.3f, new(1, 1, 1));
                 source.pitch = Mathf.Lerp(1, 4, pitchLerpRate);
             }
-            if(sliceCount == 9)
+            if (sliceCount == 9)
             {
                 PlayerSlice.OutroLowerRequiredTickAmount(5);
             }
@@ -87,19 +87,27 @@ public class Sushi : MonoBehaviour
             if (sliceCount == 13)
             {
                 PlayerSlice.OutroLowerRequiredTickAmount(3);
+                PlayerSlice.OutroLowerRequiredDotProduct(0.8f, 0.75f);
             }
 
-            if (sliceCount == 13)
+            if (sliceCount == 18)
             {
-                PlayerSlice.OutroLowerRequiredTickAmount(3);
+                PlayerSlice.OutroLowerRequiredTickAmount(1);
+                PlayerSlice.OutroLowerRequiredDotProduct(0.6f, 0.4f);
             }
         }
-        else if(OutroManager.instance.whiteScreen.color == goalColor && !fadeStarted)
+        else if (OutroManager.instance.whiteScreen.color == goalColor && !fadeStarted)
         {
             fadeStarted = true;
             OutroManager.instance.whiteScreen.DOColor(Color.white, 0.75f);
-            source.DOFade(0, 0.75f);
+            source.DOFade(0, 1.25f).OnComplete(SwitchScene);
         }
+    }
+
+    void SwitchScene()
+    {
+        DOTween.KillAll();
+        SceneController.instance.LoadScene("VictoryScreen");
     }
 
 }

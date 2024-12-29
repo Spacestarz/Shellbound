@@ -9,13 +9,13 @@ public class MusicManager : MonoBehaviour
 
     int currentSongIndex;
 
-    void Start()
+    void Awake()
     {
         if (instance == null)
         {
             instance = this;
         }
-        else if(instance != this)
+        else if (instance != this)
         {
             Destroy(this);
         }
@@ -25,6 +25,8 @@ public class MusicManager : MonoBehaviour
 
         source.clip = songs[currentSongIndex];
         source.Play();
+
+        DontDestroyOnLoad(gameObject);
     }
 
     void NextSong()

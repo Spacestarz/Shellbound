@@ -16,22 +16,20 @@ public class OutroManager : MonoBehaviour
     {
         if (instance != null && instance != this)
         {
-            Destroy(this);
+            Destroy(gameObject);
             return;
         }
         else
         {
             instance = this;
         }
-
-        spikeAttack = FindAnyObjectByType<Crowd_attacks>();
     }
 
     public static void StartOutro(bool victory)
     {
         instance.spikeAttack.gameObject.SetActive(false);
         UrchinSpawner.RemoveAllFromList();
-
+        
         if (victory)
         {
             isRunning = true;
@@ -59,18 +57,20 @@ public class OutroManager : MonoBehaviour
 
     void InvokeFadeOut()
     {
-        
+        PlayerSlice.instance.GetComponent<PlayerController>().harpoonTime = true;
         Invoke(nameof(VictoryFadeOut), 1.2f);
     }
 
     void VictoryFadeOut()
     {
+        PlayerSlice.instance.GetComponent<PlayerController>().harpoonTime = true;
         instance.whiteScreen.DOColor(Color.clear, 1.25f).OnComplete(EnableMovement);
     }
 
     void EnableMovement()
     {
         isRunning = false;
+        PlayerSlice.instance.GetComponent<PlayerController>().harpoonTime = true;
         Camera.main.GetComponentInParent<PlayerController>().enabled = true;
         Camera.main.GetComponent<RotateCamera>().isLocked = false;
     }

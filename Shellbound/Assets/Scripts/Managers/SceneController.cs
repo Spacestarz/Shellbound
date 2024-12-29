@@ -51,8 +51,10 @@ public class SceneController : MonoBehaviour
         Application.Quit();
 #endif
     }
+                //Restart*
     public void restart()
     {
+        //scene*
         var scean = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(scean);
     }
@@ -64,7 +66,13 @@ public class SceneController : MonoBehaviour
     }
     public void NextLevel()
     {
+        //scene*
         var scean = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(scean + 1);
+    }
+
+    public void LoadScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 }

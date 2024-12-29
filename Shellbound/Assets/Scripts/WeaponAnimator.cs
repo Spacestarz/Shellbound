@@ -181,17 +181,17 @@ public class WeaponAnimator : BaseAnimator
 
     void CheckIfTimeToSwitch()
     {
-        harpoonIsActive = controller.harpoontime;
+        harpoonIsActive = controller.harpoonTime;
         if(harpoonIsActive != harpoonWasActive)
         {
             StopCoroutine(SwitchTimer());
             StartCoroutine(SwitchTimer());
-            if(controller.harpoontime)
+            if(controller.harpoonTime)
             {
                 SwitchToHarpoon();
                 CheckAnchorPos();
             }
-            else if(!controller.harpoontime && !PlayerSlice.SliceMode())
+            else if(!controller.harpoonTime && !PlayerSlice.SliceMode())
             {
                 SwitchToDart();
                 CheckAnchorPos();

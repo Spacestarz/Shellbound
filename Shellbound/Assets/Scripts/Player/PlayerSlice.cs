@@ -22,7 +22,9 @@ public class PlayerSlice : MonoBehaviour
     static float sliceTime = 0;
     static readonly float sliceTimeLimit = 1.25f;
 
-    static float requiredDotProduct = 0.8f;
+    static float requiredDotProduct;
+    static float orthogonalDotProduct = 0.85f;
+    static float diagonalDotProduct = 0.8f;
 
     static int successfulTicks = 0;
     static int failedTicks = 0;
@@ -72,7 +74,7 @@ public class PlayerSlice : MonoBehaviour
             currentSlicePattern.DestroyArrow();
             currentSlicePattern.ResetPattern();
 
-            controller.harpoontime = false;
+            controller.harpoonTime = false;
             instance.GetComponent<HealthSystem>().playerInvulnerable = false;
 
             instance.GetComponent<Fire>().ReturnHarpoon();
@@ -124,11 +126,11 @@ public class PlayerSlice : MonoBehaviour
         //If only one axis is 0 (orthogonal)
         if (targetDirection.x != 0 ^ targetDirection.y != 0)
         {
-            requiredDotProduct = 0.85f;
+            requiredDotProduct = orthogonalDotProduct;
         }
         else // (Diagonal)
         {
-            requiredDotProduct = 0.8f;
+            requiredDotProduct = diagonalDotProduct;
         }
     }
 
@@ -228,5 +230,11 @@ public class PlayerSlice : MonoBehaviour
     public static void OutroLowerRequiredTickAmount(int setAmount)
     {
         requiredTicks = setAmount;
+    }
+
+    public static void OutroLowerRequiredDotProduct(float orthAmount, float diagAmount)
+    {
+        orthogonalDotProduct = orthAmount;
+        diagonalDotProduct = diagAmount;
     }
 }

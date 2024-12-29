@@ -26,6 +26,8 @@ public class SettingsManager : MonoBehaviour
             instance = this;
         }
 
+        DontDestroyOnLoad(gameObject);
+
         slider.minValue = minSliderSensitivity;
         slider.maxValue = maxSliderSensitivity;
 

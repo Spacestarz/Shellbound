@@ -11,6 +11,8 @@ public class MainMenuMusic : MonoBehaviour
     [SerializeField] AudioClip mainMusic;
     public AudioClip startSound;
 
+    bool playButtonPressed;
+
 
     private void Awake()
     {
@@ -32,13 +34,18 @@ public class MainMenuMusic : MonoBehaviour
 
     void PlayMainMusic()
     {
-        source.Stop();
-        source.clip = mainMusic;
-        source.Play();
+        if(!playButtonPressed)
+        {
+            source.Stop();
+            source.clip = mainMusic;
+            source.Play();
+            
+        }
     }
 
     public void PlayStartSound()
     {
+        playButtonPressed = true;
         source.Stop();
         source.PlayOneShot(startSound);
     }

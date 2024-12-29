@@ -55,10 +55,10 @@ public class Base_enemy : MonoBehaviour
         catch { }
         agent.SetDestination(transform.position);
         volnereble = true;
-        target.GetComponent<PlayerController>().harpoontime = true;
+        target.GetComponent<PlayerController>().harpoonTime = true;
         yield return new WaitForSeconds(volnerebleTime);
         volnereble = false;
-        target.GetComponent<PlayerController>().harpoontime = false;
+        target.GetComponent<PlayerController>().harpoonTime = false;
         transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
     }
     public void wekend()

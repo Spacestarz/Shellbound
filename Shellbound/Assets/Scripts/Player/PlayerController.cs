@@ -38,9 +38,8 @@ public class PlayerController : MonoBehaviour
     FireDart fireDart;
 
     public GameObject dart;
-    public bool harpoontime = false;
+    public bool harpoonTime = false;
     public bool shot = false;
-    public bool alweyspoon = false;
 
 
     public ParticleSystem HitVFXPrefab;
@@ -118,18 +117,13 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Fire1") && !PlayerSlice.SliceMode() && !fireHarpoon.fired && (harpoontime || alweyspoon) && !WeaponAnimator.isSwitching)
+        if (Input.GetButtonDown("Fire1") && !PlayerSlice.SliceMode() && !fireHarpoon.fired && harpoonTime && !WeaponAnimator.isSwitching)
         {
             fireHarpoon.InvokeFire();
         }
-        else if (Input.GetButtonDown("Fire1") && !PlayerSlice.SliceMode() && !fireDart.hasShot && !harpoontime && !WeaponAnimator.isSwitching)
+        else if (Input.GetButtonDown("Fire1") && !PlayerSlice.SliceMode() && !fireDart.hasShot && !harpoonTime && !WeaponAnimator.isSwitching)
         {
             fireDart.RequestFire();
-        }
-
-        if(Input.GetKeyDown(KeyCode.Keypad0))
-        {
-            harpoontime = !harpoontime;
         }
     }
 
