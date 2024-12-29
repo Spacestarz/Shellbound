@@ -1,21 +1,36 @@
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class CrosshairSpinner : MonoBehaviour
 {
     [HideInInspector] public bool isSpinning;
+    Image image;
+    Color originalColor;
 
     bool isResetting;
+    bool startedTurningRed;
 
     float spinRate = 540;
     float maxSpinRate = 540;
     float accelerationRate = 5400;
+
+    private void Awake()
+    {
+        image = GetComponent<Image>();
+        originalColor = image.color;
+    }
 
     void Update()
     {
         if(isSpinning)
         {
             Rotate();
+
+            if (!startedTurningRed)
+            {
+                TurnRed();
+            }
         }
         else if(!isResetting)
         {
@@ -52,6 +67,12 @@ public class CrosshairSpinner : MonoBehaviour
     {
         isResetting = true;
         transform.DORotate(new Vector3(0,0,0), 0.4f).OnComplete(ResetSpinRate);
+        image.DOColor(originalColor, 0.15f);
+
+        if(startedTurningRed)
+        {
+            startedTurningRed = false;
+        }
     }
 
 
@@ -59,5 +80,12 @@ public class CrosshairSpinner : MonoBehaviour
     {
         spinRate = 180;
         isResetting = false;
+    }
+
+    void TurnRed()
+    {
+        startedTurningRed = true;
+        image.DOKill();
+        image.DOColor(Color.red, 0.15f);
     }
 }

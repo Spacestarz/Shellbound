@@ -60387,6 +60387,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1277631537374850335, guid: 27e66a3e828e9854ba605a17c5a75199, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277631537374850335, guid: 27e66a3e828e9854ba605a17c5a75199, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277631537374850335, guid: 27e66a3e828e9854ba605a17c5a75199, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1340073919257602575, guid: 27e66a3e828e9854ba605a17c5a75199, type: 3}
       propertyPath: m_text
       value: "restart by pressing \nBACKSPACE"

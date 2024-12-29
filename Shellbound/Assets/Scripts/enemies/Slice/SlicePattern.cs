@@ -66,22 +66,12 @@ public class SlicePattern : MonoBehaviour
                 if (currentArrow == null)
                 {
                     i = SetNextArrow();
-                    Debug.Log(i);
                     currentArrow = arrows[i];
-                    //i = Random.Range(0, arrows.Count - 1);
-                    //currentArrow = arrows[i];
-                    //FindPossibleArrows(i);
                 }
                 else
                 {
                     i = SetNextArrow();
-                    Debug.Log(i);
                     currentArrow = arrows[i];
-                    //int currentArrowIndex = arrows.IndexOf(currentArrow);
-                    //FindPossibleArrows(currentArrowIndex);
-
-                    //i = Random.Range(0, possibleArrows.Count - 1);
-                    //currentArrow = possibleArrows[i];
                 }
 
                 PlayerSlice.SetTargetDirection(currentArrow.direction);
@@ -236,26 +226,18 @@ public class SlicePattern : MonoBehaviour
         if (hasGoneUp)
         {
             availableGroups.Remove(0);
-            //int i = availableGroups.IndexOf(0);
-            //availableGroups.RemoveAt(i);
         }
         if (hasGoneDown)
         {
             availableGroups.Remove(1);
-            //int i = availableGroups.IndexOf(1);
-            //availableGroups.RemoveAt(i);
         }
         if (hasGoneLeft)
         {
             availableGroups.Remove(2);
-            //int i = availableGroups.IndexOf(2);
-            //availableGroups.RemoveAt(i);
         }
         if (hasGoneRight)
         {
             availableGroups.Remove(3);
-            //int i = availableGroups.IndexOf(3);
-            //availableGroups.RemoveAt(i);
         }
     }
 
