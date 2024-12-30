@@ -59,14 +59,13 @@ public class MainMenueSpecials : MonoBehaviour
 
         if (SceneController.gameStarted)
         {
-            clicked = true;
             SetFinalPositions();
         }
     }
 
     private void Update()
     {
-        if (clicked && Input.anyKey)
+        if (!SceneController.gameStarted && clicked && Input.anyKey)
         {
             clicked = false;
             PresedEnyKey();
