@@ -20,61 +20,10 @@ public class UI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
         player = GameObject.FindGameObjectWithTag("Player");
-
-        //if (PlayerSliderobject != null)
-        //    PlayerSliderobject.maxValue = player.GetComponent<HealthSystem>().MaxHP;
-        // if (EnemySliderObject != null)
-        //EnemySliderObject.maxValue = Enemy.GetComponent<HealthSystem>().MaxHP;
         
         gameoverBLACK = GameObject.Find("Background panel");
         //gameoverBLACK.SetActive(false);
-    }
-
-    void Update()
-    {
-        //if (PlayerSliderobject != null)
-        //{
-        //    PlayerSliderobject.value = player.GetComponent<HealthSystem>().currentHP;
-
-        //    if (PlayerSliderobject.value == 0)
-        //    {
-        //        PlayerSliderobject.gameObject.SetActive(false);
-        //    }
-        //}
-
-        //if (EnemySliderObject != null)
-        //{
-        //    EnemySliderObject.value = Enemy.GetComponent<HealthSystem>().currentHP;
-        //}
-
-        if ((Input.GetKeyDown(KeyCode.Space) && defeatedbossBOOL == true))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
-
-
-        if (Input.GetKeyDown(KeyCode.Backspace))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
-
-        /* //added to be able to defeat boss if you want to debug
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            DefeatedBOSS();
-        }
-        */
-    }
-
-
-    public void GameOver()
-    {
-        player.GetComponent<PlayerController>().enabled = false;
-        gameoverBLACK.SetActive(true);
-        gameoverBLACK.GetComponent<Image>().color = new Color(0, 0, 0, 0.945f);
-        gameoverBOOL = true;
     }
 
     public void DefeatedBOSS()

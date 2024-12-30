@@ -22,13 +22,14 @@ public class FadeToBlack : MonoBehaviour
             float duration = FindAnyObjectByType<MainMenuMusic>().startSound.length;
             fadeStarted = true;
             blackScreen.enabled = true;
-            blackScreen.DOColor(Color.black, duration).OnComplete(NextScene);
+            blackScreen.DOColor(Color.black, duration);//.OnComplete(NextScene);
+            Invoke(nameof(NextScene), duration);
         }
     }
 
 
     void NextScene()
     {
-       sceneController.NextLevel();
+       sceneController.LoadScene("MainMenu");
     }
 }

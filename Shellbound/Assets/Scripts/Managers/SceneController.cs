@@ -73,13 +73,8 @@ public class SceneController : MonoBehaviour
     }
     public void NextLevel()
     {
-        //scene*
+            //scene*
         var scean = SceneManager.GetActiveScene().buildIndex;
-        
-        if(!SceneManager.GetSceneByBuildIndex(scean +1).name.Contains("MainScene"))
-        {
-            ShowCursor();
-        }
 
         SceneManager.LoadScene(scean + 1);
     }
