@@ -30,6 +30,6 @@ public class FadeToBlack : MonoBehaviour
 
     void NextScene()
     {
-       sceneController.LoadScene("MainMenu");
+       sceneController.LoadScene("MainScene");
     }
 }
