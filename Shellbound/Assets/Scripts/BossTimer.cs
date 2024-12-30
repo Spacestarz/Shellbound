@@ -9,18 +9,7 @@ public class BossTimer : MonoBehaviour
 {
     public bool TimerRunning = false;
     private static float timer = 0;
-    private static float bestTime;
-
-    private int maxHighScores = 5;
-    private const string bestTimerString = "Best Timer";
-    public TextMeshProUGUI timerText;
-    public TextMeshProUGUI highscorelistText;
-
-    private List<string> playerNamesList = new List<string>();
-
-    private List<float> bestTimesList = new List<float>();
-
-
+    private string playerName = "insert player name";
     /*
      * Make so we can have top 5 high scores
      * 
@@ -29,18 +18,7 @@ public class BossTimer : MonoBehaviour
     void Start()
     {
         TimerRunning = true;
-        bestTime = PlayerPrefs.GetFloat(bestTimerString, float.MaxValue);
-        //timerText.text = "You best time is" + bestTime.ToString("F0");
-
-        if (bestTime == float.MaxValue)
-        {
-            //timerText.text = "No high score yet!";
-            
-        }
-        else
-        {
-            //timerText.text = ("you best time is" + bestTime.ToString("F0")); 
-        }
+       
     }
 
     // Update is called once per frame
@@ -48,10 +26,11 @@ public class BossTimer : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.F))
         {
-            StopTimer();
-           
+            StopTimer();        
         }
-        
+
+      
+
         if (TimerRunning)
         {
             timer += Time.deltaTime;
@@ -63,14 +42,17 @@ public class BossTimer : MonoBehaviour
     {
         TimerRunning = false;
        
-        timerText.text = "Your time to kill this boss was" + " " + timer.ToString("F0");
-        Debug.Log("your time was" + " " + timer.ToString("F0"));
+       // timerText.text = "Your time to kill this boss was" + " " + timer.ToString("F0");
+        Debug.Log("your time was" + " " + timer.ToString("F2"));
 
-        PlayerPrefs.SetFloat(bestTimerString, timer);
+       // PlayerPrefs.SetFloat(bestTimerString, timer);
         PlayerPrefs.Save();
-        Debug.Log("your Best Timer: " + bestTime.ToString("F0"));
+       // Debug.Log("your Best Timer: " + bestTime.ToString("F0"));
 
-        SaveNewTime("player name", timer); //need to make so player can write their name
+        //add score to highscoremanager
+        HighScoreManager.instance.AddScore(playerName, timer);
+
+        SaveNewTime(playerName, timer); //need to make so player can write their name
 
 
         /*
@@ -91,67 +73,21 @@ public class BossTimer : MonoBehaviour
     public void SaveNewTime(string playername, float newTime)
     {
         Debug.Log("savenewtime method");
-        if (playerNamesList.Count < maxHighScores && bestTimesList.Count < maxHighScores)
-        {
-            playerNamesList.Add(playername);
-            bestTimesList.Add(newTime);
-        }
-        else
-        {
 
-        }
-       
+        // Retrieve the current count of high scores from PlayerPrefs
+        int highScoreCount = PlayerPrefs.GetInt("HighScoreCount", 0);
+
+        // Save the player's name and time for this score
+        PlayerPrefs.SetString($"HighScoreName{highScoreCount}", playername);
+        PlayerPrefs.SetFloat($"HighScoreTime{highScoreCount}", newTime);
+
+        // Increase the high score count
+        PlayerPrefs.SetInt("HighScoreCount", highScoreCount + 1);
+
+        // Save all the data to PlayerPrefs
         PlayerPrefs.Save();
-        ShowHighScores();
+
+        Debug.Log($"Saved high score: {playername} - {newTime}");
     }
 
-    public void ShowHighScores()
-    {
-        Debug.Log("ShowHighScore");
-        highscorelistText.text = "";
-        for (int i = 0; i < bestTimesList.Count; i++)
-        {
-           
-            float time = bestTimesList[i];
-            highscorelistText.text += "High Score " + (i + 1) + ": " + playerNamesList[i] + " - " + bestTimesList[i].ToString("F2") + " seconds\n";
-
-            // Debug.Log("High Score " + (i + 1) + ": " +  " - " + time.ToString("F2") + " seconds");
-
-        }
-       
-    }
-
-    private void SortHighScores()
-    {
-       for (int i = 0; i < bestTimesList.Count - 1; i++)
-        {
-            for (int j = i + 1; j < bestTimesList.Count; j++)
-            {
-                if (bestTimesList[j] < bestTimesList[i])
-                {
-                    //swapping times
-                    float tempTime = bestTimesList[i];
-                    bestTimesList[i] = bestTimesList[j];
-                    bestTimesList[j] = tempTime;    
-
-                    //swappes names
-                    string tempName = playerNamesList[i];
-                    playerNamesList[i] = playerNamesList[j];
-                    playerNamesList[j] = tempName;
-                } 
-            }
-        }
-
-       //gets only top 5 scores
-       if (bestTimesList.Count > maxHighScores)
-        {
-            playerNamesList = playerNamesList.GetRange(0, 5);
-            bestTimesList = bestTimesList.GetRange(0, 5);
-        }
-    }
-
-    public void SaveTimes()
-    {
-
-    }
 }
