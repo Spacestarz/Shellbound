@@ -42,6 +42,11 @@ public class PlayerSlice : MonoBehaviour
             instance = this;
         }
         controller = GetComponent<PlayerController>();
+
+        orthogonalDotProduct = 0.85f;
+        diagonalDotProduct = 0.8f;
+
+        requiredTicks = 10;
     }
 
     private void LateUpdate()

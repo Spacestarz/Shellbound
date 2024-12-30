@@ -27,11 +27,11 @@ public class SceneController : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Escape))
+        /*if (Input.GetKey(KeyCode.Escape))
         {
             GoToMenue();
         }
-        else if (Input.GetKey(KeyCode.Backspace))
+        else*/ if (Input.GetKey(KeyCode.Backspace))
         {
             restart();
         }
@@ -43,6 +43,7 @@ public class SceneController : MonoBehaviour
     }
     public void quit()
     {
+        Debug.Log("Screee");
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #elif UNITY_WEBPLAYER

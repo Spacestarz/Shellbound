@@ -30,6 +30,7 @@ public class OutroManager : MonoBehaviour
             instance = this;
         }
 
+        isRunning = false;
         boss = GameObject.Find("MantisShrimp");
     }
 
