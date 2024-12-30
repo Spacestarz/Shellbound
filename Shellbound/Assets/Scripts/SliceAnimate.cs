@@ -24,7 +24,7 @@ public class SliceAnimate : MonoBehaviour
 
     IEnumerator DestroyAfterWait()
     {
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSeconds(0.5f);
         Destroy(gameObject);
         yield break;
     }

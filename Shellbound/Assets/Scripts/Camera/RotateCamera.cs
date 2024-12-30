@@ -91,7 +91,7 @@ public class RotateCamera : MonoBehaviour
     public IEnumerator SetCameraLock(bool locked)
     {
         this.DOKill();
-        yield return new WaitForSecondsRealtime(0.2f);
+        yield return new WaitForSeconds(0.2f);
         ClampRotation(ref xRotation);
         isLocked = locked;
         yield break;
