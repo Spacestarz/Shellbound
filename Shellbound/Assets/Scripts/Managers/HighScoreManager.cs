@@ -9,22 +9,31 @@ public class HighScoreManager : MonoBehaviour
     public static HighScoreManager instance;
     private static float bestTime;
 
-    private int maxHighScores = 5;
+    [HideInInspector] public int maxHighScores = 5;
     private const string bestTimerString = "Best Timer";
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI highscorelistText;
 
     private List<string> playerNamesList = new List<string>();
 
-    private List<float> bestTimesList = new List<float>();
+    [HideInInspector] public List<float> bestTimesList = new List<float>();
 
     private void Awake()
     {
-        if (instance == null)
+       
+        if (instance != null && instance != this)
+        {
+            Destroy (this);
+            return;
+            
+        }
+        else
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
+
+        DontDestroyOnLoad(gameObject);
+
     }
     
     void Start()
@@ -44,7 +53,6 @@ public class HighScoreManager : MonoBehaviour
             timerText.text = ("you best time is" + bestTime.ToString("F2")); 
         }
     }
-
     
     void Update()
     {
@@ -58,6 +66,7 @@ public class HighScoreManager : MonoBehaviour
     {
         Debug.Log($"Adding high score: {playerName} - {timer}");
 
+        //if (timer > )
         // Add the new name and score
         playerNamesList.Add(playerName);
         bestTimesList.Add(timer);
@@ -67,18 +76,18 @@ public class HighScoreManager : MonoBehaviour
         SortHighScore();
 
         SavedScores();
-
     }
 
     public void LoadTheScores ()
     {
         Debug.Log("LoadTheScores Method");
+               
         highscorelistText.text = "";
 
         playerNamesList.Clear();
         bestTimesList.Clear();
 
-        //loading scores from playerprefs hopefuly
+        //loading scores from playerprefs hopefully
         SavedScores ();
 
         //testing from internet
@@ -95,7 +104,6 @@ public class HighScoreManager : MonoBehaviour
                 bestTimesList.Add(playerTime);
             }
         }
-
 
         //gets only top 5 scores
         if (bestTimesList.Count > maxHighScores)
@@ -132,26 +140,30 @@ public class HighScoreManager : MonoBehaviour
 
     public void SortHighScore()
     {
-        for (int i = 0; i < bestTimesList.Count - 1; i++)
+        if ( highscorelistText != null)
         {
-            for (int j = i + 1; j < bestTimesList.Count; j++)
+            for (int i = 0; i < bestTimesList.Count - 1; i++)
             {
-                if (bestTimesList[j] < bestTimesList[i])
+                for (int j = i + 1; j < bestTimesList.Count; j++)
                 {
-                    //swapping times
-                    float tempTime = bestTimesList[i];
-                    bestTimesList[i] = bestTimesList[j];
-                    bestTimesList[j] = tempTime;
+                    if (bestTimesList[j] < bestTimesList[i])
+                    {
+                        //swapping times
+                        float tempTime = bestTimesList[i];
+                        bestTimesList[i] = bestTimesList[j];
+                        bestTimesList[j] = tempTime;
 
-                    //swappes names
-                    string tempName = playerNamesList[i];
-                    playerNamesList[i] = playerNamesList[j];
-                    playerNamesList[j] = tempName;
+                        //swappes names
+                        string tempName = playerNamesList[i];
+                        playerNamesList[i] = playerNamesList[j];
+                        playerNamesList[j] = tempName;
 
-                    SavedScores();
+                        SavedScores();
+                    }
                 }
             }
         }
+       
 
     }
 
