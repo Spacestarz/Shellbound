@@ -7273,6 +7273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseScreen: {fileID: 0}
+  quitButton: {fileID: 0}
 --- !u!1 &134899716
 GameObject:
   m_ObjectHideFlags: 0
@@ -60863,6 +60864,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3373935243701253517}
     - target: {fileID: 1369424104670791186, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+      propertyPath: currentHP
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1369424104670791186, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1645081098}
@@ -61544,6 +61549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseScreen: {fileID: 1310438848}
+  quitButton: {fileID: 128856576}
 --- !u!1001 &1652335493
 PrefabInstance:
   m_ObjectHideFlags: 0

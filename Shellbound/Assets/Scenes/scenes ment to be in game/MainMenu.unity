@@ -3263,9 +3263,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
-
-    Score'
+  m_text: Score
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 358d525d9150fd64eb39107d3b80f0b3, type: 2}
   m_sharedMaterial: {fileID: 7486885288607682677, guid: 358d525d9150fd64eb39107d3b80f0b3, type: 2}
@@ -5064,12 +5062,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHighScores: 5
   completedTimerText: {fileID: 1268686064}
-  highscorelistText: {fileID: 642437433}
-  highScore1: {fileID: 642437433}
-  highScore2: {fileID: 1787917775}
-  highScore3: {fileID: 676932147}
-  highScore4: {fileID: 1052405858}
-  highScore5: {fileID: 1357090456}
+  textofhereScore: {fileID: 1268686064}
+  highScoreTextListAll:
+  - {fileID: 642437433}
+  - {fileID: 1787917775}
+  - {fileID: 676932147}
+  - {fileID: 1052405858}
+  - {fileID: 1357090456}
   bestTimesList: []
 --- !u!1 &2024284974
 GameObject:

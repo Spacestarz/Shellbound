@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEditor.Experimental.GraphView;
 
 
 public class HighScoreManager : MonoBehaviour
@@ -13,20 +14,11 @@ public class HighScoreManager : MonoBehaviour
     [HideInInspector] public int maxHighScores = 5;
     private const string completeTime = "completeTime";
     public TextMeshProUGUI completedTimerText;
-    public TextMeshProUGUI highscorelistText;
+    public TextMeshProUGUI textofhereScore;
 
     private TextMeshProUGUI newHighScoreText;
 
-    /*
-    public TextMeshProUGUI highScore1;
-    public TextMeshProUGUI highScore2;
-    public TextMeshProUGUI highScore3;
-    public TextMeshProUGUI highScore4;
-    public TextMeshProUGUI highScore5;
-
-    */
-
-    public TextMeshProUGUI[] highScoreTextArray;
+    public List<TextMeshProUGUI> highScoreTextListAll = new List<TextMeshProUGUI>();
 
     private TMP_InputField playerNameInput;
 
@@ -87,8 +79,21 @@ public class HighScoreManager : MonoBehaviour
         
         if (SceneManager.GetActiveScene().name == ("VictoryScreen"))
         {
+
+            
+           
             playerNameInput = GameObject.Find("enteryourname").GetComponent<TMP_InputField>();
             playerNameInput.gameObject.SetActive(false);
+
+            if (playerNameInput = null )
+            {
+                Debug.Log("Where is input");
+                playerNameInput = GameObject.Find("enteryourname").GetComponent<TMP_InputField>();
+            }
+            else
+            {
+                Debug.Log("got the input");
+            }
 
             completedTimerText = GameObject.Find("TIME").GetComponent<TextMeshProUGUI>();
             completedTimerText.text = ($"Your time to defeat the boss was: {CompleteTimer:F2}");
@@ -101,7 +106,10 @@ public class HighScoreManager : MonoBehaviour
      
                 playerNameInput.gameObject.SetActive(true);
                 newHighScoreText.text = ("Enter your name!");
+                CompleteplayerName = playerNameInput.text;
 
+                //saving the new score
+                SortHighScore();
             }
         }
     }
@@ -137,7 +145,7 @@ public class HighScoreManager : MonoBehaviour
     {
         Debug.Log("LoadTheScores Method");
                
-        highscorelistText.text = "";
+        textofhereScore.text = "";
 
         playerNamesList.Clear();
         bestTimesList.Clear();
@@ -173,20 +181,21 @@ public class HighScoreManager : MonoBehaviour
 
         if (bestTimesList.Count > 0)
         {
-            //text = names[i] + times [i].tostring
+            //show the high scores
 
-            
-            //save this in array in for
-            highscorelistText.text = ("You high scores:");
-            /*
-
-            highScore1.text = $"{playerNamesList[0]} - {bestTimesList[0]:F2} seconds";
-            highScore2.text = $"{playerNamesList[1]} - {bestTimesList[1]:F2} seconds";
-            highScore3.text = $"{playerNamesList[2]} - {bestTimesList[2]:F2} seconds";
-            highScore4.text = $"{playerNamesList[3]} - {bestTimesList[3]:F2} seconds";
-            highScore5.text = $"{playerNamesList[4]} - {bestTimesList[4]:F2} seconds";
-
-            */
+            for (int i = 0;i < highScoreTextListAll.Count; i++)
+            {   
+                if (i < playerNamesList.Count && i < bestTimesList.Count)
+                {
+                    textofhereScore.text = $"{playerNamesList[i]} - {bestTimesList[i]:F2} seconds";
+                }
+                else
+                {
+                    highScoreTextListAll[i].text = ("No score here yet");
+                }
+                
+            }
+            textofhereScore.text = ("You high scores:");  
         }
        
 
@@ -225,7 +234,7 @@ public class HighScoreManager : MonoBehaviour
 
     public void SortHighScore()
     {
-        if ( highscorelistText != null)
+        if ( textofhereScore != null)
         {
             for (int i = 0; i < bestTimesList.Count - 1; i++)
             {

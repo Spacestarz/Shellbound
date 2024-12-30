@@ -17,7 +17,13 @@ public class BossTimer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-           
+        if( IntroManager.instance == null)
+        {
+            TimerRunning = true;
+            Debug.Log("Starting timer");
+        }
+
+          
     }
 
     // Update is called once per frame
