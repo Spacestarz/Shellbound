@@ -4,6 +4,9 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEditor.Experimental.GraphView;
+using UnityEngine.SocialPlatforms.Impl;
+using System;
+using Unity.VisualScripting;
 
 
 public class HighScoreManager : MonoBehaviour
@@ -25,6 +28,11 @@ public class HighScoreManager : MonoBehaviour
     private static float CompleteTimer;
     private static float newHighScoreTime;
     private static string CompleteplayerName;
+
+    private Array alltext;
+
+    private GameObject scoreObjectMenu;
+    private GameObject canvasMenu;
     
     private List<string> playerNamesList = new List<string>();
 
@@ -78,14 +86,12 @@ public class HighScoreManager : MonoBehaviour
         }
         
         if (SceneManager.GetActiveScene().name == ("VictoryScreen"))
-        {
-
-            
+        {           
            
-            playerNameInput = GameObject.Find("enteryourname").GetComponent<TMP_InputField>();
-            playerNameInput.gameObject.SetActive(false);
+           // playerNameInput = GameObject.Find("enteryourname").GetComponent<TMP_InputField>();
+           
 
-            if (playerNameInput = null )
+            if (playerNameInput == null )
             {
                 Debug.Log("Where is input");
                 playerNameInput = GameObject.Find("enteryourname").GetComponent<TMP_InputField>();
@@ -93,24 +99,62 @@ public class HighScoreManager : MonoBehaviour
             else
             {
                 Debug.Log("got the input");
+               
             }
 
             completedTimerText = GameObject.Find("TIME").GetComponent<TextMeshProUGUI>();
             completedTimerText.text = ($"Your time to defeat the boss was: {CompleteTimer:F2}");
 
-            if (bestTimesList.Count > 0 && CompleteTimer < bestTimesList[0])
+            if (bestTimesList.Count > 0 && CompleteTimer < bestTimesList[0] || Input.GetKeyDown(KeyCode.F)) 
             {     
-                //TODO MAKE SO THE NEW TIME DONT SAVE IN THE LIST OR THIS WILL NEVER BE TRU
+                //TODO MAKE SO YOU CAN INSERT NAME IF TOP 5
                 newHighScoreText = GameObject.Find("newHighScore").GetComponent<TextMeshProUGUI>();
                 newHighScoreText.text = ($"You got a new high score!/n Your new score is /n {newHighScoreTime:F2}");
-     
+                bestTimesList.Add(newHighScoreTime);
                 playerNameInput.gameObject.SetActive(true);
-                newHighScoreText.text = ("Enter your name!");
-                CompleteplayerName = playerNameInput.text;
+                newHighScoreText.text = ("Enter your name!");   
 
-                //saving the new score
-                SortHighScore();
             }
+        }
+        else if (SceneManager.GetActiveScene().name == ("MainMenu"))
+        {
+            Debug.Log("this is main menu");
+            highScoreTextListAll.Clear();
+            if (highScoreTextListAll.Count == 0 )
+            {
+                Debug.Log("Getting my list bitch");
+                canvasMenu = GameObject.Find("Canvas");
+                Transform scoreObjectMenu = canvasMenu.transform.Find("score");
+                var alltext = scoreObjectMenu.GetComponentsInChildren<TextMeshProUGUI>();
+
+                foreach (var textComponent in alltext)
+                {
+                    highScoreTextListAll.Add(textComponent);
+                }
+
+                LoadTheScores();
+
+            }
+        }
+    }
+
+    public void CheckIfValidName()
+    {
+        if (!string.IsNullOrEmpty(playerNameInput.text))
+        {
+            CompleteplayerName = playerNameInput.text;
+
+            playerNamesList.Add(playerNameInput.text);
+           
+            PlayerPrefs.Save();
+            SortHighScore();           
+            playerNameInput.gameObject.SetActive(false);
+            newHighScoreText.text = ($"You name is now submitted: {CompleteplayerName}");
+        }
+        else
+        {
+            Debug.Log("You need to enter a name");
+            newHighScoreText.text = "Please enter a name!";
         }
     }
 
@@ -187,49 +231,19 @@ public class HighScoreManager : MonoBehaviour
             {   
                 if (i < playerNamesList.Count && i < bestTimesList.Count)
                 {
-                    textofhereScore.text = $"{playerNamesList[i]} - {bestTimesList[i]:F2} seconds";
+                    highScoreTextListAll[i].text = $"{playerNamesList[i]} - {bestTimesList[i]:F2} seconds";
                 }
                 else
                 {
-                    highScoreTextListAll[i].text = ("No score here yet");
+                    highScoreTextListAll[i].text = ("Empty");
                 }
                 
             }
             textofhereScore.text = ("You high scores:");  
         }
-       
-
-        /*
-        // Display the loaded high scores
-        for (int i = 0; i < bestTimesList.Count; i++)
-        {
-            highscorelistText.text += $"High Score {i + 1}: {playerNamesList[i]} - {bestTimesList[i]:F2} seconds\n";
-            highScore1.text = $"{playerNamesList[0]} - {bestTimesList[0]} seconds";
-            highScore2.text = $"{playerNamesList[1]} - {bestTimesList[1]} seconds";
-            highScore3.text = $"{playerNamesList[2]} - {bestTimesList[2]} seconds";
-            highScore4.text = $"{playerNamesList[3]} - {bestTimesList[3]} seconds";
-            highScore5.text = $"{playerNamesList[4]} - {bestTimesList[4]} seconds";
-            
-            Debug.Log($"High Score {i + 1}: {playerNamesList[i]} - {bestTimesList[i]:F2} seconds");
-        }
-
-        */
 
         Debug.Log($"Got this many scores: {bestTimesList.Count}");
-        /*
-
-        for (int i = 0; i < bestTimesList.Count; i++)
-        {
-            float time = bestTimesList[i];
-            highscorelistText.text += "High Score " + (i + 1) + ": " + playerNamesList[i] + " - " + bestTimesList[i].ToString("F2") + " seconds\n";
-
-             Debug.Log("High Score " + (i + 1) + ": " +  " - " + time.ToString("F2") + " seconds");
-
-            PlayerPrefs.Save();
-        }
-
-        Debug.Log("Got this many score" + "" + "" + bestTimesList.Count);
-        */
+      
     }     
 
     public void SortHighScore()
