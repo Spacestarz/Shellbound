@@ -18,6 +18,8 @@ public class IntroManager : MonoBehaviour
     public RectTransform playerWeapon;
     WeaponAnimator weaponAnimator;
 
+    public BossTimer timer;
+
     Vector3 enemyHPPosition;
     Vector3 playerHPPosition;
     Vector3 playerWeaponPosition;
@@ -173,5 +175,6 @@ public class IntroManager : MonoBehaviour
     {
         Camera.main.GetComponent<RotateCamera>().isLocked = false;
         Camera.main.transform.parent.GetComponent<PlayerController>().enabled = true;
+        timer.TimerRunning = true;
     }
 }

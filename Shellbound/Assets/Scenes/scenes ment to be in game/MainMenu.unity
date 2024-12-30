@@ -5065,6 +5065,11 @@ MonoBehaviour:
   maxHighScores: 5
   completedTimerText: {fileID: 1268686064}
   highscorelistText: {fileID: 642437433}
+  highScore1: {fileID: 642437433}
+  highScore2: {fileID: 1787917775}
+  highScore3: {fileID: 676932147}
+  highScore4: {fileID: 1052405858}
+  highScore5: {fileID: 1357090456}
   bestTimesList: []
 --- !u!1 &2024284974
 GameObject:

@@ -17,8 +17,7 @@ public class BossTimer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TimerRunning = true;
-       
+           
     }
 
     // Update is called once per frame
@@ -43,12 +42,6 @@ public class BossTimer : MonoBehaviour
         TimerRunning = false;    
       
         Debug.Log("your time was" + " " + timer.ToString("F2"));
-
-        if (HighScoreManager.instance.bestTimesList.Count > 0 && timer < HighScoreManager.instance.bestTimesList[0])
-        {
-            Debug.Log("You got a new high score yaaay");
-            //TODO insert show on ui thing
-        }
 
         //add score to highscoremanager
         HighScoreManager.instance.AddScore(playerName, timer);
