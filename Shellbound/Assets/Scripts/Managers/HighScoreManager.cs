@@ -16,18 +16,29 @@ public class HighScoreManager : MonoBehaviour
     public TextMeshProUGUI highscorelistText;
 
     private TextMeshProUGUI newHighScoreText;
+
+    /*
     public TextMeshProUGUI highScore1;
     public TextMeshProUGUI highScore2;
     public TextMeshProUGUI highScore3;
     public TextMeshProUGUI highScore4;
     public TextMeshProUGUI highScore5;
 
+    */
+
+    public TextMeshProUGUI[] highScoreTextArray;
+
+    private TMP_InputField playerNameInput;
+
     private static float CompleteTimer;
+    private static float newHighScoreTime;
     private static string CompleteplayerName;
     
     private List<string> playerNamesList = new List<string>();
 
     [HideInInspector] public List<float> bestTimesList = new List<float>();
+
+
 
     private void Awake()
     {
@@ -76,17 +87,21 @@ public class HighScoreManager : MonoBehaviour
         
         if (SceneManager.GetActiveScene().name == ("VictoryScreen"))
         {
+            playerNameInput = GameObject.Find("enteryourname").GetComponent<TMP_InputField>();
+            playerNameInput.gameObject.SetActive(false);
+
             completedTimerText = GameObject.Find("TIME").GetComponent<TextMeshProUGUI>();
             completedTimerText.text = ($"Your time to defeat the boss was: {CompleteTimer:F2}");
 
             if (bestTimesList.Count > 0 && CompleteTimer < bestTimesList[0])
-            {
+            {     
                 //TODO MAKE SO THE NEW TIME DONT SAVE IN THE LIST OR THIS WILL NEVER BE TRU
                 newHighScoreText = GameObject.Find("newHighScore").GetComponent<TextMeshProUGUI>();
-                newHighScoreText.text = ($"You got a new high score!/n Your new score is /n {CompleteTimer:F2}");
+                newHighScoreText.text = ($"You got a new high score!/n Your new score is /n {newHighScoreTime:F2}");
+     
+                playerNameInput.gameObject.SetActive(true);
+                newHighScoreText.text = ("Enter your name!");
 
-                //TODO add so another text display that you got a new high score
-                Debug.Log("You got a new high score yaaay");
             }
         }
     }
@@ -100,6 +115,12 @@ public class HighScoreManager : MonoBehaviour
         CompleteTimer = timer;
         CompleteplayerName = playerName;
 
+        if (bestTimesList.Count > 0 && timer < bestTimesList[0])
+        {
+            Debug.Log("New high score");
+            newHighScoreTime = timer;
+            return;
+        }
 
         // Add the new name and score
         playerNamesList.Add(playerName);
@@ -149,12 +170,25 @@ public class HighScoreManager : MonoBehaviour
         //TODO
         //make this just go through like a list? 
         //
-        highscorelistText.text = ("You high scores:");
-        highScore1.text = $"{playerNamesList[0]} - {bestTimesList[0]:F2} seconds";
-        highScore2.text = $"{playerNamesList[1]} - {bestTimesList[1]:F2} seconds";
-        highScore3.text = $"{playerNamesList[2]} - {bestTimesList[2]:F2} seconds";
-        highScore4.text = $"{playerNamesList[3]} - {bestTimesList[3]:F2} seconds";
-        highScore5.text = $"{playerNamesList[4]} - {bestTimesList[4]:F2} seconds";
+
+        if (bestTimesList.Count > 0)
+        {
+            //text = names[i] + times [i].tostring
+
+            
+            //save this in array in for
+            highscorelistText.text = ("You high scores:");
+            /*
+
+            highScore1.text = $"{playerNamesList[0]} - {bestTimesList[0]:F2} seconds";
+            highScore2.text = $"{playerNamesList[1]} - {bestTimesList[1]:F2} seconds";
+            highScore3.text = $"{playerNamesList[2]} - {bestTimesList[2]:F2} seconds";
+            highScore4.text = $"{playerNamesList[3]} - {bestTimesList[3]:F2} seconds";
+            highScore5.text = $"{playerNamesList[4]} - {bestTimesList[4]:F2} seconds";
+
+            */
+        }
+       
 
         /*
         // Display the loaded high scores
