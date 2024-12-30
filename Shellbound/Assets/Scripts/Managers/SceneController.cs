@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneController : MonoBehaviour
 {
     public static SceneController instance;
+    public static bool gameStarted;
 
     private void Awake()
     {
@@ -61,8 +62,7 @@ public class SceneController : MonoBehaviour
     }
     public void GoToMenue()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = true;
+        ShowCursor();
 
         if(GameObject.Find("MusicManager"))
         {
@@ -75,10 +75,27 @@ public class SceneController : MonoBehaviour
         //scene*
         var scean = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(scean + 1);
+        
+        if(!SceneManager.GetSceneByBuildIndex(scean +1).name.Contains("MainScene"))
+        {
+            ShowCursor();
+        }
     }
 
     public void LoadScene(string scene)
     {
+        var currentScene = SceneManager.GetActiveScene().buildIndex;
+        if (!SceneManager.GetSceneByBuildIndex(currentScene + 1).name.Contains("MainScene"))
+        {
+            ShowCursor();
+        }
+
         SceneManager.LoadScene(scene);
+    }
+
+    void ShowCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = true;
     }
 }

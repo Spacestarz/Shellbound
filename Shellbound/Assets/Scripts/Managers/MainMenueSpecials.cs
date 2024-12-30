@@ -56,6 +56,12 @@ public class MainMenueSpecials : MonoBehaviour
         //menueRect = menue.GetComponent<RectTransform>();
 
         sorce = GetComponent<AudioSource>();
+
+        if (SceneController.gameStarted)
+        {
+            clicked = true;
+            SetFinalPositions();
+        }
     }
 
     private void Update()
@@ -129,6 +135,7 @@ public class MainMenueSpecials : MonoBehaviour
         MainMenuMusic mainMenuMusic = FindAnyObjectByType<MainMenuMusic>();
         float tweenLength = mainMenuMusic.introMusic.length;
         mainMenuMusic.PlayIntro();
+        SceneController.gameStarted = true;
 
         sorce.PlayOneShot(roar,0.5f);
         presText.GetComponent<TextMeshProUGUI>().DOFade(0, tweenLength).OnComplete(() => { hide(presText); });
@@ -160,5 +167,16 @@ public class MainMenueSpecials : MonoBehaviour
             FindAnyObjectByType<MainMenuMusic>().PlayStartSound();
             FindAnyObjectByType<FadeToBlack>().StartFade();
         }
+    }
+
+    void SetFinalPositions()
+    {
+        MainMenuMusic mainMenuMusic = FindAnyObjectByType<MainMenuMusic>();
+        mainMenuMusic.PlayMainMusic();
+
+        presText.SetActive(false);
+        logoRect.anchoredPosition = new Vector3(logoRect.anchoredPosition.x, -75);
+        menueRect.anchoredPosition = new Vector3(menueRect.anchoredPosition.x, 0);
+        anim.AnimationState.SetAnimation(0, "Silly guy moving", false);
     }
 }

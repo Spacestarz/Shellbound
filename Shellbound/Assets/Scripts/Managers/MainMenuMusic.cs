@@ -32,7 +32,7 @@ public class MainMenuMusic : MonoBehaviour
     }
 
 
-    void PlayMainMusic()
+    public void PlayMainMusic()
     {
         if(!playButtonPressed)
         {
