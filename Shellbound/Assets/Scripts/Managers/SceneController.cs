@@ -75,12 +75,13 @@ public class SceneController : MonoBehaviour
     {
         //scene*
         var scean = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(scean + 1);
         
         if(!SceneManager.GetSceneByBuildIndex(scean +1).name.Contains("MainScene"))
         {
             ShowCursor();
         }
+
+        SceneManager.LoadScene(scean + 1);
     }
 
     public void LoadScene(string scene)
@@ -95,7 +96,7 @@ public class SceneController : MonoBehaviour
 
     void ShowCursor()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
 }
