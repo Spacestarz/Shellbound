@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Mantis shrimp_SkeletonData
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: f6e8d4bc7df5b644eb3966331e030389, type: 2}
+  - {fileID: 11400000, guid: e49b69631a4acfc43a1235bfb4f76844, type: 2}
   scale: 0.01
-  skeletonJSON: {fileID: 4900000, guid: b0f74f63fe876d743998b2694f9be846, type: 3}
+  skeletonJSON: {fileID: 4900000, guid: 83206c7c74da25e4da0a72e08a62cb09, type: 3}
   isUpgradingBlendModeMaterials: 0
   blendModeMaterials:
     requiresBlendModeMaterials: 0
@@ -28,4 +28,4 @@ MonoBehaviour:
   toAnimation: []
   duration: []
   defaultMix: 0.2
-  controller: {fileID: 9100000, guid: 08743b19bfa5c3641b36c77d1e92a5a2, type: 2}
+  controller: {fileID: 0}
