@@ -40,33 +40,21 @@ public class BossTimer : MonoBehaviour
 
     public void StopTimer()
     {
-        TimerRunning = false;
-       
-       // timerText.text = "Your time to kill this boss was" + " " + timer.ToString("F0");
+        TimerRunning = false;    
+      
         Debug.Log("your time was" + " " + timer.ToString("F2"));
 
-       // PlayerPrefs.SetFloat(bestTimerString, timer);
-        PlayerPrefs.Save();
-       // Debug.Log("your Best Timer: " + bestTime.ToString("F0"));
+        if (HighScoreManager.instance.bestTimesList.Count > 0 && timer < HighScoreManager.instance.bestTimesList[0])
+        {
+            Debug.Log("You got a new high score yaaay");
+            //TODO insert show on ui thing
+        }
 
         //add score to highscoremanager
         HighScoreManager.instance.AddScore(playerName, timer);
 
         SaveNewTime(playerName, timer); //need to make so player can write their name
-
-
-        /*
-        if (timer < bestTime)
-        {
-            bestTime = timer;
-            PlayerPrefs.SetFloat(bestTimerString, bestTime);
-            PlayerPrefs.Save();
-            Debug.Log("New Best Timer: " + bestTime.ToString("F0"));
-
-            SaveNewTime("player name" , bestTime ); //need to make so player can write their name
-
-        }     
-        */
+      
         //save string in const variable
     }
 

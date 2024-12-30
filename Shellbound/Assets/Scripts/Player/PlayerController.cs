@@ -93,37 +93,45 @@ public class PlayerController : MonoBehaviour
 
     private void GetInputs()
     {
-        if (!dashing)
+        if(Input.GetKeyDown(KeyCode.P))
         {
-            if (!PlayerSlice.SliceMode())
-            {
-                horizontalInput = Input.GetAxisRaw("Horizontal");
-                verticalInput = Input.GetAxisRaw("Vertical");
+            PauseManager.TogglePause();
+        }
 
-                //Space to jump
-                if (Input.GetButtonDown("Jump") && readyToJump && grounded)
+        if(!PauseManager.isPaused)
+        {
+            if (!dashing)
+            {
+                if (!PlayerSlice.SliceMode())
                 {
-                    readyToJump = false;
-                    Jump();
-                    Invoke(nameof(ResetJumpCooldown), jumpCooldown);
-                }
-                //Shift to dash
-                if (Input.GetButtonDown("Fire3") && readyToDash && grounded && moveDirection != Vector3.zero)
-                {
-                    readyToDash = false;
-                    Dash();
-                    Invoke(nameof(EndDash), dashDuration);
+                    horizontalInput = Input.GetAxisRaw("Horizontal");
+                    verticalInput = Input.GetAxisRaw("Vertical");
+
+                    //Space to jump
+                    if (Input.GetButtonDown("Jump") && readyToJump && grounded)
+                    {
+                        readyToJump = false;
+                        Jump();
+                        Invoke(nameof(ResetJumpCooldown), jumpCooldown);
+                    }
+                    //Shift to dash
+                    if (Input.GetButtonDown("Fire3") && readyToDash && grounded && moveDirection != Vector3.zero)
+                    {
+                        readyToDash = false;
+                        Dash();
+                        Invoke(nameof(EndDash), dashDuration);
+                    }
                 }
             }
-        }
 
-        if (Input.GetButtonDown("Fire1") && !PlayerSlice.SliceMode() && !fireHarpoon.fired && harpoonTime && !WeaponAnimator.isSwitching)
-        {
-            fireHarpoon.InvokeFire();
-        }
-        else if (Input.GetButtonDown("Fire1") && !PlayerSlice.SliceMode() && !fireDart.hasShot && !harpoonTime && !WeaponAnimator.isSwitching)
-        {
-            fireDart.RequestFire();
+            if (Input.GetButtonDown("Fire1") && !PlayerSlice.SliceMode() && !fireHarpoon.fired && harpoonTime && !WeaponAnimator.isSwitching)
+            {
+                fireHarpoon.InvokeFire();
+            }
+            else if (Input.GetButtonDown("Fire1") && !PlayerSlice.SliceMode() && !fireDart.hasShot && !harpoonTime && !WeaponAnimator.isSwitching)
+            {
+                fireDart.RequestFire();
+            }
         }
     }
 
