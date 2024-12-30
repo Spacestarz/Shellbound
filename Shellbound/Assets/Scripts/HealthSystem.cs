@@ -120,7 +120,7 @@ public class HealthSystem : MonoBehaviour
 
         GetComponent<Enemi_health>().DisableAI();
         GetComponent<Boss1_AI>().enabled = false;
-        //BossTimerScript.StopTimer();
+        BossTimerScript.StopTimer();
 
         Invoke(nameof(BossSpawnSushi), bossDeath.length);
         Invoke(nameof(Die), bossDeath.length);

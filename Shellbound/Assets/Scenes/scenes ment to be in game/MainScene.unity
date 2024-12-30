@@ -15514,6 +15514,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1645081099}
     - target: {fileID: 345157075243984301, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
+      propertyPath: BossTimerScript
+      value: 
+      objectReference: {fileID: 1402174448}
+    - target: {fileID: 345157075243984301, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
       propertyPath: playerTakeDamage
       value: 
       objectReference: {fileID: 8300000, guid: cb2ec8cfff8bec140a2e6d29135b4407, type: 3}
@@ -15591,6 +15595,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
+--- !u!1 &419814027 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2553824470831661199, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
+  m_PrefabInstance: {fileID: 419814026}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &423381703
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60835,8 +60844,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1369424104670791186, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: MaxHP
-      value: 60
+      value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1369424104670791186, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 419814027}
     - target: {fileID: 1369424104670791186, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: uiScript
       value: 
@@ -75196,7 +75209,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7276528945462405297, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
   m_PrefabInstance: {fileID: 419814026}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 419814027}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69267e964b734eb44b1c5ce601137562, type: 3}

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 
 public class HighScoreManager : MonoBehaviour
@@ -10,10 +11,13 @@ public class HighScoreManager : MonoBehaviour
     private static float bestTime;
 
     [HideInInspector] public int maxHighScores = 5;
-    private const string bestTimerString = "Best Timer";
-    public TextMeshProUGUI timerText;
+    private const string completeTime = "completeTime";
+    public TextMeshProUGUI completedTimerText;
     public TextMeshProUGUI highscorelistText;
 
+    private static float CompleteTimer;
+    private static string CompleteplayerName;
+    
     private List<string> playerNamesList = new List<string>();
 
     [HideInInspector] public List<float> bestTimesList = new List<float>();
@@ -22,35 +26,35 @@ public class HighScoreManager : MonoBehaviour
     {
        
         if (instance != null && instance != this)
-        {
+        {          
             Destroy (this);
-            return;
-            
+            return;           
         }
         else
         {
-            instance = this;
+           Debug.Log("HighScoreManager instantiated");
+
+           instance = this;
         }
 
         DontDestroyOnLoad(gameObject);
-
     }
     
     void Start()
     {
-        bestTime = PlayerPrefs.GetFloat(bestTimerString, float.MaxValue);
-        timerText.text = "You best time is" + bestTime.ToString("F2");
+        bestTime = PlayerPrefs.GetFloat(completeTime, float.MaxValue);
+        completedTimerText.text = "You best time is" + bestTime.ToString("F2");
 
         LoadTheScores();
 
         if (bestTime == float.MaxValue)
         {
-            timerText.text = "No high score yet!";
+            completedTimerText.text = "No high score yet!";
 
         }
         else
         {
-            timerText.text = ("you best time is" + bestTime.ToString("F2")); 
+            completedTimerText.text = ("you best time is" + bestTime.ToString("F2")); 
         }
     }
     
@@ -60,13 +64,25 @@ public class HighScoreManager : MonoBehaviour
         {
             LoadTheScores();
         }
+
+        if (SceneManager.GetActiveScene().name == ("VictoryScreen"))
+        {
+            Debug.Log("This is the victoryscreen");
+            completedTimerText = GameObject.Find("TIME").GetComponent<TextMeshProUGUI>();
+            completedTimerText.text = ($"Your time to defeat the boss was: {CompleteTimer}");
+        }
     }
 
     public void AddScore(string playerName, float timer)
     {
         Debug.Log($"Adding high score: {playerName} - {timer}");
 
-        //if (timer > )
+        completedTimerText.text = ($"Your time to defeat the boss was: {playerName} - {timer}");
+
+        CompleteTimer = timer;
+        CompleteplayerName = playerName;
+
+
         // Add the new name and score
         playerNamesList.Add(playerName);
         bestTimesList.Add(timer);
