@@ -47672,8 +47672,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimerRunning: 0
-  timerText: {fileID: 0}
-  highscorelistText: {fileID: 0}
 --- !u!1 &1411273433
 GameObject:
   m_ObjectHideFlags: 0
@@ -60133,6 +60131,18 @@ PrefabInstance:
       propertyPath: pullSpeed
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 2736247718533220617, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e80a7cac1b6ca544f843bca2d0c89343, type: 2}
+    - target: {fileID: 2736247718533220617, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 07e52f70453b61f418d60ba3d0f6d5ef, type: 2}
+    - target: {fileID: 2736247718533220617, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: e80a7cac1b6ca544f843bca2d0c89343, type: 2}
     - target: {fileID: 3020965347743493271, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -60161,6 +60171,10 @@ PrefabInstance:
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
       value: 0.19622421
       objectReference: {fileID: 0}
+    - target: {fileID: 6926083025341613019, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+      propertyPath: skeletonDataAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 63dda61232986c44582432ac1af922bd, type: 2}
     - target: {fileID: 7583729944465845015, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: MaxDistance
       value: 100
