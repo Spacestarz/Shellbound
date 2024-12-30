@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseManager : MonoBehaviour
 {
@@ -9,12 +10,16 @@ public class PauseManager : MonoBehaviour
     public GameObject pauseScreen;
 
     // Start is called before the first frame update
+    public Button quitButton;
+
     void Start()
     {
         if (instance == null)
         {
             instance = this;
         }
+
+        instance.quitButton.onClick.AddListener(QuitClicked);
     }
 
     public static void TogglePause()
@@ -37,5 +42,10 @@ public class PauseManager : MonoBehaviour
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
+    }
+
+    void QuitClicked()
+    {
+        SceneController.instance.GoToMenue();
     }
 }

@@ -11,10 +11,7 @@ public class UI : MonoBehaviour
     //public Slider EnemySliderObject;        //Right now it all kinda blends together and it's hard to see what
     GameObject player;                      //Goes together with what
     public GameObject Enemy;    //enemy*
-    private GameObject gameOverScreen;
     private GameObject gameoverBLACK;
-
-    private GameObject youWin;
 
 
     public bool gameoverBOOL = false;       //gameIsOver
@@ -30,14 +27,9 @@ public class UI : MonoBehaviour
         //    PlayerSliderobject.maxValue = player.GetComponent<HealthSystem>().MaxHP;
         // if (EnemySliderObject != null)
         //EnemySliderObject.maxValue = Enemy.GetComponent<HealthSystem>().MaxHP;
-        gameOverScreen = GameObject.Find("Game_Over ");
-        youWin = GameObject.Find("You Win");
         
         gameoverBLACK = GameObject.Find("Background panel");
         //gameoverBLACK.SetActive(false);
-        gameOverScreen.SetActive(false);
-
-        youWin.SetActive(false);
     }
 
     void Update()
@@ -82,7 +74,6 @@ public class UI : MonoBehaviour
         player.GetComponent<PlayerController>().enabled = false;
         gameoverBLACK.SetActive(true);
         gameoverBLACK.GetComponent<Image>().color = new Color(0, 0, 0, 0.945f);
-        gameOverScreen.SetActive(true);
         gameoverBOOL = true;
     }
 
@@ -91,7 +82,6 @@ public class UI : MonoBehaviour
         //player.GetComponent<PlayerController>().enabled = false;
         //gameoverBLACK.SetActive(true);
 
-        youWin.SetActive(true);
         defeatedbossBOOL = true;
         Invoke(nameof(BackToMainMenu), 5);
     }
