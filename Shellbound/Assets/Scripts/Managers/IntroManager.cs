@@ -18,7 +18,7 @@ public class IntroManager : MonoBehaviour
     public RectTransform playerWeapon;
     WeaponAnimator weaponAnimator;
 
-    public BossTimer timer;
+    private BossTimer timer;
 
     Vector3 enemyHPPosition;
     Vector3 playerHPPosition;
@@ -32,6 +32,7 @@ public class IntroManager : MonoBehaviour
         {
             instance = this;
         }
+        timer = GameObject.Find("BossTimer").GetComponentInChildren<BossTimer>();
 
         weaponAnimator = instance.playerWeapon.GetComponent<WeaponAnimator>();
         weaponAnimator.enabled = false;
