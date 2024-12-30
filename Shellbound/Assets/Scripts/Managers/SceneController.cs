@@ -1,5 +1,6 @@
 using System.Collections;           //DO NOT DELETE
 using System.Collections.Generic;   //OH GOD OH FUCK
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -84,8 +85,7 @@ public class SceneController : MonoBehaviour
 
     public void LoadScene(string scene)
     {
-        var currentScene = SceneManager.GetActiveScene().buildIndex;
-        if (!SceneManager.GetSceneByBuildIndex(currentScene + 1).name.Contains("MainScene"))
+        if (!scene.Contains("MainScene"))
         {
             ShowCursor();
         }

@@ -107,6 +107,7 @@ public class Sushi : MonoBehaviour
             MusicManager.instance.SetSong(1);
             OutroManager.instance.whiteScreen.DOColor(Color.white, MusicManager.instance.musicSource.clip.length);
             source.DOFade(0, MusicManager.instance.musicSource.clip.length).OnComplete(SwitchScene);
+            //Invoke(nameof(SwitchScene), MusicManager.instance.musicSource.clip.length);
         }
     }
 
