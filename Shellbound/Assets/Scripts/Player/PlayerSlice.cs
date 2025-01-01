@@ -83,6 +83,11 @@ public class PlayerSlice : MonoBehaviour
             instance.GetComponent<HealthSystem>().playerInvulnerable = false;
 
             instance.GetComponent<Fire>().ReturnHarpoon();
+
+            if(!ControlsTutorial.hasSliced)
+            {
+                ControlsTutorial.instance.HideDragMouse();
+            }
         }
 
         SetCursor();
@@ -216,6 +221,12 @@ public class PlayerSlice : MonoBehaviour
         {
             currentSlicePattern.NextSliceArrow();
         }
+        
+        if(!ControlsTutorial.hasSliced)
+        {
+            ControlsTutorial.hasSliced = true;
+            ControlsTutorial.instance.HideDragMouse();
+        }
 
         successfulTicks = 0;
         sliceTime = 0;
@@ -224,6 +235,7 @@ public class PlayerSlice : MonoBehaviour
     static void FailSlice()
     {
         currentSlicePattern.FailPattern();
+
         if (instance.caughtObject)
         {
             ClearCaughtObject();

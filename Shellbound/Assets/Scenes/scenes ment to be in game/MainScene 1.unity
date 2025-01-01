@@ -45224,6 +45224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   images:
   - {fileID: 2146245362}
+  showMouseAnim: 0
 --- !u!1 &1069740065
 GameObject:
   m_ObjectHideFlags: 0
@@ -61864,7 +61865,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1369424104670791186, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: MaxHP
-      value: 8
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 1369424104670791186, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: Player
@@ -62233,7 +62234,7 @@ PrefabInstance:
       objectReference: {fileID: 1402174448}
     - target: {fileID: 1030750874749208575, guid: 27e66a3e828e9854ba605a17c5a75199, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1030750874749208575, guid: 27e66a3e828e9854ba605a17c5a75199, type: 3}
       propertyPath: enemyHPBar
@@ -79389,6 +79390,7 @@ MonoBehaviour:
   images:
   - {fileID: 62778177}
   - {fileID: 799152200}
+  showMouseAnim: 0
 --- !u!1 &2100177288
 GameObject:
   m_ObjectHideFlags: 0

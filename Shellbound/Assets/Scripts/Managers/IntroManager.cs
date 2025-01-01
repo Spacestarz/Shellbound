@@ -178,6 +178,7 @@ public class IntroManager : MonoBehaviour
         Invoke(nameof(ControlUnlock), 0.5f);
     }
 
+
     void ControlUnlock()
     {
         ControlsTutorial.instance.StartTutorial();

@@ -58,8 +58,8 @@ public class ControlsTutorial : MonoBehaviour
     {
         ButtonFadeIn(buttons[0]);
         StartCoroutine(InvokeMethod(ButtonFadeIn, buttons[1], 0.4f));
-        StartCoroutine(InvokeMethod(ButtonFadeIn, buttons[2], 3.2f));
-        StartCoroutine(InvokeMethod(ButtonFadeIn, buttons[3], 3.6f));
+        StartCoroutine(InvokeMethod(ButtonFadeIn, buttons[2], 1.2f));
+        StartCoroutine(InvokeMethod(ButtonFadeIn, buttons[3], 1.6f));
     }
 
 
@@ -79,7 +79,7 @@ public class ControlsTutorial : MonoBehaviour
 
         go.GetComponentInChildren<TextMeshProUGUI>().DOFade(1, 0.4f);
 
-        StartCoroutine(InvokeMethod(ButtonFadeOut, go, 3.4f));
+        StartCoroutine(InvokeMethod(ButtonFadeOut, go, 2.4f));
     }
 
 
@@ -103,8 +103,14 @@ public class ControlsTutorial : MonoBehaviour
         yield break;
     }
 
+
     public void ShowDragMouse(SliceTarget currentArrow)
     {
-        buttons[4].GetComponentInChildren<MouseAnimator>().Slice(currentArrow);
+        buttons[4].GetComponentInChildren<MouseAnimator>().StartMouseAnim(currentArrow);
+    }
+
+    public void HideDragMouse()
+    {
+        buttons[4].GetComponentInChildren<MouseAnimator>().EndMouseAnim();
     }
 }

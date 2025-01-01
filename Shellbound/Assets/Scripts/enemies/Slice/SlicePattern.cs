@@ -79,7 +79,9 @@ public class SlicePattern : MonoBehaviour
             else
             {
                 parentSlice.FinalSlice();
+
                 fire.ReturnHarpoon();
+
                 PlayerSlice.SetSliceMode(false);
                 try
                 {
@@ -117,8 +119,10 @@ public class SlicePattern : MonoBehaviour
         {
             Destroy(spawnedSliceAnimation.gameObject);
         }
-        fire.ReturnHarpoon();
+
         ResetPattern();
+        fire.ReturnHarpoon();
+
         StartCoroutine(Camera.main.GetComponent<RotateCamera>().SetCameraLock(false));
     }
 
