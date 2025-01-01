@@ -33,7 +33,7 @@ public class HighScoreManager : MonoBehaviour
 
     private GameObject scoreObjectMenu;
     private GameObject canvasMenu;
-    
+
     private List<string> playerNamesList = new List<string>();
 
     [HideInInspector] public List<float> bestTimesList = new List<float>();
@@ -42,22 +42,22 @@ public class HighScoreManager : MonoBehaviour
 
     private void Awake()
     {
-       
+
         if (instance != null && instance != this)
-        {          
-            Destroy (this);
-            return;           
+        {
+            Destroy(this);
+            return;
         }
         else
         {
-           Debug.Log("HighScoreManager instantiated");
+            Debug.Log("HighScoreManager instantiated");
 
-           instance = this;
+            instance = this;
         }
 
         DontDestroyOnLoad(gameObject);
     }
-    
+
     void Start()
     {
         bestTime = PlayerPrefs.GetFloat(completeTime, float.MaxValue);
@@ -74,24 +74,24 @@ public class HighScoreManager : MonoBehaviour
         }
         else
         {
-            completedTimerText.text = ("you best time is" + bestTime.ToString("F2")); 
+            completedTimerText.text = ("you best time is" + bestTime.ToString("F2"));
         }
     }
-    
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.G))
         {
             LoadTheScores();
         }
-        
-        if (SceneManager.GetActiveScene().name == ("VictoryScreen"))
-        {           
-           
-           // playerNameInput = GameObject.Find("enteryourname").GetComponent<TMP_InputField>();
-           
 
-            if (playerNameInput == null )
+        if (SceneManager.GetActiveScene().name == ("VictoryScreen"))
+        {
+
+            // playerNameInput = GameObject.Find("enteryourname").GetComponent<TMP_InputField>();
+
+
+            if (playerNameInput == null)
             {
                 Debug.Log("Where is input");
                 playerNameInput = GameObject.Find("enteryourname").GetComponent<TMP_InputField>();
@@ -99,20 +99,21 @@ public class HighScoreManager : MonoBehaviour
             else
             {
                 Debug.Log("got the input");
-               
+
             }
 
             completedTimerText = GameObject.Find("TIME").GetComponent<TextMeshProUGUI>();
-            completedTimerText.text = ($"Your time to defeat the boss was: {CompleteTimer:F2}");
+            //completedTimerText.text = ($"Your time to defeat the boss was: {CompleteTimer:F2}");
+            completedTimerText.text = ($"{CompleteTimer:F2}");
 
-            if (bestTimesList.Count > 0 && CompleteTimer < bestTimesList[0] || Input.GetKeyDown(KeyCode.F)) 
-            {     
+            if (bestTimesList.Count > 0 && CompleteTimer < bestTimesList[0] || Input.GetKeyDown(KeyCode.F))
+            {
                 //TODO MAKE SO YOU CAN INSERT NAME IF TOP 5
                 newHighScoreText = GameObject.Find("newHighScore").GetComponent<TextMeshProUGUI>();
                 newHighScoreText.text = ($"You got a new high score!/n Your new score is /n {newHighScoreTime:F2}");
                 bestTimesList.Add(newHighScoreTime);
                 playerNameInput.gameObject.SetActive(true);
-                newHighScoreText.text = ("Enter your name!");   
+                newHighScoreText.text = ("Enter your name!");
 
             }
         }
@@ -120,7 +121,7 @@ public class HighScoreManager : MonoBehaviour
         {
             Debug.Log("this is main menu");
             highScoreTextListAll.Clear();
-            if (highScoreTextListAll.Count == 0 )
+            if (highScoreTextListAll.Count == 0)
             {
                 Debug.Log("Getting my list bitch");
                 canvasMenu = GameObject.Find("Canvas");
@@ -145,9 +146,9 @@ public class HighScoreManager : MonoBehaviour
             CompleteplayerName = playerNameInput.text;
 
             playerNamesList.Add(playerNameInput.text);
-           
+
             PlayerPrefs.Save();
-            SortHighScore();           
+            SortHighScore();
             playerNameInput.gameObject.SetActive(false);
             newHighScoreText.text = ($"You name is now submitted: {CompleteplayerName}");
         }
@@ -162,7 +163,8 @@ public class HighScoreManager : MonoBehaviour
     {
         Debug.Log($"Adding high score: {playerName} - {timer:F2}");
 
-        completedTimerText.text = ($"Your time to defeat the boss was: {playerName} - {timer:F2}");
+        //completedTimerText.text = ($"Your time to defeat the boss was: {playerName} - {timer:F2}");
+        completedTimerText.text = ($"{playerName} - {timer:F2}");
 
         CompleteTimer = timer;
         CompleteplayerName = playerName;
@@ -185,17 +187,17 @@ public class HighScoreManager : MonoBehaviour
         SavedScores();
     }
 
-    public void LoadTheScores ()
+    public void LoadTheScores()
     {
         Debug.Log("LoadTheScores Method");
-               
+
         textofhereScore.text = "";
 
         playerNamesList.Clear();
         bestTimesList.Clear();
 
         //loading scores from playerprefs hopefully
-        SavedScores ();
+        SavedScores();
 
         //testing from internet
         // Load scores from PlayerPrefs
@@ -227,28 +229,28 @@ public class HighScoreManager : MonoBehaviour
         {
             //show the high scores
 
-            for (int i = 0;i < highScoreTextListAll.Count; i++)
-            {   
+            for (int i = 0; i < highScoreTextListAll.Count; i++)
+            {
                 if (i < playerNamesList.Count && i < bestTimesList.Count)
                 {
-                    highScoreTextListAll[i].text = $"{playerNamesList[i]} - {bestTimesList[i]:F2} seconds";
+                    highScoreTextListAll[i].text = $"{playerNamesList[i]} - {bestTimesList[i]:F2}s";// econds";
                 }
                 else
                 {
                     highScoreTextListAll[i].text = ("Empty");
                 }
-                
+
             }
-            textofhereScore.text = ("You high scores:");  
+            textofhereScore.text = ("You high scores:"); //Your*
         }
 
         Debug.Log($"Got this many scores: {bestTimesList.Count}");
-      
-    }     
+
+    }
 
     public void SortHighScore()
     {
-        if ( textofhereScore != null)
+        if (textofhereScore != null)
         {
             for (int i = 0; i < bestTimesList.Count - 1; i++)
             {
@@ -270,7 +272,7 @@ public class HighScoreManager : MonoBehaviour
                     }
                 }
             }
-        }       
+        }
     }
 
     public void SavedScores()
@@ -279,7 +281,7 @@ public class HighScoreManager : MonoBehaviour
         for (int i = 0; i < bestTimesList.Count; i++)
         {
             PlayerPrefs.SetString($"HighScoreName{i}", playerNamesList[i]);
-            PlayerPrefs.SetFloat($"HighScoreTime{i}", bestTimesList[i]);   
+            PlayerPrefs.SetFloat($"HighScoreTime{i}", bestTimesList[i]);
         }
 
         PlayerPrefs.Save();

@@ -44645,6 +44645,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1047740320}
+  - component: {fileID: 1047740321}
   m_Layer: 5
   m_Name: Show Controls
   m_TagString: Untagged
@@ -44675,6 +44676,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1047740321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047740319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dfd956f1a44c3246ae4ac2fb7837548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  move: {fileID: 494305556}
+  jump: {fileID: 204743013}
+  shoot: {fileID: 31478581}
+  dash: {fileID: 959665295}
 --- !u!1 &1050610188
 GameObject:
   m_ObjectHideFlags: 0
