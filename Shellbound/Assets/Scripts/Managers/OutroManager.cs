@@ -119,6 +119,7 @@ public class OutroManager : MonoBehaviour
     {
         MusicManager.instance.musicSource.Stop();
         MusicManager.instance.musicSource.volume = MusicManager.instance.startVolume;
+        MusicManager.instance.musicSource.pitch = 1;
 
         Vector3 camRot = Camera.main.transform.localEulerAngles;
         Vector3 camPos = Camera.main.transform.localPosition;

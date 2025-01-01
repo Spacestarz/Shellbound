@@ -21,7 +21,7 @@ public class HealthSystem : MonoBehaviour
 
     [SerializeField] GameObject bossSushi;
 
-    public UI uiScript;
+    [SerializeField] Sprite crackedFrame; 
 
     public BossTimer BossTimerScript;
 
@@ -56,6 +56,11 @@ public class HealthSystem : MonoBehaviour
             DamageVignette.ShowVignette();
 
             StartCoroutine(PlayerInvulnerability());
+
+            if(currentHP == 5)
+            {
+                healthBar.transform.Find("Frame").GetComponent<Image>().sprite = crackedFrame;
+            }
 
             if (currentHP <= 0)
             {

@@ -71,7 +71,7 @@ public class IntroManager : MonoBehaviour
     private void HideUIElements()
     {
         enemyHPBar.anchoredPosition = new Vector2(0, 0);
-        playerHPBar.anchoredPosition = new Vector2(1, -30);
+        playerHPBar.anchoredPosition = new Vector2(-20, -40);
         playerWeapon.anchoredPosition = new Vector2(496, -470);
     }
 
