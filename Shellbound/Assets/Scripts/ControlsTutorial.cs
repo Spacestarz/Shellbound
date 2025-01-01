@@ -1,33 +1,80 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
+using System.Collections;
+using System;
 
 public class ControlsTutorial : MonoBehaviour
 {
-    [SerializeField] GameObject move;
-    [SerializeField] GameObject jump;
-    [SerializeField] GameObject shoot;
-    [SerializeField] GameObject dash;
+    public static ControlsTutorial instance;
+
+    [SerializeField] GameObject[] buttons;
+    /*
+        0 - move
+        1 - Jump
+        2 - Shoot
+        3 - Dash
+    */
+
 
     void Start()
     {
-        if(IntroManager.instance)
+        instance = this; 
+
+        MakeAllButtonsTransparent();
+
+        if (!IntroManager.isRunning)
         {
-            Debug.Log("Wow!");
+            StartTutorial();
         }
     }
 
-    // Update is called once per frame
-    void Update()
+
+    void MakeAllButtonsTransparent()
     {
-        
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            Color goalColor = new(1, 1, 1, 0);
+            buttons[i].GetComponentInChildren<Image>().color = goalColor;
+            buttons[i].GetComponentInChildren<TextMeshProUGUI>().color = goalColor;
+
+            try { buttons[i].GetComponentInChildren<Animator>().enabled = false; }
+            catch { }
+        }
     }
 
-    void StartTutorial()
-    {
 
+    public void StartTutorial()
+    {
+        ButtonFadeIn(buttons[0]);
     }
 
-    void ControlFadeIn()
-    {
 
+    void ButtonFadeIn(GameObject go)
+    {
+        go.GetComponentInChildren<Image>().DOFade(1, 0.4f);
+        go.GetComponentInChildren<TextMeshProUGUI>().DOFade(1, 0.8f);
+        go.GetComponentInChildren<Animator>().enabled = true;
+
+        StartCoroutine(InvokeMethod(ButtonFadeOut, go, 4.4f));
+    }
+
+
+    void ButtonFadeOut(GameObject go)
+    {
+        go.GetComponentInChildren<Image>().DOFade(0, 0.8f);
+        go.GetComponentInChildren<TextMeshProUGUI>().DOFade(0, 0.4f);
+
+        try { go.GetComponentInChildren<Animator>().enabled = false; }
+        catch { }
+    }
+
+
+    IEnumerator InvokeMethod(Action<GameObject> method, GameObject go, float time)
+    {
+        yield return new WaitForSeconds(time);
+        method(go);
+        yield break;
     }
 }

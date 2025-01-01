@@ -1,9 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using System;
-using JetBrains.Annotations;
 
 public class BossTimer : MonoBehaviour
 {
@@ -50,9 +45,12 @@ public class BossTimer : MonoBehaviour
         Debug.Log("your time was" + " " + timer.ToString("F2"));
 
         //add score to highscoremanager
-        HighScoreManager.instance.AddScore(playerName, timer);
-
-        SaveNewTime(playerName, timer); //need to make so player can write their name
+        try
+        {
+            HighScoreManager.instance.AddScore(playerName, timer);
+            SaveNewTime(playerName, timer); //need to make so player can write their name
+        }
+        catch { }
       
         //save string in const variable
     }

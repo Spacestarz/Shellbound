@@ -4,10 +4,11 @@ using DG.Tweening;
 
 public class IntroManager : MonoBehaviour
 {
+    public static IntroManager instance;
+    public static bool isRunning = false;
+    
     public Image blackPanel;
     private Crowd_attacks crowdAttack;
-
-    public static IntroManager instance;
 
     public GameObject spike;
 
@@ -28,6 +29,8 @@ public class IntroManager : MonoBehaviour
 
     void Start()
     {
+        isRunning = true;
+
         if (instance == null)
         {
             instance = this;
@@ -165,17 +168,23 @@ public class IntroManager : MonoBehaviour
 
     public void StartGame()
     {
-        Invoke(nameof(CamUnlock), 0.5f);
+        boss.GetComponent<Boss1_AI>().enabled = true;
+
         weaponAnimator.enabled = true;
+
         crowdAttack.gameObject.SetActive(true);
         crowdAttack.Awake();
-        boss.GetComponent<Boss1_AI>().enabled = true;
+
+        Invoke(nameof(ControlUnlock), 0.5f);
     }
 
-    void CamUnlock()
+    void ControlUnlock()
     {
+        ControlsTutorial.instance.StartTutorial();
+
         Camera.main.GetComponent<RotateCamera>().isLocked = false;
         Camera.main.transform.parent.GetComponent<PlayerController>().enabled = true;
+
         timer.TimerRunning = true;
     }
 }
