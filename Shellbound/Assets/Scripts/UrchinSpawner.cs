@@ -23,20 +23,20 @@ public class UrchinSpawner : MonoBehaviour
         Boss = GameObject.Find("MantisShrimp");
         bossAiScript = Boss.GetComponent<Boss1_AI>();
 
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
-       
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             WhichPhaseForUrchin();
-        }      
+        }
     }
 
     public void WhichPhaseForUrchin()
@@ -53,14 +53,14 @@ public class UrchinSpawner : MonoBehaviour
             SpawnUrchins(HowManyUrchinSpawn);
         }
 
-       
+
     }
 
     public void SpawnUrchins(int urchinAmount)
-    { 
+    {
         for (int i = 0; i < urchinAmount; i++)
         {
-                  //randomPoint
+            //randomPoint
             Vector3 RandomPoint = Random.insideUnitCircle * CircleArea;
 
             Vector3 randomPositionInCircle = new Vector3(Player.transform.position.x + RandomPoint.x, HeightofY, Player.transform.position.z + RandomPoint.y);
@@ -76,7 +76,7 @@ public class UrchinSpawner : MonoBehaviour
 
     public static void RemoveAllFromList()
     {
-        foreach(var urchin in instance.spawnedUrchins)
+        foreach (var urchin in instance.spawnedUrchins)
         {
             Destroy(urchin);
         }

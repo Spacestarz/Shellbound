@@ -62,7 +62,7 @@ public class OutroManager : MonoBehaviour
             instance.FailureFallOver();
         }
     }
-    
+
     #region Victory
     void VictoryWhiteFadeIn()
     {

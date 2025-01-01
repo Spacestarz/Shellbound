@@ -6,7 +6,7 @@ public class IntroManager : MonoBehaviour
 {
     public static IntroManager instance;
     public static bool isRunning = false;
-    
+
     public Image blackPanel;
     private Crowd_attacks crowdAttack;
 
@@ -53,10 +53,10 @@ public class IntroManager : MonoBehaviour
 
         StoreUIPositions();
         HideUIElements();
-        
+
         DisableControls();
         Camera.main.GetComponent<RotateCamera>().IntroStareAtFloor();
-        
+
         Invoke(nameof(BlackFadeOut), 0.5f);
         Invoke(nameof(LookUp), 4);
     }

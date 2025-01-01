@@ -63,15 +63,12 @@ public class SlicePattern : MonoBehaviour
             {
                 int i;
 
-                if (currentArrow == null)
+                i = SetNextArrow();
+                currentArrow = arrows[i];
+
+                if (!ControlsTutorial.hasSliced)
                 {
-                    i = SetNextArrow();
-                    currentArrow = arrows[i];
-                }
-                else
-                {
-                    i = SetNextArrow();
-                    currentArrow = arrows[i];
+                    ControlsTutorial.instance.ShowDragMouse(currentArrow);
                 }
 
                 PlayerSlice.SetTargetDirection(currentArrow.direction);

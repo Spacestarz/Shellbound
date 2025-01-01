@@ -8,6 +8,7 @@ using System;
 public class ControlsTutorial : MonoBehaviour
 {
     public static ControlsTutorial instance;
+    public static bool hasSliced;
 
     [SerializeField] GameObject[] buttons;
     /*
@@ -18,16 +19,20 @@ public class ControlsTutorial : MonoBehaviour
     */
 
 
-    void Start()
+    IEnumerator Start()
     {
-        instance = this; 
+        instance = this;
 
         MakeAllButtonsTransparent();
+
+        yield return new WaitForSeconds(Mathf.Epsilon);
 
         if (!IntroManager.isRunning)
         {
             StartTutorial();
         }
+
+        yield break;
     }
 
 
@@ -35,12 +40,16 @@ public class ControlsTutorial : MonoBehaviour
     {
         for (int i = 0; i < buttons.Length; i++)
         {
-            Color goalColor = new(1, 1, 1, 0);
-            buttons[i].GetComponentInChildren<Image>().color = goalColor;
-            buttons[i].GetComponentInChildren<TextMeshProUGUI>().color = goalColor;
+            Image[] images = buttons[i].GetComponentsInChildren<Image>();
 
-            try { buttons[i].GetComponentInChildren<Animator>().enabled = false; }
-            catch { }
+            Color goalColor = new(1, 1, 1, 0);
+
+            foreach (Image img in images)
+            {
+                img.color = goalColor;
+            }
+
+            buttons[i].GetComponentInChildren<TextMeshProUGUI>().color = goalColor;
         }
     }
 
@@ -48,33 +57,54 @@ public class ControlsTutorial : MonoBehaviour
     public void StartTutorial()
     {
         ButtonFadeIn(buttons[0]);
+        StartCoroutine(InvokeMethod(ButtonFadeIn, buttons[1], 0.4f));
+        StartCoroutine(InvokeMethod(ButtonFadeIn, buttons[2], 3.2f));
+        StartCoroutine(InvokeMethod(ButtonFadeIn, buttons[3], 3.6f));
     }
 
 
-    void ButtonFadeIn(GameObject go)
+    public void ButtonFadeIn(GameObject go)
     {
-        go.GetComponentInChildren<Image>().DOFade(1, 0.4f);
-        go.GetComponentInChildren<TextMeshProUGUI>().DOFade(1, 0.8f);
-        go.GetComponentInChildren<Animator>().enabled = true;
+        Image[] images = go.GetComponentsInChildren<Image>();
 
-        StartCoroutine(InvokeMethod(ButtonFadeOut, go, 4.4f));
+        if (images.Length > 1)
+        {
+            go.GetComponentInChildren<Animator>().SetTrigger("Click");
+        }
+
+        foreach (Image img in images)
+        {
+            img.DOFade(1, 0.4f);
+        }
+
+        go.GetComponentInChildren<TextMeshProUGUI>().DOFade(1, 0.4f);
+
+        StartCoroutine(InvokeMethod(ButtonFadeOut, go, 3.4f));
     }
 
 
-    void ButtonFadeOut(GameObject go)
+    public void ButtonFadeOut(GameObject go)
     {
-        go.GetComponentInChildren<Image>().DOFade(0, 0.8f);
+        Image[] images = go.GetComponentsInChildren<Image>();
+        foreach (Image img in images)
+        {
+            img.DOFade(0, 0.4f);
+        }
+
         go.GetComponentInChildren<TextMeshProUGUI>().DOFade(0, 0.4f);
 
-        try { go.GetComponentInChildren<Animator>().enabled = false; }
-        catch { }
     }
 
 
-    IEnumerator InvokeMethod(Action<GameObject> method, GameObject go, float time)
+    IEnumerator InvokeMethod(Action<GameObject> Method, GameObject go, float time)
     {
         yield return new WaitForSeconds(time);
-        method(go);
+        Method(go);
         yield break;
+    }
+
+    public void ShowDragMouse(SliceTarget currentArrow)
+    {
+        buttons[4].GetComponentInChildren<MouseAnimator>().Slice(currentArrow);
     }
 }

@@ -23,7 +23,7 @@ public class CrosshairSpinner : MonoBehaviour
 
     void Update()
     {
-        if(isSpinning)
+        if (isSpinning)
         {
             Rotate();
 
@@ -32,7 +32,7 @@ public class CrosshairSpinner : MonoBehaviour
                 TurnRed();
             }
         }
-        else if(!isResetting)
+        else if (!isResetting)
         {
             ResetRotation();
         }
@@ -55,7 +55,7 @@ public class CrosshairSpinner : MonoBehaviour
 
     void AccelerateRotation()
     {
-        if(spinRate < maxSpinRate)
+        if (spinRate < maxSpinRate)
         {
             spinRate += accelerationRate * Time.deltaTime;
         }
@@ -66,10 +66,10 @@ public class CrosshairSpinner : MonoBehaviour
     public void ResetRotation()
     {
         isResetting = true;
-        transform.DORotate(new Vector3(0,0,0), 0.4f).OnComplete(ResetSpinRate);
+        transform.DORotate(new Vector3(0, 0, 0), 0.4f).OnComplete(ResetSpinRate);
         image.DOColor(originalColor, 0.15f);
 
-        if(startedTurningRed)
+        if (startedTurningRed)
         {
             startedTurningRed = false;
         }

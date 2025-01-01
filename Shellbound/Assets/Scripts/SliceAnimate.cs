@@ -12,7 +12,7 @@ public class SliceAnimate : MonoBehaviour
         transform.localEulerAngles = arrow.transform.localEulerAngles;
         transform.Rotate(0, 0, 0);
         spriteRenderer = GetComponent<SpriteRenderer>();
-        
+
         spriteRenderer.enabled = false;
     }
 

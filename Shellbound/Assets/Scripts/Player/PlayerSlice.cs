@@ -183,7 +183,7 @@ public class PlayerSlice : MonoBehaviour
         {
             failedTicks++;
 
-            if(failedTicks >= 3)
+            if (failedTicks >= 3)
             {
                 successfulTicks = 0;
                 failedTicks = 0;
@@ -212,11 +212,11 @@ public class PlayerSlice : MonoBehaviour
         Camera.main.GetComponent<CameraHandler>().ShakeCameraSlice(targetDirection.normalized);
 
         currentSlicePattern.spawnedArrow.CompleteSlice(targetDirection);
-        if(currentSlicePattern)
+        if (currentSlicePattern)
         {
             currentSlicePattern.NextSliceArrow();
         }
-        
+
         successfulTicks = 0;
         sliceTime = 0;
     }
@@ -224,7 +224,7 @@ public class PlayerSlice : MonoBehaviour
     static void FailSlice()
     {
         currentSlicePattern.FailPattern();
-        if(instance.caughtObject)
+        if (instance.caughtObject)
         {
             ClearCaughtObject();
         }
