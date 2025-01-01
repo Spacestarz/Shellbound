@@ -33,6 +33,7 @@ public class HighScoreManager : MonoBehaviour
 
     private GameObject scoreObjectMenu;
     private GameObject canvasMenu;
+    private GameObject textherescoreMenu; //TODO FIX THIS
     
     private List<string> playerNamesList = new List<string>();
 
@@ -111,6 +112,8 @@ public class HighScoreManager : MonoBehaviour
                 newHighScoreText = GameObject.Find("newHighScore").GetComponent<TextMeshProUGUI>();
                 newHighScoreText.text = ($"You got a new high score!/n Your new score is /n {newHighScoreTime:F2}");
                 bestTimesList.Add(newHighScoreTime);
+                PlayerPrefs.Save();
+                SortHighScore();
                 playerNameInput.gameObject.SetActive(true);
                 newHighScoreText.text = ("Enter your name!");   
 
@@ -119,12 +122,18 @@ public class HighScoreManager : MonoBehaviour
         else if (SceneManager.GetActiveScene().name == ("MainMenu"))
         {
             Debug.Log("this is main menu");
+            canvasMenu = GameObject.Find("Canvas");
+            Transform scoreObjectMenu = canvasMenu.transform.Find("score");
+            if (textofhereScore == null)
+            {
+
+            }
+
             highScoreTextListAll.Clear();
             if (highScoreTextListAll.Count == 0 )
             {
                 Debug.Log("Getting my list bitch");
-                canvasMenu = GameObject.Find("Canvas");
-                Transform scoreObjectMenu = canvasMenu.transform.Find("score");
+               
                 var alltext = scoreObjectMenu.GetComponentsInChildren<TextMeshProUGUI>();
 
                 foreach (var textComponent in alltext)
@@ -188,7 +197,7 @@ public class HighScoreManager : MonoBehaviour
     public void LoadTheScores ()
     {
         Debug.Log("LoadTheScores Method");
-               
+       
         textofhereScore.text = "";
 
         playerNamesList.Clear();
@@ -236,8 +245,7 @@ public class HighScoreManager : MonoBehaviour
                 else
                 {
                     highScoreTextListAll[i].text = ("Empty");
-                }
-                
+                }            
             }
             textofhereScore.text = ("You high scores:");  
         }
