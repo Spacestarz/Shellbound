@@ -4,6 +4,7 @@ public class SoundcueHandler : MonoBehaviour
 {
     public AudioSource source;
     public AudioClip waveCue;
+    public AudioClip doubleWaveCue;
     public AudioClip fistCue;
 
     public static SoundcueHandler instance;
@@ -20,6 +21,14 @@ public class SoundcueHandler : MonoBehaviour
     }
 
     public static void PlayWaveCue()
+    {
+        instance.StopPlaying();
+        instance.source.clip = instance.waveCue;
+        instance.source.volume = 1;
+        instance.source.Play();
+    }
+
+    public static void PlayDoubleWaveCue()
     {
         instance.StopPlaying();
         instance.source.clip = instance.waveCue;

@@ -1,170 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &845949662811190090
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 9073291095999484982}
-  - component: {fileID: 1174287318355508216}
-  - component: {fileID: 99997464096736535}
-  - component: {fileID: 2461564206421674140}
-  - component: {fileID: 645681383233389176}
-  - component: {fileID: 7362151460903856526}
-  m_Layer: 0
-  m_Name: Spine Mecanim GameObject (Mantis shrimp)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &9073291095999484982
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 845949662811190090}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.03, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4387076345772054346}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1174287318355508216
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 845949662811190090}
-  m_Mesh: {fileID: 0}
---- !u!23 &99997464096736535
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 845949662811190090}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: ad4658b6ecdf90943a8f28e8c1492062, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!95 &2461564206421674140
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 845949662811190090}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 787a43a5540e11c40bfe4e20233b1edc, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &645681383233389176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 845949662811190090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 334c0c6c5969d30499a2ec08f1b43ffe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 42216c7f6f633bc42905242639602bbf, type: 2}
-  initialSkinName: 
-  fixPrefabOverrideViaMeshFilter: 2
-  initialFlipX: 0
-  initialFlipY: 0
-  updateWhenInvisible: 3
-  separatorSlotNames: []
-  zSpacing: 0
-  useClipping: 1
-  immutableTriangles: 0
-  pmaVertexColors: 1
-  clearStateOnDisable: 0
-  tintBlack: 0
-  singleSubmesh: 0
-  fixDrawOrder: 0
-  addNormals: 0
-  calculateTangents: 0
-  maskInteraction: 0
-  maskMaterials:
-    materialsMaskDisabled: []
-    materialsInsideMask: []
-    materialsOutsideMask: []
-  disableRenderingOnOverride: 1
-  physicsPositionInheritanceFactor: {x: 1, y: 1}
-  physicsRotationInheritanceFactor: 1
-  physicsMovementRelativeTo: {fileID: 0}
-  translator:
-    autoReset: 1
-    useCustomMixMode: 1
-    layerMixModes: 010000000000000000000000
-    layerBlendModes: 010000000300000003000000
-  updateTiming: 1
---- !u!114 &7362151460903856526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 845949662811190090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da67f76ac10ddb041871fe2d6d3f1e5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 0}
-  enemyToControl: {fileID: 8247093586164526804}
 --- !u!1 &1138034167963580102
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,7 +31,6 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 625514122973218517}
-  - {fileID: 9073291095999484982}
   - {fileID: 7907001741576213584}
   - {fileID: 8415066639051055448}
   m_Father: {fileID: 1083793417526186232}
@@ -283,7 +117,7 @@ MonoBehaviour:
   elastickrange: 24
   elastickspeed: 20
   elastickreturnspeed: 40
-  elastickdelai: 1
+  elastickdelai: 1.6
   cueFist: {fileID: 0}
   cueWave: {fileID: 0}
 --- !u!1 &1677357844922818625
@@ -610,7 +444,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack: {fileID: 0}
-  isVisible: 0
 --- !u!1 &4294222269488053520
 GameObject:
   m_ObjectHideFlags: 0
@@ -780,9 +613,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0df5c105a4e5e1948b48585fe9839d4d, type: 2}
-  - {fileID: 2100000, guid: 3ce7ad19633bcdc448952e78f999e7b0, type: 2}
-  - {fileID: 2100000, guid: 0df5c105a4e5e1948b48585fe9839d4d, type: 2}
+  - {fileID: 2100000, guid: e80a7cac1b6ca544f843bca2d0c89343, type: 2}
+  - {fileID: 2100000, guid: 07e52f70453b61f418d60ba3d0f6d5ef, type: 2}
+  - {fileID: 2100000, guid: e80a7cac1b6ca544f843bca2d0c89343, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -837,7 +670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 334c0c6c5969d30499a2ec08f1b43ffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 567e3019c42ef5842a218f502cfb5eab, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 63dda61232986c44582432ac1af922bd, type: 2}
   initialSkinName: 
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
@@ -1133,8 +966,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e7345fd3b766b7488b6f33de0de833d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: {fileID: 0}
+  source: {fileID: 8327442849045030410}
   waveCue: {fileID: 8300000, guid: 26c7d2a699f0fcf4b9f85d455cd840b5, type: 3}
+  doubleWaveCue: {fileID: 8300000, guid: 6cbb460eae328b84886bed26889646f1, type: 3}
   fistCue: {fileID: 8300000, guid: 9792843a99740d748bd9815ca0b1d706, type: 3}
 --- !u!82 &8327442849045030410
 AudioSource:
@@ -1299,7 +1133,7 @@ MonoBehaviour:
   elastickrange: 24
   elastickspeed: 30
   elastickreturnspeed: 60
-  elastickdelai: 1
+  elastickdelai: 1.6
   cueFist: {fileID: 0}
   cueWave: {fileID: 0}
   wave1: {fileID: 0}
@@ -1509,6 +1343,7 @@ MonoBehaviour:
   volnereble: 0
   volnerebleTime: 5
   phase: 1
+  weakPoint: {fileID: 8440969032469205194}
   bonk: {fileID: 8300000, guid: 90ec2b4dbbcce7844b7e7b05cae5f9c9, type: 3}
 --- !u!114 &6122194824155020048
 MonoBehaviour:
@@ -1589,7 +1424,7 @@ MonoBehaviour:
   hasHealthBar: 1
   healthBar: {fileID: 0}
   MaxHP: 60
-  currentHP: 0
+  currentHP: 8
   deathTime: 1
   Player: {fileID: 0}
   source: {fileID: 0}
@@ -1597,7 +1432,7 @@ MonoBehaviour:
   bossTakeDamage: []
   bossDeath: {fileID: 8300000, guid: e7ab363e448ea264e9872fcf3281ce95, type: 3}
   bossSushi: {fileID: 0}
-  uiScript: {fileID: 0}
+  crackedFrame: {fileID: 0}
   BossTimerScript: {fileID: 0}
   playerInvulnerable: 0
   Harponed: 0
@@ -1787,7 +1622,7 @@ Transform:
   m_GameObject: {fileID: 8520814827923826946}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.04, y: 0.56, z: 0}
+  m_LocalPosition: {x: 0.79, y: 0.56, z: 0.159}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1809,7 +1644,6 @@ GameObject:
   - component: {fileID: 742594971438169261}
   - component: {fileID: 4686439823060687872}
   - component: {fileID: 658369814380338950}
-  - component: {fileID: 1763871955343342009}
   m_Layer: 7
   m_Name: Claw
   m_TagString: weakpoint
@@ -1936,7 +1770,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 29c342fea765471408b5c9a13ad96bad, type: 2}
+  - {fileID: 2100000, guid: 96753364c1b75e84fb310ecd2ea11901, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1968,7 +1802,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.13372421
+        value: 0.19622421
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -2011,8 +1845,8 @@ LineRenderer:
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
-    textureMode: 1
-    textureScale: {x: 1, y: 1}
+    textureMode: 0
+    textureScale: {x: 1, y: 4}
     shadowBias: 0.5
     generateLightingData: 0
   m_MaskInteraction: 0
@@ -2052,20 +1886,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   bonk: {fileID: 0}
---- !u!114 &1763871955343342009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8747580143145899000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f02ca6eb2a6b31740bec7113576294cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attack: {fileID: 0}
-  isVisible: 0
 --- !u!1 &9030009699422588037
 GameObject:
   m_ObjectHideFlags: 0
@@ -2133,7 +1953,7 @@ MonoBehaviour:
   elastickrange: 24
   elastickspeed: 40
   elastickreturnspeed: 80
-  elastickdelai: 1
+  elastickdelai: 1.6
   cueFist: {fileID: 0}
   cueWave: {fileID: 0}
   wave1: {fileID: 0}

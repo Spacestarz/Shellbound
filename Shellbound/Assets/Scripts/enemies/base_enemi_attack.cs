@@ -61,11 +61,13 @@ public abstract class base_enemi_attack : BasePhaseScript
         stunable = true;    //Line break
         if(amount == 1)
         {
+            SoundcueHandler.PlayWaveCue();
             StartCoroutine(enemy.weakPoint.SingleShockwave());
             enemy.GetComponentInChildren<MantisAnimator>().anim.SetTrigger("Shockwave");
         }
         else if(amount > 1)
         {
+            SoundcueHandler.PlayDoubleWaveCue();
             StartCoroutine(enemy.weakPoint.DoubleShockwave());
             amount = 2;
             enemy.GetComponentInChildren<MantisAnimator>().anim.SetTrigger("Double Shockwave");
@@ -73,7 +75,6 @@ public abstract class base_enemi_attack : BasePhaseScript
             secondWaveDelay = 0.85f;
         } //Line break
         WaveAnim = true;
-        SoundcueHandler.PlayWaveCue();
         yield return new WaitForSeconds(firstWaveDelay);
         enemy.stop();
         if (!enemy.volnereble) 
