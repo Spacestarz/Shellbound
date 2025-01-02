@@ -15827,6 +15827,10 @@ PrefabInstance:
       propertyPath: harpoonObject
       value: 
       objectReference: {fileID: 1735200590}
+    - target: {fileID: 7276528945462405297, guid: e8705d7b26e7c7d4fb05a9f20e69b037, type: 3}
+      propertyPath: harpoonAnimator
+      value: 
+      objectReference: {fileID: 1771411893}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -47711,6 +47715,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 404291228}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1285963124 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8857780231382754137, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+  m_PrefabInstance: {fileID: 1627752901}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f75c98798e2c046b0b12120965b9b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1294753386
 GameObject:
   m_ObjectHideFlags: 0
@@ -62246,6 +62261,10 @@ PrefabInstance:
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
       value: 0.19622421
       objectReference: {fileID: 0}
+    - target: {fileID: 6122194824155020048, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+      propertyPath: phase
+      value: 
+      objectReference: {fileID: 1285963124}
     - target: {fileID: 6926083025341613019, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: skeletonDataAsset
       value: 
@@ -62281,6 +62300,14 @@ PrefabInstance:
     - target: {fileID: 8247093586164526804, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440969032469205194, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+      propertyPath: range
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440969032469205194, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+      propertyPath: duration
+      value: 1.45
       objectReference: {fileID: 0}
     - target: {fileID: 8857780231382754137, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: elastickdelai
@@ -62715,6 +62742,10 @@ PrefabInstance:
     - target: {fileID: 2714210624199350804, guid: 27e66a3e828e9854ba605a17c5a75199, type: 3}
       propertyPath: m_SizeDelta.x
       value: 1919
+      objectReference: {fileID: 0}
+    - target: {fileID: 2714210624199350804, guid: 27e66a3e828e9854ba605a17c5a75199, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -29.447021
       objectReference: {fileID: 0}
     - target: {fileID: 3329563843697724867, guid: 27e66a3e828e9854ba605a17c5a75199, type: 3}
       propertyPath: m_Name
@@ -64627,6 +64658,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1771411893 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4730168019458847125, guid: 6be6b1e227bedf94fa4e8196cfb6bb68, type: 3}
+  m_PrefabInstance: {fileID: 683663067}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afe5dc8e067383d4b99c6a4dddd3a086, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1793674860
 GameObject:
   m_ObjectHideFlags: 0
