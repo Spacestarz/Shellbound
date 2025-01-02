@@ -31,11 +31,10 @@ public abstract class base_enemi_attack : BasePhaseScript
     public float elastickrange = 12;
     public float elastickspeed = 4;
     public float elastickreturnspeed = 10;
-    public float elastickdelai = 2; //elasticDelay*
+    public float elastickdelai = 1.667f; //elasticDelay*
 
     public AudioClip cueFist;
     public AudioClip cueWave;
-
 
     private void Awake()
     {
@@ -43,7 +42,6 @@ public abstract class base_enemi_attack : BasePhaseScript
         enemy = GetComponentInParent<Base_enemy>();
         //attak = GetComponentInParent<Boss1_attacks>();
         agent = GetComponentInParent<NavMeshAgent>();
-        
     }
     
  
@@ -62,10 +60,12 @@ public abstract class base_enemi_attack : BasePhaseScript
         float secondWaveDelay = 1.0f;
         if(amount == 1)
         {
+            StartCoroutine(enemy.weakPoint.SingleShockwave());
             enemy.GetComponentInChildren<MantisAnimator>().anim.SetTrigger("Shockwave");
         }
         else if(amount > 1)
         {
+            StartCoroutine(enemy.weakPoint.DoubleShockwave());
             amount = 2;
             enemy.GetComponentInChildren<MantisAnimator>().anim.SetTrigger("Double Shockwave");
             firstWaveDelay = 2.0f;
@@ -102,6 +102,8 @@ public abstract class base_enemi_attack : BasePhaseScript
     } //Line break
     public IEnumerator elestickdelay(float time)
     {
+        StartCoroutine(enemy.weakPoint.Fist());
+
         ElastickAnim = true;
         SoundcueHandler.PlayFistCue();
         enemy.atta = false;

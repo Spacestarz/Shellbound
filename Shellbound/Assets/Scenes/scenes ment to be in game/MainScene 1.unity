@@ -46235,6 +46235,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 741289444}
   m_LocalEulerAnglesHint: {x: 0, y: -154.916, z: 0}
+--- !u!114 &1144353546 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8440969032469205194, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+  m_PrefabInstance: {fileID: 1627752901}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f02ca6eb2a6b31740bec7113576294cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1145580638
 GameObject:
   m_ObjectHideFlags: 0
@@ -62175,9 +62186,17 @@ PrefabInstance:
       propertyPath: BossTimerScript
       value: 
       objectReference: {fileID: 1402174448}
+    - target: {fileID: 1763871955343342009, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2042037885802278829, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: pullSpeed
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2553186928622490487, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+      propertyPath: elastickdelai
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 2736247718533220617, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -62195,6 +62214,14 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3128899803087990735, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+      propertyPath: elastickdelai
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3320482521892690881, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+      propertyPath: weakPoint
+      value: 
+      objectReference: {fileID: 1144353546}
     - target: {fileID: 4686439823060687872, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: m_Parameters.textureMode
       value: 0
@@ -62255,7 +62282,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8857780231382754137, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+      propertyPath: elastickdelai
+      value: 1.6
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1763871955343342009, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
     m_RemovedGameObjects:
     - {fileID: 845949662811190090, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
     m_AddedGameObjects: []
