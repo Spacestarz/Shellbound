@@ -248,6 +248,7 @@ Transform:
   - {fileID: 4657096120636793406}
   - {fileID: 7249020814211930809}
   - {fileID: 317020497871510609}
+  - {fileID: 3030872428263434293}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2250013750277457797
@@ -419,6 +420,7 @@ MonoBehaviour:
   fired: 0
   goingAway: 0
   harpoonSound: {fileID: 8300000, guid: d0da429c9fa607743972973b61bff5a7, type: 3}
+  harpoonAnimator: {fileID: 0}
 --- !u!114 &345157075243984301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572,6 +574,74 @@ MonoBehaviour:
   hasShot: 0
   dart: {fileID: 8027550816766089578, guid: 4aa3a871c4256614f9a6d6394f9de2f5, type: 3}
   dartSound: {fileID: 8300000, guid: 3bbc67b5e1f68524d8a9238d65bd8728, type: 3}
+--- !u!1 &2747745893867766058
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3030872428263434293}
+  - component: {fileID: 7458030223178116274}
+  - component: {fileID: 1504407126382117798}
+  m_Layer: 6
+  m_Name: UrchinChecker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3030872428263434293
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2747745893867766058}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2049575555081000770}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7458030223178116274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2747745893867766058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acb6c7f31f7e5644ba90f95bdafe7e69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  urchins: []
+  urchinPositions: []
+--- !u!135 &1504407126382117798
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2747745893867766058}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 4096
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 6
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3478016606726200143
 GameObject:
   m_ObjectHideFlags: 0
