@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SubmitButton : MonoBehaviour
 {
     Button button;
+   public DisplayScore DisplayScore;
     void Awake()
     {
         button = GetComponent<Button>();
@@ -15,6 +16,6 @@ public class SubmitButton : MonoBehaviour
     // Update is called once per frame
     void SubmitClicked()
     {
-        HighScoreManager.instance.CheckIfValidName();
+        DisplayScore.CheckIfValidName();
     }
 }

@@ -423,7 +423,7 @@ MonoBehaviour:
   m_CharacterValidation: 0
   m_RegexValue: 
   m_GlobalPointSize: 14
-  m_CharacterLimit: 0
+  m_CharacterLimit: 3
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []
@@ -1566,6 +1566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd03811aa9c76164eb02782b6f77509a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DisplayScore: {fileID: 1062142747}
 --- !u!1 &1447708818
 GameObject:
   m_ObjectHideFlags: 0
@@ -1645,6 +1646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHighScores: 5
+  playerNamesList: []
   bestTimesList: []
 --- !u!4 &1450490059
 Transform:
