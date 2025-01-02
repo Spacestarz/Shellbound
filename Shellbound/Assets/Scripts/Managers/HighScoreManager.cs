@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System;
+using Unity.VisualScripting;
 
 
 public class HighScoreManager : MonoBehaviour
@@ -79,14 +80,14 @@ public class HighScoreManager : MonoBehaviour
                     playerNamesList[i] = playerNamesList[j];
                     playerNamesList[j] = tempName;
 
-                    Debug.Log($"Rank {i + 1}: {playerNamesList[i]} - {bestTimesList[i]:F2} seconds");
+                    
                 }
             }
         }
 
         if (bestTimesList.Count > 5)
         {
-            Debug.Log("removing some");
+            
             bestTimesList.RemoveAt(bestTimesList.Count - 1);
             playerNamesList.RemoveAt(playerNamesList.Count - 1);
         }
@@ -96,23 +97,19 @@ public class HighScoreManager : MonoBehaviour
 
     public void CheckIfTop5(float temptime, string tempname)
     {
-        Debug.Log("got this count" + "" + bestTimesList.Count);
+       
 
         if (bestTimesList.Count < 4)
         {
             top5 = true;
-            // Add the new score and name to the temporary lists (will not save yet)
-            //playerNamesList.Add(tempname);
-            //bestTimesList.Add(temptime);       
+               
         }
 
         if (temptime < bestTimesList[bestTimesList.Count -1] && bestTimesList.Count >= 4)
         {
             Debug.Log("you in top 5");
             top5 = true;
-            // Add the new score and name to the temporary lists (will not save yet)
-            //bestTimesList.Add(temptime);
-            //playerNamesList.Add(tempname);
+     
         }
        
        
@@ -120,14 +117,28 @@ public class HighScoreManager : MonoBehaviour
 
     public void SavedScores()
     {
-
-        // Check if the lists are the same size
-        if (bestTimesList.Count != playerNamesList.Count)
+       try
         {
-            Debug.LogError("The lists bestTimesList and playerNamesList must have the same length.");
-            return; // Exit the method early to avoid the error
+            if (bestTimesList.Count != playerNamesList.Count)
+            {
+                Debug.LogError("The lists bestTimesList and playerNamesList must have the same length.");
+                return;
+            }
         }
-
+        catch
+        {
+            PlayerPrefs.DeleteAll();
+            bestTimesList.Clear();
+            playerNamesList.Clear();
+            if (displayScoreScript.newHighScoreText)
+            {
+                displayScoreScript.newHighScoreText.text = ("Got an error..resetting");
+                Invoke(nameof(Tomenu), 4f);
+                
+            }
+        }
+      
+        
         PlayerPrefs.SetInt("HighScoreCount", bestTimesList.Count);
         for (int i = 0; i < bestTimesList.Count; i++)
         {
@@ -136,6 +147,11 @@ public class HighScoreManager : MonoBehaviour
             PlayerPrefs.SetFloat($"HighScoreTime{i}", bestTimesList[i]);   
         }
         PlayerPrefs.Save();     
+    }
+
+    public void Tomenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
    
 }

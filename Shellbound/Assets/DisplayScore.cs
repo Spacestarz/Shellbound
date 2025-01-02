@@ -15,7 +15,7 @@ public class DisplayScore : MonoBehaviour
     private HighScoreManager highScoreManager;
 
     private TMP_InputField playerNameInput;
-    private TextMeshProUGUI newHighScoreText;
+    [HideInInspector] public TextMeshProUGUI newHighScoreText;
    [HideInInspector] public static string CompleteplayerName;
     [HideInInspector] public static float CompleteTimer;
 

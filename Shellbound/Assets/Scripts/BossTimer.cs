@@ -41,11 +41,11 @@ public class BossTimer : MonoBehaviour
         try
         {
             HighScoreManager.instance.AddScore(playerName, timer);
-            //SaveNewTime(playerName, timer); 
+           
         }
         catch { }
       
-        //save string in const variable
+    
     }
     
 }
