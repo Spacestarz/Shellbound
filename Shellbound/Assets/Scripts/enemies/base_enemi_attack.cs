@@ -60,7 +60,6 @@ public abstract class base_enemi_attack : BasePhaseScript
     {
         float firstWaveDelay = 2.9f;
         float secondWaveDelay = 1.0f;
-
         if(amount == 1)
         {
             enemy.GetComponentInChildren<MantisAnimator>().anim.SetTrigger("Shockwave");
@@ -75,6 +74,7 @@ public abstract class base_enemi_attack : BasePhaseScript
         WaveAnim = true;
         SoundcueHandler.PlayWaveCue();
         yield return new WaitForSeconds(firstWaveDelay);
+        enemy.stop();
         stunable = true;    //Line break
         if (!enemy.volnereble) 
         {
@@ -97,6 +97,7 @@ public abstract class base_enemi_attack : BasePhaseScript
         WaveAnim = false;
         stunable = false;
         //attack.shockwave(shockwavespeed, shockwavezise, shockwaverange);
+        enemy.start();
         StartCoroutine(cooldown(shockwavespeed));
     } //Line break
     public IEnumerator elestickdelay(float time)
