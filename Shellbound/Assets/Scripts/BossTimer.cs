@@ -4,7 +4,7 @@ public class BossTimer : MonoBehaviour
 {
     public bool TimerRunning = false;
     private static float timer = 0;
-    private string playerName = "insert player name";
+    [HideInInspector]public string playerName = "insert player name";
     /*
      * Make so we can have top 5 high scores
      * 
@@ -48,17 +48,16 @@ public class BossTimer : MonoBehaviour
         try
         {
             HighScoreManager.instance.AddScore(playerName, timer);
-            SaveNewTime(playerName, timer); //need to make so player can write their name
+            //SaveNewTime(playerName, timer); 
         }
         catch { }
       
         //save string in const variable
     }
-
+    /*
     public void SaveNewTime(string playername, float newTime)
     {
-        Debug.Log("savenewtime method");
-
+        
         // Retrieve the current count of high scores from PlayerPrefs
         int highScoreCount = PlayerPrefs.GetInt("HighScoreCount", 0);
 
@@ -71,8 +70,8 @@ public class BossTimer : MonoBehaviour
 
         // Save all the data to PlayerPrefs
         PlayerPrefs.Save();
-
-        Debug.Log($"Saved high score: {playername} - {newTime}");
+       
     }
-
+    */
+    
 }
