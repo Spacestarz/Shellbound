@@ -74,10 +74,10 @@ public class ControlsTutorial : MonoBehaviour
 
         foreach (Image img in images)
         {
-            img.DOFade(1, 0.4f);
+            img.DOFade(0.66f, 0.4f);
         }
 
-        go.GetComponentInChildren<TextMeshProUGUI>().DOFade(1, 0.4f);
+        go.GetComponentInChildren<TextMeshProUGUI>().DOFade(0.66f, 0.4f);
 
         StartCoroutine(InvokeMethod(ButtonFadeOut, go, 2.4f));
     }

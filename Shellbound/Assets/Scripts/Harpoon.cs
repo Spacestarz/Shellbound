@@ -33,7 +33,8 @@ public class Harpoon : MonoBehaviour
     {
         if (fire.goingAway && other.GetComponent<HookableObject>())
         {
-            other.GetComponent<HookableObject>().GetHit();           
+            other.GetComponent<HookableObject>().GetHit();
+            GetComponentInChildren<HarpoonAnimator>().Return();
         }
         else if (fire.goingAway)
         {

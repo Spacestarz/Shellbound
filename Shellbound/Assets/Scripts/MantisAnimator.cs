@@ -8,8 +8,8 @@ public class MantisAnimator : BaseAnimator
     Base_enemy enemyAI;
     Enemi_health enemyHealth;
     Boss1_AI bossAI;
+    base_enemi_attack attack;
 
-    
 
     void Awake()
     {
@@ -17,6 +17,7 @@ public class MantisAnimator : BaseAnimator
         enemyAI = enemyToControl.GetComponent<Base_enemy>();
         enemyHealth = enemyToControl.GetComponent<Enemi_health>();
         bossAI = enemyToControl.GetComponent<Boss1_AI>();
+        attack = enemyToControl.GetComponentInChildren<base_enemi_attack>();
 
         anim = GetComponent<Animator>();
     }
@@ -35,9 +36,16 @@ public class MantisAnimator : BaseAnimator
 
         if (enemyAgent.velocity.magnitude > 0.1 && !anim.GetBool("Walking"))
         {
-            anim.SetBool("Walking", true);
+            if(!attack.WaveAnim)
+            {
+                anim.SetBool("Walking", true);
+            }
+            else
+            {
+                anim.SetBool("Walking", false);
+            }
         }
-        else if (enemyAgent.velocity.magnitude <= 0.1 && anim.GetBool("Walking"))
+        else if (enemyAgent.velocity.magnitude <= 0.1 && anim.GetBool("Walking") && attack.WaveAnim)
         {
             anim.SetBool("Walking", false);
         }
@@ -54,6 +62,7 @@ public class MantisAnimator : BaseAnimator
         if(enemyAI.volnereble && !anim.GetBool("VulnBool"))
         {
             anim.SetBool("VulnBool", true);
+            anim.SetBool("Walking", false);
         }
         else if(!enemyAI.volnereble && anim.GetBool("VulnBool"))
         {

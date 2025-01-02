@@ -25,7 +25,7 @@ public class Fire : MonoBehaviour
     AudioSource source;
     public AudioClip harpoonSound;
 
-
+    public HarpoonAnimator harpoonAnimator;
 
     void Awake()
     {
@@ -64,6 +64,8 @@ public class Fire : MonoBehaviour
         harpoonObject.SetActive(true);
         harpoon.SetVisibility(true);
         goingAway = true;
+
+        harpoonAnimator.Fire();
 
         harpoonObject.transform.position = Anchor.transform.position;
 

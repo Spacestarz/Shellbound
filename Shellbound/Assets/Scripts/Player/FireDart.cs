@@ -95,7 +95,7 @@ public class FireDart : MonoBehaviour
                 {
                     firstHit.GetComponent<Base_enemy>().PlayBonk();
                 }
-                else
+                else if(firstHit.GetComponent<Enemi_health>())
                 {
                     firstHit.GetComponent<Enemi_health>().TakeDamage(1);
                 }
