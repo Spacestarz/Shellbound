@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -101,6 +102,8 @@ public class HealthSystem : MonoBehaviour
 
                 if(gameObject.name.Contains("urchin"))
                 {
+                    Camera.main.transform.parent.GetComponentInChildren<UrchinChecker>().urchins.Remove(gameObject);
+
                     UrchinSpawner.RemoveFromList(gameObject);
                 }
             }
