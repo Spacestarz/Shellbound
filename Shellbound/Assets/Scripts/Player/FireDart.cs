@@ -75,7 +75,6 @@ public class FireDart : MonoBehaviour
         if (hits.Length > 0)
         {
             firstHit = hits[0].collider.gameObject;
-            
             if (firstHit.CompareTag("Enemy"))
             {
                 if (firstHit.name == "MantisShrimp" && hits.Length > 1)

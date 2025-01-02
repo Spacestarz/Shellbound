@@ -58,6 +58,7 @@ public abstract class base_enemi_attack : BasePhaseScript
     {
         float firstWaveDelay = 2.9f;
         float secondWaveDelay = 1.0f;
+        stunable = true;    //Line break
         if(amount == 1)
         {
             StartCoroutine(enemy.weakPoint.SingleShockwave());
@@ -75,7 +76,6 @@ public abstract class base_enemi_attack : BasePhaseScript
         SoundcueHandler.PlayWaveCue();
         yield return new WaitForSeconds(firstWaveDelay);
         enemy.stop();
-        stunable = true;    //Line break
         if (!enemy.volnereble) 
         {
             for (int j = 0; j < amount; j++)
