@@ -5116,6 +5116,7 @@ MonoBehaviour:
   maxHighScores: 5
   playerNamesList: []
   bestTimesList: []
+  top5: 0
 --- !u!1 &2024284974
 GameObject:
   m_ObjectHideFlags: 0

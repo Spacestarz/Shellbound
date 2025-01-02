@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class DisplayScore : MonoBehaviour
 {
@@ -33,11 +34,16 @@ public class DisplayScore : MonoBehaviour
         }
         if (SceneManager.GetActiveScene().name == ("MainMenu"))
         {
+            highScoreManager.top5 = false;
+            Debug.Log("Name list" + " " + highScoreManager.playerNamesList.Count);
+            Debug.Log("time list" + "" + highScoreManager.bestTimesList.Count);
             LoadTheScores();
         }
 
         if (SceneManager.GetActiveScene().name == ("VictoryScreen"))
         {
+            Debug.Log("Name list" + " " + highScoreManager.playerNamesList.Count);
+            Debug.Log("time list" + "" + highScoreManager.bestTimesList.Count);
             VictoryScreen();     
         }
     }
@@ -84,12 +90,12 @@ public class DisplayScore : MonoBehaviour
             }
             // textofhereScore.text = ("You high scores:");  
         }
-
-        Debug.Log($"Got this many scores: {highScoreManager.bestTimesList.Count}");
+      
     }
 
     public void VictoryScreen()
     {
+      
         //adda bara sen åka till sort //sen spara etc
         if (playerNameInput == null)
         {
@@ -108,35 +114,73 @@ public class DisplayScore : MonoBehaviour
 
         completedTimerText.text = ($" {newHighScoreTime:F2}");
 
-        if (highScoreManager.bestTimesList.Count > 0 && newHighScoreTime < highScoreManager.bestTimesList[i])
+        //TODO IF A SCORE IS ADDED BUT NAME IS EMPTY MAKE IT HAVE ???
+
+        if (highScoreManager.top5 == true)
         {
-            //TODO MAKE SO YOU CAN INSERT NAME IF TOP 5
+            Debug.Log("top 5 yay");
             newHighScoreText = GameObject.Find("newHighScore").GetComponent<TextMeshProUGUI>();
             newHighScoreText.text = ($"You got a new high score!/n Your new score is /n {newHighScoreTime:F2}");
-            highScoreManager.bestTimesList.Add(newHighScoreTime);
+            //highScoreManager.bestTimesList.Add(newHighScoreTime);
             playerNameInput.gameObject.SetActive(true);
             newHighScoreText.text = ("Enter your name!");
         }
+        else
+        {
+            newHighScoreText = GameObject.Find("newHighScore").GetComponent<TextMeshProUGUI>();
+            playerNameInput.gameObject.SetActive (false);
+            newHighScoreText.text = ($"You dident get in the top 5");
+        }
+       
     }
 
 
     public void CheckIfValidName() //TODO make a try catch
     {
-        if (!string.IsNullOrEmpty(playerNameInput.text))
-        {
-            CompleteplayerName = playerNameInput.text;
+        // try
+        //  {
+           // CompleteplayerName = HighScoreManager.AfterFightName;
 
-            highScoreManager.playerNamesList.Add(CompleteplayerName);
-            highScoreManager.bestTimesList.Add(newHighScoreTime);
-            highScoreManager.SortHighScore();
-            playerNameInput.gameObject.SetActive(false);
-            //newHighScoreText.text = ($"You name is now submitted: {CompleteplayerName}");
-        }
-        else
-        {
-            Debug.Log("You need to enter a name");
-            newHighScoreText.text = "Please enter a name!";
-        }
+       
+            if (!string.IsNullOrEmpty(playerNameInput.text))
+            {
+                CompleteplayerName = playerNameInput.text;
+
+                highScoreManager.playerNamesList.Add(CompleteplayerName);
+                highScoreManager.bestTimesList.Add(newHighScoreTime);
+                //highScoreManager.ErrorInLists();
+                highScoreManager.SortHighScore();
+                playerNameInput.gameObject.SetActive(false);
+                newHighScoreText.text = ($"You name is In: {CompleteplayerName}");
+            }
+            else
+            {
+                Debug.Log("You need to enter a name");
+                newHighScoreText.text = "Please enter a name!";
+            }
+       // }
+       // catch 
+       // {
+            // Log the specific error message for debugging
+            //Debug.LogError($"Error occurred: {ex.Message}");
+
+            //newHighScoreText.text = ("Got an error" + "Resseting");
+           // Invoke(nameof(ResetHighScore), 5f);
+            
+           
+      //  }
+        
+    }
+
+    private void GoToMain()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void ResetHighScore()
+    {
+        PlayerPrefs.DeleteAll();
+        Invoke(nameof(GoToMain), 2f);
     }
 }
 
