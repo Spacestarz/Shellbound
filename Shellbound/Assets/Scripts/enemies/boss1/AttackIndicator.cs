@@ -53,6 +53,7 @@ public class AttackIndicator : MonoBehaviour
         if (playerInCircle == true)
         {
             healthSystem.TakeDamage(damage);
+
         }
     }
 
@@ -112,6 +113,7 @@ public class AttackIndicator : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInCircle = true;
+            SpikeWarning.instance.StartFadeIn();
         }
     }
 
@@ -121,6 +123,7 @@ public class AttackIndicator : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInCircle = false;
+            SpikeWarning.instance.StartFadeOut();
         }
     }
 

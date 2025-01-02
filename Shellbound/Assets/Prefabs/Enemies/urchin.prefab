@@ -110,7 +110,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1090122947499520880}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 408f055c0965b0543ac8aa76b182515b, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d46e6a29fb274f45b0144ad22a2a8e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3373935243921306136
@@ -195,8 +195,10 @@ MonoBehaviour:
   playerTakeDamage: {fileID: 0}
   bossTakeDamage: []
   bossDeath: {fileID: 0}
-  uiScript: {fileID: 0}
+  bossSushi: {fileID: 0}
+  crackedFrame: {fileID: 0}
   BossTimerScript: {fileID: 0}
+  playerInvulnerable: 0
   Harponed: 0
   dragspeed: 5
   crack: {fileID: 0}

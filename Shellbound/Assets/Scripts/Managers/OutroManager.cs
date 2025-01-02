@@ -100,6 +100,7 @@ public class OutroManager : MonoBehaviour
     #region Failure
     void FailureBossRoar()
     {
+        Camera.main.GetComponentInParent<PlayerController>().enabled = false;
         instance.boss.GetComponent<NavMeshAgent>().enabled = false;
         instance.boss.GetComponent<Boss1_AI>().enabled = false;
         MusicManager.instance.soundFXSource.pitch = 0.8f;
@@ -112,15 +113,11 @@ public class OutroManager : MonoBehaviour
         MusicManager.instance.musicSource.DOFade(0, 5f);
         MusicManager.instance.musicSource.DOPitch(0.25f, 5f);
 
-        instance.Invoke(nameof(FailureBlackFadeIn), 1);
+        instance.Invoke(nameof(FailureBlackFadeIn), 3);
     }
 
     void FailureFallOver()
     {
-        MusicManager.instance.musicSource.Stop();
-        MusicManager.instance.musicSource.volume = MusicManager.instance.startVolume;
-        MusicManager.instance.musicSource.pitch = 1;
-
         Vector3 camRot = Camera.main.transform.localEulerAngles;
         Vector3 camPos = Camera.main.transform.localPosition;
 
@@ -130,6 +127,8 @@ public class OutroManager : MonoBehaviour
 
     void FailureBlackFadeIn()
     {
+        MusicManager.instance.musicSource.Stop();
+        
         instance.whiteScreen.color = Color.clear;
         instance.whiteScreen.gameObject.SetActive(true);
         instance.whiteScreen.DOColor(Color.black, 1.5f);
@@ -139,6 +138,10 @@ public class OutroManager : MonoBehaviour
     void SwitchScene()
     {
         DOTween.KillAll();
+        MusicManager.instance.musicSource.volume = MusicManager.instance.startVolume;
+        MusicManager.instance.musicSource.pitch = 1;
+        MusicManager.instance.SetSong(3);
+
         SceneController.instance.LoadScene("GameOverScreen");
     }
     #endregion
