@@ -32,8 +32,6 @@ public class HighScoreManager : MonoBehaviour
 
     public bool top5 = false;
 
-
-
     private void Awake()
     {
        
@@ -48,13 +46,11 @@ public class HighScoreManager : MonoBehaviour
            instance = this;
         }
         
-
         DontDestroyOnLoad(gameObject);
     }
 
     public void AddScore(string playerName, float timer)
-    {
-       // completedTimerText.text = ($"Your time to defeat the boss was: {playerName} - {timer:F2}");       
+    {     
         AfterFightTime = timer;
         AfterFightName = playerName;
         CheckIfTop5(timer, playerName);
@@ -86,36 +82,29 @@ public class HighScoreManager : MonoBehaviour
         }
 
         if (bestTimesList.Count > 5)
-        {
-            
+        {        
             bestTimesList.RemoveAt(bestTimesList.Count - 1);
             playerNamesList.RemoveAt(playerNamesList.Count - 1);
         }
 
-        SavedScores();      
+        SaveHighScore();      
     }
 
     public void CheckIfTop5(float temptime, string tempname)
     {
        
-
         if (bestTimesList.Count < 4)
         {
-            top5 = true;
-               
+            top5 = true;             
         }
 
         if (temptime < bestTimesList[bestTimesList.Count -1] && bestTimesList.Count >= 4)
-        {
-            Debug.Log("you in top 5");
-            top5 = true;
-     
-        }
-       
-       
+        {         
+            top5 = true;  
+        }         
     }
 
-    public void SavedScores()
+    public void SaveHighScore()
     {
        try
         {

@@ -21,10 +21,10 @@ public class DisplayScore : MonoBehaviour
 
     private float newHighScoreTime;
 
-    // Start is called before the first frame update
+  
     void Start()
     {
-        // Find the HighScoreManager in the scene
+      
         highScoreManager = FindObjectOfType<HighScoreManager>();
 
         if (highScoreManager == null)
@@ -35,23 +35,21 @@ public class DisplayScore : MonoBehaviour
         if (SceneManager.GetActiveScene().name == ("MainMenu"))
         {
             highScoreManager.top5 = false;
-            Debug.Log("Name list" + " " + highScoreManager.playerNamesList.Count);
-            Debug.Log("time list" + "" + highScoreManager.bestTimesList.Count);
+           // Debug.Log("Name list" + " " + highScoreManager.playerNamesList.Count);
+            //Debug.Log("time list" + "" + highScoreManager.bestTimesList.Count);
             LoadTheScores();
         }
 
         if (SceneManager.GetActiveScene().name == ("VictoryScreen"))
         {
-            Debug.Log("Name list" + " " + highScoreManager.playerNamesList.Count);
-            Debug.Log("time list" + "" + highScoreManager.bestTimesList.Count);
+           // Debug.Log("Name list" + " " + highScoreManager.playerNamesList.Count);
+           // Debug.Log("time list" + "" + highScoreManager.bestTimesList.Count);
             VictoryScreen();     
         }
     }
 
     public void LoadTheScores()
-    {
-
-        // textofhereScore.text = "";
+    {    
 
         highScoreManager.playerNamesList.Clear();
         highScoreManager.bestTimesList.Clear();
@@ -88,48 +86,39 @@ public class DisplayScore : MonoBehaviour
                     highScoreTextListAll[i].text = ("Empty");
                 }
             }
-            // textofhereScore.text = ("You high scores:");  
+              
         }
       
     }
 
     public void VictoryScreen()
     {
-      
-        //adda bara sen åka till sort //sen spara etc
+           
         if (playerNameInput == null)
         {
 
             playerNameInput = GameObject.Find("enteryourname").GetComponent<TMP_InputField>();
         }
-        else
-        {
-
-            // playerNameInput.gameObject.SetActive(false);
-
-        }
-
+      
         newHighScoreTime = HighScoreManager.AfterFightTime;
-        Debug.Log("this is new time" + "" + newHighScoreTime);
+        //Debug.Log("this is new time" + "" + newHighScoreTime);
 
         completedTimerText.text = ($" {newHighScoreTime:F2}");
 
-        //TODO IF A SCORE IS ADDED BUT NAME IS EMPTY MAKE IT HAVE ???
-
         if (highScoreManager.top5 == true)
         {
-            Debug.Log("top 5 yay");
+            
             newHighScoreText = GameObject.Find("newHighScore").GetComponent<TextMeshProUGUI>();
-            newHighScoreText.text = ($"You got a new high score!/n Your new score is /n {newHighScoreTime:F2}");
+            //newHighScoreText.text = ($"You got a new high score!/n Your new score is /n {newHighScoreTime:F2}");
             //highScoreManager.bestTimesList.Add(newHighScoreTime);
             playerNameInput.gameObject.SetActive(true);
-            newHighScoreText.text = ("Enter your name!");
+            newHighScoreText.text = ("New high score!");
         }
         else
         {
             newHighScoreText = GameObject.Find("newHighScore").GetComponent<TextMeshProUGUI>();
             playerNameInput.gameObject.SetActive (false);
-            newHighScoreText.text = ($"You dident get in the top 5");
+            newHighScoreText.text = ($"Not in top 5");
         }
        
     }
@@ -137,50 +126,25 @@ public class DisplayScore : MonoBehaviour
 
     public void CheckIfValidName() //TODO make a try catch
     {
-        // try
-        //  {
-           // CompleteplayerName = HighScoreManager.AfterFightName;
+        if (!string.IsNullOrEmpty(playerNameInput.text))
+        {
+            CompleteplayerName = playerNameInput.text;
 
-       
-            if (!string.IsNullOrEmpty(playerNameInput.text))
-            {
-                CompleteplayerName = playerNameInput.text;
-
-                highScoreManager.playerNamesList.Add(CompleteplayerName);
-                highScoreManager.bestTimesList.Add(newHighScoreTime);
-                //highScoreManager.ErrorInLists();
-                highScoreManager.SortHighScore();
-                playerNameInput.gameObject.SetActive(false);
-                newHighScoreText.text = ($"You name is In: {CompleteplayerName}");
-            }
-            else
-            {
-                Debug.Log("You need to enter a name");
-                newHighScoreText.text = "Please enter a name!";
-            }
-       // }
-       // catch 
-       // {
-            // Log the specific error message for debugging
-            //Debug.LogError($"Error occurred: {ex.Message}");
-
-            //newHighScoreText.text = ("Got an error" + "Resseting");
-           // Invoke(nameof(ResetHighScore), 5f);
+            highScoreManager.playerNamesList.Add(CompleteplayerName);
+            highScoreManager.bestTimesList.Add(newHighScoreTime);            
+            highScoreManager.SortHighScore();
+            playerNameInput.gameObject.SetActive(false);
             
-           
-      //  }
-        
-    }
+            int playerRank = highScoreManager.playerNamesList.IndexOf(CompleteplayerName) + 1;
+            newHighScoreText.text = ($" {CompleteplayerName} is now number {playerRank}");
+        }
+        else
+        {
+            Debug.Log("You need to enter a name");
+            newHighScoreText.text = "Please enter a name!";
+        }
 
-    private void GoToMain()
-    {
-        SceneManager.LoadScene("MainMenu");
-    }
 
-    public void ResetHighScore()
-    {
-        PlayerPrefs.DeleteAll();
-        Invoke(nameof(GoToMain), 2f);
     }
 }
 
