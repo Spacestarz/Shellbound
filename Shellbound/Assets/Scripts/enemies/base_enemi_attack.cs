@@ -12,6 +12,8 @@ public abstract class base_enemi_attack : BasePhaseScript
     public Boss1_attacks attack;
     
     public int wavemount = 1;
+
+    weekpoint weekpoint;
     
     [Header("anim bools")]
     public bool ElastickAnim = false; //elasticAnim*
@@ -42,6 +44,7 @@ public abstract class base_enemi_attack : BasePhaseScript
         enemy = GetComponentInParent<Base_enemy>();
         //attak = GetComponentInParent<Boss1_attacks>();
         agent = GetComponentInParent<NavMeshAgent>();
+        weekpoint = transform.parent.GetComponentInChildren<weekpoint>();
     }
     
  
@@ -59,7 +62,7 @@ public abstract class base_enemi_attack : BasePhaseScript
         float firstWaveDelay = 2.9f;
         float secondWaveDelay = 1.0f;
         stunable = true;    //Line break
-        if(amount == 1)
+        if (amount == 1)
         {
             SoundcueHandler.PlayWaveCue();
             StartCoroutine(enemy.weakPoint.SingleShockwave());
@@ -75,7 +78,9 @@ public abstract class base_enemi_attack : BasePhaseScript
             secondWaveDelay = 0.85f;
         } //Line break
         WaveAnim = true;
-        yield return new WaitForSeconds(firstWaveDelay);
+        yield return new WaitForSeconds(0.7f);
+        StartCoroutine(weekpoint.MoveCollider());
+        yield return new WaitForSeconds(firstWaveDelay - 0.7f);
         enemy.stop();
         if (!enemy.volnereble) 
         {

@@ -84,6 +84,7 @@ public class FireDart : MonoBehaviour
                     if (firstHit.GetComponent<Boss1_AI>().phase.stunable && secondHit.CompareTag("weakpoint"))
                     {
                         firstHit.GetComponent<Base_enemy>().wekend();
+                        //StartCoroutine(secondHit.GetComponent<weekpoint>().MoveCollider());
                     }
                     else
                     {

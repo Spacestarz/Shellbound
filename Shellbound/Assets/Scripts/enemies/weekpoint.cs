@@ -9,6 +9,8 @@ public class weekpoint : MonoBehaviour
     public base_enemi_attack attack;
     MeshRenderer meshRenderer;
     Collider _collider;
+    [SerializeField] float duration = 1;
+    [SerializeField] float range = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -81,7 +83,7 @@ public class weekpoint : MonoBehaviour
 
     private void Show()
     {
-        //meshRenderer.enabled = true;
+        meshRenderer.enabled = true;
         _collider.enabled = true;
     }
 
@@ -98,8 +100,29 @@ public class weekpoint : MonoBehaviour
         Hide();
     }
 
-    void MoveCollider()
+    public IEnumerator MoveCollider()
     {
+        meshRenderer.enabled = true;
+        Vector3 startlocation = transform.localPosition;
+        Vector3 endlocation = transform.up;
 
+        endlocation = endlocation * range + startlocation;
+        float elapsed = 0;
+        while (elapsed < duration)
+        {
+            var t = elapsed / duration;
+            transform.localPosition = Vector3.Lerp(startlocation, endlocation, t);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        elapsed = 0;
+        while (elapsed < duration)
+        {
+            var t = elapsed / duration;
+            transform.localPosition = Vector3.Lerp(endlocation, startlocation, t);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        meshRenderer.enabled = false;
     }
 }
