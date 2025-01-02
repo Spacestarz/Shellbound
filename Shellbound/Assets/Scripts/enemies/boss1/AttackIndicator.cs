@@ -15,6 +15,7 @@ public class AttackIndicator : MonoBehaviour
     private int damage = 1;
 
     private bool playerInCircle = false;
+    private bool spikeDeployed;
     
 
     public GameObject preFabCircle;
@@ -90,6 +91,7 @@ public class AttackIndicator : MonoBehaviour
 
     private void DeploySpike()
     {
+        spikeDeployed = true;
         spike.transform.DOLocalMoveY(0.255f, 0.15f).OnComplete(InvokeReturnSpike);
         PlaySound();
     }
@@ -110,7 +112,7 @@ public class AttackIndicator : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !spikeDeployed)
         {
             playerInCircle = true;
             SpikeWarning.instance.StartFadeIn();
