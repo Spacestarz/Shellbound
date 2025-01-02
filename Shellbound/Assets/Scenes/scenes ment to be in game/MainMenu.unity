@@ -2277,6 +2277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimerRunning: 0
+  playerName: insert player name
 --- !u!1 &869017111
 GameObject:
   m_ObjectHideFlags: 0
@@ -4600,6 +4601,58 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1655924329
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1655924331}
+  - component: {fileID: 1655924330}
+  m_Layer: 0
+  m_Name: DisplayScore
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1655924330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655924329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b8711091e08e194b9a24b645282efd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  completedTimerText: {fileID: 1268686064}
+  textofhereScore: {fileID: 1268686064}
+  highScoreTextListAll:
+  - {fileID: 642437433}
+  - {fileID: 1787917775}
+  - {fileID: 676932147}
+  - {fileID: 1052405858}
+  - {fileID: 1357090456}
+--- !u!4 &1655924331
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655924329}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 492.44968, y: 266.8775, z: -3.9936357}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1671489228
 GameObject:
   m_ObjectHideFlags: 0
@@ -5061,14 +5114,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHighScores: 5
-  completedTimerText: {fileID: 1268686064}
-  textofhereScore: {fileID: 1268686064}
-  highScoreTextListAll:
-  - {fileID: 642437433}
-  - {fileID: 1787917775}
-  - {fileID: 676932147}
-  - {fileID: 1052405858}
-  - {fileID: 1357090456}
   bestTimesList: []
 --- !u!1 &2024284974
 GameObject:
@@ -5517,3 +5562,4 @@ SceneRoots:
   - {fileID: 1185973818}
   - {fileID: 219656259}
   - {fileID: 2062731443}
+  - {fileID: 1655924331}
