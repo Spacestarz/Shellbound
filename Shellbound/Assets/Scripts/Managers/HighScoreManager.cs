@@ -13,15 +13,9 @@ public class HighScoreManager : MonoBehaviour
 
     [HideInInspector] public int maxHighScores = 5;
     private const string completeTime = "completeTime";
-   
-    private TextMeshProUGUI newHighScoreText;
 
-    private TMP_InputField playerNameInput;
-
-    private static float CompleteTimer;
     private static float newHighScoreTime;
-    private static string CompleteplayerName;
- 
+
     private GameObject scoreObjectMenu;
     private GameObject canvasMenu;
     private GameObject textherescoreMenu; //TODO FIX THIS
@@ -31,6 +25,9 @@ public class HighScoreManager : MonoBehaviour
     [HideInInspector] public List<float> bestTimesList = new List<float>();
 
     private DisplayScore displayScoreScript;
+
+    [HideInInspector] public static string AfterFightName;
+    [HideInInspector] public static float AfterFightTime;
 
 
 
@@ -76,62 +73,16 @@ public class HighScoreManager : MonoBehaviour
     void Update()
     {
 
-        if (SceneManager.GetActiveScene().name == ("VictoryScreen"))
-        {                            
-            //adda bara sen åka till sort //sen spara etc
-            if (playerNameInput == null )
-            {
-               
-                playerNameInput = GameObject.Find("enteryourname").GetComponent<TMP_InputField>();
-            }
-            else
-            {
-                
-               // playerNameInput.gameObject.SetActive(false);
-
-            }
-            displayScoreScript = GameObject.Find("Canvas").GetComponent<DisplayScore>();         
-            displayScoreScript.completedTimerText.text = ($" {CompleteTimer:F2}");
-
-            if (bestTimesList.Count > 0 && CompleteTimer < bestTimesList[0]) 
-            {     
-                //TODO MAKE SO YOU CAN INSERT NAME IF TOP 5
-                newHighScoreText = GameObject.Find("newHighScore").GetComponent<TextMeshProUGUI>();
-                newHighScoreText.text = ($"You got a new high score!/n Your new score is /n {newHighScoreTime:F2}");
-                bestTimesList.Add(newHighScoreTime);
-                playerNameInput.gameObject.SetActive(true);
-                newHighScoreText.text = ("Enter your name!");   
-
-            }
-        } 
+       
       
-    }
-        
-    public void CheckIfValidName() //TODO make a try catch
-    {
-        if (!string.IsNullOrEmpty(playerNameInput.text))
-        {
-            CompleteplayerName = playerNameInput.text;
-           
-            playerNamesList.Add(CompleteplayerName);
-            bestTimesList.Add(CompleteTimer);
-            SortHighScore();
-            playerNameInput.gameObject.SetActive(false);
-            //newHighScoreText.text = ($"You name is now submitted: {CompleteplayerName}");
-        }
-        else
-        {
-            Debug.Log("You need to enter a name");
-            newHighScoreText.text = "Please enter a name!";
-        }
-    }
+    }   
 
     public void AddScore(string playerName, float timer)
     {
        // completedTimerText.text = ($"Your time to defeat the boss was: {playerName} - {timer:F2}");
 
-        CompleteTimer = timer;
-        CompleteplayerName = playerName;
+        AfterFightTime = timer;
+        AfterFightName = playerName;
     }
 
     public void SortHighScore()

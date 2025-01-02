@@ -24,13 +24,6 @@ public class BossTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F))
-        {
-            StopTimer();        
-        }
-
-      
-
         if (TimerRunning)
         {
             timer += Time.deltaTime;
@@ -54,24 +47,5 @@ public class BossTimer : MonoBehaviour
       
         //save string in const variable
     }
-    /*
-    public void SaveNewTime(string playername, float newTime)
-    {
-        
-        // Retrieve the current count of high scores from PlayerPrefs
-        int highScoreCount = PlayerPrefs.GetInt("HighScoreCount", 0);
-
-        // Save the player's name and time for this score
-        PlayerPrefs.SetString($"HighScoreName{highScoreCount}", playername);
-        PlayerPrefs.SetFloat($"HighScoreTime{highScoreCount}", newTime);
-
-        // Increase the high score count
-        PlayerPrefs.SetInt("HighScoreCount", highScoreCount + 1);
-
-        // Save all the data to PlayerPrefs
-        PlayerPrefs.Save();
-       
-    }
-    */
     
 }
