@@ -83,7 +83,7 @@ public class weekpoint : MonoBehaviour
 
     private void Show()
     {
-        meshRenderer.enabled = true;
+        //meshRenderer.enabled = true;
         _collider.enabled = true;
     }
 
@@ -102,7 +102,7 @@ public class weekpoint : MonoBehaviour
 
     public IEnumerator MoveCollider()
     {
-        meshRenderer.enabled = true;
+        //meshRenderer.enabled = true;
         Vector3 startlocation = transform.localPosition;
         Vector3 endlocation = transform.up;
 
@@ -123,6 +123,6 @@ public class weekpoint : MonoBehaviour
             elapsed += Time.deltaTime;
             yield return null;
         }
-        meshRenderer.enabled = false;
+        //meshRenderer.enabled = false;
     }
 }

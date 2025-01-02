@@ -62201,6 +62201,10 @@ PrefabInstance:
       propertyPath: BossTimerScript
       value: 
       objectReference: {fileID: 1402174448}
+    - target: {fileID: 1487934291915505079, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1763871955343342009, guid: 1d15b8d5b04e9a440b511868f779111b, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -79614,10 +79618,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
+  m_Radius: 1
+  m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.12569451, z: 0}
 --- !u!1 &2064879120
 GameObject:
   m_ObjectHideFlags: 0
