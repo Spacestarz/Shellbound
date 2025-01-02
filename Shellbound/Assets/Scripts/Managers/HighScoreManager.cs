@@ -30,7 +30,7 @@ public class HighScoreManager : MonoBehaviour
 
     [HideInInspector] public List<float> bestTimesList = new List<float>();
 
-   private DisplayScore displayScoreScript;
+    private DisplayScore displayScoreScript;
 
 
 
@@ -71,17 +71,13 @@ public class HighScoreManager : MonoBehaviour
         }
         */
        
-      //  LoadTheScores();
     }
     
     void Update()
     {
 
         if (SceneManager.GetActiveScene().name == ("VictoryScreen"))
-        {           
-          
-           // playerNameInput = GameObject.Find("enteryourname").GetComponent<TMP_InputField>();
-           
+        {                            
             //adda bara sen åka till sort //sen spara etc
             if (playerNameInput == null )
             {
@@ -94,10 +90,8 @@ public class HighScoreManager : MonoBehaviour
                // playerNameInput.gameObject.SetActive(false);
 
             }
-            displayScoreScript = GameObject.Find("Canvas").GetComponent<DisplayScore>();
-            //fix this wrong text
-          // displayScoreScript.completedTimerText = GameObject.Find("TIME").GetComponent<TextMeshProUGUI>();
-           displayScoreScript.completedTimerText.text = ($" {CompleteTimer:F2}");
+            displayScoreScript = GameObject.Find("Canvas").GetComponent<DisplayScore>();         
+            displayScoreScript.completedTimerText.text = ($" {CompleteTimer:F2}");
 
             if (bestTimesList.Count > 0 && CompleteTimer < bestTimesList[0]) 
             {     
@@ -113,7 +107,6 @@ public class HighScoreManager : MonoBehaviour
       
     }
         
-
     public void CheckIfValidName() //TODO make a try catch
     {
         if (!string.IsNullOrEmpty(playerNameInput.text))
@@ -140,55 +133,6 @@ public class HighScoreManager : MonoBehaviour
         CompleteTimer = timer;
         CompleteplayerName = playerName;
     }
-    /*
-    public void LoadTheScores ()
-    {
-          
-       // textofhereScore.text = "";
-
-        playerNamesList.Clear();
-        bestTimesList.Clear();
-
-        //testing from internet
-        // Load scores from PlayerPrefs
-        int highScoreCount = PlayerPrefs.GetInt("HighScoreCount", 0);
-        for (int i = 0; i < highScoreCount; i++)
-        {
-            string playerName = PlayerPrefs.GetString($"HighScoreName{i}", "");
-            float playerTime = PlayerPrefs.GetFloat($"HighScoreTime{i}", float.MaxValue);
-
-            if (playerTime != float.MaxValue)
-            {
-                playerNamesList.Add(playerName);
-                bestTimesList.Add(playerTime);
-            }
-        }
-    
-        if (bestTimesList.Count > 0)
-        {
-            //show the high scores
-
-            for (int i = 0;i <displayScoreScript.highScoreTextListAll.Count; i++)
-            {   
-                if (i < playerNamesList.Count && i < bestTimesList.Count)
-                {
-                    displayScoreScript.highScoreTextListAll[i].text = $"{playerNamesList[i]} - {bestTimesList[i]:F2} seconds";
-
-                    Debug.Log($"Position {i + 1}: {bestTimesList[i]:F2} seconds");
-                }
-                else
-                {
-                    displayScoreScript.highScoreTextListAll[i].text = ("Empty");
-                }            
-            }
-           // textofhereScore.text = ("You high scores:");  
-        }
-
-        Debug.Log($"Got this many scores: {bestTimesList.Count}");
-
-      
-    }     
-    */
 
     public void SortHighScore()
     {

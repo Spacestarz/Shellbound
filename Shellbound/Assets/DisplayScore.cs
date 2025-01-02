@@ -31,12 +31,6 @@ public class DisplayScore : MonoBehaviour
             
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-      
-    }
-
     public void LoadTheScores()
     {
 
@@ -81,7 +75,5 @@ public class DisplayScore : MonoBehaviour
         }
 
         Debug.Log($"Got this many scores: {highScoreManager.bestTimesList.Count}");
-
-
     }
 }
