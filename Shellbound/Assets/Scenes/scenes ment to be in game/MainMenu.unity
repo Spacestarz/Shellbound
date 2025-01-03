@@ -173,7 +173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -454,6 +454,7 @@ RectTransform:
   - {fileID: 363827719}
   - {fileID: 712453903}
   - {fileID: 14991429}
+  - {fileID: 1271737812}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -904,19 +905,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2042603698}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1325524142}
-        m_TargetAssemblyTypeName: MainMenueSpecials, Assembly-CSharp
-        m_MethodName: credits
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 1
+      m_Calls: []
 --- !u!114 &321956916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2105,19 +2094,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1069545115}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1325524142}
-        m_TargetAssemblyTypeName: MainMenueSpecials, Assembly-CSharp
-        m_MethodName: StartGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &704152702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2444,7 +2421,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 50, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &869017113
 MonoBehaviour:
@@ -2466,7 +2443,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Score
+  m_text: Leaderboard
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 358d525d9150fd64eb39107d3b80f0b3, type: 2}
   m_sharedMaterial: {fileID: 7486885288607682677, guid: 358d525d9150fd64eb39107d3b80f0b3, type: 2}
@@ -2557,7 +2534,7 @@ GameObject:
   - component: {fileID: 994124654}
   - component: {fileID: 994124652}
   m_Layer: 5
-  m_Name: Settings
+  m_Name: settings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2664,19 +2641,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1671489230}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1325524142}
-        m_TargetAssemblyTypeName: MainMenueSpecials, Assembly-CSharp
-        m_MethodName: settings
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &998013089
 GameObject:
   m_ObjectHideFlags: 0
@@ -2760,19 +2725,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1499799717}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1988697905}
-        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
-        m_MethodName: quit
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
+      m_Calls: []
 --- !u!114 &998013092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3408,7 +3361,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Scores
+  m_text: 'Times
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dd537ed693458e54e8095dec40a6a49c, type: 2}
   m_sharedMaterial: {fileID: -8787323778310320089, guid: dd537ed693458e54e8095dec40a6a49c, type: 2}
@@ -3546,12 +3501,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1271737809}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -399.99997, y: -225.05493, z: 0}
+  m_LocalScale: {x: 0.8791208, y: 0.8791208, z: 0.8791208}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 183992950}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1292538126
 GameObject:
@@ -3786,6 +3741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blackScreen: {fileID: 14991430}
+  fadeStarted: 0
 --- !u!1 &1333797046
 GameObject:
   m_ObjectHideFlags: 0
@@ -5217,7 +5173,7 @@ GameObject:
   - component: {fileID: 1966365280}
   - component: {fileID: 1966365279}
   m_Layer: 5
-  m_Name: score
+  m_Name: scoreButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5286,19 +5242,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 869017113}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1325524142}
-        m_TargetAssemblyTypeName: MainMenueSpecials, Assembly-CSharp
-        m_MethodName: Score
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 1
+      m_Calls: []
 --- !u!114 &1966365280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5839,7 +5783,6 @@ SceneRoots:
   - {fileID: 447460981}
   - {fileID: 183992950}
   - {fileID: 1588549669}
-  - {fileID: 1271737812}
   - {fileID: 1572323582}
   - {fileID: 1988697906}
   - {fileID: 1325524143}

@@ -51,6 +51,6 @@ public class PauseManager : MonoBehaviour
 
     void QuitClicked()
     {
-        SceneController.instance.GoToMenue();
+        SceneController.instance.LoadScene("MainMenu");
     }
 }

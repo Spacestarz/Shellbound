@@ -26,9 +26,9 @@ public class MainMenuMusic : MonoBehaviour
     public void PlayIntro()
     {
         float duration = introMusic.length;
-        source.DOFade(0.75f, duration);
+        source.DOFade(0.75f, 3.2f);
         source.PlayOneShot(introMusic);
-        Invoke(nameof(PlayMainMusic), duration);
+        Invoke(nameof(PlayMainMusic), 3.2f);
     }
 
 

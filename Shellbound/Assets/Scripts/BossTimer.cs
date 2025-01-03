@@ -9,7 +9,10 @@ public class BossTimer : MonoBehaviour
   
     void Start()
     {
-        if( IntroManager.instance == null)
+        TimerRunning = false;
+        timer = 0;
+
+        if(IntroManager.instance == null)
         {
             TimerRunning = true;
         }         

@@ -86,6 +86,6 @@ public class Base_enemy : MonoBehaviour
     public void PlayBonk()
     {
         GetComponentInChildren<BaseAnimator>().anim.SetTrigger("Block");
-        sorce.PlayOneShot(bonk, 0.1f);
+        sorce.PlayOneShot(bonk, 0.4f);
     }
 }

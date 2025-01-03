@@ -137,15 +137,18 @@ public class DisplayScore : MonoBehaviour
             
             int playerRank = highScoreManager.playerNamesList.IndexOf(CompleteplayerName) + 1;
             newHighScoreText.text = ($" {CompleteplayerName} is now number {playerRank}");
-            SceneController.instance.GoToMenue();
+            Invoke(nameof(InvokeMenu), 3f);
         }
         else
         {
             Debug.Log("You need to enter a name");
             newHighScoreText.text = "Please enter a name!";
         }
+    }
 
-
+    void InvokeMenu()
+    {
+        SceneController.instance.GoToMenue();
     }
 }
 

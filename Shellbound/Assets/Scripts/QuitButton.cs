@@ -36,7 +36,7 @@ public class QuitButton : MonoBehaviour
 
     }
 
-    void TurnOffClicked()
+    public void TurnOffClicked()
     {
         SceneController.instance.quit();
     }

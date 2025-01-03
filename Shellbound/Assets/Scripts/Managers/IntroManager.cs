@@ -62,6 +62,14 @@ public class IntroManager : MonoBehaviour
         Invoke(nameof(LookUp), 4);
     }
 
+    private void Update()
+    {
+        if (isRunning && Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneController.instance.LoadScene("NoIntro");
+        }
+    }
+
     private void StoreUIPositions()
     {
         enemyHPPosition = enemyHPBar.anchoredPosition;
@@ -188,6 +196,7 @@ public class IntroManager : MonoBehaviour
         crowdAttack.Awake();
 
         Invoke(nameof(ControlUnlock), 0.5f);
+        isRunning = false;
     }
 
 

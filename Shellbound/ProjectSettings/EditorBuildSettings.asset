@@ -18,11 +18,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Boss 1 Arena.unity
     guid: 39dbab0f30b838c4fa5ad830a2df4121
   - enabled: 0
-    path: Assets/Scenes/scenes ment to be in game/MainScene.unity
+    path: Assets/Scenes/MainScene.unity
     guid: e983e8b3243a74c46b57802073eb64dc
   - enabled: 1
     path: Assets/Scenes/scenes ment to be in game/MainScene 1.unity
     guid: 23515f9f0ba3d5445bf47efaaf2b2d76
+  - enabled: 1
+    path: Assets/Scenes/scenes ment to be in game/NoIntro.unity
+    guid: bb469804a950b0a48a3130ae29a4887c
   - enabled: 1
     path: Assets/Scenes/scenes ment to be in game/VictoryScreen.unity
     guid: 08e4c74a53dd091459ac8344c758cc8c
