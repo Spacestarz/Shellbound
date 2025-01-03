@@ -32,7 +32,7 @@ public class UrchinRadar : MonoBehaviour
         rotation = Camera.main.GetComponent<RotateCamera>().orientation.localEulerAngles.y;
         rect.localEulerAngles = new(0, 0, rotation);
 
-        ClearBlips();
+        //kClearBlips();
     }
 
     public void NewBlip(Vector2 urchinDirection, float urchinDistance)

@@ -47,6 +47,8 @@ public class UrchinChecker : MonoBehaviour
     void UpdateUrchinPos()
     {
         urchinPositions.Clear();
+
+        UrchinRadar.instance.ClearBlips();
         for (int i = 0; i < urchins.Count; i++)
         {
             Vector2 urchinPos = new(urchins[i].transform.position.x, urchins[i].transform.position.z);
