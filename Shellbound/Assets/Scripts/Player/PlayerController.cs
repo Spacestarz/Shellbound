@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
 
     private void GetInputs()
     {
-        if(Input.GetKeyDown(KeyCode.P))
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
             PauseManager.TogglePause();
         }
