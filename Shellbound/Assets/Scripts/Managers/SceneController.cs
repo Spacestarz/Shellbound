@@ -29,23 +29,10 @@ public class SceneController : MonoBehaviour
     }
     private void Update()
     {
-        /*if (Input.GetKey(KeyCode.Escape))
-        {
-            GoToMenue();
-        }
-        else*/ if (Input.GetKey(KeyCode.Backspace))
-        {
-            restart();
-        }
-        //debug
-        else if (Input.GetKey(KeyCode.Keypad6))
-        {
-            NextLevel();
-        }
+
     }
     public void quit()
     {
-        Debug.Log("Screee");
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #elif UNITY_WEBPLAYER
