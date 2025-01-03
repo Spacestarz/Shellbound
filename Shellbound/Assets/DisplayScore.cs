@@ -137,6 +137,7 @@ public class DisplayScore : MonoBehaviour
             
             int playerRank = highScoreManager.playerNamesList.IndexOf(CompleteplayerName) + 1;
             newHighScoreText.text = ($" {CompleteplayerName} is now number {playerRank}");
+            SceneController.instance.GoToMenue();
         }
         else
         {

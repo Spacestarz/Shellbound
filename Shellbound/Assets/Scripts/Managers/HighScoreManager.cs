@@ -143,4 +143,9 @@ public class HighScoreManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
    
+    public void ResetHighScores()
+    {
+        PlayerPrefs.DeleteAll();
+        FindObjectOfType<DisplayScore>().LoadTheScores();
+    }
 }

@@ -168,6 +168,16 @@ public class MainMenueSpecials : MonoBehaviour
         }
     }
 
+    public void ResetScores()
+    {
+        HighScoreManager.instance.ResetHighScores();
+        GameObject.Find("1st").SetActive(false);
+        GameObject.Find("2nd").SetActive(false);
+        GameObject.Find("3ed").SetActive(false);
+        GameObject.Find("4th").SetActive(false);
+        GameObject.Find("5th").SetActive(false);
+    }
+
     void SetFinalPositions()
     {
         MainMenuMusic mainMenuMusic = FindAnyObjectByType<MainMenuMusic>();
