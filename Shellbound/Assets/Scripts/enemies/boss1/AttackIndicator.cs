@@ -94,6 +94,11 @@ public class AttackIndicator : MonoBehaviour
         spikeDeployed = true;
         spike.transform.DOLocalMoveY(0.255f, 0.15f).OnComplete(InvokeReturnSpike);
         PlaySound();
+
+        if(playerInCircle)
+        {
+            SpikeWarning.instance.StartFadeOut();
+        }
     }
 
 
