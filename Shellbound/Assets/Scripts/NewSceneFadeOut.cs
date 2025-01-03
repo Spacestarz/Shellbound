@@ -9,6 +9,11 @@ public class NewSceneFadeOut : MonoBehaviour
     void Awake()
     {
         screenImage = GetComponent<Image>();
-        screenImage.DOColor(Color.clear, 0.5f);
+        screenImage.DOColor(Color.clear, 0.5f).OnComplete(Disable);
+    }
+
+    void Disable()
+    {
+        gameObject.SetActive(false);
     }
 }

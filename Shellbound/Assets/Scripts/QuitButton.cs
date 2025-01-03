@@ -10,19 +10,34 @@ public class QuitButton : MonoBehaviour
     IEnumerator Start()
     {
         button = GetComponent<Button>();
-        button.onClick.AddListener(QuitClicked);
-        
         yield return new WaitForSeconds(0.1f);
-        
-        if(SceneManager.GetActiveScene().name.Contains("Victory") && GameObject.Find("enteryourname"))
+        if(SceneManager.GetActiveScene().name.Contains("MainMenu"))
+        {
+            button.onClick.AddListener(TurnOffClicked);
+        }
+
+
+        if (SceneManager.GetActiveScene().name.Contains("Victory") && GameObject.Find("enteryourname"))
         {
             Destroy(gameObject);
         }
     }
 
-    // Update is called once per frame
-    void QuitClicked()
+    public void QuitClicked()
     {
-        SceneController.instance.GoToMenue();
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        if (GameObject.Find("MusicManager"))
+        {
+            Destroy(GameObject.Find("MusicManager"));
+        }
+        SceneManager.LoadScene(0);
+
+    }
+
+    void TurnOffClicked()
+    {
+        SceneController.instance.quit();
     }
 }

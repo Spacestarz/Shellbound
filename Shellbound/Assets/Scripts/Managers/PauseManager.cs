@@ -10,7 +10,6 @@ public class PauseManager : MonoBehaviour
     public GameObject pauseScreen;
 
     // Start is called before the first frame update
-    public Button quitButton;
 
     void Start()
     {
@@ -18,8 +17,8 @@ public class PauseManager : MonoBehaviour
         {
             instance = this;
         }
-
-        instance.quitButton.onClick.AddListener(QuitClicked);
+        pauseScreen.SetActive(true);
+        pauseScreen.SetActive(false);
     }
 
     public static void TogglePause()
