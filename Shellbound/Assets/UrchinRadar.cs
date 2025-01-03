@@ -23,7 +23,7 @@ public class UrchinRadar : MonoBehaviour
         instance = this;
 
         fullColor = new Color(1, 0, 0, 0.75f);
-        noColor = new Color(1, 0, 0, 0.2f);
+        noColor = new Color(1, 0, 0, 0.1f);
     }
 
     // Update is called once per frame
