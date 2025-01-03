@@ -27,8 +27,7 @@ public class MusicManager : MonoBehaviour
         musicSource = GetComponent<AudioSource>();
         startVolume = musicSource.volume;
 
-        musicSource.clip = songs[currentSongIndex];
-        musicSource.Play();
+        PlayFightMusicIntro();
 
         DontDestroyOnLoad(gameObject);
     }
@@ -51,5 +50,20 @@ public class MusicManager : MonoBehaviour
     public void StopPlaying()
     {
         instance.musicSource.Stop();
+    }
+
+    void PlayFightMusicIntro()
+    {
+        instance.musicSource.clip = songs[0];
+        instance.musicSource.Play();
+        Invoke(nameof(PlayFightMusic), instance.musicSource.clip.length);
+    }
+
+    void PlayFightMusic()
+    {
+        instance.musicSource.Stop();
+        instance.musicSource.clip = songs[4];
+        instance.musicSource.Play();
+
     }
 }

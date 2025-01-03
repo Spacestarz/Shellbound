@@ -117,7 +117,7 @@ public class IntroManager : MonoBehaviour
     {
         instance.boss.GetComponent<AudioSource>().spatialBlend = 0;
         instance.boss.GetComponentInChildren<Animator>().SetTrigger("NewPhase");
-        instance.boss.GetComponent<AudioSource>().PlayOneShot(instance.bossRoar);
+        instance.boss.GetComponent<AudioSource>().PlayOneShot(instance.bossRoar, 0.5f);
         Invoke(nameof(WeakRoarShake), 1.3f);
         Invoke(nameof(RoarCameraShake), 2f);
     }

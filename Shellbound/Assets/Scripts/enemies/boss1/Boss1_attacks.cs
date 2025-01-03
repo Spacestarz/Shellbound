@@ -45,7 +45,6 @@ public class Boss1_attacks : BossAttacksCommon
         clawrig = claw.GetComponent<Rigidbody>();
         clawrig.constraints = RigidbodyConstraints.FreezeAll;
         clawrig.useGravity = false;
-        sorce = GetComponentInParent<AudioSource>();
         AI = GetComponentInParent<Boss1_AI>();
     }
     public void Update()

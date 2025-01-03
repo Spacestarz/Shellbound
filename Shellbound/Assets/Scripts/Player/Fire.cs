@@ -65,7 +65,7 @@ public class Fire : MonoBehaviour
         harpoon.SetVisibility(true);
         goingAway = true;
 
-        //harpoonAnimator.Fire();
+        harpoonAnimator.Fire();
 
         harpoonObject.transform.position = Anchor.transform.position;
 

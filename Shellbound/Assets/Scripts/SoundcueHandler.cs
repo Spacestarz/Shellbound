@@ -31,7 +31,7 @@ public class SoundcueHandler : MonoBehaviour
     public static void PlayDoubleWaveCue()
     {
         instance.StopPlaying();
-        instance.source.clip = instance.waveCue;
+        instance.source.clip = instance.doubleWaveCue;
         instance.source.volume = 1;
         instance.source.Play();
     }
