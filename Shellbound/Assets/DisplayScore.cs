@@ -77,9 +77,9 @@ public class DisplayScore : MonoBehaviour
             {
                 if (i < highScoreManager.playerNamesList.Count && i < highScoreManager.bestTimesList.Count)
                 {
-                    highScoreTextListAll[i].text = $"{highScoreManager.playerNamesList[i]} - {highScoreManager.bestTimesList[i]:F2} seconds";
+                    highScoreTextListAll[i].text = $"{highScoreManager.playerNamesList[i]} - {highScoreManager.bestTimesList[i]:F2}";
 
-                    Debug.Log($"Position {i + 1}: {highScoreManager.bestTimesList[i]:F2} seconds");
+                    Debug.Log($"Position {i + 1}: {highScoreManager.bestTimesList[i]:F2}");
                 }
                 else
                 {

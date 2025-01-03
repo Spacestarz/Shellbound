@@ -47,7 +47,7 @@ public class OutroManager : MonoBehaviour
             Camera.main.GetComponent<RotateCamera>().isLocked = true;
             Camera.main.GetComponentInParent<PlayerController>().enabled = false;
 
-            Vector3 shakeStrength = new(1.25f, 2.75f, 0);
+            Vector3 shakeStrength = new(1, 1, 0);
             Camera.main.GetComponent<CameraHandler>().ShakeCamera(4, shakeStrength);
 
             instance.Invoke(nameof(VictoryWhiteFadeIn), 3f);
