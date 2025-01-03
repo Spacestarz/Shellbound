@@ -47,7 +47,7 @@ public class MainMenueSpecials : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         //StartButon.GetComponent<Button>().onClick.AddListener(delegate { StartGame();/*manager.GetComponent<SceneController>().NextLevel();*/ });
-        //QuitButon.GetComponent<Button>().onClick.AddListener(delegate { manager.GetComponent<SceneController>().quit(); });
+        QuitButon.GetComponent<Button>().onClick.AddListener(delegate { manager.GetComponent<SceneController>().quit(); });
 
         creditRect = CreditText.GetComponent<RectTransform>();
         settingsRect = setings.GetComponent<RectTransform>();
