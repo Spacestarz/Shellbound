@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Boss 1 Arena.unity
     guid: 39dbab0f30b838c4fa5ad830a2df4121
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/scenes ment to be in game/MainScene.unity
     guid: e983e8b3243a74c46b57802073eb64dc
   - enabled: 1

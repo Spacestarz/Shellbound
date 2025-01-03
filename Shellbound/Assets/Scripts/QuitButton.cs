@@ -10,7 +10,14 @@ public class QuitButton : MonoBehaviour
     IEnumerator Start()
     {
         button = GetComponent<Button>();
-        button.onClick.AddListener(QuitClicked);
+        if(!SceneManager.GetActiveScene().name.Contains("MainMenu"))
+        {
+            button.onClick.AddListener(QuitClicked);
+        }
+        else
+        {
+            button.onClick.AddListener(TurnOffClicked);
+        }
         
         yield return new WaitForSeconds(0.1f);
         
@@ -24,5 +31,10 @@ public class QuitButton : MonoBehaviour
     void QuitClicked()
     {
         SceneController.instance.GoToMenue();
+    }
+
+    void TurnOffClicked()
+    {
+        SceneController.instance.quit();
     }
 }
