@@ -13,6 +13,8 @@ public class PauseManager : MonoBehaviour
 
     void Start()
     {
+        isPaused = false;
+
         if (instance == null)
         {
             instance = this;
