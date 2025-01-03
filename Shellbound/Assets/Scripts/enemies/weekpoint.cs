@@ -75,7 +75,7 @@ public class weekpoint : MonoBehaviour
 
     public IEnumerator Fist()
     {
-        yield return new WaitForSeconds(0.9f);
+        yield return new WaitForSeconds(1.1f);
         Show();
         yield return new WaitForSeconds(0.7f);
         Hide();
