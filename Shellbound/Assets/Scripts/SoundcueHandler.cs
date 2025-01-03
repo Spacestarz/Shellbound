@@ -41,7 +41,7 @@ public class SoundcueHandler : MonoBehaviour
         instance.StopPlaying();
 
         instance.source.clip = instance.fistCue;
-        instance.source.volume = 0.15f;
+        instance.source.volume = 0.25f;
         instance.source.Play();
     }
 
