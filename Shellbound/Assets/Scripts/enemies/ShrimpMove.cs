@@ -21,7 +21,12 @@ public class ShrimpMove : MonoBehaviour
     */
     private float timeOffset;
     private ShrimpCrowd CrowdHandler;
-   // public bool timeToReturn;
+    // public bool timeToReturn;
+
+    private float sinSpeed;
+    private int direction;
+
+    private bool hasReturned = true;
          
     void Start()
     {
@@ -29,6 +34,16 @@ public class ShrimpMove : MonoBehaviour
         timeOffset = Random.Range(minOffset, maxOffset);
         CrowdHandler = FindAnyObjectByType<ShrimpCrowd>();
 
+        sinSpeed = Random.Range(2.0f, 5.0f);
+        direction = (int)Mathf.Sign(Random.Range(-5, 5));
+        if (direction == 0)
+        {
+            direction = Random.Range(1, 3);
+            if (direction == 2)
+            {
+                direction = -1;
+            }
+        }
         //Debug.Log($"{gameObject.name} timeOffset: {timeOffset}");
     }
 
@@ -37,14 +52,20 @@ public class ShrimpMove : MonoBehaviour
     {
         if (CrowdHandler.IsCheering)
         {
-            float newY = startY + Mathf.PingPong((Time.time + timeOffset) * speed, height);
-            transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+            float newY = startY + Mathf.PingPong((Time.time + timeOffset) * speed, height) * direction;
+            transform.localPosition = new Vector3(transform.localPosition.x, newY, transform.localPosition.z);
 
             if(!returnHasBeenInvoked)
             {
+                hasReturned = false;
                 returnHasBeenInvoked = true;
                 Invoke(nameof(ReturnToStartPos), CrowdHandler.cheerAudioSource.clip.length);
             }
+        }
+        else if(hasReturned)
+        {
+            float newY = startY + Mathf.Sin(Time.time * sinSpeed) * 0.2f * direction;
+            transform.localPosition = new Vector3(transform.localPosition.x, newY, transform.localPosition.z);
         }
 
         if (CrowdHandler.IsBooing)
@@ -55,7 +76,12 @@ public class ShrimpMove : MonoBehaviour
 
     public void ReturnToStartPos()
     {
-        transform.DOLocalMoveY(startY, 0.5f);
+        transform.DOLocalMoveY(startY, 0.5f).OnComplete(SetReturnComplete);
         returnHasBeenInvoked = false;
+    }
+
+    void SetReturnComplete()
+    {
+        hasReturned = true;
     }
 }
