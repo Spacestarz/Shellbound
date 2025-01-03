@@ -11,6 +11,7 @@ public class IntroManager : MonoBehaviour
     private Crowd_attacks crowdAttack;
 
     public GameObject spike;
+    public GameObject nameCard;
 
     private GameObject boss;
 
@@ -124,6 +125,11 @@ public class IntroManager : MonoBehaviour
 
     private void WeakRoarShake()
     {
+        Image[] imgs = instance.nameCard.GetComponentsInChildren<Image>();
+        foreach (Image image in imgs)
+        {
+            image.DOFade(1, 0.4f);
+        }
         Camera.main.GetComponent<CameraHandler>().WeakBossRoar();
     }
 
@@ -145,6 +151,12 @@ public class IntroManager : MonoBehaviour
 
     private void RestoreUIElements()
     {
+        Image[] imgs = instance.nameCard.GetComponentsInChildren<Image>();
+        foreach (Image image in imgs)
+        {
+            image.DOFade(0, 0.8f);
+        }
+
         RestorePlayerWeapon();
         instance.Invoke(nameof(RestorePlayerHP), 0.2f);
         instance.Invoke(nameof(RestoreEnemyHP), 0.4f);
