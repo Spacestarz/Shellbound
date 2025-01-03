@@ -24,7 +24,7 @@ public class SoundcueHandler : MonoBehaviour
     {
         instance.StopPlaying();
         instance.source.clip = instance.waveCue;
-        instance.source.volume = 1;
+        instance.source.volume = 0.5f;
         instance.source.Play();
     }
 
@@ -32,7 +32,7 @@ public class SoundcueHandler : MonoBehaviour
     {
         instance.StopPlaying();
         instance.source.clip = instance.doubleWaveCue;
-        instance.source.volume = 1;
+        instance.source.volume = 0.5f;
         instance.Invoke(nameof(PlayDoubleSound), 1);
     }
 
@@ -41,7 +41,7 @@ public class SoundcueHandler : MonoBehaviour
         instance.StopPlaying();
 
         instance.source.clip = instance.fistCue;
-        instance.source.volume = 0.3f;
+        instance.source.volume = 0.15f;
         instance.source.Play();
     }
 
@@ -53,6 +53,5 @@ public class SoundcueHandler : MonoBehaviour
     void PlayDoubleSound()
     {
         instance.source.Play();
-
     }
 }

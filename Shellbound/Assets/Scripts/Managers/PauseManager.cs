@@ -28,6 +28,7 @@ public class PauseManager : MonoBehaviour
         {
             isPaused = true;
             instance.pauseScreen.SetActive(true);
+            MusicManager.instance.musicSource.Pause();
             Time.timeScale = 0;
 
             Cursor.visible = true;
@@ -37,6 +38,8 @@ public class PauseManager : MonoBehaviour
         {
             isPaused = false;
             instance.pauseScreen.SetActive(false);
+            MusicManager.instance.musicSource.UnPause();
+
             Time.timeScale = 1;
 
             Cursor.visible = false;
