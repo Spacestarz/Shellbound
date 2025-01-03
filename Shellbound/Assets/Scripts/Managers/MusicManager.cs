@@ -41,7 +41,6 @@ public class MusicManager : MonoBehaviour
 
     public void SetSong(int songIndex)
     {
-        Debug.Log("Yeah");
         currentSongIndex = songIndex;
         instance.musicSource.clip = songs[currentSongIndex];
         musicSource.Play();

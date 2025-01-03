@@ -15,6 +15,7 @@ public class Sushi : MonoBehaviour
     float startVolume;
 
     float shakeStr;
+    float timer = 0;
 
     void Awake()
     {
@@ -36,6 +37,17 @@ public class Sushi : MonoBehaviour
         else if (transform.position.y != startY && !hasMoved)
         {
             MoveUp();
+        }
+        else if(timer < 10)
+        {
+            timer += Time.deltaTime;
+        }
+        else
+        {
+            if(!fadeStarted)
+            {
+                FadeOut();
+            }
         }
     }
 
@@ -76,7 +88,11 @@ public class Sushi : MonoBehaviour
             if (sliceCount > 9)
             {
                 Camera.main.GetComponent<CameraHandler>().ShakeCamera(1.3f, new(shakeStr, shakeStr, shakeStr));
-                shakeStr += 0.025f;
+
+                if(shakeStr < 5)
+                {
+                    shakeStr += 0.025f;
+                }
                 source.pitch = Mathf.Lerp(1, 4, pitchLerpRate);
             }
             if (sliceCount == 9)
@@ -103,11 +119,7 @@ public class Sushi : MonoBehaviour
         }
         else if (OutroManager.instance.whiteScreen.color == goalColor && !fadeStarted)
         {
-            fadeStarted = true;
-            MusicManager.instance.SetSong(1);
-            OutroManager.instance.whiteScreen.DOColor(Color.white, MusicManager.instance.musicSource.clip.length);
-            source.DOFade(0, MusicManager.instance.musicSource.clip.length).OnComplete(SwitchScene);
-            //Invoke(nameof(SwitchScene), MusicManager.instance.musicSource.clip.length);
+            FadeOut();
         }
     }
 
@@ -116,6 +128,14 @@ public class Sushi : MonoBehaviour
         DOTween.KillAll();
         MusicManager.instance.SetSong(2);
         SceneController.instance.LoadScene("VictoryScreen");
+    }
+
+    void FadeOut()
+    {
+        fadeStarted = true;
+        MusicManager.instance.SetSong(1);
+        OutroManager.instance.whiteScreen.DOColor(Color.white, MusicManager.instance.musicSource.clip.length);
+        source.DOFade(0, MusicManager.instance.musicSource.clip.length).OnComplete(SwitchScene);
     }
 
 }

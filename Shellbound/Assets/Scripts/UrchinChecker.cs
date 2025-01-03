@@ -51,10 +51,12 @@ public class UrchinChecker : MonoBehaviour
         UrchinRadar.instance.ClearBlips();
         for (int i = 0; i < urchins.Count; i++)
         {
-            Vector2 urchinPos = new(urchins[i].transform.position.x, urchins[i].transform.position.z);
-            urchinPositions.Add(urchinPos);
-
-            UrchinRadar.instance.UpdateUrchinBlip(i, urchinPositions, center);
+            if(urchins[i] != null)
+            {
+                Vector2 urchinPos = new(urchins[i].transform.position.x, urchins[i].transform.position.z);
+                urchinPositions.Add(urchinPos);
+                UrchinRadar.instance.UpdateUrchinBlip(i, urchinPositions, center);
+            }
         }
     }
 }
