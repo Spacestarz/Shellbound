@@ -14,7 +14,8 @@ public class PauseManager : MonoBehaviour
     void Start()
     {
         isPaused = false;
-
+        Time.timeScale = 1;
+        
         if (instance == null)
         {
             instance = this;
