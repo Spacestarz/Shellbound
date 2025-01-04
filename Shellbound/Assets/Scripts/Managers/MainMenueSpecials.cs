@@ -46,6 +46,7 @@ public class MainMenueSpecials : MonoBehaviour
     private void Awake()
     {
         Time.timeScale = 1.0f;
+        ControlsTutorial.hasSliced = false;
 
         if (GameObject.Find("MusicManager"))
         {

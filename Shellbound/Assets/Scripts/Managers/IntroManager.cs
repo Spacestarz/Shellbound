@@ -66,6 +66,7 @@ public class IntroManager : MonoBehaviour
     {
         if (isRunning && Input.GetKeyDown(KeyCode.Escape))
         {
+            isRunning = false;
             SceneController.instance.LoadScene("NoIntro");
         }
     }

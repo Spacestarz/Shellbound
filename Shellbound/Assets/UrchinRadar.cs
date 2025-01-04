@@ -22,8 +22,8 @@ public class UrchinRadar : MonoBehaviour
         urchinBlips = new List<GameObject>();
         instance = this;
 
-        fullColor = new Color(1, 0, 0, 0.75f);
-        noColor = new Color(1, 0, 0, 0.1f);
+        fullColor = new Color(1, 0, 0, 0.95f);
+        noColor = new Color(1, 0, 0, 0.05f);
     }
 
     // Update is called once per frame
@@ -41,7 +41,7 @@ public class UrchinRadar : MonoBehaviour
         urchinBlips.Add(newBlip);
         newBlip.GetComponent<RectTransform>().anchoredPosition = urchinDirection * 100;
 
-        newBlip.GetComponent<Image>().color = Color.Lerp(fullColor, noColor, urchinDistance / 6);
+        newBlip.GetComponent<Image>().color = Color.Lerp(fullColor, noColor, urchinDistance / 8);
     }
 
     public void ClearBlips()

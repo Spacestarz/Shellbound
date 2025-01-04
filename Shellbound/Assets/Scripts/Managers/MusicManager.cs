@@ -14,13 +14,14 @@ public class MusicManager : MonoBehaviour
 
     void Awake()
     {
-        if (instance == null)
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        else
         {
             instance = this;
-        }
-        else if (instance != this)
-        {
-            Destroy(this);
         }
 
         currentSongIndex = 0;

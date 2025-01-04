@@ -21,7 +21,14 @@ public class ControlsTutorial : MonoBehaviour
 
     IEnumerator Start()
     {
-        instance = this;
+        if (instance != null && instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+        }
 
         MakeAllButtonsTransparent();
 
