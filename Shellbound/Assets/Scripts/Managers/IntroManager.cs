@@ -100,6 +100,8 @@ public class IntroManager : MonoBehaviour
 
     private void LookUp()
     {
+        Camera.main.GetComponent<CameraHandler>().isDisorientedFOV = false;
+        Camera.main.GetComponent<CameraHandler>().ResetFOV();
         Camera.main.GetComponent<RotateCamera>().IntroLookAtBoss();
     }
 
@@ -137,7 +139,7 @@ public class IntroManager : MonoBehaviour
         Image[] imgs = instance.nameCard.GetComponentsInChildren<Image>();
         foreach (Image image in imgs)
         {
-            image.DOFade(1, 0.4f);
+            //image.DOFade(1, 0.4f);
         }
         Camera.main.GetComponent<CameraHandler>().WeakBossRoar();
     }
@@ -203,7 +205,7 @@ public class IntroManager : MonoBehaviour
 
     void ControlUnlock()
     {
-        ControlsTutorial.instance.StartTutorial();
+        //ControlsTutorial.instance.StartTutorial();
 
         Camera.main.GetComponent<RotateCamera>().isLocked = false;
         Camera.main.transform.parent.GetComponent<PlayerController>().enabled = true;

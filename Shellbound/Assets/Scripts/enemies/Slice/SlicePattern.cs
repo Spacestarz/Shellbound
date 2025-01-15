@@ -66,10 +66,10 @@ public class SlicePattern : MonoBehaviour
                 i = SetNextArrow();
                 currentArrow = arrows[i];
 
-                if (!ControlsTutorial.hasSliced)
-                {
-                    ControlsTutorial.instance.ShowDragMouse(currentArrow);
-                }
+                //if (!ControlsTutorial.hasSliced)
+                //{
+                //    ControlsTutorial.instance.ShowDragMouse(currentArrow);
+                //}
 
                 PlayerSlice.SetTargetDirection(currentArrow.direction);
                 spawnedArrow = Instantiate(currentArrow, transform);

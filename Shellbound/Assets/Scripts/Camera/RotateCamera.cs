@@ -106,7 +106,9 @@ public class RotateCamera : MonoBehaviour
 
     public void IntroLookAtBoss()
     {
-        transform.DODynamicLookAt(GameObject.Find("MantisShrimp").transform.position, 3).OnComplete(InvokeOvershoot);
+        transform.DODynamicLookAt(GameObject.Find("MantisShrimp").transform.position, 3).OnComplete(IntroLookAtBossFast);
+        IntroManager.SpawnFirstSpike();
+        InvokeIntroZoomIn();
     }
 
     void InvokeOvershoot()
@@ -125,8 +127,8 @@ public class RotateCamera : MonoBehaviour
 
     void IntroLookAtBossFast()
     {
-        transform.DODynamicLookAt(GameObject.Find("MantisShrimp").transform.position, 0.33f).OnComplete(InvokeLookLeft);
-        IntroManager.SpawnFirstSpike();
+        //transform.DODynamicLookAt(GameObject.Find("MantisShrimp").transform.position, 0.33f).OnComplete(InvokeLookLeft);
+        
     }
 
 
@@ -165,12 +167,12 @@ public class RotateCamera : MonoBehaviour
 
     void InvokeIntroZoomIn()
     {
-        Invoke(nameof(IntroZoomIn), 0.15f);
+        Invoke(nameof(IntroZoomIn), 2.25f);
     }
 
     void IntroZoomIn()
     {
-        Camera.main.DOFieldOfView(10, 0.15f);
+        Camera.main.DOFieldOfView(10, 0.75f);
     }
 
     public void IntroSetRotation()

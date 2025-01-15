@@ -84,10 +84,10 @@ public class PlayerSlice : MonoBehaviour
 
             instance.GetComponent<Fire>().ReturnHarpoon();
 
-            if(!ControlsTutorial.hasSliced)
-            {
-                ControlsTutorial.instance.HideDragMouse();
-            }
+            //if(!ControlsTutorial.hasSliced)
+            //{
+            //    ControlsTutorial.instance.HideDragMouse();
+            //}
         }
 
         SetCursor();
@@ -222,11 +222,11 @@ public class PlayerSlice : MonoBehaviour
             currentSlicePattern.NextSliceArrow();
         }
         
-        if(!ControlsTutorial.hasSliced)
-        {
-            ControlsTutorial.hasSliced = true;
-            ControlsTutorial.instance.HideDragMouse();
-        }
+        //if(!ControlsTutorial.hasSliced)
+        //{
+        //    ControlsTutorial.hasSliced = true;
+        //    ControlsTutorial.instance.HideDragMouse();
+        //}
 
         successfulTicks = 0;
         sliceTime = 0;
